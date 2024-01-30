@@ -69,8 +69,43 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    // Implementa la lógica de inicio de sesión aquí
-    return res.status(501).send('No implementado');
-}
+    try {
+        const { usuario_ingreso, contrasena_ingreso } = req.body;
+
+        if (!(usuario_ingreso && contrasena_ingreso)) {
+            return res.status(400).send('Indica el usuario y contraseña.');
+        }
+
+        const client = await pool.connect();
+
+        try {
+            // Utilizando una sentencia preparada para evitar inyección SQL
+            const loginQuery = 'SELECT * FROM usuarios WHERE usuario = $1';
+            const userResult = await client.query(loginQuery, [usuario_ingreso]);
+
+            if (userResult.rows.length === 0) {
+                return res.status(401).send('Usuario no encontrado.');
+            }
+
+            const hashedPassword = userResult.rows[0].contrasena;
+            const passwordMatch = await bcrypt.compare(contrasena_ingreso, hashedPassword);
+
+            if (!passwordMatch) {
+                return res.status(401).send('Contraseña incorrecta.');
+            }
+
+            return res.status(200).send('Inicio de sesión exitoso.');
+        } catch (error) {
+            console.error('Error al ejecutar la consulta:', error);
+            return res.status(500).send('Error interno del servidor.');
+        } finally {
+            client.release();
+        }
+    } catch (err) {
+        console.error('Error en el controlador de inicio de sesión:', err);
+        return res.status(500).send('Error interno del servidor.');
+    }
+};
+
 
 module.exports = { register, login };

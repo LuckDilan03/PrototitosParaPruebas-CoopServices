@@ -1,0 +1,98 @@
+body {
+  background-image: radial-gradient(circle at 50% -20.71%, #CFF5E7 0, #A0E4CB 12.5%, #BFEAF5 25%, #91D8E4 37.5%, #BFEAF5 50%, #A0E4CB 62.5%, #CFF5E7 75%, #A0E4CB 87.5%, #91D8E4 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+/* Elimina *{} para evitar conflictos con algunos estilos de Bootstrap */
+
+form {
+    max-width: 400px; /* Reduzco el ancho máximo para mejorar la legibilidad */
+    width: 90%; /* Cambio a porcentaje para hacerlo responsive */
+    padding: 2rem;
+    background-color: #60a897;
+    border-radius: 20px;
+    color: aliceblue;
+}
+
+h1 {
+    display: block;
+    width: 100%; /* Ancho completo */
+    padding: 10px;
+    margin: 10px 0; /* Margen superior e inferior, sin margen lateral */
+    border-radius: 10px;
+    font-size: 24px; /* Tamaño de fuente ajustado */
+}
+
+label {
+    font-size: 18px;
+    padding: 5px 0; /* Ajuste del espaciado */
+    font-weight: 350;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0; /* Ajuste del espaciado */
+    border-radius: 10px;
+    font-size: 16px; /* Tamaño de fuente ajustado */
+}
+
+.boton-login {
+    background-color: #4db5fa;
+    padding: 0.5rem 1rem; /* Ajuste del espaciado */
+    color: white;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px; /* Ajuste del margen superior */
+}
+
+.boton-login:hover {
+    background-color: white;
+    color: black;
+}
+
+a {
+    margin-top: 10px;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: white;
+    display: block; /* Alinear el enlace verticalmente */
+}
+
+a:hover {
+    color: aliceblue;
+}
+
+.error {
+    background-color: #60a897;
+    color: black;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+/* Estilos para el botón "Volver" */
+.boton-volver {
+    position: fixed;
+        bottom: 10%;
+        right: 10%;
+        background-color: #0F4780;
+        color: #fff;
+        padding: 1% 1%;
+        border: none;
+        border-radius: 5%;
+        cursor: pointer;
+    }
+    
+.boton-volver:hover {
+        background-color: #0DC4FC;
+
+    }
