@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <h1>Bienvenido al Registro de Asociados</h1>
-        <form action="registrar_solicitud.php" class="formulario" id="formulario" method="POST">
+        <form action="/register" class="formulario" id="formulario" method="POST">
             <!-- Grupo: Documento de Identidad -->
             <div class="formulario__grupo" id="grupo__DNI_Persona">
                 <label for="DNI_Persona" class="formulario__label">Documento de Identidad</label>
@@ -24,15 +24,6 @@
                 <p class="formulario__input-error">Este campo es obligatorio.</p>
             </div>
 
-            <!-- Grupo: Correo Electrónico -->
-            <div class="formulario__grupo" id="grupo__Correo_Persona">
-                <label for="Correo_Persona" class="formulario__label">Correo Electrónico</label>
-                <div class="formulario__grupo-input">
-                    <input type="email" class="formulario__input" name="Correo_Persona" id="Correo_Persona" placeholder="correo@correo.com" required>
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </div>
-                <p class="formulario__input-error">Este camplo es obligatorio.</p>
-            </div>
 
             <!-- Grupo: Primer Nombre -->
             <div class="formulario__grupo" id="grupo__Nombre_Persona">
@@ -48,7 +39,7 @@
             <div class="formulario__grupo" id="grupo__Segundo_Nombre">
                 <label for="Segundo_Nombre" class="formulario__label">Segundo Nombre</label>
                 <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="Segundo_Nombre" id="Segundo_Nombre" placeholder="Ingresa tu Segundo Nombre">
+                    <input type="text" class="formulario__input" name="Segundo_Nombre_Persona" id="Segundo_Nombre_Persona" placeholder="Ingresa tu Segundo Nombre">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error"></p>
@@ -68,7 +59,7 @@
             <div class="formulario__grupo" id="grupo__Segundo_Apellido">
                 <label for="Segundo_Apellido" class="formulario__label">Segundo Apellido</label>
                 <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="Segundo_Apellido" id="Segundo_Apellido" placeholder="Ingresa tu Segundo Apellido">
+                    <input type="text" class="formulario__input" name="Segundo_Apellido_Persona" id="Segundo_Apellido_Persona" placeholder="Ingresa tu Segundo Apellido">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error"></p>
@@ -88,10 +79,29 @@
             <div class="formulario__grupo" id="grupo__telefono_persona">
                 <label for="telefono_persona" class="formulario__label">Teléfono</label>
                 <div class="formulario__grupo-input">
-                    <input type="number" class="formulario__input" name="telefono_persona" id="telefono_persona" placeholder="3963683349" required>
+                    <input type="number" class="formulario__input" name="Telefono_Persona" id="Telefono_Persona" placeholder="3963683349" required>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">El telefono solo puede contener números y el máximo son 10 dígitos.</p>
+            </div>
+
+             <!-- Grupo: Correo Electrónico -->
+             <div class="formulario__grupo" id="grupo__Correo_Persona">
+                <label for="Correo_Persona" class="formulario__label">Correo Electrónico</label>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="correo_Persona" id="correo_Persona" placeholder="correo@correo.com" required>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Este camplo es obligatorio.</p>
+            </div>
+
+            <div class="formulario__grupo" id="grupo__Nombre_Persona">
+                <label for="Nombre_Persona" class="formulario__label">documento persona</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="Documento_Solicitud" id="Documento_Solicitud" placeholder="Ingresa tu Primer Nombre" required>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Este campo es obligatorio.</p>
             </div>
 
             <!-- Grupo: Usuario Deseado -->
@@ -108,7 +118,7 @@
             <div class="formulario__grupo" id="grupo__contraseña_deseada">
                 <label for="contraseña_deseada" class="formulario__label">Contraseña Deseada</label>
                 <div class="formulario__grupo-input">
-                    <input type="password" class="formulario__input" name="contraseña_deseada" id="contraseña_deseada" placeholder="Ingresa una nueva Contraseña"required>
+                    <input type="password" class="formulario__input" name="Contrasena_deseada" id="Contrasena_deseada" placeholder="Ingresa una nueva Contraseña"required>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <ul class="formulario__input-error">
@@ -135,13 +145,13 @@
             </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">
-                <button type="submit" class="formulario__btn" href="registrar_solicitud.php">Siguiente</button>
+                <button type="submit" class="formulario__btn" >Siguiente</button>
                  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
             </div>
         </form>
-	<a href="index_InicioSesion.php" class="d-block text-center">Ya estas Registrado? Inicia Sesion Aqui!</a>
+	<a href="/viewlogin" class="d-block text-center">Ya estas Registrado? Inicia Sesion Aqui!</a>
     </div>
-    <a href="index.html"><button class="boton-volver" type="submit">Volver al Inicio</button>
+    <a href="/"><button class="boton-volver" type="submit">Volver al Inicio</button>
     
 
     <!-- <script src="vista_secretaria/js/formulario.js"></script>
