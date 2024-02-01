@@ -1,31 +1,28 @@
+// login.js
 async function submitForm(event) {
-    event.preventDefault(); // Evitar la acción predeterminada del formulario (la redirección)
+    //event.preventDefault();
 
-    const form = event.target;
-    const errorMessageElement = document.getElementById('error-message');
+    const usuario = document.getElementById('Usuario').value;
+    const clave = document.getElementById('Clave').value;
 
     try {
         const response = await fetch('/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                Usuario: form.Usuario.value,
-                Clave: form.Clave.value
-            })
+            body: JSON.stringify({ Usuario: usuario, Clave: clave }),
         });
 
-        if (!response.ok) {
-            throw new Error('Error en el inicio de sesión');
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('token', data.token); // Almacena el token en el almacenamiento local
+            window.location.href = '/dashboard'; // Redirige al dashboard
+        } else {
+            const errorMessage = await response.text();
+            document.getElementById('error-message').innerText = errorMessage;
         }
-
-        // Limpiar mensajes de error si todo está bien
-        errorMessageElement.textContent = '';
-
-        // Puedes hacer algo adicional con la respuesta si es necesario
     } catch (error) {
-        // Mostrar mensaje de error en el elemento
-        errorMessageElement.textContent = 'Error en el inicio de sesión. Verifica tus credenciales.';
+        console.error('Error en la solicitud:', error);
     }
 }

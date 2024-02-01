@@ -22,4 +22,18 @@ const verifyToken = (req, res, next) => {
     }
 }
 
-module.exports = verifyToken;
+const verifyRole = (allowedRoles) => {
+    return (req, res, next) => {
+        const userRole = req.user.rol; // Asegúrate de ajustar el nombre del campo según tu estructura
+        if (allowedRoles.includes(userRole)) {
+            return next();
+        } else {
+            return res.status(403).send('No tienes permisos para acceder a esta ruta');
+        }
+    };
+};
+
+module.exports = {
+    verifyToken,
+    verifyRole
+};
