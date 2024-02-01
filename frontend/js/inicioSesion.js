@@ -1,28 +1,27 @@
-// login.js
-async function submitForm(event) {
-    //event.preventDefault();
-
-    const usuario = document.getElementById('Usuario').value;
-    const clave = document.getElementById('Clave').value;
-
+async function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+  
     try {
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ Usuario: usuario, Clave: clave }),
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem('token', data.token); // Almacena el token en el almacenamiento local
-            window.location.href = '/dashboard'; // Redirige al dashboard
-        } else {
-            const errorMessage = await response.text();
-            document.getElementById('error-message').innerText = errorMessage;
-        }
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.error}`);
+      } else {
+        const responseData = await response.json();
+        // Haz lo que necesites con el token, por ejemplo, redirigir a otra página
+        window.location.href = '/dashboard';
+        console.log({responseData});
+      }
     } catch (error) {
-        console.error('Error en la solicitud:', error);
+      console.error('Error en la autenticación:', error);
+      alert('Error en la autenticación. Por favor, inténtalo de nuevo.');
     }
-}
+  }

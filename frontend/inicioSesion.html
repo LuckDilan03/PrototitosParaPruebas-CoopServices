@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <form onsubmit="submitForm(event)" class="my-form p-4">
+        <form  method="POST" action="/login" onsubmit="submitForm(event)" class="my-form p-4">
             <h1 class="mb-4">INICIAR SESIÓN</h1>
             
             <div id="error-message" class="error bg-light p-2 rounded"></div>
@@ -27,13 +27,13 @@
                 <input type="password" name="Clave" id="Clave" class="form-control" placeholder="Clave">
             </div>
 
-            <button class="boton-login btn btn-primary mb-3" type="submit">Iniciar Sesión</button>
+            <button id="loginButton" type="submit" class="boton-login btn btn-primary mb-3"  >Iniciar Sesión</button>
             <a href="/recuperarContra" class="d-block text-center">Recuperar Contraseña</a>
             <a href="/registrarse" class="d-block text-center">No estás Registrado? Solicita tu cuenta Aquí!</a>
         </form>
         <a href="/"><button class="boton-volver" type="submit">Volver al Inicio</button>
     </div>
-
+    
     <script src="js/iniciosesion.js"></script>
 </body>
 </html>

@@ -42,9 +42,10 @@ const login = async (req, res) => {
       const { usuario, dni, rol } = result.rows[0];
       // Genera un token JWT
       const token = jwt.sign({dni,rol, usuario: Usuario }, KEY , { expiresIn: '1h' });
-
-      // Puedes enviar el token como respuesta al cliente
-      res.status(200).json({ token });
+      // Configura la cookie con el token
+      res.cookie('authToken', token, { httpOnly: true });
+      res.redirect('/dashboard');
+      //enviar el token como respuesta al cliente
     } else {
       // Si las contraseñas no coinciden
       return res.status(401).json({ error: 'Credenciales inválidas.' });
