@@ -9,5 +9,7 @@ const homeroutes =(app)=>{
     app.get('/nosotros',controlador.mostrarnosotros);
 
     app.get('/contacto',controlador.mostrarcontac);
+    
+    app.get('/recuperarContra',controlador.recuperarcontra);
 }
 module.exports = homeroutes;

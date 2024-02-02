@@ -19,4 +19,10 @@ const mostrarcontac =(req,res)=>{
     res.sendFile(path.join(__dirname,'../../frontend/contacts.html'))
 }
 
-module.exports = {mostrarFormulario, monstrarlogin,mostrarnosotros,mostrarcontac};
+const recuperarcontra =(req,res)=>{
+
+    res.sendFile(path.join(__dirname,'../../frontend/recuperarContra.html'))
+}
+
+
+module.exports = {mostrarFormulario, monstrarlogin,mostrarnosotros,mostrarcontac,recuperarcontra};

@@ -1,31 +1,27 @@
-async function submitForm(event) {
-    event.preventDefault(); // Evitar la acción predeterminada del formulario (la redirección)
-
-    const form = event.target;
-    const errorMessageElement = document.getElementById('error-message');
-
+async function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+  
     try {
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                Usuario: form.Usuario.value,
-                Clave: form.Clave.value
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error('Error en el inicio de sesión');
-        }
-
-        // Limpiar mensajes de error si todo está bien
-        errorMessageElement.textContent = '';
-
-        // Puedes hacer algo adicional con la respuesta si es necesario
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.error}`);
+      } else {
+        const responseData = await response.json();
+        // Haz lo que necesites con el token, por ejemplo, redirigir a otra página
+        window.location.href = '/admin';
+        console.log({responseData});
+      }
     } catch (error) {
-        // Mostrar mensaje de error en el elemento
-        errorMessageElement.textContent = 'Error en el inicio de sesión. Verifica tus credenciales.';
+      console.error('Error en la autenticación:', error);
+      alert('Error en la autenticación. Por favor, inténtalo de nuevo.');
     }
-}
+  }

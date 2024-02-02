@@ -1,12 +1,13 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
-const routes = require('./routes/users');
+const usersroutes = require('./routes/users');
 const homeroutes=require('./routes/home');
 const path = require('path');
 
-
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 
@@ -17,7 +18,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 homeroutes(app)
-routes(app);
+usersroutes(app);
 const { PORT } = process.env;
 
 
