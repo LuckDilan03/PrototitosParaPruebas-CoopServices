@@ -1,7 +1,8 @@
 const auth = require('../middlewares/auth');
 const controlerRegister = require("../controlers/register");
 const controlerLogin=require('../controlers/login');
-const controlerValidacion=require('../controlers/validacion')
+const controlerValidacion=require('../controlers/validacion');
+const {cerrarSesion}=require('../controlers/cerrarSesion')
 
 const UserRoutes = (app) => {
     app.post('/login', (req, res) => {
@@ -13,6 +14,8 @@ const UserRoutes = (app) => {
         res.status(200).send(respuesta);
       });
     });
+    
+    app.post('/cerrar-sesion', cerrarSesion);
   
     app.get('/admin',auth.verifyToken,controlerValidacion.mostrardashboard);
     

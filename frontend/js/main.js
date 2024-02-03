@@ -25,6 +25,28 @@
         return false;
     });
 
+    document.getElementById('boton-cerrarseion').addEventListener('click', async () => {
+        try {
+            const response = await fetch('/cerrar-sesion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                    // Puedes agregar más encabezados según sea necesario
+                },
+                // Puedes enviar datos adicionales si es necesario
+                // body: JSON.stringify({ /* datos */ })
+            });
+    
+            if (response.ok) {
+                // La sesión se cerró con éxito, puedes redirigir a la página de inicio de sesión, por ejemplo.
+                window.location.href = '/iniciarSesion';
+            } else {
+                console.error('No se pudo cerrar la sesión');
+            }
+        } catch (error) {
+            console.error('Error al cerrar la sesión', error);
+        }
+    });
 
     // Sidebar Toggler
     $('.sidebar-toggler').click(function () {
