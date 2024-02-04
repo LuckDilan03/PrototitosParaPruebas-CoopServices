@@ -74,6 +74,21 @@
     background: var(--secondary);
     transition: 0.5s;
     z-index: 999;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--secondary);
+}
+
+/* Estilo específico para WebKit (Chrome, Safari) */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: var(--secondary);
 }
 
 .content {
