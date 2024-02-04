@@ -25,7 +25,15 @@ function agregarDatosATabla(usuarios) {
     <td>${usuario.telefono_persona}</td>
     <td>${usuario.correo_persona}</td>
     <td>${usuario.usuario_ingreso}</td>
-    <td>${usuario.rol_ingreso}</td>
+  
+  <td>
+    <button class="btn btn-sm btn-primary" onclick="editarUsuario(${usuario.id})">
+      <i class="bi bi-pencil"></i> Editar
+    </button>
+    <button class="btn btn-sm btn-danger" onclick="suspenderUsuario(${usuario.id})">
+      <i class="bi bi-x"></i> Suspender
+    </button>
+  </td>
     `;
     tbody.appendChild(fila);
   });
