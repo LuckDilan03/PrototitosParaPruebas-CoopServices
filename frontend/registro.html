@@ -76,8 +76,8 @@
             </div>
 
             <!-- Grupo: Teléfono -->
-            <div class="formulario__grupo" id="grupo__telefono_persona">
-                <label for="telefono_persona" class="formulario__label">Teléfono</label>
+            <div class="formulario__grupo" id="grupo__Telefono_Persona">
+                <label for="Telefono_Persona" class="formulario__label">Teléfono</label>
                 <div class="formulario__grupo-input">
                     <input type="number" class="formulario__input" name="Telefono_Persona" id="Telefono_Persona" placeholder="3963683349" required>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -86,8 +86,8 @@
             </div>
 
              <!-- Grupo: Correo Electrónico -->
-             <div class="formulario__grupo" id="grupo__Correo_Persona">
-                <label for="Correo_Persona" class="formulario__label">Correo Electrónico</label>
+             <div class="formulario__grupo" id="grupo__correo_Persona">
+                <label for="correo_Persona" class="formulario__label">Correo Electrónico</label>
                 <div class="formulario__grupo-input">
                     <input type="email" class="formulario__input" name="correo_Persona" id="correo_Persona" placeholder="correo@correo.com" required>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -95,14 +95,19 @@
                 <p class="formulario__input-error">Este camplo es obligatorio.</p>
             </div>
 
-            <div class="formulario__grupo" id="grupo__Nombre_Persona">
-                <label for="Nombre_Persona" class="formulario__label">documento persona</label>
-                <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="Documento_Solicitud" id="Documento_Solicitud" placeholder="Ingresa tu Primer Nombre" required>
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+
+          
+            <!-- Grupo: Documento de Solicitud -->
+            <div class="formulario__grupo" id="grupo__Documento_Solicitud">
+                <label for="Documento_Solicitud" class="formulario__label">Documento de Solicitud</label>
+                <div class="input-file">
+                    <input type="file" class="formulario__input" name="Documento_Solicitud" id="Documento_Solicitud" required>
+                    <label class="btn-upload" for="Documento_Solicitud">Seleccionar Archivo</label>
+                    <span class="file-name">Ningún archivo seleccionado</span>
                 </div>
                 <p class="formulario__input-error">Este campo es obligatorio.</p>
             </div>
+
 
             <!-- Grupo: Usuario Deseado -->
             <div class="formulario__grupo" id="grupo__usuario_deseado">
@@ -115,8 +120,8 @@
             </div>
 
             <!-- Grupo: Contraseña Deseada -->
-            <div class="formulario__grupo" id="grupo__contraseña_deseada">
-                <label for="contraseña_deseada" class="formulario__label">Contraseña Deseada</label>
+            <div class="formulario__grupo" id="grupo__Contrasena_deseada">
+                <label for="Contrasena_deseada" class="formulario__label">Contraseña Deseada</label>
                 <div class="formulario__grupo-input">
                     <input type="password" class="formulario__input" name="Contrasena_deseada" id="Contrasena_deseada" placeholder="Ingresa una nueva Contraseña"required>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -153,8 +158,8 @@
     </div>
     <a href="/"><button class="boton-volver" type="submit">Volver al Inicio</button>
     
-
-    <!-- <script src="vista_secretaria/js/formulario.js"></script>
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script> -->
+    <script src="registro.js"></script>
+    <script src="js/formValidacion.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 </html>

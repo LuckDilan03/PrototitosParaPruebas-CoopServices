@@ -13,15 +13,17 @@ async function submitForm(event) {
             },
             body: JSON.stringify({
                 DNI_Persona: form.DNI_Persona.value,
-                Correo_Persona: form.Correo_Persona.value,
+                correo_Persona: form.correo_Persona.value,
                 Nombre_Persona: form.Nombre_Persona.value,
-                Segundo_Nombre: form.Segundo_Nombre.value || null,
+                Segundo_Nombre_Persona: form.Segundo_Nombre_Persona.value || null,
                 Apellido_Persona: form.Apellido_Persona.value,
-                Segundo_Apellido: form.Segundo_Apellido.value || null,
+                Segundo_Apellido_Persona: form.Segundo_Apellido_Persona.value || null,
                 Direccion_Persona: form.Direccion_Persona.value,
-                telefono_persona: form.telefono_persona.value,
+                Telefono_Persona: form.telefono_persona.value,
+                Documento_Solicitud: form.Documento_Solicitud.value,
                 usuario_deseado: form.usuario_deseado.value,
-                contraseña_deseada: form.contraseña_deseada.value
+                Contrasena_deseada: form.Contrasena_deseada.value
+
             })
         });
 

@@ -39,7 +39,7 @@
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Lista de Usuarios</h6>
             <div class="table-responsive">
-                <table id="userTable" class="table">
+                <table id="usuariosTable" class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -59,30 +59,8 @@
         </div>
     </div>
 
-    <script>
+   
 
-        fetch('http://')
-            .then(response => response.json())
-            .then(data => {
-                
-                var tableBody = document.getElementById("tableBody");
-                data.forEach(function(usuario) {
-                    var row = '<tr>' +
-                        '<th scope="row">' + usuario.id + '</th>' +
-                        '<td>' + usuario.primerNombre + '</td>' +
-                        '<td>' + usuario.primerApellido + '</td>' +
-                        '<td>' + usuario.nombreUsuario + '</td>' +
-                        '<td>' + usuario.cuentaAsociada + '</td>' +
-                        '<td>' + usuario.rolIngreso + '</td>' +
-                        '<td>' + usuario.documentoUsuario + '</td>' +
-                        '</tr>';
-                    tableBody.innerHTML += row;
-                });
-            })
-            .catch(error => {
-                console.error('Error al obtener los datos de los usuarios:', error);
-            });
-    //cierre del script
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -96,6 +74,7 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
+    <script src="js/ListarUsuarios.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
