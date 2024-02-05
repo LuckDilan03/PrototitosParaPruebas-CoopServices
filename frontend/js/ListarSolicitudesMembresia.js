@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${solicitud.dni_persona}</td>
             <td>${solicitud.usuario_deseado}</td>
             <td>${fechasolicitudform}</td>
-            <td>${solicitud.documento_solicitud}</td>
+            <td><a href="./${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
             <td>${solicitud.respuesta_solicitud}</td>
         `;
 
