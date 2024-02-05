@@ -3,6 +3,7 @@ const controlerRegister = require("../controlers/register");
 const controlerLogin=require('../controlers/login');
 const controlerValidacion=require('../controlers/validacion');
 const controlerListUsers=require('../controlers/listUsers');
+const controlerListSolicitudMembresia=require('../controlers/listSolicitudMembresia');
 const controlerListAsociados=require('../controlers/listAsociados');
 
 const {cerrarSesion}=require('../controlers/cerrarSesion')
@@ -29,7 +30,8 @@ const UserRoutes = (app) => {
 
     app.get('/listUsers',controlerListUsers.listUsers);
     app.get('/listAsociados',controlerListAsociados.listAsociados);
-    
+    app.get('/listSolicitudMembresia',controlerListSolicitudMembresia.listSolicitudMembresia);
+
   };
 
   
