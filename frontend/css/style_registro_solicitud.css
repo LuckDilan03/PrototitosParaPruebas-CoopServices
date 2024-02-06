@@ -1,67 +1,65 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-nav {
-    background-image: radial-gradient(circle at 50% -20.71%, #CFF5E7 0, #A0E4CB 12.5%, #BFEAF5 25%, #91D8E4 37.5%, #BFEAF5 50%, #A0E4CB 62.5%, #CFF5E7 75%, #A0E4CB 87.5%, #91D8E4 100%);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-image: radial-gradient(circle at 50% -20.71%, #CFF5E7 0, #A0E4CB 12.5%, #BFEAF5 25%, #91D8E4 37.5%, #BFEAF5 50%, #A0E4CB 62.5%, #CFF5E7 75%, #A0E4CB 87.5%, #91D8E4 100%);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.container {
-    max-width: 900px;
-    width: 100%;
-    padding: 40px;
-    background-color: #729EA8;
-    box-shadow: 7px 13px 50px #729EA8;
-    border-radius: 40px;
-    text-align: center; 
-    color: white;
-}
-
-h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 36px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.formulario {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+  }
+  
+  nav {
+	background-image: radial-gradient(circle at 50% -20.71%, #CFF5E7 0, #A0E4CB 12.5%, #BFEAF5 25%, #91D8E4 37.5%, #BFEAF5 50%, #A0E4CB 62.5%, #CFF5E7 75%, #A0E4CB 87.5%, #91D8E4 100%);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+  }
+  
+  body {
+	font-family: 'Roboto', sans-serif;
+	background-image: radial-gradient(circle at 50% -20.71%, #CFF5E7 0, #A0E4CB 12.5%, #BFEAF5 25%, #91D8E4 37.5%, #BFEAF5 50%, #A0E4CB 62.5%, #CFF5E7 75%, #A0E4CB 87.5%, #91D8E4 100%);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	min-height: 100vh;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .container {
+	max-width: 900px;
+	width: 100%;
+	padding: 40px;
+	background-color: #729EA8;
+	box-shadow: 7px 13px 50px #729EA8;
+	border-radius: 40px;
+	text-align: center;
+	color: white;
+  }
+  
+  h1 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 36px;
+	text-align: center;
+	margin-bottom: 20px;
+  }
+  
+  .formulario {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
-}
-
-.formulario__label {	
+  }
+  
+  .formulario__label {
 	display: block;
 	font-weight: 700;
 	padding: 10px;
 	cursor: pointer;
-}
-
-.formulario__grupo-input {
+  }
+  
+  .formulario__grupo-input {
 	position: relative;
-}
-
-.formulario__input {
+  }
+  
+  .formulario__input {
 	width: 100%;
 	background: #fff;
 	border: 3px solid transparent;
@@ -70,67 +68,67 @@ h1 {
 	line-height: 45px;
 	padding: 0 40px 0 10px;
 	transition: .3s ease all;
-}
-
-.formulario__input:focus {
+  }
+  
+  .formulario__input:focus {
 	border: 3px solid #0075FF;
 	outline: none;
-	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
-}
-
-.formulario__input-error {
+	box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+  }
+  
+  .formulario__input-error {
 	font-size: 12px;
 	margin-bottom: 0;
 	display: none;
-}
-
-.formulario__input-error-activo {
+  }
+  
+  .formulario__input-error-activo {
 	display: block;
-}
-
-.formulario__validacion-estado {
+  }
+  
+  .formulario__validacion-estado {
 	position: absolute;
 	right: 10px;
 	bottom: 15px;
 	z-index: 100;
 	font-size: 16px;
 	opacity: 0;
-}
-
-.formulario__checkbox {
+  }
+  
+  .formulario__checkbox {
 	margin-right: 10px;
-}
-
-.formulario__grupo-terminos, 
-.formulario__mensaje,
-.formulario__grupo-btn-enviar {
+  }
+  
+  .formulario__grupo-terminos,
+  .formulario__mensaje,
+  .formulario__grupo-btn-enviar {
 	grid-column: span 2;
-}
-
-.formulario__mensaje {
+  }
+  
+  .formulario__mensaje {
 	height: 45px;
 	line-height: 45px;
 	background: #F66060;
 	padding: 0 15px;
 	border-radius: 3px;
 	display: none;
-}
-
-.formulario__mensaje-activo {
+  }
+  
+  .formulario__mensaje-activo {
 	display: block;
-}
-
-.formulario__mensaje p {
+  }
+  
+  .formulario__mensaje p {
 	margin: 0;
-}
-
-.formulario__grupo-btn-enviar {
+  }
+  
+  .formulario__grupo-btn-enviar {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-.formulario__btn {
+  }
+  
+  .formulario__btn {
 	height: 45px;
 	line-height: 45px;
 	width: 30%;
@@ -141,71 +139,146 @@ h1 {
 	border-radius: 3px;
 	cursor: pointer;
 	transition: .1s ease all;
-}
-
-.formulario__btn:hover {
+  }
+  
+  .formulario__btn:hover {
 	background: #0DC4FC;
-	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
-}
-
-.formulario__mensaje-exito {
+	box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
+  }
+  
+  .formulario__mensaje-exito {
 	font-size: 14px;
 	color: #119200;
 	display: none;
-}
-
-.formulario__mensaje-exito-activo {
+  }
+  
+  .formulario__mensaje-exito-activo {
 	display: block;
-}
-
-/* ----- -----  Estilos para Validacion ----- ----- */
-.formulario__grupo-correcto .formulario__validacion-estado {
+  }
+  
+  /* ----- -----  Estilos para Validacion ----- ----- */
+  .formulario__grupo-correcto .formulario__validacion-estado {
 	color: #1ed12d;
 	opacity: 1;
-}
-
-.formulario__grupo-incorrecto .formulario__label {
+  }
+  
+  .formulario__grupo-incorrecto .formulario__label {
 	color: #bb2929;
-}
-
-.formulario__grupo-incorrecto .formulario__validacion-estado {
+  }
+  
+  .formulario__grupo-incorrecto .formulario__validacion-estado {
 	color: #bb2929;
 	opacity: 1;
-}
-
-.formulario__grupo-incorrecto .formulario__input {
+  }
+  
+  .formulario__grupo-incorrecto .formulario__input {
 	border: 3px solid #bb2929;
-}
-
-/* Estilos para el botón "Volver" */
-.boton-volver {
-	    position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #0F4780;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .boton-volver:hover {
-            background-color: #0DC4FC;
-        }
-/* ----- -----  Mediaqueries ----- ----- */
-@media screen and (max-width: 800px) {
-    .formulario {
-        grid-template-columns: 1fr;
-    }
-
-    .formulario__grupo-terminos,
-    .formulario__mensaje,
-    .formulario__grupo-btn-enviar {
-        grid-column: 1;
-    }
-
-    .formulario__btn {
-        width: 100%;
-    }
-}
+  }
+  
+  /* Estilos para el botón "Volver" */
+  .boton-volver {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #0F4780;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+  
+  .boton-volver:hover {
+	background-color: #0DC4FC;
+  }
+  
+  /* Estilo para el input de tipo "file" */
+  .input-file {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	margin-top: 20px; /* Ajusta el margen superior según tu preferencia */
+	margin-bottom: 10px;
+  }
+  
+  .input-file .file-name {
+	display: block;
+	margin-top: 10px;
+	color: #555;
+  }
+  
+  .input-file .btn-upload.file-selected {
+	background-color: #0F4780;
+	color: #fff;
+  }
+  
+  .input-file .btn-upload.file-selected:hover {
+	background-color: #0DC4FC;
+	color: #fff;
+  }
+  .input-file input[type="file"] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+  }
+  
+  .input-file .btn-upload {
+	border: 2px solid #0F4780;
+	color: #0F4780;
+	background-color: #fff;
+	padding: 8px 20px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	display: inline-block;
+	z-index: 1; /* Añade esto para asegurar que el botón esté en la capa superior */
+  }
+  
+  /* Ajusta el tamaño del área clickeable */
+  .input-file .btn-upload:after {
+	content: ""; /* Pseudo-elemento para ampliar el área clickeable */
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1; /* Coloca este pseudo-elemento detrás del botón */
+  }
+  
+  .input-file .btn-upload:hover {
+	background-color: #0DC4FC;
+	color: #fff;
+  }
+  
+  /* Cambiar el estilo del botón cuando hay un archivo seleccionado */
+  .input-file input[type="file"]:not(:empty) + .btn-upload {
+	background-color: #0F4780;
+	color: #fff;
+  }
+  
+  /* Cambiar el estilo del botón al pasar el mouse cuando hay un archivo seleccionado */
+  .input-file input[type="file"]:not(:empty) + .btn-upload:hover {
+	background-color: #0DC4FC;
+	color: #fff;
+  }
+  
+  
+  /* ----- -----  Mediaqueries ----- ----- */
+  @media screen and (max-width: 800px) {
+	.formulario {
+	  grid-template-columns: 1fr;
+	}
+  
+	.formulario__grupo-terminos,
+	.formulario__mensaje,
+	.formulario__grupo-btn-enviar {
+	  grid-column: 1;
+	}
+  
+	.formulario__btn {
+	  width: 100%;
+	}
+  }

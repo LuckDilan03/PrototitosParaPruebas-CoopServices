@@ -1,101 +1,80 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
+const fileNameDisplay = document.querySelector('.file-name');
+
 
 const expresiones = {
-    DNI_Persona: /^\d{2,20}$/, // Solo números, hasta 20 dígitos.
-    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*().,])[\w!@#$%^&*().,]{8,}$/, // 8 o más caracteres con al menos 1 mayúscula, 1 minúscula y 1 carácter especial.
+    DNI_Persona: /^\d{2,20}$/,
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    telefono: /^\d{10}$/ // 7 a 14 números.
-}
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+    telefono: /^\d{10}$/,
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*().,])[\w!@#$%^&*().,]{8,}$/,
+    direccion: /^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,60}$/,
+    usuario:/^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,10}$/
+};
 
 const campos = {
     DNI_Persona: false,
-    Correo_Persona: false,
+    correo_Persona: false,
     Nombre_Persona: false,
-    Segundo_Nombre: true, // No es obligatorio, se establece como true por defecto.
+    Segundo_Nombre_Persona: true,
     Apellido_Persona: false,
-    Segundo_Apellido: true, // No es obligatorio, se establece como true por defecto.
+    Segundo_Apellido_Persona: true,
     Direccion_Persona: false,
-    telefono_persona: false,
+    Telefono_Persona: false,
     usuario_deseado: false,
-    contraseña_deseada: false
-}
+    Contrasena_deseada: false,
+};
+
+const validarCampo = (expresion, input, campo) => {
+    const grupo = document.getElementById(`grupo__${campo}`);
+    grupo.classList.toggle('formulario__grupo-incorrecto', !expresion.test(input.value));
+    grupo.classList.toggle('formulario__grupo-correcto', expresion.test(input.value));
+
+    const icono = document.querySelector(`#grupo__${campo} i`);
+    icono.classList.toggle('fa-times-circle', !expresion.test(input.value));
+    icono.classList.toggle('fa-check-circle', expresion.test(input.value));
+
+    const error = document.querySelector(`#grupo__${campo} .formulario__input-error`);
+    error.classList.toggle('formulario__input-error-activo', !expresion.test(input.value));
+
+    campos[campo] = expresion.test(input.value);
+};
 
 const validarFormulario = (e) => {
     switch (e.target.name) {
-        case "DNI_Persona":
+        case 'DNI_Persona':
             validarCampo(expresiones.DNI_Persona, e.target, 'DNI_Persona');
             break;
-        case "Correo_Persona":
-            validarCampo(expresiones.correo, e.target, 'Correo_Persona');
+        case 'correo_Persona':
+            validarCampo(expresiones.correo, e.target, 'correo_Persona');
             break;
-        case "Nombre_Persona":
+        case 'Nombre_Persona':
             validarCampo(expresiones.nombre, e.target, 'Nombre_Persona');
             break;
-        case "Segundo_Nombre":
+        case 'Segundo_Nombre_Persona':
             // No se realiza validación para Segundo Nombre si no es obligatorio.
             break;
-        case "Apellido_Persona":
+        case 'Apellido_Persona':
             validarCampo(expresiones.nombre, e.target, 'Apellido_Persona');
             break;
-        case "Segundo_Apellido":
+        case 'Segundo_Apellido_Persona':
             // No se realiza validación para Segundo Apellido si no es obligatorio.
             break;
-        case "Direccion_Persona":
-            validarCampo(expresiones.nombre, e.target, 'Direccion_Persona');
+        case 'Direccion_Persona':
+            validarCampo(expresiones.direccion, e.target, 'Direccion_Persona');
             break;
-        case "telefono_persona":
-            validarCampo(expresiones.telefono, e.target, 'telefono_persona');
+        case 'Telefono_Persona':
+            validarCampo(expresiones.telefono, e.target, 'Telefono_Persona');
             break;
-        case "usuario_deseado":
-            validarCampo(expresiones.nombre, e.target, 'usuario_deseado');
+        case 'usuario_deseado':
+            validarCampo(expresiones.usuario, e.target, 'usuario_deseado');
             break;
-        case "contraseña_deseada":
-            validarCampo(expresiones.password, e.target, 'contraseña_deseada');
-            validarPassword2();
+        case 'Contrasena_deseada':
+            validarCampo(expresiones.password, e.target, 'Contrasena_deseada');
             break;
     }
-}
-
-const validarCampo = (expresion, input, campo) => {
-    if (expresion.test(input.value)) {
-        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
-        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
-        document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
-        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
-        campos[campo] = true;
-    } else {
-        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
-        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
-        document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
-        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
-        campos[campo] = false;
-    }
-}
-
-const validarPassword2 = () => {
-    const inputPassword1 = document.getElementById('contraseña_deseada');
-    const inputPassword2 = document.getElementById('password2');
-
-    if (inputPassword1.value !== inputPassword2.value) {
-        document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
-        document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
-        document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
-        document.querySelector(`#grupo__password2 i`).classList.remove('fa-check-circle');
-        document.querySelector(`#grupo__password2 .formulario__input-error`).classList.add('formulario__input-error-activo');
-        campos['contraseña_deseada'] = false;
-    } else {
-        document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-incorrecto');
-        document.getElementById(`grupo__password2`).classList.add('formulario__grupo-correcto');
-        document.querySelector(`#grupo__password2 i`).classList.remove('fa-times-circle');
-        document.querySelector(`#grupo__password2 i`).classList.add('fa-check-circle');
-        document.querySelector(`#grupo__password2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
-        campos['contraseña_deseada'] = true;
-    }
-}
+};
 
 inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
@@ -103,34 +82,36 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const terminos = document.getElementById('terminos');
 
     if (
         campos.DNI_Persona &&
-        campos.Correo_Persona &&
+        campos.correo_Persona &&
         campos.Nombre_Persona &&
         campos.Apellido_Persona &&
         campos.Direccion_Persona &&
-        campos.telefono_persona &&
+        campos.Telefono_Persona &&
         campos.usuario_deseado &&
-        campos.contraseña_deseada &&
-        terminos.checked
+        campos.Contrasena_deseada
     ) {
-        formulario.reset();
+       /* window.location.href = "/register";*/
 
-        document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
-        setTimeout(() => {
-            document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-        }, 5000);
-
-        document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-            icono.classList.remove('formulario__grupo-correcto');
-        });
-
-        /* window.location.href = "";*/
     } else {
+        e.preventDefault();
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
     }
+
+
+inputFile.addEventListener('change', () => {
+    const fileName = inputFile.files[0] ? inputFile.files[0].name : 'Ningún archivo seleccionado';
+    fileNameDisplay.textContent = fileName;
+    
+    // Cambiar el estilo del botón al seleccionar un archivo
+    btnUpload.classList.add('file-selected');
+});
+    
+// Puedes añadir esto en tu código para cambiar el color del botón al quitar el archivo seleccionado
+inputFile.addEventListener('click', () => {
+    btnUpload.classList.remove('file-selected');
+});
+
 });

@@ -63,27 +63,26 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Solicitar un Prestamo</a>
-                            <a href="typography.html" class="dropdown-item">Solicitar un Retiro</a>
-                            <a href="element.html" class="dropdown-item">Otro Tipo de Transacción</a>
+                            <a href="SolicitarPrestamo.html" class="dropdown-item">Solicitar un Prestamo</a>
+                            <a href="SolicitarRetiro.html" class="dropdown-item">Solicitar un Retiro</a>
+                            <a href="OtrasSolicitudes.html" class="dropdown-item">Otro Tipo de Transacción</a>
                         </div>
                     </div>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
+                    <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Tablas</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signup.html" class="dropdown-item">Solicitudes de Membresia</a>
+                            <a href="ListaSolicitudesMembresia.html" class="dropdown-item">Solicitudes de Membresia</a>
                             <a href="listaAsociados.html" class="dropdown-item">Lista de Asociados</a>
                             <a href="listaUsuario.html" class="dropdown-item">Lista de Usuarios</a>
-                            <a href="blank.html" class="dropdown-item">Solicitudes de Prestamo</a>
+                            <a href="ListaSolicitudesPrestamo.html" class="dropdown-item">Solicitudes de Prestamo</a>
                             <a href="form_crear_roles.html" class="dropdown-item">Crear Roles</a>
                             <a href="listaCuentaAhorros.html" class="dropdown-item">Lista de Cuentas de Ahorro</a>
                         </div>
                     </div>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
-                    <div class="nav-item dropdown">
+                   <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
+                  <!--    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -91,7 +90,7 @@
                             <a href="404.html" class="dropdown-item">404 Error</a>
                             <a href="blank.html" class="dropdown-item">Blank Page</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
         </div>
@@ -183,7 +182,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">Mi Perfil</a>
                             <a href="#" class="dropdown-item">Configuración</a>
-                            <a id="boton-cerrarseion" class="dropdown-item">Cerrar Sesión</a>
+                            <a id="boton-cerrarsesion" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>
@@ -252,79 +251,78 @@
             </div>
             <!-- Sales Chart End -->
 
-
-            <!-- Recent Sales Start -->
+            <!-- tabla de plan de pago -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
+                        <h6 class="mb-0">Plan de Pago </h6>
+                        <a href="#">Ver Todo</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Numero de Cuota</th>
+                                    <th scope="col">Cuota Mensual</th>
+                                    <th scope="col">Abono Capital</th>
+                                    <th scope="col">Abono Intereses</th>
+                                    <th scope="col">Saldo Capital</th>
+                                    <th scope="col">Total Cuota</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>01 Feb 2024</td>
+                                    <td>$500</td>
+                                    <td>$400</td>
+                                    <td>$100</td>
+                                    <td>$2,000</td>
+                                    <td>$500</td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>01 Mar 2024</td>
+                                    <td>$500</td>
+                                    <td>$350</td>
+                                    <td>$150</td>
+                                    <td>$1,650</td>
+                                    <td>$500</td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>01 Apr 2024</td>
+                                    <td>$500</td>
+                                    <td>$300</td>
+                                    <td>$200</td>
+                                    <td>$1,350</td>
+                                    <td>$500</td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>01 May 2024</td>
+                                    <td>$500</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>$1,100</td>
+                                    <td>$500</td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>01 Jun 2024</td>
+                                    <td>$500</td>
+                                    <td>$200</td>
+                                    <td>$300</td>
+                                    <td>$800</td>
+                                    <td>$500</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- Recent Sales End -->
+            <!-- tabla de plan de pago -->
 
 <!-- Widgets Start -->
 <!-- 
@@ -455,7 +453,7 @@
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a href="#">CoopServices </a>, Derechos Reservados
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
