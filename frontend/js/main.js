@@ -25,7 +25,7 @@
         return false;
     });
 
-    document.getElementById('boton-cerrarseion').addEventListener('click', async () => {
+    document.getElementById('boton-cerrarsesion').addEventListener('click', async () => {
         try {
             const response = await fetch('/cerrar-sesion', {
                 method: 'POST',

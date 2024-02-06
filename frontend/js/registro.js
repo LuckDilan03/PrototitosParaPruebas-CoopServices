@@ -6,23 +6,11 @@ async function submitForm(event) {
 
 
     try {
+        const formData = new FormData(form);
         const response = await fetch('/register', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                DNI_Persona: form.DNI_Persona.value,
-                Correo_Persona: form.Correo_Persona.value,
-                Nombre_Persona: form.Nombre_Persona.value,
-                Segundo_Nombre: form.Segundo_Nombre.value || null,
-                Apellido_Persona: form.Apellido_Persona.value,
-                Segundo_Apellido: form.Segundo_Apellido.value || null,
-                Direccion_Persona: form.Direccion_Persona.value,
-                telefono_persona: form.telefono_persona.value,
-                usuario_deseado: form.usuario_deseado.value,
-                contraseña_deseada: form.contraseña_deseada.value
-            })
+            headers: {},  // No necesitas establecer 'Content-Type' para FormData
+            body: formData,
         });
 
         if (!response.ok) {
