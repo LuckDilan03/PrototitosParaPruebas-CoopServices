@@ -5,6 +5,10 @@
     --light: #6C7293;
     --dark: #000000;
 }
+body{
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--secondary);
+}
 
 .back-to-top {
     position: fixed;
@@ -77,17 +81,107 @@
     scrollbar-width: thin;
     scrollbar-color: var(--primary) var(--secondary);
 }
+/* estilo para el modal de la vaina esa */
+
+#modalInformacionAdicional {
+    background-color: #00000e49;
+    color: #ffffff;
+}
+
+/* Estilo para el contenido del modal */
+#modalInformacionAdicional .modal-content {
+    background-color: #191C24;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+/* Estilo para el título del modal */
+#modalInformacionAdicional .modal-title {
+    color: #1ea063;
+}
+
+/* Estilo para los botones dentro del modal */
+#modalInformacionAdicional .btn-secondary,
+#modalInformacionAdicional .btn-primary {
+    background-color: #1ea063;
+    border-color: #1ea063;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+#modalInformacionAdicional .btn-secondary:hover,
+#modalInformacionAdicional .btn-primary:hover {
+    background-color: #22a816;
+    border-color: #00b309;
+    color:#021b00;
+}
+
+/* Estilo para el texto dentro del formulario */
+#modalInformacionAdicional .form-label {
+    color: #1ea063;
+}
+
+/* Estilo para los inputs */
+#modalInformacionAdicional .form-control {
+    background-color: #191C24 ;
+    color: #ffffff;
+    border-color: #1ea063;
+}
+
+/* Estilo para los checkboxes */
+#modalInformacionAdicional .form-check-input:checked {
+    background-color: #1ea063;
+    border-color: #1ea063;
+}
+
+/* Estilo para el botón de cerrar modal */
+#modalInformacionAdicional .btn-close {
+    color: #ffffff;
+    background-color: #25c47a;
+}
+
+/* Estilo para el cuerpo del modal */
+#modalInformacionAdicional .modal-body {
+    background-color: #191C24 ;
+}
+
+/* Estilo para el pie del modal */
+#modalInformacionAdicional .modal-footer {
+    background-color: #191C24 ;
+    border-top: 1px solid #666666;
+}
+
+/* Estilo para los botones del pie del modal */
+#modalInformacionAdicional .modal-footer .btn {
+    color: #ffffff;
+}
+
+/* Estilo para el botón de cerrar en el pie del modal */
+#modalInformacionAdicional .modal-footer .btn-secondary {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+/* Estilo para el botón de cerrar en el pie del modal al pasar el mouse */
+#modalInformacionAdicional .modal-footer .btn-secondary:hover {
+    background-color: #a13e3e;
+    border-color: #ff0000;
+    color: #490000;
+}
+
+
+
 
 /* Estilo específico para WebKit (Chrome, Safari) */
-.sidebar::-webkit-scrollbar {
+.-webkit-scrollbar {
     width: 8px;
 }
 
-.sidebar::-webkit-scrollbar-thumb {
+.-webkit-scrollbar-thumb {
     background-color: var(--primary);
 }
 
-.sidebar::-webkit-scrollbar-track {
+.-webkit-scrollbar-track {
     background-color: var(--secondary);
 }
 
