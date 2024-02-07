@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   async function obtenerDatosSolicitud() {
     try{
-      const response = await fetch('/listSolicitudPrestamo');
+      const response = await fetch('/listSolicitudPrestamos');
       const solicitudes = await response.json();
       agregarDatosATabla(solicitudes);
     } catch(error){
@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${solicitud.dni_coofiador_prestamo}</td>
 
             <td>
-            <button class="btn btn-sm btn-primary" onclick="aceptarsolicitud(${asociado.id})">
+            <button class="btn btn-sm btn-primary" onclick="aceptarsolicitud(${solicitud.id})">
               <i class="bi bi-check"></i> Aceptar
             </button>
-            <button class="btn btn-sm btn-danger" onclick="denegarsolicitud(${asociado.id})">
+            <button class="btn btn-sm btn-danger" onclick="denegarsolicitud(${solicitud.id})">
               <i class="bi bi-x"></i> Denegar
             </button>
           </td>

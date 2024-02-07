@@ -5,6 +5,7 @@ const controlerValidacion=require('../controlers/validacion');
 const controlerListUsers=require('../controlers/listUsers');
 const controlerListSolicitudMembresia=require('../controlers/listSolicitudMembresia');
 const controlerListAsociados=require('../controlers/listAsociados');
+const controlerListSolicitudPrestamos=require('../controlers/listSolicitudPrestamos');
 
 const {cerrarSesion}=require('../controlers/cerrarSesion')
 
@@ -36,6 +37,7 @@ const UserRoutes = (app) => {
     app.get('/listUsers',controlerListUsers.listUsers);
     app.get('/listAsociados',controlerListAsociados.listAsociados);
     app.get('/listSolicitudMembresia',controlerListSolicitudMembresia.listSolicitudMembresia);
+    app.get('/listSolicitudPrestamos',controlerListSolicitudPrestamos.listSolicitudPrestamos);
 
   };
 
