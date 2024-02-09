@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function obtenerDatosAsociados() {
     try{
-      const response = await fetch('/listAsociados');
+      const response = await fetch('/listarAsociados');
       const asociados = await response.json();
       agregarDatosATabla(asociados);
     } catch (error){
