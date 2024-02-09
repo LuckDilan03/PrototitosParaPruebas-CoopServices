@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Lista de Solicitudes de Prestamos</title>
+    <title>Lista de Cuentas de Ahorros</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -67,9 +67,9 @@
                             <a href="ListaSolicitudesMembresia.html" class="dropdown-item ">Solicit. Membresia</a>
                             <a href="listaAsociados.html" class="dropdown-item ">Lista de Asociados</a>
                             <a href="listaUsuario.html" class="dropdown-item">Lista de Usuarios</a>
-                            <a href="ListaSolicitudesPrestamo.html" class="dropdown-item active">Solicitudes de Prestamo</a>
+                            <a href="ListaSolicitudesPrestamo.html" class="dropdown-item ">Solicitudes de Prestamo</a>
                             <a href="CrearRoles.html" class="dropdown-item">Crear Roles</a>
-                            <a href="listaCuentaAhorros.html" class="dropdown-item">Lista de Cuentas de Ahorro</a>
+                            <a href="listaCuentaAhorros.html" class="dropdown-item active">Lista de Cuentas de Ahorro</a>
                         </div>
                     </div>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
@@ -181,19 +181,18 @@
 
     <div class="col-12">
         <div class="bg-secondary rounded h-100 p-4">
-            <h6 class="mb-4">Lista de Solicitudes De Prestamo</h6>
+            <h6 class="mb-4">Lista de Cuentas De Ahorros</h6>
             <div class="table-responsive">
-                <table id="solicitudTable" class="table">
+                <table id="cuentaTable" class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#ID Solicitud</th>
-                            <th scope="col">DNI del Asociado</th>
-                            <th scope="col">Monto Solicitado</th>
-                            <th scope="col">Ingreso solicitado</th>
-                            <th scope="col">Tipo de Prestamo</th>
-                            <th scope="col">Requisitos de la Solicitud</th>
-                            <th scope="col" >DNI del Fiador</th>
-                            <th scope="col" >DNI del Coofiador</th>
+                            <th scope="col">Numero de Cuenta</th>
+                            <th scope="col">Saldo de la Cuenta</th>
+                            <th scope="col">Tasa de Interes</th>
+                            <th scope="col">Aporte Mensual</th>
+                            <th scope="col">DNI Asociada</th>
+                            <th scope="col">Estado de Cuenta</th>
+                            <th scope="col" >Detalles</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>

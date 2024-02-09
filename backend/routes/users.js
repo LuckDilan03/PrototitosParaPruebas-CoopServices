@@ -5,6 +5,7 @@ const controlerValidacion=require('../controlers/validacion');
 const controlerListUsers=require('../controlers/listUsers');
 const controlerListSolicitudMembresia=require('../controlers/listSolicitudMembresia');
 const controlerListAsociados=require('../controlers/listAsociados');
+const controlerListSolicitudPrestamos=require('../controlers/listSolicitudPrestamos');
 
 const {cerrarSesion}=require('../controlers/cerrarSesion')
 
@@ -28,7 +29,7 @@ const UserRoutes = (app) => {
     app.get('/admin',auth.verifyToken,controlerValidacion.mostrardashboard);
     
     app.post('/aprobarSolicitud', (req, res) => {
-      return auth.verifyToken,controlerListSolicitudMembresia.aprobarUsuario(req, res);
+      return controlerListSolicitudMembresia.aprobarUsuario(req, res);
     });
   // Agrega rutas específicas para cada tipo de dashboard
   
@@ -36,6 +37,10 @@ const UserRoutes = (app) => {
     app.get('/listUsers',controlerListUsers.listUsers);
     app.get('/listAsociados',controlerListAsociados.listAsociados);
     app.get('/listSolicitudMembresia',controlerListSolicitudMembresia.listSolicitudMembresia);
+    app.get('/SolitudesPendientes',auth.verifyToken,controlerListSolicitudMembresia.mostrarpendientes)
+    
+    
+    app.get('/listSolicitudPrestamos',controlerListSolicitudPrestamos.listSolicitudPrestamos);
 
   };
 

@@ -69,6 +69,7 @@ async function aprobarSolicitud(idSolicitud) {
     const informacionAdicional = await solicitarInformacionAdicional();
 
     try {
+
         const response = await fetch(`/aprobarSolicitud`, {
             method: 'POST',
             headers: {
@@ -76,7 +77,10 @@ async function aprobarSolicitud(idSolicitud) {
             },
             body: JSON.stringify({
                 idSolicitud: idSolicitud,
-                informacionAdicional: informacionAdicional,
+                informacionAdicional:{
+                    saldoInicial:informacionAdicional.saldoInicial,
+                    saldoAhorroVoluntario:informacionAdicional.saldoAhorroVoluntario
+                },
                 // Otros datos si es necesario
             }),
         });
