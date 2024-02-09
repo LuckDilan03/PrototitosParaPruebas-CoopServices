@@ -17,7 +17,7 @@ async function login() {
       } else {
         const responseData = await response.json();
         // Haz lo que necesites con el token, por ejemplo, redirigir a otra página
-        window.location.href = '/dashboard';
+        window.location.href = '/admin';
         console.log({responseData});
       }
     } catch (error) {

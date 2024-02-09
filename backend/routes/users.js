@@ -13,6 +13,12 @@ const UserRoutes = (app) => {
         res.status(200).send(respuesta);
       });
     });
+    
+    app.get('/dashboard.html',auth.verifyToken,controlerValidacion.mostrardashboard);
+
+
+    
+    app.post('/cerrar-sesion', cerrarSesion);
   
     app.get('/dashboard',controlerValidacion.mostrardashboard);
 

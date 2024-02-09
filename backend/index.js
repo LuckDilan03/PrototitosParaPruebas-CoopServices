@@ -8,7 +8,6 @@ const homeroutes=require('./routes/home');
 const path = require('path');
 
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../frontend')));
 
 
 if (process.env.NODE_ENV !== "production") {
@@ -17,8 +16,10 @@ if (process.env.NODE_ENV !== "production") {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-homeroutes(app)
 usersroutes(app);
+app.use(express.static(path.join(__dirname, '../frontend')));
+homeroutes(app);
+
 const { PORT } = process.env;
 
 

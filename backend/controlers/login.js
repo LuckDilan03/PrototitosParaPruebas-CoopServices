@@ -44,7 +44,7 @@ const login = async (req, res) => {
       const token = jwt.sign({dni,rol, usuario: Usuario }, KEY , { expiresIn: '1h' });
       // Configura la cookie con el token
       res.cookie('authToken', token, { httpOnly: true });
-      res.redirect('/dashboard');
+      res.redirect('/admin');
       //enviar el token como respuesta al cliente
     } else {
       // Si las contraseñas no coinciden

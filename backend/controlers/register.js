@@ -42,7 +42,7 @@ const register = async (req, res) => {
       Direccion_Persona,
       Telefono_Persona,
       correo_Persona,
-      Documento_Solicitud,
+      req.body.Documento_Solicitud,
       usuario_deseado,
       contra_encrip
     ];
