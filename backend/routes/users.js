@@ -1,9 +1,14 @@
 const auth = require('../middlewares/auth');
 const controlerRegister = require("../controlers/register");
 const controlerLogin=require('../controlers/login');
-const controlerValidacion=require('../controlers/validacion')
+const {cerrarSesion}=require('../controlers/cerrarSesion');
+
+
 
 const UserRoutes = (app) => {
+
+  app.post('/cerrar-sesion', cerrarSesion);
+
     app.post('/login', (req, res) => {
       return controlerLogin.login(req, res);
     });
@@ -14,14 +19,10 @@ const UserRoutes = (app) => {
       });
     });
     
-    app.get('/dashboard.html',auth.verifyToken,controlerValidacion.mostrardashboard);
-
-
     
-    app.post('/cerrar-sesion', cerrarSesion);
   
-    app.get('/dashboard',controlerValidacion.mostrardashboard);
-
+    
+    
   // Agrega rutas específicas para cada tipo de dashboard
  
   }

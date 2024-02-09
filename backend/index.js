@@ -5,9 +5,11 @@ const app = express();
 const server = http.createServer(app);
 const usersroutes = require('./routes/users');
 const homeroutes=require('./routes/home');
+const adminroutes=require('./routes/admin');
 const path = require('path');
 
 app.use(cookieParser());
+
 
 
 if (process.env.NODE_ENV !== "production") {
@@ -17,6 +19,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 usersroutes(app);
+adminroutes(app);
 app.use(express.static(path.join(__dirname, '../frontend')));
 homeroutes(app);
 
