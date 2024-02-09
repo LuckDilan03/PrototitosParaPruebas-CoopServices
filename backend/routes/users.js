@@ -37,6 +37,9 @@ const UserRoutes = (app) => {
     app.get('/listUsers',controlerListUsers.listUsers);
     app.get('/listAsociados',controlerListAsociados.listAsociados);
     app.get('/listSolicitudMembresia',controlerListSolicitudMembresia.listSolicitudMembresia);
+    app.get('/SolitudesPendientes',auth.verifyToken,controlerListSolicitudMembresia.mostrarpendientes)
+    
+    
     app.get('/listSolicitudPrestamos',controlerListSolicitudPrestamos.listSolicitudPrestamos);
 
   };

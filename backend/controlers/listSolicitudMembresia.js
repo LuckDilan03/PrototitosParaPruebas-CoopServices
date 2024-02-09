@@ -1,4 +1,9 @@
 const pool = require('../config/connection');
+const path = require('path');
+
+const mostrarpendientes = (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/ListaSolicitudesMembresia.html'));
+  };
 
 async function listSolicitudMembresia(req, res) {
     try {
@@ -34,5 +39,6 @@ async function aprobarUsuario(req, res) {
 
 module.exports = {
     listSolicitudMembresia,
-    aprobarUsuario
+    aprobarUsuario,
+    mostrarpendientes
 };
