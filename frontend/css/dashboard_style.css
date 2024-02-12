@@ -60,12 +60,17 @@ body{
     color: #999; /* Color del placeholder */
 }
 
+
 .btn-primary {
     border: 3px solid #0aaa67;
-    background-color: #0aaa67;
+    background-color: #118856;
     border-color: #16eb92;
 }
 
+.btn-primary:hover {
+    background-color: transparent;
+    border-color: #0aaa67;
+}
 .btn-danger {
     border: 3px solid #eb1616;
     border-radius: 5px ;
@@ -75,12 +80,20 @@ body{
   
 }
 /*Estilos para resaltar las celdas de una tabla*/
+.table {
+    border: 3px solid #000a0a; /* Borde de la tabla */
+}
+
+.table th{
+    background-color: #252a3b;
+}
+
 .table tr:hover {
-    background-color: #1a352a; /* Fondo de las celdas de datos */
+    background-color: #0f1f1a; /* Fondo de las celdas de datos */
 }
 
 .table th:hover {
-    background-color: #1a352a; /* Fondo de las celdas de encabezado */
+    background-color: #1c3a30; /* Fondo de las celdas de encabezado */
 }
 
 
@@ -104,12 +117,12 @@ body{
 }
 
 .table-highlight th {
-    background-color: #1f2330; /* Fondo de las celdas de datos */
+    background-color: #13192b; /* Fondo de las celdas de datos */
 }
 
 
 .table-highlight tr:hover {
-    background-color: #1a352a; /* Fondo de las celdas de encabezado */
+    background-color: #14251e; /* Fondo de las celdas de encabezado */
 }
 
 .table-highlight th:hover {
