@@ -21,9 +21,44 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({scrollTop: 0}, 150, 'easeInOutExpo');
         return false;
     });
+
+
+    //botones de navegacion
+    $(document).ready(function() {
+        // Manejar el evento de clic en los botones de navegación
+        $('.btn-navigation').click(function() {
+            // Obtener el destino de desplazamiento desde el atributo data-target
+            var target = $(this).data('target');
+    
+            // Verificar si el destino existe
+            if (target && $(target).length > 0) {
+                // Calcular el desplazamiento hacia el destino
+                var offset = $(target).offset().top;
+    
+                // Calcular la posición actual de la ventana
+                var windowHeight = $(window).height();
+                var windowScrollTop = $(window).scrollTop();
+                var windowBottomPosition = windowScrollTop + windowHeight;
+    
+                // Comprobar si ya estamos cerca de la tabla de destino
+                if (offset > windowScrollTop && offset < windowBottomPosition) {
+                    console.log('Ya estás en la tabla de destino.');
+                    return; // No hace falta desplazarse
+                }
+    
+                // Realizar el desplazamiento suave de la página
+                $('html, body').animate({
+                    scrollTop: offset
+                }, 800);
+            } else {
+                console.error('El destino de desplazamiento no está definido o no existe.');
+            }
+        });
+    });
+    
 
     document.getElementById('boton-cerrarsesion').addEventListener('click', async () => {
         try {

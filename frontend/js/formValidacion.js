@@ -10,7 +10,7 @@ const expresiones = {
     telefono: /^\d{10}$/,
     password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*().,])[\w!@#$%^&*().,]{8,}$/,
     direccion: /^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,60}$/,
-    usuario:/^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,10}$/
+    usuario:/^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,20}$/
 };
 
 const campos = {
