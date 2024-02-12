@@ -18,6 +18,117 @@ body{
     z-index: 99;
 }
 
+/* Estilos para el contenedor de filtros y búsqueda */
+#filterContainer {
+    margin-bottom: 20px;
+}
+
+/* Estilos para las etiquetas de selección de criterio */
+#filterCriteriaRevisionLabel, #filterCriteriaAprobacionLabel, #filterCriteriaDenegarLabel {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #164400; /* Color de texto */
+}
+
+/* Estilos para los selectores de criterio */
+#filterCriteriaRevision, #filterCriteriaAprobacion, #filterCriteriaDenegar {
+    width: 25%;
+    padding: 0.4%;
+    margin-bottom: 10px;
+    border: 1px solid #00fc71;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #007531; /* Color de fondo */
+    color: #ffffff; /* Color de texto */
+}
+
+/* Estilos para los campos de búsqueda */
+#searchInputRevision, #searchInputAprobacion, #searchInputDenegar {
+    width: 30%;
+    padding: 0.5%;
+    margin-bottom: 10px;
+    border: 1px solid #0f3124;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #14221c; /* Color de fondo */
+    color: #bdffff; /* Color de texto */
+}
+
+/* Estilos para el placeholder del campo de búsqueda */
+#searchInputRevision::placeholder, #searchInputAprobacion::placeholder, #searchInputDenegar::placeholder{
+    color: #999; /* Color del placeholder */
+}
+
+.btn-primary {
+    border: 3px solid #0aaa67;
+    background-color: #0aaa67;
+    border-color: #16eb92;
+}
+
+.btn-danger {
+    border: 3px solid #eb1616;
+    border-radius: 5px ;
+    background-color: transparent;
+    border-color: #b10909;
+    color: #ff7d7d;
+  
+}
+/*Estilos para resaltar las celdas de una tabla*/
+.table tr:hover {
+    background-color: #1a352a; /* Fondo de las celdas de datos */
+}
+
+.table th:hover {
+    background-color: #1a352a; /* Fondo de las celdas de encabezado */
+}
+
+
+
+/* Estilos para resaltar la tabla */
+.table-highlight {
+    border: 2px solid #005204; /* Borde resaltado */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(6, 70, 0, 0.459); /* Sombra suave */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+/* Estilos adicionales para mejorar la apariencia */
+.table-highlight th,
+.table-highlight td {
+    padding: 8px; /* Espaciado interno */
+}
+
+.table-highlight tr {
+    background-color: #1f2330; /* Fondo de las celdas de encabezado */
+}
+
+.table-highlight th {
+    background-color: #1f2330; /* Fondo de las celdas de datos */
+}
+
+
+.table-highlight tr:hover {
+    background-color: #1a352a; /* Fondo de las celdas de encabezado */
+}
+
+.table-highlight th:hover {
+    background-color: #1a352a; /* Fondo de las celdas de datos */
+}
+
+/* Estilos para el botón activo */
+.btn-navigation.active {
+    background-color: #003500; /* Color de fondo del botón activo */
+    color: #64ff5f; /* Color del texto del botón activo */
+    border: 1px solid #64ff5f; /* Borde del botón activo */
+}
+
+/* Estilos adicionales para los botones de navegación */
+.btn-navigation {
+    background-color:transparent;
+    margin-right: 0.001px; /* Espacio entre los botones de navegación */
+    border: 3px solid #03723b; /* Borde de los botones de navegación */
+}
 
 /*** Spinner ***/
 #spinner {

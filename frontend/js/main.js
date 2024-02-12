@@ -26,7 +26,8 @@
     });
 
 
-    //botones de navegacion
+    //botones de navegacion para la listas de solicitudes
+
     $(document).ready(function() {
         // Manejar el evento de clic en los botones de navegación
         $('.btn-navigation').click(function() {
@@ -37,6 +38,10 @@
             if (target && $(target).length > 0) {
                 // Calcular el desplazamiento hacia el destino
                 var offset = $(target).offset().top;
+    
+                // Resaltar la tabla de destino y quitar el resaltado de otras tablas
+                $('.table-highlight').removeClass('table-highlight');
+                $(target).addClass('table-highlight');
     
                 // Calcular la posición actual de la ventana
                 var windowHeight = $(window).height();
@@ -52,7 +57,7 @@
                 // Realizar el desplazamiento suave de la página
                 $('html, body').animate({
                     scrollTop: offset
-                }, 800);
+                }, 150);
             } else {
                 console.error('El destino de desplazamiento no está definido o no existe.');
             }

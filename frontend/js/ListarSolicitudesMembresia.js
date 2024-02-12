@@ -1,7 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     obtenerDatosSolicitud();
-  });
-  
+
+  // Agregar eventos para el filtro
+  $('#filterCriteria').on('change', function() {
+    applyFilter($(this).val(), $('#searchInput').val());
+});
+
+$('#searchInput').on('keyup', function() {
+    applyFilter($('#filterCriteria').val(), $(this).val());
+});
+});
+
+
   async function obtenerDatosSolicitud() {
     try{
       const response = await fetch('/listSolicitudMembresia');
@@ -189,4 +199,75 @@ async function solicitarInformacionAdicional() {
 
         modal.show();
     });
+}
+
+
+// Función de filtrado
+$(document).ready(function() {
+    // Evento de cambio en el selector de criterios de filtrado para la tabla de revisión
+    $('#filterCriteriaRevision').on('change', function() {
+        applyFilter($(this).val(), $('#searchInputRevision').val(), '#revisionTable');
+    });
+
+    // Evento de entrada de texto en el campo de búsqueda para la tabla de revisión
+    $('#searchInputRevision').on('keyup', function() {
+        applyFilter($('#filterCriteriaRevision').val(), $(this).val(), '#revisionTable');
+    });
+
+    // Evento de cambio en el selector de criterios de filtrado para la tabla de aprobación
+    $('#filterCriteriaAprobacion').on('change', function() {
+        applyFilter($(this).val(), $('#searchInputAprobacion').val(), '#aprobarTable');
+    });
+
+    // Evento de entrada de texto en el campo de búsqueda para la tabla de aprobación
+    $('#searchInputAprobacion').on('keyup', function() {
+        applyFilter($('#filterCriteriaAprobacion').val(), $(this).val(), '#aprobarTable');
+    });
+
+    // Evento de cambio en el selector de criterios de filtrado para la tabla de denegación
+    $('#filterCriteriaDenegar').on('change', function() {
+        applyFilter($(this).val(), $('#searchInputDenegar').val(), '#denegarTable');
+    });
+
+    // Evento de entrada de texto en el campo de búsqueda para la tabla de denegación
+    $('#searchInputDenegar').on('keyup', function() {
+        applyFilter($('#filterCriteriaDenegar').val(), $(this).val(), '#denegarTable');
+    });
+});
+
+// Función de filtrado
+function applyFilter(criteria, searchTerm, tableId) {
+    // Convertir el término de búsqueda a minúsculas para hacer la comparación de manera insensible a mayúsculas
+    searchTerm = searchTerm.toLowerCase();
+
+    // Filtrar la tabla en función del criterio seleccionado
+    $(`${tableId} tbody tr`).each(function() {
+        var rowData = $(this).find('td:nth-child(' + (getColumnIndex(criteria) + 1) + ')').text().toLowerCase();
+        if (rowData.indexOf(searchTerm) === -1) {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    });
+}
+
+// Función para obtener el índice de columna según el criterio de filtrado
+function getColumnIndex(criteria) {
+    // Devuelve el índice de columna basado en el criterio seleccionado
+    switch (criteria) {
+        case 'id':
+            return 0; // #ID Solicitud
+        case 'dni':
+            return 1; // DNI del Asociado
+        case 'usuario':
+            return 2; // Usuario deseado
+        case 'fecha':
+            return 3; // Fecha de solicitud
+        case 'fechaAprobacion':
+            return 6; // Fecha de aprobación
+        case 'numeroResolucion':
+            return 7; // Número de resolución
+        default:
+            return 0; // Valor predeterminado: no se aplica ningún filtro
+    }
 }

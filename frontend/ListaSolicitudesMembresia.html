@@ -187,10 +187,22 @@
                 <h6 class="mb-4">Lista de Solicitudes De Membresia En Revision</h6>
                 <!-- Botones de navegación -->
                 <div class="navigation-buttons">
-                    <button class="btn btn-primary btn-navigation" data-target="#revision">En Revision</button>
+                    <button class="btn btn-primary btn-navigation active" data-target="#revision">En Revision</button>
                     <button class="btn btn-primary btn-navigation" data-target="#aprobar">Aprobadas</button>
                     <button class="btn btn-primary btn-navigation" data-target="#denegar">Denegadas</button>
                 </div>
+                <div>
+                    <label for="filterCriteria">Seleccione un criterio de filtrado:</label>
+                    <select id="filterCriteriaRevision">
+                        <option value="id">ID de Solicitud</option>
+                        <option value="dni">DNI del Asociado</option>
+                        <option value="usuario">Usuario deseado</option>
+                        <option value="fecha">Fecha de solicitud</option>
+                        <!-- Agrega más opciones según tus necesidades -->
+                    </select>
+                    <input type="text" id="searchInputRevision" placeholder="Ingrese el término de búsqueda">
+                </div>
+
                 <div class="table-responsive">
                     <table id="revisionTable" class="table table-bordered">
                         <thead>
@@ -220,8 +232,20 @@
                 <!-- Botones de navegación -->
                 <div class="navigation-buttons">
                     <button class="btn btn-primary btn-navigation" data-target="#revision">En Revision</button>
-                    <button class="btn btn-primary btn-navigation" data-target="#aprobar">Aprobadas</button>
+                    <button class="btn btn-primary btn-navigation active" data-target="#aprobar">Aprobadas</button>
                     <button class="btn btn-primary btn-navigation" data-target="#denegar">Denegadas</button>
+                </div>
+                <div>
+                    <label for="filterCriteria">Seleccione un criterio de filtrado:</label>
+                    <select id="filterCriteriaAprobacion">
+                        <option value="id">ID de Solicitud</option>
+                        <option value="dni">DNI del Asociado</option>
+                        <option value="usuario">Usuario deseado</option>
+                        <option value="fecha">Fecha de solicitud</option>
+                        <option value="fechaAprobacion">Fecha de Aprobacion</option>
+                        <option value="numeroResolucion">Numero de Resolucion</option>
+                    </select>
+                    <input type="text" id="searchInputAprobacion" placeholder="Ingrese el término de búsqueda">
                 </div>
                 <div class="table-responsive">
                     <table id="aprobarTable" class="table table-bordered">
@@ -255,7 +279,19 @@
                 <div class="navigation-buttons">
                     <button class="btn btn-primary btn-navigation" data-target="#revision">En Revision</button>
                     <button class="btn btn-primary btn-navigation" data-target="#aprobar">Aprobadas</button>
-                    <button class="btn btn-primary btn-navigation" data-target="#denegar">Denegadas</button>
+                    <button class="btn btn-primary btn-navigation active" data-target="#denegar">Denegadas</button>
+                </div>
+                <div>
+                    <label for="filterCriteria">Seleccione un criterio de filtrado:</label>
+                    <select id="filterCriteriaDenegar">
+                        <option value="id">ID de Solicitud</option>
+                        <option value="dni">DNI del Asociado</option>
+                        <option value="usuario">Usuario deseado</option>
+                        <option value="fecha">Fecha de solicitud</option>
+                        <option value="fechaAprobacion">Fecha de Aprobacion</option>
+                        <option value="numeroResolucion">Numero de Resolucion</option>
+                    </select>
+                    <input type="text" id="searchInputDenegar" placeholder="Ingrese el término de búsqueda">
                 </div>
                 <div class="table-responsive">
                     <table id="denegarTable" class="table table-bordered">
