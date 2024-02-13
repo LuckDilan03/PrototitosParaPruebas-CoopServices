@@ -33,8 +33,8 @@
 <!--Aqui iria el componente del sidebar-->
 
 
-        <!-- Componente para Sidebar -->
-        <div class="sidebar pe-4 pb-3">
+         <!-- Componente para Sidebar -->
+         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="dashboard.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Cooperativa</h3>
@@ -50,30 +50,30 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="dashboard.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="SolicitarPrestamo.html" class="dropdown-item">Solicitar un Prestamo</a>
-                            <a href="SolicitarRetiro.html" class="dropdown-item">Solicitar un Retiro</a>
-                            <a href="OtrasSolicitudes.html" class="dropdown-item">Otro Tipo de Transacción</a>
+                            <a href="/solicitarPrestamo" class="dropdown-item">Solicitar un Prestamo</a>
+                            <a href="/solicitarRetiro" class="dropdown-item">Solicitar un Retiro</a>
+                            <a href="/otroTipoSolicitud" class="dropdown-item">Otro Tipo de Transacción</a>
                         </div>
                     </div>
                     <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-table me-2"></i>Tablas</a>
-                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
-                            <a href="ListaSolicitudesMembresia.html" class="dropdown-item ">Solicit. Membresia</a>
-                            <a href="listaAsociados.html" class="dropdown-item ">Lista de Asociados</a>
-                            <a href="listaUsuario.html" class="dropdown-item">Lista de Usuarios</a>
-                            <a href="ListaSolicitudesPrestamo.html" class="dropdown-item active">Solicitudes de Prestamo</a>
-                            <a href="form_crear_roles.html" class="dropdown-item">Crear Roles</a>
-                            <a href="listaCuentaAhorros.html" class="dropdown-item">Lista de Cuentas de Ahorro</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Tablas</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/SolitudesPendientes" class="dropdown-item">Solicitudes de Membresia</a>
+                            <a href="/asociadosAprobados" class="dropdown-item">Lista de Asociados</a>
+                            <a href="/usuarioSistema" class="dropdown-item">Lista de Usuarios</a>
+                            <a href="/solicitudesPrestamo" class="dropdown-item">Solicitudes de Prestamo</a>
+                            <a href="/crearRoles" class="dropdown-item">Crear Roles</a>
+                            <a href="/cuentasAhorro" class="dropdown-item">Lista de Cuentas de Ahorro</a>
                         </div>
                     </div>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
-                    <!-- <div class="nav-item dropdown">
+                    <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
+                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>

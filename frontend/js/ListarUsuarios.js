@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function obtenerDatosUsuarios() {
   try{
-    const response = await fetch('/listUsers');
+    const response = await fetch('/listarUsuarioSistema');
     const usuarios = await response.json();
     agregarDatosATabla(usuarios);
   } catch(error){

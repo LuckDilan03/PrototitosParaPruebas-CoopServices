@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const pool = require('../config/connection');
-
+//funcion que se encarga de registrar los datos del usuario
 const register = async (req, res) => {
   try {
     if (!req.body || typeof req.body !== 'object' || !('DNI_Persona' in req.body)) {
@@ -24,14 +24,14 @@ const register = async (req, res) => {
     if (!DNI_Persona || !Nombre_Persona || !Apellido_Persona || !Direccion_Persona || !Telefono_Persona || !correo_Persona || !Documento_Solicitud) {
       return res.status(400).json({ error: 'Debes proporcionar todos los campos requeridos.' });
     }
-
+    // se encipta la contraseña atravez de la libreria bcript.hash y se guarda en una constante llamada contra_encrip
     const contra_encrip = await bcrypt.hash(Contrasena_deseada, 10);
-
+    // se crear el query para insertar los datos en la funcion de la base de datos 
     const queryText = `
       SELECT * FROM ingresar_solicitud_asociado(
         $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
       )`;
-    
+    // se guardan los datos a ingresar a la funcion de la base de datos
     const queryParams = [
       
       DNI_Persona,
@@ -42,11 +42,11 @@ const register = async (req, res) => {
       Direccion_Persona,
       Telefono_Persona,
       correo_Persona,
-      req.body.Documento_Solicitud,
+      Documento_Solicitud,
       usuario_deseado,
       contra_encrip
     ];
-
+    
     const result = await pool.query(queryText, queryParams);
 
     let respuesta;

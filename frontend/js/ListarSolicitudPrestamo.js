@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   async function obtenerDatosSolicitud() {
     try{
-      const response = await fetch('/listSolicitudPrestamo');
+      const response = await fetch('/listarSolicitudesPrestamo');
       const solicitudes = await response.json();
       agregarDatosATabla(solicitudes);
     } catch(error){
@@ -17,47 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     solicitudes.forEach(solicitud => {
         const fila = document.createElement('tr');
-        const fechasolicitud = new Date(solicitud.fecha_solicitud);
         fila.innerHTML = `
-            <td>${solicitud.id_solicitud}</td>
-            <td>${solicitud.dni_persona}</td>
-            <td>${solicitud.usuario_deseado}</td>
-            <td>${fechasolicitudform}</td>
-            <td><a href="./${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
-            <td>${solicitud.respuesta_solicitud}</td>
+            <td>${solicitud.id_solicitud_prestamo}</td>
+            <td>${solicitud.dni_responsable_prestamo}</td>
+            <td>${solicitud.monto_solicita_prestamo}</td>
+            <td>${solicitud.ingreso_solicita_prestamo}</td>
+            <td>${solicitud.tipo_prestamo}"</td>
+            <td>${solicitud.requisitos_solicitud_prestamo}</td>
+            <td>${solicitud.dni_fiador_prestamo}</td>
+            <td>${solicitud.dni_coofiador_prestamo}</td>
+
+            <td>
+            <button class="btn btn-sm btn-primary" onclick="aceptarsolicitud(${solicitud.id})">
+              <i class="bi bi-check"></i> Aceptar
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="denegarsolicitud(${solicitud.id})">
+              <i class="bi bi-x"></i> Denegar
+            </button>
+          </td>
         `;
-
-        if (solicitud.respuesta_solicitud !== 'EN REVISION') {
-            const fechaaprobacion = new Date(solicitud.fecha_aprobacion);
-            const fechaaprobacionform = `${fechaaprobacion.getDate()}/${fechaaprobacion.getMonth() + 1}/${fechaaprobacion.getFullYear()}`;
-
-            fila.innerHTML += `
-                <td class="fecha-aprobacion">${fechaaprobacionform}</td>
-                <td class="numero-resolucion">${solicitud.numero_resolucion}</td>
-                <td class="text-left">
-                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id})">
-                        <i class="bi bi-check"></i> Aprobar
-                    </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
-                        <i class="bi bi-x"></i> Denegar
-                    </button>
-                </td>
-            `;
-        } else {
-            fila.innerHTML += `
-                <td class="fecha-aprobacion"></td>
-                <td class="numero-resolucion"></td>
-                <td class="text-left">
-                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id})">
-                        <i class="bi bi-check"></i> Aprobar
-                    </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
-                        <i class="bi bi-x"></i> Denegar
-                    </button>
-                </td>
-            `;
-        }
-
         tbody.appendChild(fila);
     });
 }
