@@ -12,18 +12,25 @@ $('#searchInput').on('keyup', function() {
 });
 
 
-  async function obtenerDatosSolicitud() {
+async function obtenerDatosSolicitud() {
     try{
-      const response = await fetch('/listSolicitudMembresia');
-      const solicitudes = await response.json();
-      agregarDatosAaprobar(solicitudes);
-      agregarDatosArevision(solicitudes);
-      agregarDatosAdenegar(solicitudes);
+        const response = await fetch('/listSolicitudMembresia');
+        const solicitudes = await response.json();
+        limpiarTablas(); // Limpia las tablas antes de agregar los nuevos datos
+        agregarDatosAaprobar(solicitudes);
+        agregarDatosArevision(solicitudes);
+        agregarDatosAdenegar(solicitudes);
     } catch(error){
-      console.error('Error al obtener datos de usuarios: ', error);
+        console.error('Error al obtener datos de usuarios: ', error);
     }
-  }
-  
+}
+
+function limpiarTablas() {
+    const tablas = document.querySelectorAll('table tbody');
+    tablas.forEach(tabla => {
+        tabla.innerHTML = ''; // Elimina todo el contenido de la tabla
+    });
+}
   function agregarDatosAaprobar(solicitudes) {
     const tbody = document.querySelector('#aprobarTable tbody');
 
