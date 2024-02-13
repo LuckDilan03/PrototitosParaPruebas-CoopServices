@@ -30,7 +30,7 @@ const login = async (req, res) => {
 
     // Verifica si la función buscar_usuario indicó que el usuario no está registrado
     if (result.rows.length === 0) {
-      return res.status(400).json({ error: 'El usuario no está registrado.' });
+      return res.status(400).json({ error: 'Credenciales inválidas.' });
     }
 
     // Compara la contraseña proporcionada con la almacenada en la base de datos usando bcrypt
