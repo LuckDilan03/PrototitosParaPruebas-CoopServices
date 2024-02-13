@@ -11,7 +11,8 @@ const verifyToken = (req, res, next) => {
     const token = req.cookies.authToken;
 
     if (!token) {
-        return res.status(401).send('No se ha enviado el token de autenticación');
+        console.log('No se ha enviado el token de autenticación');
+        return res.redirect('/');
     }
 
     try {
@@ -19,7 +20,8 @@ const verifyToken = (req, res, next) => {
         req.user = decoded;
         return next(); // Agrega esta línea para continuar con la ejecución
     } catch (err) {
-        return res.status(401).send('Token inválido');
+        console.log('Token invalido');
+        return res.redirect('/');
     }
 }
 
@@ -29,7 +31,8 @@ const verifyRole = (allowedRoles) => {
         if (allowedRoles.includes(userRole)) {
             return next();
         } else {
-            return res.status(403).send('No tienes permisos para acceder a esta ruta');
+            console.log('Permisos invalidos');
+        return res.redirect('/');
         }
     };
 };
