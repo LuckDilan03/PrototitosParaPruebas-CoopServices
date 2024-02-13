@@ -84,7 +84,7 @@ function agregarDatosArevision(solicitudes) {
                 <td>${solicitud.respuesta_solicitud}</td>
 
                 <td class="text-left">
-                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id})">
+                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud})">
                         <i class="bi bi-check"></i> Aprobar
                     </button>
                     <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
@@ -140,26 +140,25 @@ function agregarDatosAdenegar(solicitudes) {
         tbody.appendChild(fila);
     });
 }
-
 async function aprobarSolicitud(idSolicitud) {
-    // Puedes utilizar una función que muestre un modal o un cuadro de diálogo para recopilar información adicional del usuario.
-    const informacionAdicional = await solicitarInformacionAdicional();
-
     try {
+        console.log('Aprobando solicitud con ID:', idSolicitud);
+        const informacionAdicional = await solicitarInformacionAdicional(idSolicitud); // Pasar idSolicitud aquí
+        console.log('Información adicional recopilada:', informacionAdicional);
+
+        const bodyData = {
+            idSolicitud: idSolicitud, // Asignar idSolicitud aquí
+            informacionAdicional: informacionAdicional
+        };
+
+        console.log('Datos a enviar al servidor:', bodyData);
 
         const response = await fetch(`/aprobarSolicitud`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                idSolicitud: idSolicitud,
-                informacionAdicional:{
-                    saldoInicial:informacionAdicional.saldoInicial,
-                    saldoAhorroVoluntario:informacionAdicional.saldoAhorroVoluntario
-                },
-                // Otros datos si es necesario
-            }),
+            body: JSON.stringify(bodyData),
         });
 
         if (response.ok) {
@@ -173,34 +172,29 @@ async function aprobarSolicitud(idSolicitud) {
     }
 }
 
+// Esta función maneja la solicitud de información adicional y muestra el modal
+async function solicitarInformacionAdicional(idSolicitud) {
+    // Abre el modal
+    $('#modalInformacionAdicional').modal('show');
 
-
-async function solicitarInformacionAdicional() {
-    // Puedes utilizar un formulario modal o cualquier otro método para recopilar la información.
-    // Aquí se muestra un ejemplo usando Bootstrap Modal.
-    return new Promise((resolve) => {
-        const modal = new bootstrap.Modal(document.getElementById('modalInformacionAdicional'));
-        const btnGuardar = document.getElementById('btnGuardarModal');
-
-        btnGuardar.addEventListener('click', () => {
-            const saldoInicial = document.getElementById('saldoInicial').value;
-            const saldoAhorroVoluntario = document.getElementById('saldoAhorroVoluntario').value;
-            const esAdministrativo = document.getElementById('esAdministrativo').checked;
-
+    // Retorna una promesa que se resuelve con la información adicional cuando se hace clic en Guardar
+    return new Promise((resolve, reject) => {
+        $('#btnGuardarModal').one('click', () => {
             const informacionAdicional = {
-                saldoInicial,
-                saldoAhorroVoluntario,
-                esAdministrativo,
+                saldoInicial: document.getElementById('saldoInicial').value,
+                saldoAhorroVoluntario: document.getElementById('saldoAhorroVoluntario').value,
+                esAdministrativo: document.getElementById('esAdministrativo').checked,
+                idSolicitud: idSolicitud // Asignar idSolicitud aquí
             };
 
-            modal.hide();
+            // Cierra el modal
+            $('#modalInformacionAdicional').modal('hide');
+
+            // Resuelve la promesa con la información adicional
             resolve(informacionAdicional);
         });
-
-        modal.show();
     });
 }
-
 
 // Función de filtrado
 $(document).ready(function() {
