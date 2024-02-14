@@ -1,13 +1,9 @@
 const pool = require('../config/connection');
-const path = require('path');
-
-const mostrarpendientes = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/ListaSolicitudesMembresia.html'));
-  };
 
 async function listSolicitudMembresia(req, res) {
     try {
-        const result = await pool.query('SELECT * FROM tab_solicitarmembresia');
+        const evaluador="EN REVISION;"
+        const result = await pool.query(`SELECT * FROM tab_solicitarmembresia WHERE respuesta_solicitud = 'EN REVISION';`);
         res.json(result.rows);
     } catch (error) {
         console.error('Error al obtener datos de la tabla desde la base de datos: ', error);
@@ -39,6 +35,5 @@ async function aprobarUsuario(req, res) {
 
 module.exports = {
     listSolicitudMembresia,
-    aprobarUsuario,
-    mostrarpendientes
+    aprobarUsuario
 };
