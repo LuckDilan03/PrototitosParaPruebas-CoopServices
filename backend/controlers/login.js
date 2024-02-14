@@ -1,42 +1,53 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const pool = require('../config/connection');
-require('dotenv/config');
+if(process.env.NODE_ENV !=="production"){
+  require('dotenv/config');
+}
 
-const { KEY } = process.env;
-
+const {KEY}=process.env;
 const login = async (req, res) => {
   try {
+    // Verifica si la solicitud tiene el cuerpo correcto
+    if (!req.body || typeof req.body !== 'object' || !('Usuario' in req.body)) {
+      return res.status(400).json({ error: 'El cuerpo de la solicitud no contiene los datos necesarios.' });
+    }
+
+    // Extrae los valores de Usuario y Clave del cuerpo de la solicitud
     const { Usuario, Clave } = req.body;
 
-    // Verifica si se proporcionan los campos de usuario y contraseña
+    // Verifica que se proporcionen ambos campos
     if (!Usuario || !Clave) {
       return res.status(400).json({ error: 'Debes proporcionar todos los campos requeridos.' });
     }
 
-    const queryText = 'SELECT contrasena_ingreso FROM tab_usuarios WHERE usuario_ingreso = $1';
+    // Define la consulta SQL para llamar a la función buscar_usuario con el parámetro Usuario
+    const queryText = 'SELECT buscar_usuario($1) as contrasena_ingreso';
     const queryParams = [Usuario];
 
+    // Ejecuta la consulta en la base de datos
     const result = await pool.query(queryText, queryParams);
 
+    // Verifica si la función buscar_usuario indicó que el usuario no está registrado
     if (result.rows.length === 0) {
       return res.status(400).json({ error: 'El usuario no está registrado.' });
     }
 
+    // Compara la contraseña proporcionada con la almacenada en la base de datos usando bcrypt
     const storedPasswordHash = result.rows[0].contrasena_ingreso;
-
-    // Verifica si la contraseña almacenada es un hash válido
-    if (!storedPasswordHash) {
-      return res.status(500).json({ error: 'La contraseña almacenada no es válida.' });
-    }
-
     const passwordsMatch = await bcrypt.compare(Clave, storedPasswordHash);
 
     if (passwordsMatch) {
-      const token = jwt.sign({ Usuario }, KEY, { expiresIn: '1h' });
+      //información adicional del resultado de la consulta
+      const { usuario, dni, rol } = result.rows[0];
+      // Genera un token JWT
+      const token = jwt.sign({dni,rol, usuario: Usuario }, KEY , { expiresIn: '1h' });
+      // Configura la cookie con el token
       res.cookie('authToken', token, { httpOnly: true });
       res.redirect('/admin');
+      //enviar el token como respuesta al cliente
     } else {
+      // Si las contraseñas no coinciden
       return res.status(401).json({ error: 'Credenciales inválidas.' });
     }
   } catch (error) {
