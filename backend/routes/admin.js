@@ -50,7 +50,7 @@ const adminRoutes = (app)=>{
 
   /*rutas del listado de usuarios del sistema */
     app.get('/usuarioSistema',auth.verifyToken,VistasAdmin.mostrarListaUsuarios);
-    app.get('/listaUsuario.html', auth.verifyToken, (req, res) => {res.redirect('/asociadosAprobados');});
+    app.get('/listaUsuario.html', auth.verifyToken, (req, res) => {res.redirect('/usuarioSistema');});
     app.get('/listarUsuarioSistema',auth.verifyToken,contolerListUsuarios.listUsers);
 
 
