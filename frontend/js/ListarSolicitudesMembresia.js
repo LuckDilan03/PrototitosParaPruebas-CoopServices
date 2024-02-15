@@ -42,7 +42,7 @@ function limpiarTablas() {
         const fechaaprobacionform = `${fechaaprobacion.getDate()}/${fechaaprobacion.getMonth() + 1}/${fechaaprobacion.getFullYear()}`;
 
         
-        if (solicitud.respuesta_solicitud === 'APROBADA') {
+        if (solicitud.respuesta_solicitud == 'APROBADA') {
             fila.innerHTML = `
                 <td>${solicitud.id_solicitud}</td>
                 <td>${solicitud.dni_persona}</td>
@@ -179,6 +179,14 @@ async function aprobarSolicitud(idSolicitud) {
     }
 }
 
+
+// Función para limpiar el contenido del modal
+function limpiarModal() {
+    document.getElementById('saldoInicial').value = '';
+    document.getElementById('saldoAhorroVoluntario').value = '';
+    document.getElementById('esAdministrativo').checked = false;
+}
+
 // Esta función maneja la solicitud de información adicional y muestra el modal
 async function solicitarInformacionAdicional(idSolicitud) {
     // Abre el modal
@@ -191,11 +199,14 @@ async function solicitarInformacionAdicional(idSolicitud) {
                 saldoInicial: document.getElementById('saldoInicial').value,
                 saldoAhorroVoluntario: document.getElementById('saldoAhorroVoluntario').value,
                 esAdministrativo: document.getElementById('esAdministrativo').checked,
-                idSolicitud: idSolicitud // Asignar idSolicitud aquí
+                idSolicitud: id_Solicitud
             };
 
             // Cierra el modal
             $('#modalInformacionAdicional').modal('hide');
+
+            // Limpia el contenido del modal
+            limpiarModal();
 
             // Resuelve la promesa con la información adicional
             resolve(informacionAdicional);
