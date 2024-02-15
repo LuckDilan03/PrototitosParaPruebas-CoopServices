@@ -11,6 +11,9 @@ $$
 DECLARE numerCuenta numeric;
 DECLARE Rsolicitud RECORD;
 DECLARE nuevoNumeroCuenta numeric;
+DECLARE incrementableAbono BIGINT;
+
+
 
 
 begin
@@ -29,9 +32,21 @@ begin
         values (Rsolicitud.dni_persona,Rsolicitud.usuario_deseado,CURRENT_TIMESTAMP,TRUE,'Recien Aprobado');
         insert into tab_cuenta (numero_cuenta,saldo_cuenta,tasa_interes_cuenta,aporte_mensual,dni_asociado,estado_cuenta,detalles_estado_cuenta)
         values (nuevoNumeroCuenta,PsaldoInicial,0,saldoAhorroVoluntario,Rsolicitud.dni_persona,TRUE,'Aperturada recientemente');
+        
+        SELECT MAX(id_aporte) INTO incrementableAbono FROM tab_aportecuenta  ;
+            IF incrementableAbono IS NULL THEN
+                incrementableAbono=1; 
+            ELSE 
+                incrementableAbono=incrementableAbono+1;
+            END IF;
+        
+        insert into tab_aportecuenta (id_aporte,numero_cuenta,monto_aporte,fecha_aporte)
+        values (incrementableAbono,nuevoNumeroCuenta,PsaldoInicial,CURRENT_TIMESTAMP);
+        
+        
         update tab_solicitarmembresia
-           set respuesta_solicitud='APROBADA'
-         where id_solicitud=Pid_solicitud
+           set respuesta_solicitud='APROBADA',fecha_aprobacion=CURRENT_TIMESTAMP
+         where id_solicitud=Pid_solicitud;
 		
         RETURN 'se ingreso correctamente el usuario';
 

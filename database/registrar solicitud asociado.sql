@@ -1,4 +1,4 @@
-                        -- FUNCTION: public.ingresar_solicitud_asociado(bigint, bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying)
+-- FUNCTION: public.ingresar_solicitud_asociado(bigint, bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying)
 
 -- DROP FUNCTION IF EXISTS public.ingresar_solicitud_asociado(bigint, bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying);
 

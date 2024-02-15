@@ -33,14 +33,17 @@ const adminRoutes = (app)=>{
   /*rutas del formulario de otra solicitud y su html*/
     app.get('/otroTipoSolicitud',auth.verifyToken,VistasAdmin.mostrarOtraSolicitud);
     app.get('/otroTipoSolicitud.html', auth.verifyToken, (req, res) => { res.redirect('/admin');});
-    app.get('/listSolicitudMembresia',/*aca debe ir el controlador del post para el formulario*/);
+    app.post('/otroFormulario',/*aca debe ir el controlador del post para el formulario*/);
  
  
     /*rutas del listado de solicitudes de membresia */
     app.get('/SolitudesPendientes',auth.verifyToken,VistasAdmin.mostrarSolictudesPendientesAsociados)
     app.get('/ListaSolicitudesMembresia.html', auth.verifyToken, (req, res) => {res.redirect('/SolitudesPendientes');});
     app.get('/listSolicitudMembresia',auth.verifyToken,controlerListSolicitudMembresia.listSolicitudMembresia);
-
+    /*rutas del listado de solicitudes de membresia */
+    app.post('/aprobarSolicitud', (req, res) => {
+      return controlerListSolicitudMembresia.aprobarUsuario(req, res);
+    });
 
   /*rutas del listado de asociados en el sistema */
     app.get('/asociadosAprobados',auth.verifyToken,VistasAdmin.mostrarListaAsociados);
@@ -50,7 +53,7 @@ const adminRoutes = (app)=>{
 
   /*rutas del listado de usuarios del sistema */
     app.get('/usuarioSistema',auth.verifyToken,VistasAdmin.mostrarListaUsuarios);
-    app.get('/listaUsuario.html', auth.verifyToken, (req, res) => {res.redirect('/usuarioSistema');});
+    app.get('/listaUsuario.html', auth.verifyToken, (req, res) => {res.redirect('/asociadosAprobados');});
     app.get('/listarUsuarioSistema',auth.verifyToken,contolerListUsuarios.listUsers);
 
 
@@ -69,7 +72,12 @@ const adminRoutes = (app)=>{
 
     app.get('/cuentasAhorro',auth.verifyToken,VistasAdmin.mostrarListaCuentasAhorro);
     app.get('listaCuentaAhorros.html', auth.verifyToken, (req, res) => {res.redirect('/solicitudesPrestamo');});
-    app.get('/listarCuentasAhorro',/*aca debe ir el controlador del post de la lista para el formulario*/);
-}
+    app.get('/listarCuentasAhorro',/*aca debe ir el controlador del get de la lista para el formulario*/);
+
+  /*rutas para la aprobacion de usuarios*/
+
+  }
+
+
 
 module.exports = adminRoutes;

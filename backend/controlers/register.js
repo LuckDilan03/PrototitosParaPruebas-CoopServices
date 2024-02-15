@@ -3,10 +3,11 @@ const pool = require('../config/connection');
 //funcion que se encarga de registrar los datos del usuario
 const register = async (req, res) => {
   try {
+    //valida los datos recibidos del front 
     if (!req.body || typeof req.body !== 'object' || !('DNI_Persona' in req.body)) {
       return res.status(400).json({ error: 'El cuerpo de la solicitud no contiene los datos necesarios.' });
     }
-
+    // extraemos los datos del body del reques para guardarlos en una constante para cada uno 
     const {
       DNI_Persona,
       Nombre_Persona,
@@ -20,7 +21,7 @@ const register = async (req, res) => {
       usuario_deseado,
       Contrasena_deseada
     } = req.body;
-
+    //validar que todos los datos requeridos por la basedatos esten completos 
     if (!DNI_Persona || !Nombre_Persona || !Apellido_Persona || !Direccion_Persona || !Telefono_Persona || !correo_Persona || !Documento_Solicitud) {
       return res.status(400).json({ error: 'Debes proporcionar todos los campos requeridos.' });
     }

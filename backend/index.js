@@ -20,8 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 usersroutes(app);
 adminroutes(app);
-app.use(express.static(path.join(__dirname, '../frontend')));
 homeroutes(app);
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 
 const { PORT } = process.env;
 

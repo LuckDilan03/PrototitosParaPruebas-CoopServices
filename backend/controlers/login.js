@@ -22,7 +22,7 @@ const login = async (req, res) => {
     }
 
     // Define la consulta SQL para llamar a la función buscar_usuario con el parámetro Usuario
-    const queryText = 'SELECT buscar_usuario($1) as contrasena_ingreso';
+    const queryText = 'SELECT *FROM buscar_usuario($1)';
     const queryParams = [Usuario];
 
     // Ejecuta la consulta en la base de datos
@@ -30,18 +30,18 @@ const login = async (req, res) => {
 
     // Verifica si la función buscar_usuario indicó que el usuario no está registrado
     if (result.rows.length === 0) {
-      return res.status(400).json({ error: 'El usuario no está registrado.' });
+      return res.status(400).json({ error: 'Credenciales inválidas.' });
     }
 
     // Compara la contraseña proporcionada con la almacenada en la base de datos usando bcrypt
-    const storedPasswordHash = result.rows[0].contrasena_ingreso;
+    const storedPasswordHash = result.rows[0].contrasena;
     const passwordsMatch = await bcrypt.compare(Clave, storedPasswordHash);
 
     if (passwordsMatch) {
       //información adicional del resultado de la consulta
       const { usuario, dni, rol } = result.rows[0];
       // Genera un token JWT
-      const token = jwt.sign({dni,rol, usuario: Usuario }, KEY , { expiresIn: '1h' });
+      const token = jwt.sign({dni,rol,usuario:Usuario}, KEY , { expiresIn: '1h' });
       // Configura la cookie con el token
       res.cookie('authToken', token, { httpOnly: true });
       res.redirect('/admin');

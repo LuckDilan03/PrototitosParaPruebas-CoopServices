@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   async function obtenerDatosSolicitud() {
     try{
-      const response = await fetch('/listSolicitudPrestamos');
+      const response = await fetch('/listarSolicitudesPrestamo');
       const solicitudes = await response.json();
       agregarDatosATabla(solicitudes);
     } catch(error){

@@ -42,7 +42,7 @@ function limpiarTablas() {
         const fechaaprobacionform = `${fechaaprobacion.getDate()}/${fechaaprobacion.getMonth() + 1}/${fechaaprobacion.getFullYear()}`;
 
         
-        if (solicitud.respuesta_solicitud == 'APROBADA') {
+        if (solicitud.respuesta_solicitud === 'APROBADA') {
             fila.innerHTML = `
                 <td>${solicitud.id_solicitud}</td>
                 <td>${solicitud.dni_persona}</td>
