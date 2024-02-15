@@ -1,26 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     obtenerDatosSolicitud();
-
-  // Agregar eventos para el filtro
-  $('#filterCriteria').on('change', function() {
-    applyFilter($(this).val(), $('#searchInput').val());
 });
-
-$('#searchInput').on('keyup', function() {
-    applyFilter($('#filterCriteria').val(), $(this).val());
-});
-});
-
 
 async function obtenerDatosSolicitud() {
-    try{
+    try {
         const response = await fetch('/listSolicitudMembresia');
         const solicitudes = await response.json();
         limpiarTablas(); // Limpia las tablas antes de agregar los nuevos datos
         agregarDatosAaprobar(solicitudes);
         agregarDatosArevision(solicitudes);
         agregarDatosAdenegar(solicitudes);
-    } catch(error){
+
+        // Inicializar las tablas con DataTables y habilitar la ordenación
+        $('#aprobarTable, #revisionTable, #denegarTable').DataTable({
+            "paging": false, // Deshabilitar la paginación
+            "searching": false, // Deshabilitar la búsqueda
+            "info": false // Deshabilitar la información de la tabla
+        });
+    } catch (error) {
         console.error('Error al obtener datos de usuarios: ', error);
     }
 }
@@ -31,7 +28,8 @@ function limpiarTablas() {
         tabla.innerHTML = ''; // Elimina todo el contenido de la tabla
     });
 }
-  function agregarDatosAaprobar(solicitudes) {
+
+function agregarDatosAaprobar(solicitudes) {
     const tbody = document.querySelector('#aprobarTable tbody');
 
     solicitudes.forEach(solicitud => {
@@ -41,7 +39,6 @@ function limpiarTablas() {
         const fechaaprobacion = new Date(solicitud.fecha_aprobacion);
         const fechaaprobacionform = `${fechaaprobacion.getDate()}/${fechaaprobacion.getMonth() + 1}/${fechaaprobacion.getFullYear()}`;
 
-        
         if (solicitud.respuesta_solicitud == 'APROBADA') {
             fila.innerHTML = `
                 <td>${solicitud.id_solicitud}</td>
@@ -61,12 +58,8 @@ function limpiarTablas() {
                     </button>
                 </td>
             `;
+            tbody.appendChild(fila);
         }
-
-
-
-
-        tbody.appendChild(fila);
     });
 }
 
@@ -80,7 +73,6 @@ function agregarDatosArevision(solicitudes) {
         const fechaaprobacion = new Date(solicitud.fecha_aprobacion);
         const fechaaprobacionform = `${fechaaprobacion.getDate()}/${fechaaprobacion.getMonth() + 1}/${fechaaprobacion.getFullYear()}`;
 
-        
         if (solicitud.respuesta_solicitud == 'EN REVISION') {
             fila.innerHTML = `
                 <td>${solicitud.id_solicitud}</td>
@@ -89,7 +81,6 @@ function agregarDatosArevision(solicitudes) {
                 <td>${fechasolicitudform}</td>
                 <td><a href="./${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
                 <td>${solicitud.respuesta_solicitud}</td>
-
                 <td class="text-left">
                     <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud})">
                         <i class="bi bi-check"></i> Aprobar
@@ -99,16 +90,11 @@ function agregarDatosArevision(solicitudes) {
                     </button>
                 </td>
             `;
+            tbody.appendChild(fila);
         }
-
-
-
-
-        tbody.appendChild(fila);
     });
 }
 
-  
 function agregarDatosAdenegar(solicitudes) {
     const tbody = document.querySelector('#denegarTable tbody');
 
@@ -119,7 +105,6 @@ function agregarDatosAdenegar(solicitudes) {
         const fechaaprobacion = new Date(solicitud.fecha_aprobacion);
         const fechaaprobacionform = `${fechaaprobacion.getDate()}/${fechaaprobacion.getMonth() + 1}/${fechaaprobacion.getFullYear()}`;
 
-        
         if (solicitud.respuesta_solicitud == 'DENEGADA') {
             fila.innerHTML = `
                 <td>${solicitud.id_solicitud}</td>
@@ -139,14 +124,11 @@ function agregarDatosAdenegar(solicitudes) {
                     </button>
                 </td>
             `;
+            tbody.appendChild(fila);
         }
-
-
-
-
-        tbody.appendChild(fila);
     });
 }
+
 async function aprobarSolicitud(idSolicitud) {
     try {
         console.log('Aprobando solicitud con ID:', idSolicitud);
@@ -178,7 +160,6 @@ async function aprobarSolicitud(idSolicitud) {
         console.error('Error en la solicitud de aprobación:', error);
     }
 }
-
 
 // Función para limpiar el contenido del modal
 function limpiarModal() {
