@@ -1,16 +1,21 @@
-CREATE OR REPLACE FUNCTION buscar_usuario(PUsuario VARCHAR) RETURNS VARCHAR AS
-$$
-DECLARE resultado VARCHAR;
-BEGIN
+-- FUNCTION: public.buscar_usuario(character varying)
 
-SELECT contrasena_ingreso INTO resultado FROM tab_usuarios WHERE usuario_ingreso = PUsuario ;
-    IF resultado IS NULL THEN
-        RAISE NOTICE 'No se encontro ese usuario';
-        resultado = 'El usuario no esta registrado';
-        RETURN resultado;
-    ELSE
-        RETURN resultado;
-    END IF;
+DROP FUNCTION IF EXISTS public.buscar_usuario(character varying);
+
+CREATE OR REPLACE FUNCTION public.buscar_usuario(
+	pusuario character varying)
+    RETURNS TABLE(usuario character varying, contrasena character varying, dni bigint, rol integer) 
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+    ROWS 1000
+
+AS $BODY$
+BEGIN
+  RETURN QUERY SELECT usuario_ingreso, contrasena_ingreso, dni_usuario, rol_ingreso
+               FROM tab_usuarios WHERE usuario_ingreso = PUsuario;
 END;
-$$
-LANGUAGE PLPGSQL;
+$BODY$;
+
+ALTER FUNCTION public.buscar_usuario(character varying)
+    OWNER TO postgres;
