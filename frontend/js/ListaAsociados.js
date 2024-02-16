@@ -7,6 +7,13 @@ async function obtenerDatosAsociados() {
       const response = await fetch('/listarAsociados');
       const asociados = await response.json();
       agregarDatosATabla(asociados);
+
+        // Inicializar las tablas con DataTables y habilitar la ordenación
+        $('#asociadosTable').DataTable({
+          "paging": false, // Deshabilitar la paginación
+          "searching": false, // Deshabilitar la búsqueda
+          "info": false // Deshabilitar la información de la tabla
+        });
     } catch (error){
       console.error('Error al obtener datos del asociado: ', error);
     }

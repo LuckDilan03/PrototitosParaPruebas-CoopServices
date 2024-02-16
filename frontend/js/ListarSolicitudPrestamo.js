@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch('/listarSolicitudesPrestamo');
       const solicitudes = await response.json();
       agregarDatosATabla(solicitudes);
+
+        // Inicializar las tablas con DataTables y habilitar la ordenación
+        $('#solicitudTable').DataTable({
+          "paging": false, // Deshabilitar la paginación
+          "searching": false, // Deshabilitar la búsqueda
+          "info": false // Deshabilitar la información de la tabla
+        });      
     } catch(error){
       console.error('Error al obtener datos de usuarios: ', error);
     }

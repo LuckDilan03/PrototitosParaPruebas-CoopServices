@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     obtenerDatosSolicitud();
+
+  // Agregar eventos para el filtro
+  $('#filterCriteria').on('change', function() {
+    applyFilter($(this).val(), $('#searchInput').val());
 });
+
+$('#searchInput').on('keyup', function() {
+    applyFilter($('#filterCriteria').val(), $(this).val());
+});
+});
+
 
 async function obtenerDatosSolicitud() {
     try {
@@ -162,7 +172,7 @@ async function aprobarSolicitud(idSolicitud) {
 }
 
 // Función para limpiar el contenido del modal
-function limpiarModal() {
+async function limpiarModal() {
     document.getElementById('saldoInicial').value = '';
     document.getElementById('saldoAhorroVoluntario').value = '';
     document.getElementById('esAdministrativo').checked = false;
@@ -180,14 +190,14 @@ async function solicitarInformacionAdicional(idSolicitud) {
                 saldoInicial: document.getElementById('saldoInicial').value,
                 saldoAhorroVoluntario: document.getElementById('saldoAhorroVoluntario').value,
                 esAdministrativo: document.getElementById('esAdministrativo').checked,
-                idSolicitud: id_Solicitud
+                idSolicitud: idSolicitud
             };
 
             // Cierra el modal
             $('#modalInformacionAdicional').modal('hide');
 
             // Limpia el contenido del modal
-            limpiarModal();
+            //limpiarModal();
 
             // Resuelve la promesa con la información adicional
             resolve(informacionAdicional);
