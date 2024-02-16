@@ -14,9 +14,10 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <form  method="POST" action="/login" onsubmit="submitForm(event)" class="my-form p-4">
             <h1 class="mb-4">INICIAR SESIÓN</h1>
-            
-            <div id="error-message" class="error bg-light p-2 rounded"></div>
 
+            <!-- <div id="alert" class="alert alert-danger d-none" role="alert">
+                Usuario o contraseña incorrectos
+            </div> -->
             <div class="mb-3">
                 <label for="Usuario" class="form-label">Usuario</label>
                 <input type="text" name="Usuario" id="Usuario" class="form-control" placeholder="Nombre de usuario" autocomplete="current-password">
@@ -36,5 +37,7 @@
     </div>
     
     <script src="js/iniciosesion.js"></script>
+    <!-- <script src="js/validaciones.js"></script> -->
+
 </body>
 </html>

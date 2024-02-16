@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <title>Lista de Solicitudes de Prestamos</title>
+    <title>CoopSerives - Inicio</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
     <link href="images/favicon.ico" rel="icon">
-    
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
     
     <!-- Icon Font Stylesheet -->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -28,10 +29,20 @@
 
     <!-- Template Stylesheet -->
     <link href="css/dashboard_style.css" rel="stylesheet">
-</head>    
-<body>
-<!--Aqui iria el componente del sidebar-->
+</head>
 
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Cargando...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Componente para Sidebar -->
          <!-- Componente para Sidebar -->
          <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
@@ -51,22 +62,22 @@
                 <div class="navbar-nav w-100">
                     <a href="dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="/solicitarPrestamo" class="dropdown-item">Solicitar un Prestamo</a>
-                            <a href="/solicitarRetiro" class="dropdown-item">Solicitar un Retiro</a>
+                        <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-laptop me-2"></i>Transacciones</a>
+                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
+                            <a href="/solicitarPrestamo" class="dropdown-item ">Solicitar un Prestamo</a>
+                            <a href="/solicitarRetiro" class="dropdown-item active">Solicitar un Retiro</a>
                             <a href="/otroTipoSolicitud" class="dropdown-item">Otro Tipo de Transacción</a>
                         </div>
                     </div>
                     <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-table me-2"></i>Tablas</a>
-                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Tablas</a>
+                        <div class="dropdown-menu bg-transparent border-0">
                             <a href="/SolitudesPendientes" class="dropdown-item">Solicitudes de Membresia</a>
                             <a href="/asociadosAprobados" class="dropdown-item">Lista de Asociados</a>
                             <a href="/usuarioSistema" class="dropdown-item">Lista de Usuarios</a>
-                            <a href="/solicitudesPrestamo" class="dropdown-item active">Solicitudes de Prestamo</a>
+                            <a href="/solicitudesPrestamo" class="dropdown-item">Solicitudes de Prestamo</a>
                             <a href="/crearRoles" class="dropdown-item">Crear Roles</a>
                             <a href="/cuentasAhorro" class="dropdown-item">Lista de Cuentas de Ahorro</a>
                         </div>
@@ -85,7 +96,7 @@
             </nav>
         </div>
         <!-- Cierre del componente del Sidebar -->
-<!--Aqui iria el componente del navbar-->
+
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
@@ -178,52 +189,59 @@
             </nav>
             <!-- Navbar End -->
 
-    <div class="container-fluid p-4 px-4"> 
-        <div class="col-sm-12 col-xl-12">
-            <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Lista de Solicitudes De Prestamo</h6>
-                <div class="table-responsive">
-                    <table id="solicitudTable" class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#ID Solicitud</th>
-                                <th scope="col">DNI del Asociado</th>
-                                <th scope="col">Monto Solicitado</th>
-                                <th scope="col">Ingreso solicitado</th>
-                                <th scope="col">Tipo de Prestamo</th>
-                                <th scope="col">Requisitos de la Solicitud</th>
-                                <th scope="col" >DNI del Fiador</th>
-                                <th scope="col" >DNI del Coofiador</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                    
-                        </tbody>
-                    </table>
+            <!-- Formulario Para Solicitar Prestamo-->
+        <div class="container-fluid p-4 px-4">     
+            <div class="col-sm-15 col-xl-15">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4"> Formulario para Solicitar Retiro de dinero</h6>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput"
+                            placeholder="Nombre Rol">
+                        <label for="floatingInput">Numero de Cuenta</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput"
+                            placeholder="Labores del Rol">
+                        <label for="floatingInput">Monto Solicitado</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput"
+                            placeholder="Descripción del Rol">
+                        <label for="floatingInput">Ingreso Solicitado</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"> Enviar Solicitud</button>
                 </div>
             </div>
         </div>
-    </div>    
-                 <!-- Footer Start -->
-                 <div class="container-fluid pt-4 px-4">
-                    <div class="bg-secondary rounded-top p-4">
-                        <div class="row">
-                            <div class="col-12 col-sm-6 text-center text-sm-start">
-                                &copy; <a href="#">CoopServices </a>, Derechos Reservados
-                            </div>
-                            <div class="col-12 col-sm-6 text-center text-sm-end">
-                                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                                <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                            </div>
+
+
+
+            <!-- formulario End-->
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">CoopServices </a>, Derechos Reservados
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
                     </div>
                 </div>
-                <!-- Footer End -->
             </div>
-            <!-- Content End -->
-    
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -237,6 +255,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/ListarSolicitudPrestamo.js"></script>
 </body>
+
 </html>

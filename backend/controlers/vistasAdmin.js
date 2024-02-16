@@ -2,11 +2,11 @@ const path = require('path');
 
 
   const mostrarSolicitudPrestamo = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/'));
+    res.sendFile(path.join(__dirname, '../../frontend/solicitarPrestamo.html'));
   };
 
   const mostrarSolicitudRetiro = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/'));
+    res.sendFile(path.join(__dirname, '../../frontend/solicitarRetiro.html'));
   };
 
   const mostrarOtraSolicitud = (req, res) => {
