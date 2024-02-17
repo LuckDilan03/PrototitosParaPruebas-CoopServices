@@ -73,7 +73,8 @@ CREATE TABLE tab_Usuarios
     Contrasena_Ingreso  		VARCHAR 	    NOT NULL,--CONTRASEÑA DE ACCESO AL SISTEMA
     DNI_Usuario					BIGINT		    NOT NULL,
     Rol_Ingreso          		INTEGER 	    NOT NULL,--ROL QUE DESEMPEÑA CADA USUARIO AL INGRESAR AL SISTEMA
-	Usuario_Inserta      		VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
+	Estado_Usuario              BOOLEAN         NOT NULL DEFAULT FALSE,
+    Usuario_Inserta      		VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
     Fecha_Inserta      			TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     Usuario_Update      		VARCHAR, 
     Fecha_Update      			TIMESTAMP WITHOUT TIME ZONE,

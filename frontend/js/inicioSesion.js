@@ -1,27 +1,37 @@
-async function login() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+document.getElementById("formulario-login").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const user = document.getElementById('Usuario').value; // Accede directamente al campo de entrada del usuario
+  const pass = document.getElementById('Contrasena').value; // Accede directamente al campo de entrada de contraseña
   
-    try {
-      const response = await fetch('/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
+  const response = await fetch("/login",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({user,pass})
+  });
   
-      if (!response.ok) {
-        const errorData = await response.json();
-        alert(`Error: ${errorData.error}`);
-      } else {
-        const responseData = await response.json();
-        // Haz lo que necesites con el token, por ejemplo, redirigir a otra página
-        window.location.href = '/admin';
-        console.log({responseData});
-      }
-    } catch (error) {
-      console.error('Error en la autenticación:', error);
-      alert('Error en la autenticación. Por favor, inténtalo de nuevo.');
+  const resJson= await response.json();
+    if (!response.ok) {
+        alert(resJson.message);
+    } else{
+        alert(resJson.message);
+        window.location.href = "/admin"
     }
-  }
+});
+
+
+const pass=document.getElementById('Contrasena')
+const icon=document.querySelector('.bx');
+
+    icon.addEventListener("click",e=>{
+    
+        if(pass.type==="password"){
+        pass.type="text";
+    }else{
+        pass.type="password"
+    }
+
+
+})

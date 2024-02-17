@@ -1,7 +1,7 @@
 const path = require('path');
 
 const mostrarFormulario = (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/registro.html'));
+  res.sendFile(path.join(__dirname, '../../frontend/registro2.html'));
 };
 
 const monstrarlogin =(req,res)=>{

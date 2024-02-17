@@ -138,7 +138,6 @@ function agregarDatosAdenegar(solicitudes) {
         }
     });
 }
-
 async function aprobarSolicitud(idSolicitud) {
     try {
         console.log('Aprobando solicitud con ID:', idSolicitud);
