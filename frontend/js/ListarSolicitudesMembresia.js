@@ -23,7 +23,7 @@ async function obtenerDatosSolicitud() {
 
         // Inicializar las tablas con DataTables y habilitar la ordenación
         $('#aprobarTable, #revisionTable, #denegarTable').DataTable({
-            "paging": false, // Deshabilitar la paginación
+             // Deshabilitar la paginación
             "searching": false, // Deshabilitar la búsqueda
             "info": false // Deshabilitar la información de la tabla
         });
