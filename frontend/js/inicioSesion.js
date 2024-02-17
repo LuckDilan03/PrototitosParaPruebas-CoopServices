@@ -13,12 +13,12 @@ document.getElementById("formulario-login").addEventListener("submit", async (e)
   });
   
   const resJson= await response.json();
-  if (!response.ok) {
-      alert(resJson.message);
-      window.location.href = "/iniciarSesion"
-  } else{
-      window.location.href = "/admin"
-  }
+    if (!response.ok) {
+        alert(resJson.message);
+    } else{
+        alert(resJson.message);
+        window.location.href = "/"
+    }
 });
 
 

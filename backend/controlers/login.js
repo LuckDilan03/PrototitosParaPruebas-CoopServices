@@ -1,57 +1,41 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const pool = require('../config/connection');
-if(process.env.NODE_ENV !=="production"){
-  require('dotenv/config');
-}
-const {KEY}=process.env;
+const { KEY } = process.env;
 
 const login = async (req, res) => {
   try {
     console.log(req.body);
-    const user=req.body.user;
-    const contra=req.body.pass;
-    if(!user||!contra){
-      res.status(400).send({status:"error",message:"Los Campos estan incompletos"})
+    const user = req.body.user;
+    const contra = req.body.pass;
+
+    if (!user || !contra) {
+      return res.status(400).json({ status: "error", message: "Los campos están incompletos" });
     }
-    
-    // Define la consulta SQL para llamar a la función buscar_usuario con el parámetro Usuario
+
     const queryText = 'SELECT * FROM buscar_usuario($1)';
     const queryParams = [user];
-
-    // Ejecuta la consulta en la base de datos
     const result = await pool.query(queryText, queryParams);
 
-    // Verifica si la función buscar_usuario indicó que el usuario no está registrado
     if (result.rows.length === 0) {
-      res.status(400).json({ status: 'error', message: 'las credenciales no coinciden o el usuario no existe' });
+      return res.status(400).json({ status: "error", message: "Las credenciales no coinciden o el usuario no existe" });
     }
 
-    // Compara la contraseña proporcionada con la almacenada en la base de datos usando bcrypt
     const storedPasswordHash = result.rows[0].contrasena;
-    const estadoUsuario=result.rows[0].estado
+    const estadoUsuario = result.rows[0].estado;
     const passwordsMatch = await bcrypt.compare(contra, storedPasswordHash);
 
-    if (passwordsMatch || estadoUsuario === true ) {
-      //información adicional del resultado de la consulta
-      const { usuario, dni, rol,estado} = result.rows[0];
-      // Genera un token JWT
-      const token = jwt.sign({dni,rol,estado, usuario:user }, KEY,{expiresIn: '1h' });
-      // Configura la cookie con el token
+    if (passwordsMatch || estadoUsuario) {
+      const { usuario, dni, rol, estado } = result.rows[0];
+      const token = jwt.sign({ dni, rol, estado, usuario: user }, KEY, { expiresIn: '1h' });
       res.cookie('authToken', token, { httpOnly: true });
-      res.status(200).send({ status: "ok", message: "Inicio de sesion exitoso" } );
-      //enviar el token como respuesta al cliente
+      return res.status(200).json({ status: "ok", message: "Inicio de sesión exitoso" });
     } else {
-      // Si las contraseñas no coinciden
-      res.status(400).send({ status: "error", message: "Las credenciales no coinciden o el usuario esta inactivo" } );
+      return res.status(400).json({ status: "error", message: "Las credenciales no coinciden o el usuario está inactivo" });
     }
-
-    
-  } 
-  
-  catch (error) {
+  } catch (error) {
     console.error('Error en la autenticación:', error);
-    res.status(400).send({ status: "error", message: "Error al intentar conectar con le servidor" } );
+    return res.status(500).json({ status: 'error', message: 'Error en la autenticación' });
   }
 };
 
