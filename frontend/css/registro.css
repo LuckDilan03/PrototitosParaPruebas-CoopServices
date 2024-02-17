@@ -99,6 +99,9 @@ button {
   cursor: pointer;
 }
 
+.boton-volver{
+  padding: 15px 20px;
+}
 /* Pantallas pequeñas (hasta 768px) */
 @media screen and (max-width: 768px) {
   .form-container {

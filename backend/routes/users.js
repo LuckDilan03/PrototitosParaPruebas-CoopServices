@@ -21,7 +21,7 @@ const UserRoutes = (app) => {
  
   }
  
-  }
+
 
   
 module.exports = UserRoutes;
