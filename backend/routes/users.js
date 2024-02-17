@@ -1,7 +1,8 @@
 const auth = require('../middlewares/auth');
-const controlerRegister = require("../controlers/register");
+const controlerRegister = require("../controlers/register2");
 const controlerLogin=require('../controlers/login');
 const {cerrarSesion}=require('../controlers/cerrarSesion');
+const upload =require('../controlers/multerConfig');
 
 
 
@@ -9,16 +10,9 @@ const UserRoutes = (app) => {
 
   app.post('/cerrar-sesion', cerrarSesion);
 
-    app.post('/login', (req, res) => {
-      return controlerLogin.login(req, res);
-    });
-  
-    app.post('/register', (req, res) => {
-      return controlerRegister.register(req, res).then((respuesta) => {
-        res.status(200).send(respuesta);
-      });
-    });
-    
+  app.post('/login',controlerLogin.login)
+  app.post('/register',upload.single('Soporte_Documento'),controlerRegister.register)
+
     
   
     
