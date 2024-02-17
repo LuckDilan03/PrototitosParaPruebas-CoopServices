@@ -30,6 +30,7 @@ const login = async (req, res) => {
       const token = jwt.sign({ dni, rol, estado, usuario: user }, KEY, { expiresIn: '1h' });
       res.cookie('authToken', token, { httpOnly: true });
       return res.status(200).json({ status: "ok", message: "Inicio de sesión exitoso" });
+      
     } else {
       return res.status(400).json({ status: "error", message: "Las credenciales no coinciden o el usuario está inactivo" });
     }

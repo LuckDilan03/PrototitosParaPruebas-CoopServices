@@ -1,16 +1,8 @@
 html {
-  /* Sacado de https://css-pattern.com/ */
-  --s: 200px; /* control the size */
-  --c: #fff; /* first color */
-  
-  --_g: #0000 8%,var(--c) 0 17%,#0000 0 58%;
-  background: 
-    linear-gradient(135deg,#0000 20.5%,var(--c) 0 29.5%,#0000 0) 0 calc(var(--s)/4),
-    linear-gradient( 45deg,var(--_g)) calc(var(--s)/2) 0,
-    linear-gradient(135deg,var(--_g),var(--c) 0 67%,#0000 0),        
-    linear-gradient( 45deg,var(--_g),var(--c) 0 67%,#0000 0 83%,var(--c) 0 92%,#0000 0),
-    #6494eda0; /* second color */
-  background-size: var(--s) var(--s);
+  background: radial-gradient(circle at top left,transparent 25%,#104c45 25.5%, #104c45 36%, transparent 37%, transparent 100%),radial-gradient(circle at bottom right,transparent 34%,#104c45 34.5%, #104c45 45.5%, transparent 46%, transparent 100%);
+  background-size: 6em 6em;
+  background-color: #44cd83;
+  opacity: 1
 }
 
 body {
@@ -28,14 +20,17 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px; /* Agregado espacio inferior para separar del formulario */
+  color: #44cd83;
 }
 
 .form-container {
   width: 90%; /* Cambiado a un ancho relativo para que sea responsive */
   max-width: 500px; /* Agregado un ancho máximo para evitar que el formulario sea demasiado ancho en pantallas grandes */
-  background-color: white;
+  background-color: rgb(29, 83, 56);
   border-radius: 10px;
   padding: 30px; /* Reducido el relleno para hacerlo más compacto */
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 }
 
 form {
