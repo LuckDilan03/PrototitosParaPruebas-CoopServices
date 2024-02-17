@@ -20,6 +20,8 @@ const UserRoutes = (app) => {
   // Agrega rutas específicas para cada tipo de dashboard
  
   }
+ 
+  }
 
   
 module.exports = UserRoutes;
