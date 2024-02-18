@@ -1,66 +1,165 @@
 html {
-  background: radial-gradient(circle at top left,transparent 25%,#104c45 25.5%, #104c45 36%, transparent 37%, transparent 100%),radial-gradient(circle at bottom right,transparent 34%,#104c45 34.5%, #104c45 45.5%, transparent 46%, transparent 100%);
-  background-size: 6em 6em;
-  background-color: #44cd83;
-  opacity: 1
+  background: repeating-linear-gradient(45deg, #00ff1a 0, #67dd72 10%, transparent 0, transparent 50%);
+  background-size: 12em 12em;
+  background-color: #0a0b14;
+  opacity: 1;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  font-size: 16px; /* Cambiado a un tamaño de fuente más estándar */
 }
 
 h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px; /* Agregado espacio inferior para separar del formulario */
+  margin-bottom: 40px;
   color: #44cd83;
 }
 
 .form-container {
-  width: 90%; /* Cambiado a un ancho relativo para que sea responsive */
-  max-width: 500px; /* Agregado un ancho máximo para evitar que el formulario sea demasiado ancho en pantallas grandes */
-  background-color: rgb(29, 83, 56);
+  width: 90%; /* Cambiado para adaptarse a pantallas pequeñas */
+  max-width: 400px; /* Limita el ancho máximo para una mejor legibilidad */
+  padding: 40px;
+  background: rgba(0, 14, 6, 0.990);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(9, 255, 0, 0.336);
   border-radius: 10px;
-  padding: 30px; /* Reducido el relleno para hacerlo más compacto */
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.form-container input {
+  width: 100%;
+  padding: 15px 5px;
+  font-size: 16px;
+  color: #9cff7e;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1.5px solid #83ff78;
+  outline: none;
+  background: transparent;
+
+}
+
+
+.form-container input::placeholder {
+  color: #9cff7e;
+}
+
+
+
+.form-container input {
+  border-bottom: 1.5px solid #1b961b;
+  color: #6cfa8b;
+ ;
+}
+
+
+
+.form-container input:hover, .form-container input:focus {
+  border-bottom: 1.5px solid #1b961b;
+  color: #6cfa8b;
+  box-shadow: 0 0 20px 0 rgba(1, 80, 31, 0.5) inset;
+
+}
+
+.form-container label {
+  color: #fff;
+  font-size: 16px;
+}
+
+i.bx {
+  font-size: 20px;
+  color: #44cd83;
+}
+
+p {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+a {
+  color: #44cd83;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1eff00;
+  text-decoration: underline;
 
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Aumentado el espacio entre elementos del formulario */
+  gap: 20px;
 }
 
 form p {
   text-align: center;
-  margin-top: 10px; /* Agregado espacio superior para separar los mensajes de error del resto del formulario */
+  margin-top: 10px;
 }
 
 input, button {
   border-radius: 4px;
   border: unset;
-  padding: 15px 20px; /* Reducido el relleno horizontal para hacer los elementos más compactos */
-  font-size: 16px; /* Cambiado a un tamaño de fuente más estándar */
+  padding: 15px 20px;
+  font-size: 16px;
 }
 
 button {
-  background-color: #6495ed;
+  background-color: #036630;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 
+button:hover {
+  background-color: #1eff00;
+  color: #036630;
+  animation: btn-start 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes btn-start {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-4deg);
+  }
+  20% {
+    transform: rotateZ(4deg);
+  }
+  25% {
+    transform: rotateZ(-4deg);
+  }
+  30% {
+    transform: rotateZ(2deg);
+  }
+  35% {
+    transform: rotateZ(-2deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+
+}
+
+button:active {
+  background-color: #2fc402;
+  color: #80ffb5;
+}
+
 .error {
   color: rgb(255, 81, 81);
-  text-align: center; /* Centrado el mensaje de error */
+  text-align: center;
 }
 
 .escondido {
@@ -94,32 +193,18 @@ button {
   cursor: pointer;
 }
 
-.boton-volver{
+.boton-volver {
   padding: 15px 20px;
 }
+
 /* Pantallas pequeñas (hasta 768px) */
 @media screen and (max-width: 768px) {
   .form-container {
-      width: 90%;
-      padding: 20px;
+    padding: 20px;
   }
 
   input, button {
-      padding: 10px 15px;
-      font-size: 14px;
-  }
-}
-
-/* Pantallas medianas (769px - 1024px) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .form-container {
-      width: 80%;
-  }
-}
-
-/* Pantallas grandes (más de 1024px) */
-@media screen and (min-width: 1025px) {
-  .form-container {
-      width: 500px;
+    padding: 10px 15px;
+    font-size: 14px;
   }
 }
