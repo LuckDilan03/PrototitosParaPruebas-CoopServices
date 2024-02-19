@@ -1,5 +1,5 @@
 html {
-  background: repeating-linear-gradient(45deg, #00ff1a 0, #67dd72 10%, transparent 0, transparent 50%);
+  background: repeating-linear-gradient(45deg, #1ddd31 0, #67dd72 10%, transparent 0, transparent 50%);
   background-size: 12em 12em;
   background-color: #0a0b14;
   opacity: 1;
@@ -19,19 +19,100 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
   color: #44cd83;
+  font-size: 30px;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #44cd83;
+  font-size: 30px;
+  margin-top: 8px;
+  margin-bottom: 20px;
 }
 
 .form-container {
-  width: 90%; /* Cambiado para adaptarse a pantallas pequeñas */
-  max-width: 400px; /* Limita el ancho máximo para una mejor legibilidad */
+  width: 95%; /* Cambiado para adaptarse a pantallas pequeñas */
+  max-width: 600px; /* Limita el ancho máximo para una mejor legibilidad */
+
   padding: 40px;
   background: rgba(0, 14, 6, 0.990);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(9, 255, 0, 0.336);
   border-radius: 10px;
 }
+
+.registro {
+  width: 450%; /* Cambiado para adaptarse a pantallas pequeñas */
+  max-width: 850px; /* Limita el ancho máximo para una mejor legibilidad */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 40px;
+  background: rgba(0, 14, 6, 0.990);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(9, 255, 0, 0.336);
+  border-radius: 10px;
+
+}
+
+.formulario-registro {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilos para los botones */
+.botones {
+  grid-column: 3 span;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 0;
+  width: 100%;
+  height: auto;
+  align-content: center;
+  justify-items: center;
+}
+
+.botones .file-container {
+  grid-column: span 3; /* Ajusta el tamaño del contenedor del botón de documento */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el botón de documento */
+  align-items: center; /* Centra verticalmente el botón de documento */
+  margin-bottom: 10px; /* Añade un pequeño margen inferior */
+  padding: 15px 25px;
+}
+
+.botones .boton-volver {
+  padding: 15px 20px;
+  margin: 2px;
+
+}
+
+
+.botones button {
+  padding: 15px 20px;
+  width: 220px;
+  height: 50px;
+  background-color: #036630;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 
 .form-container input {
   width: 100%;
@@ -69,7 +150,6 @@ h1 {
 }
 
 .form-container label {
-  color: #fff;
   font-size: 16px;
 }
 
@@ -112,12 +192,34 @@ input, button {
   padding: 15px 20px;
   font-size: 16px;
 }
+/* Estilos para campos autocompletados en Chrome/Safari */
+.form-container input:-webkit-autofill,
+.form-container input:-webkit-autofill:hover, 
+.form-container input:-webkit-autofill:focus,
+.form-container textarea:-webkit-autofill,
+.form-container textarea:-webkit-autofill:hover,
+.form-container textarea:-webkit-autofill:focus,
+.form-container select:-webkit-autofill,
+.form-container select:-webkit-autofill:hover,
+.form-container select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #6cfa8b !important; /* Color del texto */
+    transition: background-color 5000s ease-in-out 0s; /* Transición de color de fondo */
+}
+
+/* Estilos para campos autocompletados en Firefox */
+.form-container input:-moz-placeholder,
+.form-container textarea:-moz-placeholder,
+.form-container select:-moz-placeholder {
+    color: #6cfa8b !important; /* Color del texto */
+    opacity: 1 !important; /* Opacidad del texto */
+}
 
 button {
   background-color: #036630;
   color: white;
   font-weight: bold;
   cursor: pointer;
+
 }
 
 button:hover {
@@ -176,35 +278,100 @@ button:active {
 }
 
 .file-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #00ff95;
+  color: #024100;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  padding: 15px 30px;
+  width: 250px;
+  height: 20px;
+}
+
+.file-label:hover {
+  background-color: #02a59d;
+}
+
+.file-label:active {
+  background-color: #005f66;
+  color: #86a0ff;
 }
 
 .file-name {
   display: none;
+  color: #024100;
+  font-size: 16px;
 }
+
+.password-container {
+  position: relative;
+}
+
+.password-container i.bx {
+  position: absolute;
+  top: 40%;
+  right: 10px; /* Ajusta la posición del icono */
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 
 .bx {
   font-size: 30px;
   cursor: pointer;
 }
 
-.boton-volver {
+
+.boton-volver{
   padding: 15px 20px;
 }
 
-/* Pantallas pequeñas (hasta 768px) */
+/* Ajustes para las columnas en pantallas pequeñas */
 @media screen and (max-width: 768px) {
-  .form-container {
-    padding: 20px;
+  .formulario-registro {
+   grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
   }
 
-  input, button {
-    padding: 10px 15px;
-    font-size: 14px;
+  .columna {
+    grid-column: span 3; /* Ocupa todas las columnas en pantallas pequeñas */
+}
+  
+    .columna .file-container {
+      grid-column: span 3; /* Ocupa todas las columnas en pantallas pequeñas */
+    }
+
+  .columna .file-container .file-label {
+    width: 100%; /* Ajusta el ancho del botón de documento al 100% del contenedor */
+  }
+
+}
+/* Ajustes para los botones en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .botones {
+    grid-column: 1 / span 3; /* Ocupa todas las columnas en pantallas pequeñas */
+    grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+    gap: 10px; /* Añade un espacio entre los botones */
+    align-items: center; /* Centra verticalmente los botones */
+  }
+
+  .botones .boton-volver {
+    margin-top: 10px; /* Ajusta el margen del botón "Volver" en pantallas pequeñas */
+  }
+
+  .botones button {
+    width: 100%; /* Ajusta el ancho de los botones al 100% del contenedor */
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas (opcional) */
+@media screen and (max-width: 480px) {
+  .form-container {
+    padding: 15px; /* Reduce el padding en pantallas muy pequeñas */
+  }
+
+  .botones button {
+    padding: 10px 15px; /* Reduce el padding de los botones en pantallas muy pequeñas */
+    font-size: 14px; /* Reduce el tamaño de la fuente de los botones en pantallas muy pequeñas */
   }
 }
