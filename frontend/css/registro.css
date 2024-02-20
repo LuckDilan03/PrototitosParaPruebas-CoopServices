@@ -277,6 +277,7 @@ button:active {
   overflow: hidden;
 }
 
+
 .file-label {
   background-color: #00ff95;
   color: #024100;
@@ -287,6 +288,14 @@ button:active {
   padding: 15px 30px;
   width: 350px;
   height: auto;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Agregamos transiciones */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+.file-label:hover {
+  background-color: #08837d; /* Cambiamos el color de fondo */
+  color: #45fff6;
+  transform: translateY(-3px); /* Movemos ligeramente hacia arriba */
 }
 
 .file-label:hover {
@@ -401,6 +410,8 @@ button:active {
  }
     
  /* Añade los estilos para la lista de requisitos de contraseña */
+
+ 
 .requisitos-contrasena {
   color: #ff5050;
   font-size: 14px;

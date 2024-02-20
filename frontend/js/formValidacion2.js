@@ -5,14 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const requisitosContrasena = document.getElementById('requisitos-contrasena');
 
     const expresiones = {
-        Documento: /^\d{8,}$/, // Expresión para validar el número de documento
+        Documento: /^\d{3,}$/, // Expresión para validar el número de documento
         Primer_Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Expresión para validar el primer apellido
-        Direccion: /^[a-zA-Z0-9\s\#\-\.\,]{8,100}$/, // Expresión para validar la dirección
+        Direccion: /^[a-zA-Z0-9\s\#\-\.\,]{3,80}$/, // Expresión para validar la dirección
         Primer_Nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Expresión para validar el primer nombre
         Segundo_Apellido: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo apellido
         Correo_Electronico: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // Expresión para validar el correo electrónico
         Segundo_Nombre: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo nombre
-        Telefono: /^\d{7,14}$/, // Expresión para validar el número de teléfono
+        Telefono: /^\d{10}$/, // Expresión para validar el número de teléfono
         Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/, // Expresión para validar la contraseña
     };
 
