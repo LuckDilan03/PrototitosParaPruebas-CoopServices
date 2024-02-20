@@ -1,125 +1,103 @@
-
-    const formulario = document.getElementById('formulario-registro');
+document.addEventListener('DOMContentLoaded', () => {
+    const formularioRegistro = document.getElementById('formulario-registro');
     const inputs = document.querySelectorAll('#formulario-registro input');
-    const errorRegistro = document.querySelector('.error');
+    const passwordInput = document.getElementById('Contrasena');
+    const requisitosContrasena = document.getElementById('requisitos-contrasena');
 
-    // Expresiones regulares para la validación
     const expresiones = {
-        Documento: /^\d{2,20}$/,
-        Primer_Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-        Direccion: /^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,60}$/,
-        Primer_Nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-        Segundo_Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-        Correo_Electronico: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-        Segundo_Nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-        Telefono: /^\d{10}$/,
-        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*().,])[\w!@#$%^&*().,]{8,}$/
+        Documento: /^\d{8,}$/, // Expresión para validar el número de documento
+        Primer_Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Expresión para validar el primer apellido
+        Direccion: /^[a-zA-Z0-9\s\#\-\.\,]{8,100}$/, // Expresión para validar la dirección
+        Primer_Nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Expresión para validar el primer nombre
+        Segundo_Apellido: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo apellido
+        Correo_Electronico: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // Expresión para validar el correo electrónico
+        Segundo_Nombre: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo nombre
+        Telefono: /^\d{7,14}$/, // Expresión para validar el número de teléfono
+        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/, // Expresión para validar la contraseña
     };
 
-    // Estado de los campos
-    const campos = {
-        Documento: false,
-        Primer_Apellido: false,
-        Direccion: false,
-        Primer_Nombre: false,
-        Segundo_Apellido: true,
-        Correo_Electronico: false,
-        Segundo_Nombre: true,
-        Telefono: false,
-        Contrasena: false
-    };
-
-    const validarCampo = (expresion, input, campo) => {
-        const grupo = document.getElementById(`grupo__${campo}`);
-        grupo.classList.toggle('formulario__grupo-incorrecto', !expresion.test(input.value));
-        grupo.classList.toggle('formulario__grupo-correcto', expresion.test(input.value));
-    
-        const icono = document.querySelector(`#grupo__${campo} i`);
-        icono.classList.toggle('fa-times-circle', !expresion.test(input.value));
-        icono.classList.toggle('fa-check-circle', expresion.test(input.value));
-    
-        const error = document.querySelector(`#grupo__${campo} .formulario__input-error`);
-        error.innerHTML = ''; // Limpiar mensajes de error previos
-    
-        if (!expresion.test(input.value)) {
-            if (campo === 'Contrasena') {
-                error.innerHTML += '<li type="circle">La contraseña debe tener al menos 8 caracteres.</li>';
-                error.innerHTML += '<li type="circle">Debe contener al menos una mayúscula y una minúscula.</li>';
-                error.innerHTML += '<li type="circle">Debe contener al menos un carácter especial (!@#$%^&*().,).</li>';
-            } else {
-                error.innerHTML += '<li type="circle">Ingrese un valor válido.</li>';
-            }
+    const mostrarRequisitosContrasena = (requisitos) => {
+        if (requisitos.length === 0) {
+            requisitosContrasena.classList.add('escondido');
+        } else {
+            requisitosContrasena.classList.remove('escondido');
+            requisitosContrasena.innerHTML = requisitos.map(item => `<li>${item}</li>`).join('');
         }
-    
-        error.classList.toggle('formulario__input-error-activo', !expresion.test(input.value));
-    
-        campos[campo] = expresion.test(input.value);
     };
-    
-    
 
-    
+    const validarCampo = (input, expresion) => {
+        const valor = input.value.trim();
+        const esValido = expresion.test(valor);
+        const grupo = input.parentElement;
+        const icono = grupo.querySelector('.formulario__validacion-estado');
+
+        if (esValido) {
+            grupo.classList.remove('formulario__grupo-incorrecto');
+            icono.classList.remove('fa-times-circle');
+            icono.classList.add('fa-check-circle');
+        } else {
+            grupo.classList.add('formulario__grupo-incorrecto');
+            icono.classList.remove('fa-check-circle');
+            icono.classList.add('fa-times-circle');
+        }
+
+        return esValido;
+    };
+
+    const validarContrasena = () => {
+        const contrasena = passwordInput.value.trim();
+        const requisitos = [];
+
+        if (contrasena.length < 8) {
+            requisitos.push('La contraseña debe tener un mínimo de 8 dígitos.');
+        }
+
+        if (!/[a-z]/.test(contrasena) || !/[A-Z]/.test(contrasena)) {
+            requisitos.push('Debe tener mínimo una letra mayúscula y una minúscula.');
+        }
+
+        if (!/[\W_]/.test(contrasena)) {
+            requisitos.push('Debe tener mínimo un carácter especial (!@#$%^&*().,)');
+        }
+
+        mostrarRequisitosContrasena(requisitos);
+
+        return requisitos.length === 0;
+    };
 
     const validarFormulario = (e) => {
-        switch (e.target.name) {
-            case 'Documento':
-                validarCampo(expresiones.Documento, e.target, 'Documento');
-                break;
-            case 'Primer_Apellido':
-                validarCampo(expresiones.Primer_Apellido, e.target, 'Primer_Apellido');
-                break;
-            case 'Direccion':
-                validarCampo(expresiones.Direccion, e.target, 'Direccion');
-                break;
-            case 'Segundo_Apellido':
-                // No se realiza validación para Segundo Nombre si no es obligatorio.
-                break;
-            case 'Correo_Electronico':
-                validarCampo(expresiones.Correo_Electronico, e.target, 'Correo_Electronico');
-                break;
-            case 'Segundo_Nombre':
-                // No se realiza validación para Segundo Apellido si no es obligatorio.
-                break;
-            case 'Primer_Nombre':
-                validarCampo(expresiones.Primer_Nombre, e.target, 'Primer_Nombre');
-                break;
-            case 'Telefono':
-                validarCampo(expresiones.Telefono, e.target, 'Telefono');
-                break;
-            case 'Contrasena':
-                validarCampo(expresiones.Contrasena, e.target, 'Contrasena');
-                break;
+        const input = e.target;
+
+        if (input.name === 'Contrasena') {
+            validarContrasena();
+        } else {
+            validarCampo(input, expresiones[input.name]);
         }
     };
 
-    // Agregar listeners de eventos para validar el formulario
     inputs.forEach((input) => {
         input.addEventListener('keyup', validarFormulario);
         input.addEventListener('blur', validarFormulario);
     });
 
-    
-formulario.addEventListener('submit', (e) => {
-
-    if (
-        campos.Documento &&
-        campos.Primer_Apellido &&
-        campos.Direccion &&
-        campos.Primer_Nombre &&
-        campos.Correo_Electronico &&
-        campos.Telefono &&
-        campos.Contrasena
-
-    ) {
-       /* window.location.href = "/register";*/
-
-    } else {
+    formularioRegistro.addEventListener('submit', (e) => {
         e.preventDefault();
-        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-    }
+        let formularioValido = true;
 
+        inputs.forEach((input) => {
+            if (input.name === 'Contrasena') {
+                formularioValido = validarContrasena() && formularioValido;
+            } else {
+                formularioValido = validarCampo(input, expresiones[input.name]) && formularioValido;
+            }
+        });
 
-
-
+        if (formularioValido) {
+            formularioRegistro.submit();
+        } else {
+            const error = document.querySelector('.error');
+            error.classList.remove('escondido');
+        }
+    });
 
 });

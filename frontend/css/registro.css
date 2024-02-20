@@ -354,24 +354,72 @@ button:active {
 }
 
   /* ----- -----  Estilos para Validacion ----- ----- */
-  .formulario__grupo-correcto .formulario__validacion-estado {
-    color: #1ed12d;
-    opacity: 1;
-    }
+  .formulario__validacion-estado {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #00ff95;
+}
+
+.formulario__validacion-estado {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.fa-check-circle {
+  color: #00ff95; /* Color verde para el icono de validación correcta */
+}
+
+.fa-times-circle {
+  color: #ff0000; /* Color rojo para el icono de validación incorrecta */
+}
+
+
+.formulario__validacion-estado.fa-check-circle {
+    display: inline; /* Muestra el icono de validación cuando se cumple la validación */
+}
+
+.formulario__validacion-estado.fa-times-circle {
+    display: none; /* Oculta el icono de validación por defecto */
+}
+
+.formulario__grupo-correcto .formulario__validacion-estado {
+  color: #1ed12d;
+  opacity: 1;
+}
     
-    .formulario__grupo-incorrecto .formulario__label {
-    color: #bb2929;
-    }
+.formulario__grupo-incorrecto .formulario__label {
+   color: #bb2929;
+}
     
-    .formulario__grupo-incorrecto .formulario__validacion-estado {
-    color: #bb2929;
-    opacity: 1;
-    }
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+  color: #bb2929;
+  opacity: 1;
+}
     
-    .formulario__grupo-incorrecto .formulario__input {
-    border: 3px solid #bb2929;
-    }
+.formulario__grupo-incorrecto .formulario__input {
+  border: 3px solid #bb2929;
+ }
     
+ /* Añade los estilos para la lista de requisitos de contraseña */
+.requisitos-contrasena {
+  color: #ff5050;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Estilos para la validación en tiempo real */
+.formulario__grupo-incorrecto input {
+  border-bottom-color: #ff5050; /* Cambia el color del borde al fallar la validación */
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado.fa-times-circle {
+  display: inline; /* Muestra el icono de validación incorrecta */
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado.fa-check-circle {
+  display: none; /* Oculta el icono de validación correcta */
+}
+
 /* Ajustes para los botones en pantallas pequeñas */
 @media screen and (max-width: 768px) {
   .botones {
