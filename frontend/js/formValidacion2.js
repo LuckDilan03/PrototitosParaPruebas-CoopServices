@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+
     const formulario = document.getElementById('formulario-registro');
     const inputs = document.querySelectorAll('#formulario-registro input');
     const errorRegistro = document.querySelector('.error');
@@ -22,29 +22,74 @@ document.addEventListener("DOMContentLoaded", function() {
         Primer_Apellido: false,
         Direccion: false,
         Primer_Nombre: false,
-        Segundo_Apellido: false,
+        Segundo_Apellido: true,
         Correo_Electronico: false,
-        Segundo_Nombre: false,
+        Segundo_Nombre: true,
         Telefono: false,
         Contrasena: false
     };
 
-    // Función para validar cada campo
     const validarCampo = (expresion, input, campo) => {
-        const grupo = input.parentElement;
+        const grupo = document.getElementById(`grupo__${campo}`);
         grupo.classList.toggle('formulario__grupo-incorrecto', !expresion.test(input.value));
         grupo.classList.toggle('formulario__grupo-correcto', expresion.test(input.value));
+    
+        const icono = document.querySelector(`#grupo__${campo} i`);
+        icono.classList.toggle('fa-times-circle', !expresion.test(input.value));
+        icono.classList.toggle('fa-check-circle', expresion.test(input.value));
+    
+        const error = document.querySelector(`#grupo__${campo} .formulario__input-error`);
+        error.innerHTML = ''; // Limpiar mensajes de error previos
+    
+        if (!expresion.test(input.value)) {
+            if (campo === 'Contrasena') {
+                error.innerHTML += '<li type="circle">La contraseña debe tener al menos 8 caracteres.</li>';
+                error.innerHTML += '<li type="circle">Debe contener al menos una mayúscula y una minúscula.</li>';
+                error.innerHTML += '<li type="circle">Debe contener al menos un carácter especial (!@#$%^&*().,).</li>';
+            } else {
+                error.innerHTML += '<li type="circle">Ingrese un valor válido.</li>';
+            }
+        }
+    
+        error.classList.toggle('formulario__input-error-activo', !expresion.test(input.value));
+    
         campos[campo] = expresion.test(input.value);
     };
+    
+    
 
-    // Función para validar el formulario completo
-    const validarFormulario = () => {
-        inputs.forEach((input) => {
-            const campo = input.name;
-            if (campo in expresiones) {
-                validarCampo(expresiones[campo], input, campo);
-            }
-        });
+    
+
+    const validarFormulario = (e) => {
+        switch (e.target.name) {
+            case 'Documento':
+                validarCampo(expresiones.Documento, e.target, 'Documento');
+                break;
+            case 'Primer_Apellido':
+                validarCampo(expresiones.Primer_Apellido, e.target, 'Primer_Apellido');
+                break;
+            case 'Direccion':
+                validarCampo(expresiones.Direccion, e.target, 'Direccion');
+                break;
+            case 'Segundo_Apellido':
+                // No se realiza validación para Segundo Nombre si no es obligatorio.
+                break;
+            case 'Correo_Electronico':
+                validarCampo(expresiones.Correo_Electronico, e.target, 'Correo_Electronico');
+                break;
+            case 'Segundo_Nombre':
+                // No se realiza validación para Segundo Apellido si no es obligatorio.
+                break;
+            case 'Primer_Nombre':
+                validarCampo(expresiones.Primer_Nombre, e.target, 'Primer_Nombre');
+                break;
+            case 'Telefono':
+                validarCampo(expresiones.Telefono, e.target, 'Telefono');
+                break;
+            case 'Contrasena':
+                validarCampo(expresiones.Contrasena, e.target, 'Contrasena');
+                break;
+        }
     };
 
     // Agregar listeners de eventos para validar el formulario
@@ -53,21 +98,28 @@ document.addEventListener("DOMContentLoaded", function() {
         input.addEventListener('blur', validarFormulario);
     });
 
-    // Listener de evento para el envío del formulario
-    formulario.addEventListener('submit', (e) => {
-        validarFormulario(); // Realizar una última validación antes de enviar el formulario
+    
+formulario.addEventListener('submit', (e) => {
 
-        // Verificar si todos los campos son válidos
-        const esFormularioValido = Object.values(campos).every((campo) => campo);
+    if (
+        campos.Documento &&
+        campos.Primer_Apellido &&
+        campos.Direccion &&
+        campos.Primer_Nombre &&
+        campos.Correo_Electronico &&
+        campos.Telefono &&
+        campos.Contrasena
 
-        if (!esFormularioValido) {
-            e.preventDefault(); // Evitar que se envíe el formulario si hay campos inválidos
-            errorRegistro.classList.remove('escondido');
-        } else {
-            // Aquí puedes enviar el formulario o realizar otras acciones
-            // formulario.submit();
-        }
-    });
+    ) {
+       /* window.location.href = "/register";*/
 
-    // Resto de tu código...
+    } else {
+        e.preventDefault();
+        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+    }
+
+
+
+
+
 });

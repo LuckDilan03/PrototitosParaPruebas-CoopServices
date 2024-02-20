@@ -1,7 +1,7 @@
 html {
-  background: repeating-linear-gradient(45deg, #1ddd31 0, #67dd72 10%, transparent 0, transparent 50%);
+  background: repeating-linear-gradient(45deg, #00aa2b 0, #30ff45 5%, transparent 0, transparent 50%);
   background-size: 12em 12em;
-  background-color: #0a0b14;
+  background-color: #009161;
   opacity: 1;
 }
 
@@ -285,8 +285,8 @@ button:active {
   text-align: center;
   font-weight: bold;
   padding: 15px 30px;
-  width: 250px;
-  height: 20px;
+  width: 350px;
+  height: auto;
 }
 
 .file-label:hover {
@@ -333,6 +333,12 @@ button:active {
    grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
   }
 
+  .registro{
+    width: 600px;
+    max-width: 600%;
+
+  }
+
   .columna {
     grid-column: span 3; /* Ocupa todas las columnas en pantallas pequeñas */
 }
@@ -346,6 +352,26 @@ button:active {
   }
 
 }
+
+  /* ----- -----  Estilos para Validacion ----- ----- */
+  .formulario__grupo-correcto .formulario__validacion-estado {
+    color: #1ed12d;
+    opacity: 1;
+    }
+    
+    .formulario__grupo-incorrecto .formulario__label {
+    color: #bb2929;
+    }
+    
+    .formulario__grupo-incorrecto .formulario__validacion-estado {
+    color: #bb2929;
+    opacity: 1;
+    }
+    
+    .formulario__grupo-incorrecto .formulario__input {
+    border: 3px solid #bb2929;
+    }
+    
 /* Ajustes para los botones en pantallas pequeñas */
 @media screen and (max-width: 768px) {
   .botones {
@@ -368,8 +394,12 @@ button:active {
 @media screen and (max-width: 480px) {
   .form-container {
     padding: 15px; /* Reduce el padding en pantallas muy pequeñas */
+    width: auto;
   }
 
+  .file-label {
+    width: 80% ; /* Ajusta el ancho del botón de documento al 100% del contenedor */
+  }
   .botones button {
     padding: 10px 15px; /* Reduce el padding de los botones en pantallas muy pequeñas */
     font-size: 14px; /* Reduce el tamaño de la fuente de los botones en pantallas muy pequeñas */

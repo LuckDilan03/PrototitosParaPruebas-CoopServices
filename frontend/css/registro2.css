@@ -10,7 +10,6 @@ body {
     align-items: center;
     min-height: 100vh;
     font-size: 16px;
-    background: repeating-linear-gradient(45deg, #00ff1a 0, #67dd72 10%, transparent 0, transparent 50%);
     background-size: 12em 12em;
     background-color: #0a0b14;
     opacity: 1;
