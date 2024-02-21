@@ -22,12 +22,10 @@ const login = async (req, res) => {
     // Ejecuta la consulta en la base de datos
     const result = await pool.query(queryText, queryParams);
 
-    // Verifica si la función buscar_usuario indicó que el usuario no está registrado
     if (result.rows.length === 0) {
       res.status(400).json({ status: 'error', message: 'las credenciales no coinciden o el usuario no existe' });
     }
 
-    // Compara la contraseña proporcionada con la almacenada en la base de datos usando bcrypt
     const storedPasswordHash = result.rows[0].contrasena;
     const estadoUsuario=result.rows[0].estado
     const passwordsMatch = await bcrypt.compare(contra, storedPasswordHash);

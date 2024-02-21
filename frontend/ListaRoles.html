@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Lista de Solicitudes de Prestamos</title>
+    <title>Lista de Cuentas de Ahorros</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -32,6 +32,8 @@
 <body>
 <!--Aqui iria el componente del sidebar-->
 
+
+
          <!-- Componente para Sidebar -->
          <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
@@ -49,7 +51,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="dashboard.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -66,9 +68,10 @@
                             <a href="/SolitudesPendientes" class="dropdown-item">Solicitudes de Membresia</a>
                             <a href="/asociadosAprobados" class="dropdown-item">Lista de Asociados</a>
                             <a href="/usuarioSistema" class="dropdown-item">Lista de Usuarios</a>
-                            <a href="/solicitudesPrestamo" class="dropdown-item active">Solicitudes de Prestamo</a>
+                            <a href="/solicitudesPrestamo" class="dropdown-item">Solicitudes de Prestamo</a>
                             <a href="/crearRoles" class="dropdown-item">Crear Roles</a>
-                            <a href="/cuentasAhorro" class="dropdown-item">Lista de Cuentas de Ahorro</a>
+                            <a href="/ListaRoles" class="dropdown-item active">Lista de Roles</a>
+                            <a href="/cuentasAhorro" class="dropdown-item ">Lista de Cuentas de Ahorro</a>
                         </div>
                     </div>
                      <a href="/graficos" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
@@ -181,30 +184,26 @@
     <div class="container-fluid p-4 px-4"> 
         <div class="col-sm-12 col-xl-12">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Lista de Solicitudes De Prestamo</h6>
+                <h6 class="mb-4">Lista de Cuentas De Ahorros</h6>
                 <div class="table-responsive">
-                    <table id="solicitudTable" class="table">
+                    <table id="rolesTable" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#ID Solicitud</th>
-                                <th scope="col">DNI del Asociado</th>
-                                <th scope="col">Monto Solicitado</th>
-                                <th scope="col">Ingreso solicitado</th>
-                                <th scope="col">Tipo de Prestamo</th>
-                                <th scope="col">Requisitos de la Solicitud</th>
-                                <th scope="col" >DNI del Fiador</th>
-                                <th scope="col" >DNI del Coofiador</th>
+                                <th scope="col">ID del Rol</th>
+                                <th scope="col">Nombre del Rol</th>
+                                <th scope="col">Labores</th>
+                                <th scope="col">Permisos</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                    
+                        
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-    </div>    
+        </div>        
+    </div>
                  <!-- Footer Start -->
                  <div class="container-fluid pt-4 px-4">
                     <div class="bg-secondary rounded-top p-4">
@@ -237,6 +236,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/ListarSolicitudPrestamo.js"></script>
+    <script src="js/ListarRoles.js"></script>
 </body>
 </html>

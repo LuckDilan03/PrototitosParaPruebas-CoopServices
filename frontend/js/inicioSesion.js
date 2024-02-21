@@ -13,25 +13,29 @@ document.getElementById("formulario-login").addEventListener("submit", async (e)
   });
   
   const resJson= await response.json();
-  if (!response.ok) {
-      alert(resJson.message);
-      window.location.href = "/iniciarSesion"
-  } else{
-      window.location.href = "/admin"
-  }
+    if (!response.ok) {
+        alert(resJson.message);
+    } else{
+        alert(resJson.message);
+        window.location.href = "/admin"
+    }
 });
 
+const pass = document.getElementById('Contrasena');
+const eyeIcon = document.getElementById('eye-icon');
+const eyeOffIcon = document.getElementById('eye-off-icon');
 
-const pass=document.getElementById('Contrasena')
-const icon=document.querySelector('.bx');
+eyeIcon.addEventListener("click", togglePasswordVisibility);
+eyeOffIcon.addEventListener("click", togglePasswordVisibility);
 
-    icon.addEventListener("click",e=>{
-    
-        if(pass.type==="password"){
-        pass.type="text";
-    }else{
-        pass.type="password"
+function togglePasswordVisibility() {
+    if (pass.type === "password") {
+        pass.type = "text";
+        eyeIcon.style.display = "none";
+        eyeOffIcon.style.display = "block";
+    } else {
+        pass.type = "password";
+        eyeIcon.style.display = "block";
+        eyeOffIcon.style.display = "none";
     }
-
-
-})
+}

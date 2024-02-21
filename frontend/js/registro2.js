@@ -56,17 +56,45 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
     // Maneja la respuesta del servidor
 });
 
-const pass=document.getElementById('Contrasena')
-const icon=document.querySelector('.bx');
+const pass = document.getElementById('Contrasena');
+const eyeIcon = document.getElementById('eye-icon');
+const eyeOffIcon = document.getElementById('eye-off-icon');
 
-    icon.addEventListener("click",e=>{
-    
-        if(pass.type==="password"){
-        pass.type="text";
-    }else{
-        pass.type="password"
+eyeIcon.addEventListener("click", togglePasswordVisibility);
+eyeOffIcon.addEventListener("click", togglePasswordVisibility);
+
+function togglePasswordVisibility() {
+    if (pass.type === "password") {
+        pass.type = "text";
+        eyeIcon.style.display = "none";
+        eyeOffIcon.style.display = "block";
+    } else {
+        pass.type = "password";
+        eyeIcon.style.display = "block";
+        eyeOffIcon.style.display = "none";
     }
+}
+document.addEventListener('keydown', function(event) {
+    // Verifica si la tecla presionada es la tecla Tab
+    if (event.key === 'Tab') {
+        // Evita el comportamiento predeterminado del navegador (mover el foco hacia el siguiente elemento)
+        event.preventDefault();
 
+        // Define el orden deseado de los campos de entrada
+        var fieldOrder = ['Documento', 'Primer_Nombre', 'Segundo_Nombre', 'Primer_Apellido', 'Segundo_Apellido', 'Telefono', 'Direccion', 'Correo_Electronico', 'Contrasena'];
 
-})
+        // Encuentra el índice del campo de entrada actualmente enfocado en el orden deseado
+        var currentIndex = fieldOrder.indexOf(document.activeElement.id);
 
+        // Calcula el índice del próximo campo de entrada en el orden deseado
+        var nextIndex = currentIndex + 1;
+
+        // Si el próximo índice está fuera de los límites, establece el enfoque en el primer campo de entrada
+        if (nextIndex >= fieldOrder.length) {
+            nextIndex = 0;
+        }
+
+        // Establece el foco en el próximo campo de entrada en el orden deseado
+        document.getElementById(fieldOrder[nextIndex]).focus();
+    }
+});
