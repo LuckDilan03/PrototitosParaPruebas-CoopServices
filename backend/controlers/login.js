@@ -30,7 +30,7 @@ const login = async (req, res) => {
     const estadoUsuario=result.rows[0].estado
     const passwordsMatch = await bcrypt.compare(contra, storedPasswordHash);
 
-    if (passwordsMatch || estadoUsuario === true ) {
+    if (passwordsMatch && estadoUsuario === true ) {
       //información adicional del resultado de la consulta
       const { usuario, dni, rol,estado} = result.rows[0];
       // Genera un token JWT
