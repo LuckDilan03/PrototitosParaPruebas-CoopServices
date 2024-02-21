@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Correo_Electronico: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // Expresión para validar el correo electrónico
         Segundo_Nombre: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo nombre
         Telefono: /^\d{10}$/, // Expresión para validar el número de teléfono
-        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/, // Expresión para validar la contraseña
+        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d){8,}$/, // Expresión para validar la contraseña
     };
 
     const mostrarRequisitosContrasena = (requisitos) => {
@@ -54,10 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!/[a-z]/.test(contrasena) || !/[A-Z]/.test(contrasena)) {
             requisitos.push('Debe tener mínimo una letra mayúscula y una minúscula.');
-        }
-
-        if (!/[\W_]/.test(contrasena)) {
-            requisitos.push('Debe tener mínimo un carácter especial (!@#$%^&*().,)');
         }
 
         mostrarRequisitosContrasena(requisitos);
