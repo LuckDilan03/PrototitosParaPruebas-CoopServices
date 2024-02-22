@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     obtenerDatosSolicitud();
 
+
   // Agregar eventos para el filtro
   $('#filterCriteria').on('change', function() {
     applyFilter($(this).val(), $('#searchInput').val());
@@ -23,9 +24,23 @@ async function obtenerDatosSolicitud() {
 
         // Inicializar las tablas con DataTables y habilitar la ordenación
         $('#aprobarTable, #revisionTable, #denegarTable').DataTable({
-             // Deshabilitar la paginación
+            // Deshabilitar la paginación
+            "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
+            "pageLength": 5,
             "searching": false, // Deshabilitar la búsqueda
-            "info": false // Deshabilitar la información de la tabla
+            "info": true, // Habilitar la información de la tabla
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ Registros Por Página",
+                "zeroRecords": "No Se Encontraron Registros",
+                "info": "Solicitudes Totales: _TOTAL_",
+                "infoEmpty": "No Hay Registros Disponibles",
+                "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
+                "search": "Buscar:",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Siguiente"
+                }
+            }
         });
     } catch (error) {
         console.error('Error al obtener datos de usuarios: ', error);
@@ -161,7 +176,7 @@ async function aprobarSolicitud(idSolicitud) {
 
         if (response.ok) {
             console.log('Solicitud aprobada con éxito');
-            obtenerDatosSolicitud();
+            location.reload();
         } else {
             console.error('Error al aprobar la solicitud');
         }

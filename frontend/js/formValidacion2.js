@@ -12,8 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         Segundo_Apellido: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo apellido
         Correo_Electronico: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // Expresión para validar el correo electrónico
         Segundo_Nombre: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo nombre
-        Telefono: /^\d{10}$/, // Expresión para validar el número de teléfono
+        Telefono: /^\d{10}$/, // Expresión para validar el número de teléfono 
         Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, // Expresión para validar la contraseña
+
+        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d){8,}$/, // Expresión para validar la contraseña
+
     };
 
     const mostrarRequisitosContrasena = (requisitos) => {

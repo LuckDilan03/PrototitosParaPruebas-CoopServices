@@ -26,9 +26,9 @@ const register = async (req, res) => {
         const rutaArchivo = req.file.path; // req.file contiene la información del archivo subido por multer
 
         //validar que todos los datos requeridos por la basedatos esten completos 
-        if (!Documento || !Primer_Nombre || !Segundo_Nombre || !Primer_Apellido || !Segundo_Apellido || !Direccion || !Telefono ||!Correo_Electronico ||!Contrasena||!rutaArchivo) 
+        if (!Documento || !Primer_Nombre  || !Primer_Apellido  || !Direccion || !Telefono ||!Correo_Electronico ||!Contrasena||!rutaArchivo) 
             {
-                res.status(401).send({ status: "error", message:"datos saltantes" } )
+                res.status(401).send({ status: "error", message:"datos faltantes" } )
             }
         // se encripta la contraseña atravez de la libreria bcript.hash y se guarda en una constante llamada contra_encrip
         const contra_encrip = await bcrypt.hash(Contrasena,10);
@@ -36,22 +36,22 @@ const register = async (req, res) => {
         // se crear el query para insertar los datos en la funcion de la base de datos 
         const queryText = `
             SELECT * FROM ingresar_solicitud_asociado ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
-        
         // se guardan los datos a ingresar a la funcion de la base de datos
         const queryParams = [
         
             Documento,
             Primer_Nombre,
-            Segundo_Nombre,
             Primer_Apellido,
-            Segundo_Apellido,
             Direccion,
             Telefono,
             Correo_Electronico,
             rutaArchivo,
             usuario_document,
-            contra_encrip
+            contra_encrip,
+            Segundo_Nombre,
+            Segundo_Apellido,
         ];
+
         const result = await pool.query(queryText, queryParams);
 
         let respuesta;

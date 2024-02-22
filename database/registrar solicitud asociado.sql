@@ -1,19 +1,19 @@
--- FUNCTION: public.ingresar_solicitud_asociado(bigint, bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying)
+-- FUNCTION: public.ingresar_solicitud_asociado(bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying)
 
--- DROP FUNCTION IF EXISTS public.ingresar_solicitud_asociado(bigint, bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying);
+-- DROP FUNCTION IF EXISTS public.ingresar_solicitud_asociado(bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying);
 
 CREATE OR REPLACE FUNCTION public.ingresar_solicitud_asociado(
 	pdocumento bigint,
 	nombre_1 character varying,
-	nombre_2 character varying,
 	apellido_1 character varying,
-	apellido_2 character varying,
 	direccion character varying,
 	telefono bigint,
 	correo character varying,
 	archivo character varying,
 	nombre_usuario_deseado character varying,
-	contrasena_deseada character varying)
+	contrasena_deseada character varying,
+	nombre_2 character varying DEFAULT NULL,
+	apellido_2 character varying DEFAULT NULL)
     RETURNS character varying
     LANGUAGE 'plpgsql'
     COST 100
@@ -107,5 +107,5 @@ END IF;
 END;
 $BODY$;
 
-ALTER FUNCTION public.ingresar_solicitud_asociado(bigint, bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying)
+ALTER FUNCTION public.ingresar_solicitud_asociado(bigint, character varying, character varying, character varying, character varying, character varying, bigint, character varying, character varying, character varying, character varying)
     OWNER TO postgres;
