@@ -81,6 +81,9 @@ function agregarDatosAaprobar(solicitudes) {
                     <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
+                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
+                    <i class="bi bi-user"></i> Ver Más
+                    </button>
                 </td>
             `;
             tbody.appendChild(fila);
@@ -112,6 +115,9 @@ function agregarDatosArevision(solicitudes) {
                     </button>
                     <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
                         <i class="bi bi-x"></i> Denegar
+                    </button>
+                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
+                    <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>
             `;
@@ -146,6 +152,9 @@ function agregarDatosAdenegar(solicitudes) {
                     </button>
                     <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
                         <i class="bi bi-x"></i> Denegar
+                    </button>
+                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
+                    <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>
             `;

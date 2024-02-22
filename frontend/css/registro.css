@@ -129,14 +129,14 @@ h2 {
 
 
 .form-container input::placeholder {
-  color: #33aeff;
+  color: #f8fcff;
 }
 
 
 
 .form-container input {
   border-bottom: 1.5px solid #33aeff;
-  color: #2ed4fd;
+  color: #f5fdff;
  ;
 }
 
@@ -144,7 +144,7 @@ h2 {
 
 .form-container input:hover, .form-container input:focus {
   border-bottom: 1.5px solid #1b5f96;
-  color: #6cc1fa;
+  color: #81dbff;
   box-shadow: 0 0 20px 0 rgba(1, 68, 80, 0.5) inset;
 
 }
