@@ -1,7 +1,7 @@
 html {
-  background: repeating-linear-gradient(45deg, #00aa2b 0, #30ff45 5%, transparent 0, transparent 50%);
+  background: repeating-linear-gradient(45deg, #00aaaa 0, #00f7ff 5%, transparent 0, transparent 50%);
   background-size: 12em 12em;
-  background-color: #009161;
+  background-color: #037d8d;
   opacity: 1;
 }
 
@@ -19,7 +19,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #44cd83;
+  color: #44cdc2;
   font-size: 30px;
 }
 
@@ -27,7 +27,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #44cd83;
+  color: #44cdc2;
   font-size: 30px;
   margin-top: 8px;
   margin-bottom: 20px;
@@ -40,7 +40,7 @@ h2 {
   padding: 40px;
   background: rgba(0, 14, 6, 0.990);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(9, 255, 0, 0.336);
+  box-shadow: 0 15px 25px rgba(0, 217, 255, 0.404);
   border-radius: 10px;
 }
 
@@ -52,7 +52,7 @@ h2 {
   padding: 40px;
   background: rgba(0, 14, 6, 0.990);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(9, 255, 0, 0.336);
+  box-shadow: 0 15px 25px rgba(0, 255, 179, 0.336);
   border-radius: 10px;
 
 }
@@ -104,7 +104,7 @@ h2 {
   padding: 15px 20px;
   width: 220px;
   height: 50px;
-  background-color: #036630;
+  background-color: #032666;
   color: white;
   font-weight: bold;
   border: none;
@@ -118,7 +118,7 @@ h2 {
   width: 100%;
   padding: 15px 5px;
   font-size: 16px;
-  color: #9cff7e;
+  color: #49c4b3;
   margin-bottom: 20px;
   border: none;
   border-bottom: 1.5px solid #83ff78;
@@ -129,23 +129,23 @@ h2 {
 
 
 .form-container input::placeholder {
-  color: #9cff7e;
+  color: #33aeff;
 }
 
 
 
 .form-container input {
-  border-bottom: 1.5px solid #1b961b;
-  color: #6cfa8b;
+  border-bottom: 1.5px solid #33aeff;
+  color: #2ed4fd;
  ;
 }
 
 
 
 .form-container input:hover, .form-container input:focus {
-  border-bottom: 1.5px solid #1b961b;
-  color: #6cfa8b;
-  box-shadow: 0 0 20px 0 rgba(1, 80, 31, 0.5) inset;
+  border-bottom: 1.5px solid #1b5f96;
+  color: #6cc1fa;
+  box-shadow: 0 0 20px 0 rgba(1, 68, 80, 0.5) inset;
 
 }
 
@@ -155,7 +155,7 @@ h2 {
 
 i.bx {
   font-size: 20px;
-  color: #44cd83;
+  color: #44a2cd;
 }
 
 p {
@@ -165,12 +165,12 @@ p {
 }
 
 a {
-  color: #44cd83;
+  color: #449bcd;
   text-decoration: none;
 }
 
 a:hover {
-  color: #1eff00;
+  color: #00e1ff;
   text-decoration: underline;
 
 }
@@ -202,7 +202,7 @@ input, button {
 .form-container select:-webkit-autofill,
 .form-container select:-webkit-autofill:hover,
 .form-container select:-webkit-autofill:focus {
-    -webkit-text-fill-color: #6cfa8b !important; /* Color del texto */
+    -webkit-text-fill-color: #6cc1fa !important; /* Color del texto */
     transition: background-color 5000s ease-in-out 0s; /* Transición de color de fondo */
 }
 
@@ -210,21 +210,21 @@ input, button {
 .form-container input:-moz-placeholder,
 .form-container textarea:-moz-placeholder,
 .form-container select:-moz-placeholder {
-    color: #6cfa8b !important; /* Color del texto */
+    color: #6cc1fa !important; /* Color del texto */
     opacity: 1 !important; /* Opacidad del texto */
 }
 
 button {
-  background-color: #036630;
-  color: white;
+  background-color: #034766;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   cursor: pointer;
 
 }
 
 button:hover {
-  background-color: #1eff00;
-  color: #036630;
+  background-color: #63c6ff;
+  color: #004455;
   animation: btn-start 1.5s;
   animation-iteration-count: infinite;
 }
@@ -255,8 +255,8 @@ button:hover {
 }
 
 button:active {
-  background-color: #2fc402;
-  color: #80ffb5;
+  background-color: #023fc4;
+  color: #80f0ff;
 }
 
 .error {
@@ -279,8 +279,8 @@ button:active {
 
 
 .file-label {
-  background-color: #00ff95;
-  color: #024100;
+  background-color: #00a2ff;
+  color: #001741;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
@@ -293,23 +293,24 @@ button:active {
 
 /* Efecto al pasar el cursor sobre el botón */
 .file-label:hover {
-  background-color: #08837d; /* Cambiamos el color de fondo */
+  background-color: #085683; /* Cambiamos el color de fondo */
   color: #45fff6;
   transform: translateY(-3px); /* Movemos ligeramente hacia arriba */
 }
 
 .file-label:hover {
-  background-color: #02a59d;
+  background-color: #4fd6ff;
+  color:#000741
 }
 
 .file-label:active {
-  background-color: #005f66;
+  background-color: #0adaff;
   color: #86a0ff;
 }
 
 .file-name {
   display: none;
-  color: #024100;
+  color: #000741;
   font-size: 16px;
 }
 
