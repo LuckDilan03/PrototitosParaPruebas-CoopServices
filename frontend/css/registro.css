@@ -422,6 +422,7 @@ button:active {
 /* Estilos para la validación en tiempo real */
 .formulario__grupo-incorrecto input {
   border-bottom-color: #ff5050; /* Cambia el color del borde al fallar la validación */
+  background-color: rgba(255, 0, 0, 0.103);
 }
 
 .formulario__grupo-incorrecto .formulario__validacion-estado.fa-times-circle {
