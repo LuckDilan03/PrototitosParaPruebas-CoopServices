@@ -27,6 +27,8 @@ function llenarInformacionPersonal(datosCuenta) {
 }
 
 function llenarInformacionCuenta(datosCuenta) {
+
+    document.getElementById('numeroCuenta').innerText = datosCuenta.numeroCuenta;
     document.getElementById('tipoCuenta').innerText = datosCuenta.tipoCuenta;
     // Agregar el resto de la información de la cuenta aquí
 }

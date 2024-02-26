@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="dashboard.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -81,16 +81,14 @@
                             <a href="/cuentasAhorro" class="dropdown-item">Lista de Cuentas de Ahorro</a>
                         </div>
                     </div>
-                    <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
+                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Usuaris</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
+                            <a href="MiCuenta.html" class="dropdown-item">Mi Cuenta</a>
+
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </nav>
         </div>
@@ -101,9 +99,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="dashboard.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
-                </a>
+
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -190,40 +186,139 @@
             <!-- Navbar End -->
 
 
-            <!-- Mi Cuenta Start -->
-            <div class="container-fluid pt-4 px-4" id="informacion-personal">
-              <!-- Aquí se llenará la información personal dinámicamente -->
-            </div>
-            <div class="container-fluid pt-4 px-4" id="informacion-cuenta">
-              <!-- Aquí se llenará la información de la cuenta dinámicamente -->
-            </div>
-            <!-- Mi Cuenta End -->
-
-            <!-- Gráficos y Plan de Pago Start -->
+            <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
-              <div class="row g-4">
-                  <div class="col-lg-6">
-                      <div class="card border-0 bg-primary text-white shadow">
-                          <div class="card-body">
-                              <h5 class="card-title mb-4">Gráficos</h5>
-                              <canvas id="miembros-anuales"></canvas>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-6">
-                      <div class="card border-0 bg-primary text-white shadow">
-                          <div class="card-body">
-                              <h5 class="card-title mb-4">Plan de Pago</h5>
-                              <div class="table-responsive" id="plan-pago">
-                                  <!-- Aquí se llenará la tabla de plan de pago dinámicamente -->
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Prestamos Totales</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Abonos totales</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Ingresos del Dia</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Ingresos Totales</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Gráficos y Plan de Pago End -->
+            <!-- Sale & Revenue End -->
 
+
+            <!-- Sales Chart Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Miembros Anuales</h6>
+                            <canvas id="miembros-anuales"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Prestamos Por Mes</h6>
+                            <canvas id="prestamos-mensuales"></canvas>
+                        </div>
+            </div>
+            <!-- Sales Chart End -->
+
+            <!-- tabla de plan de pago -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Plan de Pago </h6>
+                        <a href="#">Ver Todo</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <th scope="col">Numero de Cuota</th>
+                                    <th scope="col">Cuota Mensual</th>
+                                    <th scope="col">Abono Capital</th>
+                                    <th scope="col">Abono Intereses</th>
+                                    <th scope="col">Saldo Capital</th>
+                                    <th scope="col">Total Cuota</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Feb 2024</td>
+                                    <td>$500</td>
+                                    <td>$400</td>
+                                    <td>$100</td>
+                                    <td>$2,000</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Mar 2024</td>
+                                    <td>$500</td>
+                                    <td>$350</td>
+                                    <td>$150</td>
+                                    <td>$1,650</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Apr 2024</td>
+                                    <td>$500</td>
+                                    <td>$300</td>
+                                    <td>$200</td>
+                                    <td>$1,350</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 May 2024</td>
+                                    <td>$500</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>$1,100</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jun 2024</td>
+                                    <td>$500</td>
+                                    <td>$200</td>
+                                    <td>$300</td>
+                                    <td>$800</td>
+                                    <td>$500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- tabla de plan de pago -->
 
 <!-- Widgets Start -->
 <!-- 
@@ -386,7 +481,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/Micuenta.js"></script>
 </body>
 
 </html>
