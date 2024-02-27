@@ -62,9 +62,46 @@
                 console.error('El destino de desplazamiento no está definido o no existe.');
             }
         });
+
+        //miembros anuales
+        var ctx6 = $("#miembros-anuales").get(0).getContext("2d");
+        var myChart6 = new Chart(ctx6, {
+            type: "line",
+            data: {
+                labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
+                datasets: [{
+                        label: "Miembros",
+                        data: [150, 180, 200, 220, 240, 270, 300],
+                        backgroundColor: "rgba(15, 195, 92, .7)",
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        //prestamos por mes
+        var ctx7 = $("#prestamos-mensuales").get(0).getContext("2d");
+        var myChart7 = new Chart(ctx7, {
+            type: "line",
+            data: {
+                labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                datasets: [{
+                        label: "Prestamos",
+                        data: [150, 180, 200, 220, 240, 270, 300, 350, 400, 450, 500, 550],
+                        backgroundColor: "rgba(15, 195, 92, .7)",
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
     });
     
-
     document.getElementById('boton-cerrarsesion').addEventListener('click', async () => {
         try {
             const response = await fetch('/cerrar-sesion', {
@@ -219,6 +256,7 @@
             responsive: true
         }
     });
+
     // Ventas por Región
     var ctx3 = $("#prestamos-region").get(0).getContext("2d");
     var myChart3 = new Chart(ctx3, { 

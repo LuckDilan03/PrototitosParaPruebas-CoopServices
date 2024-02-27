@@ -350,6 +350,21 @@ body{
     }
 }
 
+.img-coop{
+
+    width: 45px; /* Ancho de la imagen */
+    height: 45px; /* Altura de la imagen */
+    background-image: url(../images/logo-dashboard.png); /* Ruta de la imagen */
+    background-size: cover; /* Ajusta el tamaño de la imagen */
+
+
+}
+
+.me-2{
+    margin-bottom: -10px;
+}
+
+
 
 /*** Navbar ***/
 .sidebar .navbar .navbar-nav .nav-link {
@@ -359,6 +374,8 @@ body{
     border-left: 3px solid var(--secondary);
     border-radius: 0 30px 30px 0;
     outline: none;
+    height: 60px;
+    width: 230px;
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
