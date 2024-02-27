@@ -126,14 +126,14 @@
     Chart.defaults.borderColor = "#000000";
 
     // Miembros por Año
-    var ctx1 = $("#miembros-anuales").get(0).getContext("2d");
+    var ctx1 = $("#ahorros-mensuales").get(0).getContext("2d");
     var myChart1 = new Chart(ctx1, {
         type: "line",
         data: {
-            labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
             datasets: [{
-                    label: "Número de Miembros",
-                    data: [12, 50, 90, 125, 180, 191, 210, 225, 240],
+                    label: "Ahorros mensuales",
+                    data: [100, 500, 900, 1205, 1800, 1901, 2100, 2005, 2040, 2120, 2150, 2250],
                     backgroundColor: "rgba(15, 195, 92, .7)",
                     fill: true
                 }
@@ -145,16 +145,21 @@
     });
 
     // Préstamos por Mes
-    var ctx2 = $("#prestamos-mensuales").get(0).getContext("2d");
+    var ctx2 = $("#abonos-mensuales").get(0).getContext("2d");
     var myChart2 = new Chart(ctx2, {
         type: "bar",
         data: {
             labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
             datasets: [{
-                    label: "Cantidad de Préstamos",
-                    data: [25, 13, 20, 8, 29, 41, 48, 19, 35, 38, 52, 70],
-                    backgroundColor: "rgba(15, 195, 92, .7)"
-                }
+                    label: "Abono Personal",
+                    data: [2200, 1300, 2000, 1800, 1900, 1410, 1480, 1900, 1350, 1800, 1902, 1700],
+                    backgroundColor: "rgba(15, 195, 92, .7)"},
+                
+
+                    {label: "Promedio Abonos",
+                    data: [2100, 1350, 2080, 1790, 1900, 1450, 1500, 1950, 1400, 1800, 1900, 1700],
+                    backgroundColor: "rgba(38, 224, 153, .5)",
+                    }
             ]
         },
         options: {
