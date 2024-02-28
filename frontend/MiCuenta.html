@@ -76,7 +76,7 @@
                     <input class="form-control bg-dark border-0" type="search" placeholder="Buscar">
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Mensaje</span>
@@ -138,7 +138,7 @@
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item text-center">Ver todas las notificaciones</a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
@@ -160,7 +160,8 @@
                 <div class="row g-4">
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <i class="fas fa-hand-holding-usd fa-3x text-primary"></i>
+                            
                             <div class="ms-3">
                                 <p class="mb-2">Saldo Actual</p>
                                 <h6 class="mb-0">$</h6>
@@ -169,7 +170,7 @@
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <i class="fas fa-donate fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Abono Actual</p>
                                 <h6 class="mb-0">$</h6>
@@ -178,7 +179,7 @@
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <i class="fas fa-piggy-bank fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Aporte Mensual</p>
                                 <h6 class="mb-0">$</h6>
@@ -187,7 +188,7 @@
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <i class="fas fa-wallet fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Ahorro Total</p>
                                 <h6 class="mb-0">$</h6>
@@ -204,15 +205,16 @@
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Ahorro por mes</h6>
-                            <canvas id="ahorros-mensuales"></canvas>
+                            <h6 class="mb-4">Prestamos Por Mes</h6>
+                            <canvas id="abonos-mensuales"></canvas>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Prestamos Por Mes</h6>
-                            <canvas id="abonos-mensuales"></canvas>
+                            <h6 class="mb-4">Ahorro por mes</h6>
+                            <canvas id="ahorros-mensuales"></canvas>
                         </div>
+                    </div>
             </div>
             <!-- Sales Chart End -->
 
