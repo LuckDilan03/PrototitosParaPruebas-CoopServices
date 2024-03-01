@@ -13,8 +13,8 @@ const adminRoutes = (app)=>{
 
     
     /*rutas del admin y de dasboard.html*/
-    app.get('/admin',auth.verifyToken,controlerValidacion.mostrardashboard);
-    app.get('/dashboard.html', auth.verifyToken, (req, res) => {res.redirect('/admin');});
+    app.get('/dashboard',auth.verifyToken,controlerValidacion.mostrardashboard);
+    app.get('/dashboard.html', auth.verifyToken, (req, res) => {res.redirect('/dashboard');});
 
    
 

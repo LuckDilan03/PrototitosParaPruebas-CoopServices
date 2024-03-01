@@ -16,7 +16,7 @@ const mostrardashboard = (req, res) => {
       res.sendFile(path.join(__dirname, '../../frontend/dashboard.html'));
     }
     if(decodificado.rol===2){
-      res.sendFile(path.join(__dirname, '../../frontend/about.html'));
+      res.sendFile(path.join(__dirname, '../../frontend/MiCuenta.html'));
     }
     if(decodificado.rol===3){
       res.sendFile(path.join(__dirname, '../../frontend/about.html'));

@@ -8,7 +8,7 @@ const {KEY}=process.env;
 
 const login = async (req, res) => {
   try {
-    console.log(req.body);
+    
     const user=req.body.user;
     const contra=req.body.pass;
     if(!user||!contra){

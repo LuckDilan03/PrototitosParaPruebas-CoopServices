@@ -26,8 +26,8 @@ begin
       	nuevoNumeroCuenta := numerCuenta || LPAD(nextval('secuencia_numero_cuenta')::TEXT, 5, '0');
 
        
-        insert into tab_usuarios (usuario_ingreso,contrasena_ingreso,dni_usuario,rol_ingreso)
-        values (Rsolicitud.usuario_deseado,Rsolicitud.contrasena_deseada,Rsolicitud.dni_persona,2);
+        insert into tab_usuarios (usuario_ingreso,contrasena_ingreso,dni_usuario,rol_ingreso,estado_usuario)
+        values (Rsolicitud.usuario_deseado,Rsolicitud.contrasena_deseada,Rsolicitud.dni_persona,2,TRUE);
 		insert into tab_asociado (dni_asociado,usuario_ingreso,fecha_ingreso_asociado,estado_del_asociado,detalle_estado)
         values (Rsolicitud.dni_persona,Rsolicitud.usuario_deseado,CURRENT_TIMESTAMP,TRUE,'Recien Aprobado');
         insert into tab_cuenta (numero_cuenta,saldo_cuenta,tasa_interes_cuenta,aporte_mensual,dni_asociado,estado_cuenta,detalles_estado_cuenta)

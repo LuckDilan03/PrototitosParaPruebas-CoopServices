@@ -17,7 +17,7 @@ document.getElementById("formulario-login").addEventListener("submit", async (e)
         alert(resJson.message);
     } else{
         alert(resJson.message);
-        window.location.href = "/admin"
+        window.location.href = "/dashboard"
     }
 });
 
