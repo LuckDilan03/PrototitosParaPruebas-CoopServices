@@ -23,7 +23,7 @@ const register = async (req, res) => {
             Contrasena
         } = req.body;
 
-        const rutaArchivo = req.file.path; // req.file contiene la información del archivo subido por multer
+        const rutaArchivo = req.file.filename; // req.file contiene la información del archivo subido por multer
 
         //validar que todos los datos requeridos por la basedatos esten completos 
         if (!Documento || !Primer_Nombre  || !Primer_Apellido  || !Direccion || !Telefono ||!Correo_Electronico ||!Contrasena||!rutaArchivo) 

@@ -11,8 +11,9 @@ function updateFileInputUI() {
     
 
     if (fileInput.files.length > 0) {
-        // Si se selecciona un archivo, mostrar el nombre del archivo seleccionado
-        fileLabel.textContent = fileInput.files[0].name;
+        // Si se selecciona un archivo, mostrar solo el nombre del archivo (sin la ruta completa)
+        const fileName = fileInput.files[0].name;
+        fileLabel.textContent = fileName;
         
     } else {
         // Si no se selecciona ningún archivo, mostrar el texto predeterminado y ocultar el nombre del archivo
@@ -37,7 +38,9 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
     
     const fileInput = document.getElementById('Soporte_Documento');
     if (fileInput.files.length > 0) {
-        formData.append('Soporte_Documento', fileInput.files[0]);
+        // Obtener solo el nombre del archivo sin la ruta completa
+        const fileName = fileInput.files[0].name;
+        formData.append('Soporte_Documento', fileInput.files[0], fileName);
     }
 
     formData.append('Contrasena', e.target.elements.Contrasena.value);

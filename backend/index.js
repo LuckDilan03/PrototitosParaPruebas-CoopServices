@@ -22,6 +22,7 @@ usersroutes(app);
 adminroutes(app);
 homeroutes(app);
 app.use(express.static(path.join(__dirname, '../frontend')));
+app.use('../frontend/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 const { PORT } = process.env;
