@@ -1,52 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-    obtenerDatosCuenta();
-});
 
-async function obtenerDatosCuenta() {
-    try {
-        const response = await fetch('/obtenerDatosCuenta');
-        const datosCuenta = await response.json();
-        llenarInformacionPersonal(datosCuenta);
-        llenarInformacionCuenta(datosCuenta);
-        llenarTablaPlanPago(datosCuenta);
-
-        // Inicializar las tablas con DataTables y habilitar la ordenación
-        $('#planPagoTable').DataTable({
-            "paging": false, // Deshabilitar la paginación
-            "searching": false, // Deshabilitar la búsqueda
-            "info": false // Deshabilitar la información de la tabla
+// Función para obtener y actualizar los valores desde el servidor
+function actualizarValores() {
+    fetch('/api/valores')
+        .then(response => response.json())
+        .then(data => {
+            // Actualizar los valores en el HTML
+            document.getElementById('saldo-actual').textContent = '$' + data.saldo_actual;
+            document.getElementById('abono-actual').textContent = '$' + data.abono_actual;
+            document.getElementById('aporte-mensual').textContent = '$' + data.aporte_mensual;
+            document.getElementById('ahorro-total').textContent = '$' + data.ahorro_total;
+        })
+        .catch(error => {
+            console.error('Error al obtener los valores:', error);
         });
-    } catch (error) {
-        console.error('Error al obtener los datos de la cuenta:', error);
-    }
 }
 
-function llenarInformacionPersonal(datosCuenta) {
-    document.getElementById('nombre').innerText = datosCuenta.nombre;
-    // Agregar el resto de la información personal aquí
-}
+// Llamar a la función para obtener y actualizar los valores cuando la página se cargue
+window.addEventListener('load', actualizarValores);
 
-function llenarInformacionCuenta(datosCuenta) {
-
-    document.getElementById('numeroCuenta').innerText = datosCuenta.numeroCuenta;
-    document.getElementById('tipoCuenta').innerText = datosCuenta.tipoCuenta;
-    // Agregar el resto de la información de la cuenta aquí
-}
-
-function llenarTablaPlanPago(datosCuenta) {
-    const tbody = document.querySelector('#planPagoTable tbody');
-
-    datosCuenta.planPago.forEach(cuota => {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-            <td><input class="form-check-input" type="checkbox"></td>
-            <td>${cuota.numeroCuota}</td>
-            <td>${cuota.cuotaMensual}</td>
-            <td>${cuota.abonoCapital}</td>
-            <td>${cuota.abonoIntereses}</td>
-            <td>${cuota.saldoCapital}</td>
-            <td>${cuota.totalCuota}</td>
-        `;
-        tbody.appendChild(fila);
-    });
-}

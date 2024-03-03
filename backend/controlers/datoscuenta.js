@@ -1,5 +1,4 @@
 const pool = require('../config/connection');
-const pool = require('../config/connection');
 
 async function obtenerDatosCuenta(req, res) {
   try {

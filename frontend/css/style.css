@@ -1356,6 +1356,19 @@ img {
 	width: 100%;
 }
 
+.imagenes-movimiento {
+	transition: all ease .35s;
+}
+
+.imagenes-movimiento:hover {
+	transform: scale(1.1);
+}
+
+.imagenes-movimiento:not(:hover) {
+	transform: scale(1);
+}
+
+
 /*
 * Icons
 */
@@ -6832,12 +6845,12 @@ html.tablet .ui-to-top {
 }
 
 .rd-navbar-fixed .rd-nav-link {
-	color: ##A1DFCA;
+	color: #A1DFCA;
 }
 
 .rd-navbar-fixed .rd-megamenu-list > li > a,
 .rd-navbar-fixed .rd-navbar-dropdown > li > a {
-	color: ##A1DFCA;
+	color: #A1DFCA;
 }
 
 .rd-navbar-fixed .rd-megamenu-list > li:hover > a,
@@ -8672,6 +8685,7 @@ html.rd-navbar-fixed-linked .page {
 .review-carousel .owl-dots {
 	margin-top: 30px;
 }
+
 
 @media (min-width: 1200px) {
 	.review-carousel .owl-dots {
