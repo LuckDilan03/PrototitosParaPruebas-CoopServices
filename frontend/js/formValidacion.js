@@ -9,7 +9,8 @@ const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
     telefono: /^\d{10}$/,
     password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*().,])[\w!@#$%^&*().,]{8,}$/,
-    direccion: /^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,60}$/
+    direccion: /^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,60}$/,
+    usuario:/^[a-zA-ZÁ-ÿ\s#-,.0-9-]{1,10}$/
 };
 
 const campos = {
@@ -67,7 +68,7 @@ const validarFormulario = (e) => {
             validarCampo(expresiones.telefono, e.target, 'Telefono_Persona');
             break;
         case 'usuario_deseado':
-            validarCampo(expresiones.nombre, e.target, 'usuario_deseado');
+            validarCampo(expresiones.usuario, e.target, 'usuario_deseado');
             break;
         case 'Contrasena_deseada':
             validarCampo(expresiones.password, e.target, 'Contrasena_deseada');
