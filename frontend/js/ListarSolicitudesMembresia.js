@@ -63,3 +63,57 @@ document.addEventListener('DOMContentLoaded', () => {
         tbody.appendChild(fila);
     });
 }
+
+async function aprobarSolicitud(idSolicitud) {
+    // Puedes utilizar una función que muestre un modal o un cuadro de diálogo para recopilar información adicional del usuario.
+    const informacionAdicional = await solicitarInformacionAdicional();
+
+    try {
+        const response = await fetch(`/aprobarSolicitud`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                idSolicitud: idSolicitud,
+                informacionAdicional: informacionAdicional,
+                // Otros datos si es necesario
+            }),
+        });
+
+        if (response.ok) {
+            console.log('Solicitud aprobada con éxito');
+            obtenerDatosSolicitud();
+        } else {
+            console.error('Error al aprobar la solicitud');
+        }
+    } catch (error) {
+        console.error('Error en la solicitud de aprobación:', error);
+    }
+}
+
+async function solicitarInformacionAdicional() {
+    // Puedes utilizar un formulario modal o cualquier otro método para recopilar la información.
+    // Aquí se muestra un ejemplo usando Bootstrap Modal.
+    return new Promise((resolve) => {
+        const modal = new bootstrap.Modal(document.getElementById('modalInformacionAdicional'));
+        const btnGuardar = document.getElementById('btnGuardarModal');
+
+        btnGuardar.addEventListener('click', () => {
+            const saldoInicial = document.getElementById('saldoInicial').value;
+            const saldoAhorroVoluntario = document.getElementById('saldoAhorroVoluntario').value;
+            const esAdministrativo = document.getElementById('esAdministrativo').checked;
+
+            const informacionAdicional = {
+                saldoInicial,
+                saldoAhorroVoluntario,
+                esAdministrativo,
+            };
+
+            modal.hide();
+            resolve(informacionAdicional);
+        });
+
+        modal.show();
+    });
+}

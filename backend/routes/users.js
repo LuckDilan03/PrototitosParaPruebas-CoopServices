@@ -18,6 +18,8 @@ const UserRoutes = (app) => {
         res.status(200).send(respuesta);
       });
     });
+    
+    app.get('/dashboard.html',auth.verifyToken,controlerValidacion.mostrardashboard);
 
 
     
@@ -25,9 +27,12 @@ const UserRoutes = (app) => {
   
     app.get('/admin',auth.verifyToken,controlerValidacion.mostrardashboard);
     
+    app.post('/aprobarSolicitud', (req, res) => {
+      return auth.verifyToken,controlerListSolicitudMembresia.aprobarUsuario(req, res);
+    });
   // Agrega rutas específicas para cada tipo de dashboard
   
-
+    
     app.get('/listUsers',controlerListUsers.listUsers);
     app.get('/listAsociados',controlerListAsociados.listAsociados);
     app.get('/listSolicitudMembresia',controlerListSolicitudMembresia.listSolicitudMembresia);
