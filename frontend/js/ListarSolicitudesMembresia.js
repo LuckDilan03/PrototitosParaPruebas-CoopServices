@@ -198,6 +198,7 @@ async function aprobarSolicitud(idSolicitud) {
 async function limpiarModal() {
     document.getElementById('saldoInicial').value = '';
     document.getElementById('saldoAhorroVoluntario').value = '';
+    document.getElementById('numeroResolucion').value = '';
     document.getElementById('esAdministrativo').checked = false;
 }
 
@@ -212,6 +213,7 @@ async function solicitarInformacionAdicional(idSolicitud) {
             const informacionAdicional = {
                 saldoInicial: document.getElementById('saldoInicial').value,
                 saldoAhorroVoluntario: document.getElementById('saldoAhorroVoluntario').value,
+                numeroResolucion: document.getElementById('numeroResolucion').value,
                 esAdministrativo: document.getElementById('esAdministrativo').checked,
                 idSolicitud: idSolicitud
             };
