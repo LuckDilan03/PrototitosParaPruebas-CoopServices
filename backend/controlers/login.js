@@ -12,7 +12,7 @@ const login = async (req, res) => {
     const user=req.body.user;
     const contra=req.body.pass;
     if(!user||!contra){
-      res.status(400).send({status:"error",message:"Los Campos estan incompletos"})
+      return res.status(400).send({status:"error",message:"Los Campos estan incompletos"})
     }
     
     // Define la consulta SQL para llamar a la función buscar_usuario con el parámetro Usuario
@@ -23,7 +23,7 @@ const login = async (req, res) => {
     const result = await pool.query(queryText, queryParams);
 
     if (result.rows.length === 0) {
-      res.status(400).json({ status: 'error', message: 'las credenciales no coinciden o el usuario no existe' });
+      return res.status(400).json({ status: 'error', message: 'las credenciales no coinciden o el usuario no existe' });
     }
 
     const storedPasswordHash = result.rows[0].contrasena;
@@ -37,11 +37,11 @@ const login = async (req, res) => {
       const token = jwt.sign({dni,rol,estado, usuario:user }, KEY,{expiresIn: '1h' });
       // Configura la cookie con el token
       res.cookie('authToken', token, { httpOnly: true });
-      res.status(200).send({ status: "ok", message: "Inicio de sesion exitoso" } );
+      return res.status(200).send({ status: "ok", message: "Inicio de sesion exitoso" } );
       //enviar el token como respuesta al cliente
     } else {
       // Si las contraseñas no coinciden
-      res.status(400).send({ status: "error", message: "Las credenciales no coinciden o el usuario esta inactivo" } );
+      return res.status(400).send({ status: "error", message: "Las credenciales no coinciden o el usuario esta inactivo" } );
     }
 
     

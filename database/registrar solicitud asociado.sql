@@ -37,7 +37,7 @@ AS $BODY$
 SELECT MAX(Id_Solicitud) INTO id_person FROM tab_Solicitarmembresia WHERE dni_persona = Pdocumento;
 IF id_person IS  NULL THEN 
 
-	INSERT INTO tab_Persona VALUES(Pdocumento , nombre_1 , nombre_2, APELLIDO_1,APELLIDO_2,direccion,telefono,correo,'PRUEBA');
+	INSERT INTO tab_Persona VALUES(Pdocumento , nombre_1 , nombre_2, APELLIDO_1,APELLIDO_2,direccion,telefono,correo,Documento_Solicitud);
     INSERT INTO tab_Solicitarmembresia (id_solicitud,DNI_Persona,Fecha_Solicitud,Usuario_Deseado,ContraseNa_Deseada,Documento_Solicitud) VALUES (Pid_solicitud,Pdocumento,CURRENT_TIMESTAMP, nombre_usuario_deseado,contrasena_deseada,Archivo);
     RAISE NOTICE 'SE INSERTA SOLICITUD NUEVA';
 	respuesta='1';
@@ -70,14 +70,18 @@ ELSE
 
             IF REC_persona.Apellido_Persona <> APELLIDO_1 THEN
                 RAISE NOTICE 'EL APELLIDO CON DOCUMENTO YA SE ENCUENTRA EN EL SISTEMA POR LO TANTO NO SE DEJA ACTUALIZAR';
+                respuesta='5';
+		        RETURN respuesta;
             END IF;
         
             IF REC_persona.Segundo_Apellido_Persona <> APELLIDO_2 THEN
                 RAISE NOTICE 'EL APELLIDO 2 DE LA PERSONA EN LA BASE DE DATOS CON DOCUMENTO ES DIFERENTE POR LO QUE SE ACTUALIZARA';
+                respuesta='5';
+		        RETURN respuesta;
             END IF;
 
             IF REC_persona.Direccion_Persona <> direccion THEN
-                RAISE NOTICE 'LA DIRECCION DE LA PERSONA EN LA SABE DE DATOS CON DOCUMENTO ES DIFERENTE POR LO QUE SE ACTUALIZARA';
+                RAISE NOTICE 'LA DIRECCION DE LA PERSONA EN LA BASE DE DATOS CON DOCUMENTO ES DIFERENTE POR LO QUE SE ACTUALIZARA';
                 UPDATE tab_Persona SET Direccion_Persona=direccion
                 WHERE DNI_Persona=Pdocumento;
             END IF;
@@ -87,19 +91,20 @@ ELSE
                 WHERE correo_persona = correo ;
             END IF;
             IF REC_persona.Telefono_Persona <> telefono THEN
-                RAISE NOTICE 'EL TELEFONO DE LA PERSONA EN LA SABE DE DATOS CON DOCUMENTO ES DIFERENTE POR LO QUE SE ACTUALIZARA';
+                RAISE NOTICE 'EL TELEFONO DE LA PERSONA EN LA BASE DE DATOS CON DOCUMENTO ES DIFERENTE POR LO QUE SE ACTUALIZARA';
                 UPDATE tab_Persona SET Telefono_Persona=telefono
                 WHERE DNI_Persona=Pdocumento;
             END IF;
 
         
-            INSERT INTO tab_Solicitarmembresia (id_solicitud,DNI_Persona,Fecha_Solicitud,Usuario_Deseado,ContraseNa_Deseada,Documento_Solicitud) VALUES (Pid_solicitud,Pdocumento,CURRENT_TIMESTAMP, nombre_usuario_deseado,contrasena_deseada,Archivo);
-            RAISE NOTICE 'SE INSERTA SOLICITUD NUEVA';
-			respuesta='4';
-			RETURN respuesta;
+            
             
 
         END IF;
+        INSERT INTO tab_Solicitarmembresia (id_solicitud,DNI_Persona,Fecha_Solicitud,Usuario_Deseado,ContraseNa_Deseada,Documento_Solicitud) VALUES (Pid_solicitud,Pdocumento,CURRENT_TIMESTAMP, nombre_usuario_deseado,contrasena_deseada,Archivo);
+        RAISE NOTICE 'SE INSERTA SOLICITUD NUEVA';
+		respuesta='4';
+		RETURN respuesta;
     END IF;
     
 END IF;

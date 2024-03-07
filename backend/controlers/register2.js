@@ -77,9 +77,16 @@ const register = async (req, res) => {
             statusms='error';
             break;
         case '4':
-            respuesta = `Ya cuenta con una solicitud denegada por lo que se crea una nueva solicitud con numero ${numero_solicitud}`;
+            let numero_solicitud_denegada = await buscarNumeroSolicitud(Documento)
+            respuesta = `Ya cuenta con una solicitud denegada por lo que se crea una nueva solicitud con numero ${numero_solicitud_denegada}`;
             statusCode = 201;
-            statusms=ok;
+            statusms='ok';
+            break;
+        
+        case '5':
+            respuesta = `El usuario ya se encuentra registrado con otros datos comuniquese con el admin `;
+            statusCode = 400;
+            statusms='error';
             break;
         default:
             respuesta = 'Respuesta no reconocida error de validacion en la insercion    ';
