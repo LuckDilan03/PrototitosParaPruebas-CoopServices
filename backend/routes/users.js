@@ -28,7 +28,7 @@ const UserRoutes = (app) => {
     app.get('/admin',auth.verifyToken,controlerValidacion.mostrardashboard);
     
     app.post('/aprobarSolicitud', (req, res) => {
-      return auth.verifyToken,controlerListSolicitudMembresia.aprobarUsuario(req, res);
+      return controlerListSolicitudMembresia.aprobarUsuario(req, res);
     });
   // Agrega rutas específicas para cada tipo de dashboard
   
