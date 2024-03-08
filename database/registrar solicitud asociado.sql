@@ -95,11 +95,6 @@ ELSE
                 UPDATE tab_Persona SET Telefono_Persona=telefono
                 WHERE DNI_Persona=Pdocumento;
             END IF;
-
-        
-            
-            
-
         END IF;
         INSERT INTO tab_Solicitarmembresia (id_solicitud,DNI_Persona,Fecha_Solicitud,Usuario_Deseado,ContraseNa_Deseada,Documento_Solicitud) VALUES (Pid_solicitud,Pdocumento,CURRENT_TIMESTAMP, nombre_usuario_deseado,contrasena_deseada,Archivo);
         RAISE NOTICE 'SE INSERTA SOLICITUD NUEVA';
