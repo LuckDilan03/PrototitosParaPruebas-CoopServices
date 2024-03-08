@@ -6,7 +6,7 @@ CREATE SEQUENCE secuencia_numero_cuenta
     START 1
     CACHE 10;
 
-CREATE OR REPLACE FUNCTION aprobarAsociado (Pid_solicitud bigint , PsaldoInicial numeric, saldoAhorroVoluntario numeric) RETURNS VARCHAR AS
+CREATE OR REPLACE FUNCTION aprobarAsociado (Pid_solicitud bigint , PsaldoInicial numeric, saldoAhorroVoluntario numeric,resolucion numeric) RETURNS VARCHAR AS
 $$
 DECLARE numerCuenta numeric;
 DECLARE Rsolicitud RECORD;
@@ -45,7 +45,7 @@ begin
         
         
         update tab_solicitarmembresia
-           set respuesta_solicitud='APROBADA',fecha_aprobacion=CURRENT_TIMESTAMP
+           set respuesta_solicitud='APROBADA',fecha_aprobacion=CURRENT_TIMESTAMP,numero_resolucion=resolucion
          where id_solicitud=Pid_solicitud;
 		
         RETURN 'se ingreso correctamente el usuario';

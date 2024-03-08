@@ -207,6 +207,93 @@ body{
 }
 /* estilo para el modal de la vaina esa */
 
+#modalInformacionAdicionalDenegado {
+    background-color: #00000e49;
+    color: #ffffff;
+}
+
+/* Estilo para el contenido del modal */
+#modalInformacionAdicionalDenegado .modal-content {
+    background-color: #191C24;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+/* Estilo para el título del modal */
+#modalInformacionAdicionalDenegado .modal-title {
+    color: #1ea063;
+}
+
+/* Estilo para los botones dentro del modal */
+#modalInformacionAdicionalDenegado .btn-secondary,
+#modalInformacionAdicionalDenegado .btn-primary {
+    background-color: #1ea063;
+    border-color: #1ea063;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+#modalInformacionAdicionalDenegado .btn-secondary:hover,
+#modalInformacionAdicionalDenegado .btn-primary:hover {
+    background-color: #22a816;
+    border-color: #00b309;
+    color:#021b00;
+}
+
+/* Estilo para el texto dentro del formulario */
+#modalInformacionAdicionalDenegado .form-label {
+    color: #1ea063;
+}
+
+/* Estilo para los inputs */
+#modalInformacionAdicionalDenegado .form-control {
+    background-color: #191C24 ;
+    color: #ffffff;
+    border-color: #1ea063;
+}
+
+/* Estilo para los checkboxes */
+#modalInformacionAdicionalDenegado .form-check-input:checked {
+    background-color: #1ea063;
+    border-color: #1ea063;
+}
+
+/* Estilo para el botón de cerrar modal */
+#modalInformacionAdicionalDenegado .btn-close {
+    color: #ffffff;
+    background-color: #25c47a;
+}
+
+/* Estilo para el cuerpo del modal */
+#modalInformacionAdicionalDenegado .modal-body {
+    background-color: #191C24 ;
+}
+
+/* Estilo para el pie del modal */
+#modalInformacionAdicionalDenegado .modal-footer {
+    background-color: #191C24 ;
+    border-top: 1px solid #666666;
+}
+
+/* Estilo para los botones del pie del modal */
+#modalInformacionAdicionalDenegado .modal-footer .btn {
+    color: #ffffff;
+}
+
+/* Estilo para el botón de cerrar en el pie del modal */
+#modalInformacionAdicionalDenegado .modal-footer .btn-secondary {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+/* Estilo para el botón de cerrar en el pie del modal al pasar el mouse */
+#modalInformacionAdicionalDenegado .modal-footer .btn-secondary:hover {
+    background-color: #a13e3e;
+    border-color: #ff0000;
+    color: #490000;
+}
+
+
 #modalInformacionAdicional {
     background-color: #00000e49;
     color: #ffffff;

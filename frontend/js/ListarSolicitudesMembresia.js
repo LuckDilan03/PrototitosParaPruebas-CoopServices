@@ -78,7 +78,7 @@ function agregarDatosAaprobar(solicitudes) {
                     <button class="btn btn-sm btn-primary" onclick="EditarSolicitud(${solicitud.id})">
                         <i class="bi bi-pencil"></i> Editar
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
+                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
                     <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
@@ -113,7 +113,7 @@ function agregarDatosArevision(solicitudes) {
                     <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud})">
                         <i class="bi bi-check"></i> Aprobar
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
+                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
                     <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
@@ -142,7 +142,7 @@ function agregarDatosAdenegar(solicitudes) {
                 <td>${solicitud.dni_persona}</td>
                 <td>${solicitud.usuario_deseado}</td>
                 <td>${fechasolicitudform}</td>
-                <td><a href="./${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
+                <td><a href="/uploads/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
                 <td>${solicitud.respuesta_solicitud}</td>
                 <td class="fecha-aprobacion">${fechaaprobacionform}</td>
                 <td class="numero-resolucion">${solicitud.numero_resolucion}</td>
@@ -150,7 +150,7 @@ function agregarDatosAdenegar(solicitudes) {
                     <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id})">
                         <i class="bi bi-pen"></i> Aprobar
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id})">
+                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
                     <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
@@ -162,6 +162,43 @@ function agregarDatosAdenegar(solicitudes) {
         }
     });
 }
+
+
+async function denegarSolicitud(idSolicitud){
+    try {
+        console.log('Denengando solicitud con ID:', idSolicitud);
+        const informacionAdicional = await solicitarInformacionAdicionalDenegado(idSolicitud); // Pasar idSolicitud aquí
+        console.log('Información adicional recopilada:', informacionAdicional);
+
+        const bodyData = {
+            idSolicitud: idSolicitud, // Asignar idSolicitud aquí
+            informacionAdicional: informacionAdicional
+        };
+
+        console.log('Datos a enviar al servidor:', bodyData);
+
+        const response = await fetch(`/DenegarSolicitud`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bodyData),
+        });
+
+        const resJson= await response.json();
+        if (!response.ok) {
+            alert(resJson.message);
+            location.reload()
+        } else{
+            alert(resJson.message);
+            window.location.href = "/SolitudesPendientes"
+        }
+    } catch (error) {
+        console.error('Error en la solicitud de denegacion:', error);
+    }
+}
+
+
 async function aprobarSolicitud(idSolicitud) {
     try {
         console.log('Aprobando solicitud con ID:', idSolicitud);
@@ -183,12 +220,18 @@ async function aprobarSolicitud(idSolicitud) {
             body: JSON.stringify(bodyData),
         });
 
-        if (response.ok) {
-            console.log('Solicitud aprobada con éxito');
-            location.reload();
-        } else {
-            console.error('Error al aprobar la solicitud');
+
+
+        const resJson= await response.json();
+        if (!response.ok) {
+            alert(resJson.message);
+            location.reload()
+        } else{
+            alert(resJson.message);
+            window.location.href = "/SolitudesPendientes"
         }
+
+        
     } catch (error) {
         console.error('Error en la solicitud de aprobación:', error);
     }
@@ -201,6 +244,32 @@ async function limpiarModal() {
     document.getElementById('numeroResolucion').value = '';
     document.getElementById('esAdministrativo').checked = false;
 }
+
+async function solicitarInformacionAdicionalDenegado(idSolicitud) {
+    // Abre el modal
+    $('#modalInformacionAdicionalDenegado').modal('show');
+
+    // Retorna una promesa que se resuelve con la información adicional cuando se hace clic en Guardar
+    return new Promise((resolve, reject) => {
+        $('#btnGuardarModalDenegado').one('click', () => {
+            const informacionAdicional = {
+                saldoInicial: document.getElementById('MotivoRechazo').value,
+                numeroResolucion: document.getElementById('numeroResolucionRechazada').value,
+                idSolicitud: idSolicitud
+            };
+
+            // Cierra el modal
+            $('#modalInformacionAdicionalDenegado').modal('hide');
+
+            // Limpia el contenido del modal
+            //limpiarModal();
+
+            // Resuelve la promesa con la información adicional
+            resolve(informacionAdicional);
+        });
+    });
+}
+
 
 // Esta función maneja la solicitud de información adicional y muestra el modal
 async function solicitarInformacionAdicional(idSolicitud) {

@@ -37,7 +37,7 @@ AS $BODY$
 SELECT MAX(Id_Solicitud) INTO id_person FROM tab_Solicitarmembresia WHERE dni_persona = Pdocumento;
 IF id_person IS  NULL THEN 
 
-	INSERT INTO tab_Persona VALUES(Pdocumento , nombre_1 , nombre_2, APELLIDO_1,APELLIDO_2,direccion,telefono,correo,Documento_Solicitud);
+	INSERT INTO tab_Persona VALUES(Pdocumento , nombre_1 , nombre_2, APELLIDO_1,APELLIDO_2,direccion,telefono,correo,Archivo);
     INSERT INTO tab_Solicitarmembresia (id_solicitud,DNI_Persona,Fecha_Solicitud,Usuario_Deseado,ContraseNa_Deseada,Documento_Solicitud) VALUES (Pid_solicitud,Pdocumento,CURRENT_TIMESTAMP, nombre_usuario_deseado,contrasena_deseada,Archivo);
     RAISE NOTICE 'SE INSERTA SOLICITUD NUEVA';
 	respuesta='1';

@@ -44,6 +44,9 @@ const adminRoutes = (app)=>{
     app.post('/aprobarSolicitud', (req, res) => {
       return controlerListSolicitudMembresia.aprobarUsuario(req, res);
     });
+    app.post('/DenegarSolicitud', (req, res) => {
+      return controlerListSolicitudMembresia.DenegarSolicitud(req, res);
+    });
 
   /*rutas del listado de asociados en el sistema */
     app.get('/asociadosAprobados',auth.verifyToken,VistasAdmin.mostrarListaAsociados);
