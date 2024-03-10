@@ -21,18 +21,22 @@ body{
 /* Estilos para el contenedor de filtros y búsqueda */
 #filterContainer {
     margin-bottom: 20px;
+    display: flex; /* Hace que los elementos hijos se coloquen en línea */
+    align-items: center; 
 }
 
 /* Estilos para las etiquetas de selección de criterio */
-#filterCriteriaRevisionLabel, #filterCriteriaAprobacionLabel, #filterCriteriaDenegarLabel {
+#filterCriteriaRevisionLabel, #filterCriteriaAprobacionLabel, #filterCriteriaDenegarLabel, #filterCriteria {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     color: #164400; /* Color de texto */
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 /* Estilos para los selectores de criterio */
-#filterCriteriaRevision, #filterCriteriaAprobacion, #filterCriteriaDenegar {
+#filterCriteriaRevision, #filterCriteriaAprobacion, #filterCriteriaDenegar, #filterCriteria {
     width: 25%;
     padding: 0.4%;
     margin-bottom: 10px;
@@ -44,7 +48,7 @@ body{
 }
 
 /* Estilos para los campos de búsqueda */
-#searchInputRevision, #searchInputAprobacion, #searchInputDenegar {
+#searchInputRevision, #searchInputAprobacion, #searchInputDenegar, #searchInputPersona ,#searchInput {
     width: 30%;
     padding: 0.5%;
     margin-bottom: 10px;
@@ -56,7 +60,7 @@ body{
 }
 
 /* Estilos para el placeholder del campo de búsqueda */
-#searchInputRevision::placeholder, #searchInputAprobacion::placeholder, #searchInputDenegar::placeholder{
+#searchInputRevision::placeholder, #searchInputAprobacion::placeholder, #searchInputDenegar::placeholder, #searchInputPersona::placeholder ,#searchInput::placeholder{
     color: #999; /* Color del placeholder */
 }
 

@@ -5,6 +5,7 @@ const controlerValidacion=require('../controlers/validacion');
 const controlerListSolicitudPrestamo=require('../controlers/listSolicitudPrestamos')
 const contolerListUsuarios=require('../controlers/listUsers');
 const controlerListAsociados=require('../controlers/listAsociados');
+const controlerListPersonas=require('../controlers/listPersonas');
 
 
 
@@ -76,6 +77,13 @@ const adminRoutes = (app)=>{
     app.get('/cuentasAhorro',auth.verifyToken,VistasAdmin.mostrarListaCuentasAhorro);
     app.get('listaCuentaAhorros.html', auth.verifyToken, (req, res) => {res.redirect('/cuentasAhorro');});
     app.get('/listarCuentasAhorro',/*aca debe ir el controlador del get de la lista para el formulario*/);
+
+  /*rutas del listado de Personas */
+    app.get('/listaPersona',auth.verifyToken,VistasAdmin.mostrarListaPersonas);
+    app.get('listaPersonas.html', auth.verifyToken, (req, res) => {res.redirect('/ListaPersona');});
+    app.get('/listarPersonas',auth.verifyToken,controlerListPersonas.listPersonas);
+
+
 
   /*rutas para la aprobacion de usuarios*/
 

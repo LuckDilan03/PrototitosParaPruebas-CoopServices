@@ -37,6 +37,10 @@ const path = require('path');
     res.sendFile(path.join(__dirname, '../../frontend/listaCuentaAhorros.html'));
   };
 
+  const mostrarListaPersonas = (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/listaPersona.html'));
+  };
+
   module.exports = {
     mostrarSolicitudPrestamo,
     mostrarSolicitudRetiro,
@@ -46,5 +50,6 @@ const path = require('path');
     mostrarListaUsuarios,
     mostrarSolicitudesPedientesPrestamos,
     mostrarCrearRoles,
-    mostrarListaCuentasAhorro};
+    mostrarListaCuentasAhorro,
+    mostrarListaPersonas};
 
