@@ -1,13 +1,14 @@
 const bcrypt = require('bcrypt');
 const pool = require('../config/connection');
+const {enviarEmail}=require('../services/email.service')
 
 const register = async (req, res) => {
     try {
-        console.log(req.body);
+        
         //valida los datos recibidos del front 
         if (!req.body || typeof req.body !== 'object' || !('Documento' in req.body)) 
             {
-            res.status(400).json({ status: 'error', message: 'Datos incompletos' });
+            return res.status(400).json({ status: 'error', message: 'Datos incompletos' });
             }
         
             // extraemos los datos del body del reques para guardarlos en una constante para cada uno 
@@ -28,11 +29,11 @@ const register = async (req, res) => {
         //validar que todos los datos requeridos por la basedatos esten completos 
         if (!Documento || !Primer_Nombre  || !Primer_Apellido  || !Direccion || !Telefono ||!Correo_Electronico ||!Contrasena||!rutaArchivo) 
             {
-                res.status(401).send({ status: "error", message:"datos faltantes" } )
+               return res.status(401).send({ status: "error", message:"datos faltantes" } )
             }
         // se encripta la contraseña atravez de la libreria bcript.hash y se guarda en una constante llamada contra_encrip
         const contra_encrip = await bcrypt.hash(Contrasena,10);
-        const usuario_document=String(Documento);
+        const usuario_document=`AS${String(Documento)}`;
         // se crear el query para insertar los datos en la funcion de la base de datos 
         const queryText = `
             SELECT * FROM ingresar_solicitud_asociado ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
@@ -57,34 +58,82 @@ const register = async (req, res) => {
         let respuesta;
         let statusCode;
         let statusms;
+        let mensajeCorreo;
+        let asunto;
+        let tituloMensaje;
+        
+        
+
         
 
         switch (result.rows[0].ingresar_solicitud_asociado) {
         case '1':
             let numero_solicitud = await buscarNumeroSolicitud(Documento)
-            respuesta = `Se ha creado una nueva solicitud con numero ${numero_solicitud}`;
+            respuesta = `
+            Se Ah Creado Una Nueva Solicitud 
+            Numero De Solicitud: ${numero_solicitud}`;
+            tituloMensaje='Registro Exitoso';
+            asunto='Registro Exitoso De Solicitud Asociacion CoopServices'
+            mensajeCorreo=`Felicidades su solicitud de registro ah sido recibida con exito y se encuentra registrada con el numero: ${numero_solicitud}`
             statusCode = 201;
             statusms='ok';
             break;
         case '2':
-            respuesta = 'Ya cuenta con una solicitud aprobada revise el correo registrado.';
+            let numero_solicitudAprobada = await buscarNumeroSolicitud(Documento)
+            respuesta = 
+            `
+            ¿ Intenta volver a registrarse ? 
+            ¡ Ya Esta Aprobado Felicidades !
+            Numero De Solicitud: ${numero_solicitudAprobada}
+            Verifique Su Correo Electronico  
+            Comunicate Con El Admin O Restablece Tu Contraseña `;
             statusCode = 400;
+            tituloMensaje='Confirmacion De Usuario';
+            asunto='¿ Intenta volver a registrarse ?  Coopservices Correo Confirmacion Cuenta Aprobada'
+            mensajeCorreo=` 
+            ¿ Intenta Volver A Registrarse ? 
+            ¡ Ya Esta Aprobado Felicidades !
+            Usuario Ingreso :${usuario_document}
+            `
             statusms='error';
             break;
         case '3':
-            respuesta = 'Ya cuenta con una solicitud en revisión porfavor espere respuesta al correo registrado.';
+            let numero_solicitudRevision = await buscarNumeroSolicitud(Documento)
+            respuesta = `
+            Ya Cuenta Con Una Solicitud En Revisión  
+            Numero De Solicitud :${numero_solicitudRevision} 
+            Porfavor Espere Respuesta Al Correo Registrado.`;
             statusCode = 400;
+            tituloMensaje='Paciencia Por Favor Pronto Recibiras Una Respuesta ';
+            asunto='Pronto recibiras una respuesta Espera De Respuesta No Mayor A 15 Dias';
+            mensajeCorreo=`
+             No Es Posible Registrarse Nuevamente 
+             Porfavor Espere Una Respuesta De La Solicitud Con Numero ${numero_solicitudRevision}`
             statusms='error';
             break;
         case '4':
             let numero_solicitud_denegada = await buscarNumeroSolicitud(Documento)
-            respuesta = `Ya cuenta con una solicitud denegada por lo que se crea una nueva solicitud con numero ${numero_solicitud_denegada}`;
+            respuesta =`
+            Se Registro Una Nueva Solicitud De Registro 
+            Numero Nueva Solicitud De Registro: ${numero_solicitud_denegada}
+            Porfavor Solicionar Los Motivos De Rechazo De la Solicitud Anterior 
+            Numero Solicitud Denegada :  `;
+            tituloMensaje='Nuevo Registro Asociado coopservices ';
+            asunto='Nueva Solicitud De Registro Despues De Ser Rechazado Previamente ';
+            mensajeCorreo=`
+             Se Registro Una Nueva Solicitud De Registro 
+             Numero Nueva Solicitud De Registro: ${numero_solicitud_denegada}
+             Porfavor Solicionar Los Motivos De Rechazo De la Solicitud Anterior 
+             Numero Solicitud Denegada :  `;
             statusCode = 201;
             statusms='ok';
             break;
         
         case '5':
-            respuesta = `El usuario ya se encuentra registrado con otros datos comuniquese con el admin `;
+            respuesta = `
+            El Usuario Ya Se Encuentra Registrado 
+            Comuniquese Con El Admin 
+            Debido A Discrepancias En Los Datos De Registro`;
             statusCode = 400;
             statusms='error';
             break;
@@ -94,11 +143,12 @@ const register = async (req, res) => {
             statusms='error desconocido';
         }
         console.log('Respuesta enviada al cliente:', respuesta)
-        res.status(statusCode).send({ status: statusms, message: respuesta } )
+        enviarEmail(Correo_Electronico,asunto,tituloMensaje,mensajeCorreo);
+        return res.status(statusCode).send({ status: statusms, message: respuesta } )
         
     } catch (error) {
         console.error('Error en el controlador de registro:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
+        return res.status(500).json({ error: 'Error interno del servidor' });
     }
 };
 

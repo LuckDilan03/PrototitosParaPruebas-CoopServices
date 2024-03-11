@@ -47,7 +47,7 @@ IF id_person IS  NULL THEN
 ELSE
     SELECT a.Id_Solicitud ,a.DNI_Persona,a.Fecha_Solicitud,a.Usuario_Deseado,a.Contrasena_Deseada,a.Documento_Solicitud,a.Respuesta_Solicitud, a.Fecha_Aprobacion,a.Numero_Resolucion INTO REC_solicitud FROM tab_Solicitarmembresia a
     WHERE a.Id_Solicitud=id_person AND a.DNI_Persona=Pdocumento;
-    IF REC_solicitud.Respuesta_Solicitud = 'APROBADO' THEN
+    IF REC_solicitud.Respuesta_Solicitud = 'APROBADA' THEN
         RAISE NOTICE 'El documento % ya cuenta con una solicitud aprobada con numero % aprobada el dia %',Pdocumento,id_person,REC_solicitud.Fecha_Aprobacion ;
         respuesta='2';
 		RETURN respuesta;

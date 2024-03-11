@@ -3,7 +3,7 @@ $$
 DECLARE numero_solicitud_entrante  BIGINT;
 begin
   select id_solicitud into numero_solicitud_entrante from tab_solicitarmembresia
-    where documento=dni_persona AND respuesta_solicitud ='EN REVISION';
+    where documento=dni_persona ;
     if numero_solicitud_entrante IS NULL THEN 
         RAISE NOTICE 'No se encontraron solicitudes';
 		RETURN NULL;

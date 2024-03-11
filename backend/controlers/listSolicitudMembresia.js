@@ -1,4 +1,5 @@
 const pool = require('../config/connection');
+const {enviarEmail}=require('../services/email.service');
 
 async function listSolicitudMembresia(req, res) {
   try {
@@ -13,7 +14,7 @@ async function listSolicitudMembresia(req, res) {
 async function aprobarUsuario(req, res) {
     if (!req.body || typeof req.body !== 'object' || !('idSolicitud' in req.body) || !('informacionAdicional' in req.body)) {
         return res.status(400).send({ status: "error", message: "El cuerpo de la solicitud no contiene los datos necesarios." });
-        return res.status(400).json({ error: 'El cuerpo de la solicitud no contiene los datos necesarios.' });
+        
     }
 
     const { idSolicitud, informacionAdicional } = req.body;
@@ -27,12 +28,12 @@ async function aprobarUsuario(req, res) {
 
     try {
         await pool.query(queryText, queryParams);
+        enviarEmail("yasstudio69@gmail.com","prueba confirmacion","Su solicitud ah sido aprobada puede ingresar con ");
         return res.status(200).send({ status: "ok", message: "Solicitud aprobada correctamente" } );
-        return res.status(200).json({ mensaje: 'Solicitud aprobada correctamente' });
     } catch (error) {
         console.error('Error en la aprobación de solicitud:', error);
         return res.status(500).send({ status: "error", message: "Error interno del servidor al aprobar usuario" } );
-        return res.status(500).json({ mensaje: 'Error interno del servidor al aprobar usuario' });
+        
     }
 }
 
@@ -51,10 +52,11 @@ async function DenegarSolicitud(req,res){
 
     try {
         await pool.query(queryText, queryParams);
+        enviarEmail("yasstudio69@gmail.com","Denegacion de solicitud de asociado a la cooperativa",informacionAdicional.motivo)
         return res.status(200).send({ status: "ok", message: "Solicitud denegada correctamente" } );
         
     } catch (error) {
-        console.error('Error en la aprobación de solicitud:', error);
+        console.error('Error en la denegacion de solicitud:', error);
     return res.status(500).send({ status: "ok", message: "Error interno del servidor al denegar usuario" } );
     
 }

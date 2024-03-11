@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== "production") {
 
 
 const transporter =nodemailer.createTransport({
-host:process.env.EMAIL_HOST,
+host:"smtp.gmail.com",
 port:process.env.EMAIL_PORT,
 secure:true,
 auth:{
@@ -16,25 +16,28 @@ auth:{
 }
 })
 
-async function enviarEmail(direccion,nuemeroSolicitud){
+
+
+async function enviarEmail(to ,subject,titulo,mensaje){
+ 
     transporter.sendMail({
-        from:"",
-        to:"",
-        subject:"",
-        html:crearEmailConfirmacionRegistro()
+        from:process.env.EMAIL,
+        to:to,
+        subject:subject,
+        html:crearEmailConfirmacionRegistro(mensaje,titulo)
 
     })
 
 }
 
-function crearEmailConfirmacionRegistro(){
+function crearEmailConfirmacionRegistro(mensaje,titulo){
     return`
     <!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Exitoso</title>
+    <title>${titulo}</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -61,10 +64,11 @@ function crearEmailConfirmacionRegistro(){
     </head>
     <body>
     <div class="container">
-      <h1>Registro Exitoso</h1>
-      <p>Su solicitud ha sido registrada exitosamente con numero . Espere una respuesta dentro de los próximos 15 días hábiles.</p>
+      <h1>${titulo}</h1>
+      <p>${mensaje}</p>
       <p>Gracias por utilizar nuestros servicios.</p>
     </div>
     </body>
     </html>`
 }
+module.exports = {enviarEmail}
