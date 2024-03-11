@@ -1,29 +1,41 @@
 const jwt = require('jsonwebtoken');
-
+const path = require('path');
+const { KEY } = process.env;
 
 if (process.env.NODE_ENV !== "production") {
     require('dotenv/config');
 }
 
-const { KEY } = process.env;
+const mostrarVista = (req, res, rutaAdmin, rutaUser) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            throw new Error('No token provided');
+        }
 
-const path = require('path');
+        const decodificado = jwt.decode(token, KEY);
 
-const mostrardashboard = (req, res) => {
-    const token = req.cookies.authToken;
-    const decodificado=jwt.decode(token,KEY);
-    if(decodificado.rol===1){
-      res.sendFile(path.join(__dirname, '../../frontend/dashboard.html'));
-    }
-    if(decodificado.rol===2){
-      res.sendFile(path.join(__dirname, '../../frontend/MiCuenta.html'));
-    }
-    if(decodificado.rol===3){
-      res.sendFile(path.join(__dirname, '../../frontend/about.html'));
-    }
-    if(decodificado.rol===4){
-      res.sendFile(path.join(__dirname, '../../frontend/about.html'));
-    }
-  };
+        let filePath;
+        switch (decodificado.rol) {
+            case 1:
+                filePath = `../../frontend/${rutaAdmin}`;
+                break;
+            case 2:
+                filePath = `../../frontend/${rutaUser}`;
+                break;
+            case 3:
+            case 4:
+                filePath = '../../frontend/about.html';
+                break;
+            default:
+                throw new Error('Invalid role');
+        }
 
-  module.exports = {mostrardashboard};
+        res.sendFile(path.join(__dirname, filePath));
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(401).send('Unauthorized');
+    }
+};
+
+module.exports = { mostrarVista };

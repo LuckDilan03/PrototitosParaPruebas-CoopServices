@@ -39,25 +39,24 @@ async function aprobarUsuario(req, res) {
 async function DenegarSolicitud(req,res){
   if (!req.body || typeof req.body !== 'object' || !('idSolicitud' in req.body) || !('informacionAdicional' in req.body)) {
     return res.status(400).send({ status: "error", message: "El cuerpo de la solicitud no contiene los datos necesarios." } );
-    return res.status(400).json({ error: 'El cuerpo de la solicitud no contiene los datos necesarios.' });
-}
+    }
 
-const { idSolicitud, informacionAdicional } = req.body;
-const queryText = `SELECT * FROM denegarSolicitud($1, $2,$3)`;
-const queryParams = [
-    idSolicitud,
-    informacionAdicional.motivo,
-    informacionAdicional.numeroResolucion
-];
+    const { idSolicitud, informacionAdicional } = req.body;
+    const queryText = `SELECT * FROM denegarSolicitud($1, $2,$3)`;
+    const queryParams = [
+        idSolicitud,
+        informacionAdicional.motivo,
+        informacionAdicional.numeroResolucion   
+    ];
 
-try {
-    await pool.query(queryText, queryParams);
-    return res.status(200).send({ status: "ok", message: "Solicitud denegada correctamente" } );
-    return res.status(200).json({ mensaje: 'Solicitud aprobada correctamente' });
-} catch (error) {
-    console.error('Error en la aprobación de solicitud:', error);
+    try {
+        await pool.query(queryText, queryParams);
+        return res.status(200).send({ status: "ok", message: "Solicitud denegada correctamente" } );
+        
+    } catch (error) {
+        console.error('Error en la aprobación de solicitud:', error);
     return res.status(500).send({ status: "ok", message: "Error interno del servidor al denegar usuario" } );
-    return res.status(500).json({ mensaje: 'Error interno del servidor al aprobar usuario' });
+    
 }
 
 }
