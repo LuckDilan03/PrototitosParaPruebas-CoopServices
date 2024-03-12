@@ -4,34 +4,27 @@ if (process.env.NODE_ENV !== "production") {
     require('dotenv/config');
 }
 
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: process.env.EMAIL_PORT,
+    secure: true,
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
+    }
+});
 
-
-const transporter =nodemailer.createTransport({
-host:"smtp.gmail.com",
-port:process.env.EMAIL_PORT,
-secure:true,
-auth:{
-    user:process.env.EMAIL,
-    pass:process.env.PASSWORD
-}
-})
-
-
-
-async function enviarEmail(to ,subject,titulo,mensaje){
- 
+async function enviarEmail(to, subject, titulo, mensaje) {
     transporter.sendMail({
-        from:process.env.EMAIL,
-        to:to,
-        subject:subject,
-        html:crearEmailConfirmacionRegistro(mensaje,titulo)
-
-    })
-
+        from: process.env.EMAIL,
+        to: to,
+        subject: subject,
+        html: crearEmailConfirmacionRegistro(mensaje, titulo)
+    });
 }
 
-function crearEmailConfirmacionRegistro(mensaje,titulo){
-    return`
+function crearEmailConfirmacionRegistro(mensaje, titulo) {
+    return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -40,35 +33,94 @@ function crearEmailConfirmacionRegistro(mensaje,titulo){
     <title>${titulo}</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f4f4;
+        background-color: #f6f6f6;
       }
       .container {
         max-width: 600px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 40px;
         background-color: #ffffff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       }
-      h1 {
-        color: #333333;
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
       }
-      p {
-        color: #666666;
-        margin-bottom: 20px;
+      .header h1 {
+        color: #4CAF50;
+        font-size: 36px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0;
+      }
+      .logo-container {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .logo {
+        width: 200px;
+        height: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .message {
+        color: #444444;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        text-align: justify;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .footer p {
+        color: #888888;
+        font-size: 14px;
+        margin: 0;
+      }
+      .button {
+        display: inline-block;
+        padding: 15px 40px;
+        background-color: #4CAF50;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: #45a049;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
       }
     </style>
     </head>
     <body>
     <div class="container">
-      <h1>${titulo}</h1>
-      <p>${mensaje}</p>
-      <p>Gracias por utilizar nuestros servicios.</p>
+      <div class="logo-container">
+        <img class="logo" src="../../frontend/images/logo-green-200x34.png" alt="Logo de la empresa">
+      </div>
+      <div class="header">
+        <h1>${titulo}</h1>
+      </div>
+      <p class="message">${mensaje}</p>
+      <div class="footer">
+        <p>Gracias por utilizar nuestros servicios.</p>
+        <a href="#" class="button">Visitar nuestro sitio web</a>
+      </div>
     </div>
     </body>
-    </html>`
+    </html>
+    `;
 }
-module.exports = {enviarEmail}
+
+module.exports = { enviarEmail };
