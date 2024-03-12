@@ -75,13 +75,13 @@ function agregarDatosAaprobar(solicitudes) {
                 <td class="fecha-aprobacion">${fechaaprobacionform}</td>
                 <td class="numero-resolucion">${solicitud.numero_resolucion}</td>
                 <td class="text-left">
-                    <button class="btn btn-sm btn-primary" onclick="EditarSolicitud(${solicitud.id})">
+                    <button class="btn btn-sm btn-primary" onclick="EditarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-pencil"></i> Editar
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud})">
+                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
-                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
+                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id_solicitud})">
                     <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>
@@ -110,13 +110,13 @@ function agregarDatosArevision(solicitudes) {
                 <td><a href="/uploads/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
                 <td>${solicitud.respuesta_solicitud}</td>
                 <td class="text-left">
-                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud})">
+                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-check"></i> Aprobar
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud})">
+                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
-                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
+                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id_solicitud})">
                     <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>
@@ -147,13 +147,13 @@ function agregarDatosAdenegar(solicitudes) {
                 <td class="fecha-aprobacion">${fechaaprobacionform}</td>
                 <td class="numero-resolucion">${solicitud.numero_resolucion}</td>
                 <td class="text-left">
-                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id})">
+                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-pen"></i> Aprobar
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud})">
+                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
-                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id})">
+                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id_solicitud})">
                     <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>
@@ -164,13 +164,14 @@ function agregarDatosAdenegar(solicitudes) {
 }
 
 
-async function denegarSolicitud(idSolicitud){
+async function denegarSolicitud(idSolicitud,dniDenegado){
     try {
         console.log('Denengando solicitud con ID:', idSolicitud);
         const informacionAdicional = await solicitarInformacionAdicionalDenegado(idSolicitud); // Pasar idSolicitud aquí
         console.log('Información adicional recopilada:', informacionAdicional);
 
         const bodyData = {
+            dniDenegado:dniDenegado,
             idSolicitud: idSolicitud, // Asignar idSolicitud aquí
             informacionAdicional: informacionAdicional
         };
@@ -199,13 +200,14 @@ async function denegarSolicitud(idSolicitud){
 }
 
 
-async function aprobarSolicitud(idSolicitud) {
+async function aprobarSolicitud(idSolicitud,dniAprobado) {
     try {
         console.log('Aprobando solicitud con ID:', idSolicitud);
         const informacionAdicional = await solicitarInformacionAdicional(idSolicitud); // Pasar idSolicitud aquí
         console.log('Información adicional recopilada:', informacionAdicional);
 
         const bodyData = {
+            dniAprobado:dniAprobado,
             idSolicitud: idSolicitud, // Asignar idSolicitud aquí
             informacionAdicional: informacionAdicional
         };
