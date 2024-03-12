@@ -2,21 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const formularioRegistro = document.getElementById('formulario-registro');
     const inputs = document.querySelectorAll('#formulario-registro input');
     const passwordInput = document.getElementById('Contrasena');
+    const repetirPasswordInput = document.getElementById('RepetirContrasena');
     const requisitosContrasena = document.getElementById('requisitos-contrasena');
 
     const expresiones = {
-        Documento: /^\d{3,}$/, // Expresión para validar el número de documento
-        Primer_Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Expresión para validar el primer apellido
-        Direccion: /^[a-zA-Z0-9\s\#\-\.\,]{3,80}$/, // Expresión para validar la dirección
-        Primer_Nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Expresión para validar el primer nombre
-        Segundo_Apellido: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo apellido
-        Correo_Electronico: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, // Expresión para validar el correo electrónico
-        Segundo_Nombre: /^[a-zA-ZÀ-ÿ\s]{0,40}$/, // Expresión para validar el segundo nombre
-        Telefono: /^\d{10}$/, // Expresión para validar el número de teléfono 
-        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, // Expresión para validar la contraseña
-
-        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d){8,}$/, // Expresión para validar la contraseña
-
+        Documento: /^\d{3,}$/,
+        Primer_Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+        Direccion: /^[a-zA-Z0-9\s\#\-\.\,]{3,80}$/,
+        Primer_Nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+        Segundo_Apellido: /^[a-zA-ZÀ-ÿ\s]{0,40}$/,
+        Correo_Electronico: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        Segundo_Nombre: /^[a-zA-ZÀ-ÿ\s]{0,40}$/,
+        Telefono: /^\d{10}$/,
+        Contrasena: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
     };
 
     const mostrarRequisitosContrasena = (requisitos) => {
@@ -49,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const validarContrasena = () => {
         const contrasena = passwordInput.value.trim();
+        const repetirContrasena = repetirPasswordInput.value.trim();
         const requisitos = [];
 
         if (contrasena.length < 8) {
@@ -59,7 +58,17 @@ document.addEventListener('DOMContentLoaded', () => {
             requisitos.push('Debe tener mínimo una letra mayúscula y una minúscula.');
         }
 
+        if (contrasena !== repetirContrasena) {
+            requisitos.push('Las contraseñas no coinciden');
+        }
+
         mostrarRequisitosContrasena(requisitos);
+
+        if (repetirContrasena === contrasena) {
+            repetirPasswordInput.style.display = 'none';
+        } else {
+            repetirPasswordInput.style.display = 'block';
+        }
 
         return requisitos.length === 0;
     };
@@ -67,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const validarFormulario = (e) => {
         const input = e.target;
 
-        if (input.name === 'Contrasena') {
+        if (input.name === 'Contrasena' || input.name === 'RepetirContrasena') {
             validarContrasena();
         } else {
             validarCampo(input, expresiones[input.name]);
@@ -84,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let formularioValido = true;
 
         inputs.forEach((input) => {
-            if (input.name === 'Contrasena') {
+            if (input.name === 'Contrasena' || input.name === 'RepetirContrasena') {
                 formularioValido = validarContrasena() && formularioValido;
             } else {
                 formularioValido = validarCampo(input, expresiones[input.name]) && formularioValido;

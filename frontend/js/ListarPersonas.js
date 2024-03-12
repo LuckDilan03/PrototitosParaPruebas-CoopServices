@@ -56,7 +56,7 @@ function agregarDatosATabla(personas) {
     <td>${persona.telefono_persona}</td>
     <td>${persona.correo_persona}</td>
     <td>${persona.nombre_rol || '-'}</td>
-    <td>${persona.documento_persona}</td>
+    <td><a href="/uploads/${persona.documento_persona}" target="_blank">Enlace al documento</a></td>
 
     `;
     tbody.appendChild(fila);
