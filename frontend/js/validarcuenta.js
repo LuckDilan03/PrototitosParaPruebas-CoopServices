@@ -1,14 +1,16 @@
-// Suponiendo que tienes una función fetchUserInfo() que obtiene la información del usuario del backend
-function fetchUserInfo() {
-    fetch('InfoUsuario')
-    .then(response => response.json())
-    .then(data => {
-        // Actualizar el nombre del usuario y la imagen del avatar
-        document.getElementById('userName').textContent = data.name;
-        document.getElementById('userAvatar').src = data.avatarUrl;
-    })
-    .catch(error => {
-        console.error('Error al obtener la información del usuario:', error);
-    });
-}
 
+document.addEventListener('DOMContentLoaded', function () {
+    fetch(`/obtenerNombrePersona/${userId}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Error al obtener el nombre de la persona');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Nombre de la persona:', data.nombre);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+});
