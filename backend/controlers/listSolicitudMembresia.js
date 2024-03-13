@@ -54,6 +54,7 @@ async function aprobarUsuario(req, res) {
         
         const nombreCompleto = `${userData[0].nombre_persona} ${userData[0].segundo_nombre_persona} ${userData[0].apellido_persona} ${userData[0].segundo_apellido_persona}`;
         const destinatario=userData[0].correo_persona;
+        
         let mensajeCorreo = `
             Te damos la bienvenida como asociado oficial.<br>
             A continuación, te proporcionaremos los datos básicos <br>
@@ -76,6 +77,8 @@ async function aprobarUsuario(req, res) {
             Aporte Inicial: ${userData[0].monto_aporte}<br>
         `;
         if (informacionAdicional.esAdministrativo) {
+        let fecha_inicio=new Date(userData[0].fecha_solicitud)
+        fecha_inicio = fecha_inicio.toISOString().slice(0, 10);
          fecha_fin=new Date(userData[0].fecha_aprobacion)
          fecha_fin.setFullYear(fecha_fin.getFullYear() + 1);
          const FechaFinalizacion = fecha_fin.toISOString().slice(0, 10);
@@ -92,7 +95,7 @@ async function aprobarUsuario(req, res) {
         
         Usuario De Acceso: ${userData[0].usuario_deseado}<br>
         
-        Fecha De Aprobacion Administrativa: ${userData[0].fecha_aprobacion}<br>
+        Fecha De Aprobacion Administrativa: ${fecha_inicio}<br>
         
         Fecha Fin Campaña Administrativa: ${FechaFinalizacion}<br>
         
