@@ -115,7 +115,7 @@ function crearEmailConfirmacionRegistro(mensaje, titulo) {
       <p class="message">${mensaje}</p>
       <div class="footer">
         <p>Gracias por utilizar nuestros servicios.</p>
-        <a href="#" class="button">Visitar nuestro sitio web</a>
+        <a href="" class="button">Visitar nuestro sitio web</a>
       </div>
     </div>
     </body>
