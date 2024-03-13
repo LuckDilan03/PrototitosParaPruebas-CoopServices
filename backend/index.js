@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use('../frontend/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
-const { PORT } = process.env;
+const { PORT,HOST } = process.env;
 
 
 // Manejador de errores global
@@ -35,5 +35,6 @@ app.use((err, req, res, next) => {
 });
 
 server.listen(PORT, () => {
-    console.log("¡Hola mundo! Funcionó por el puerto", PORT);
+    
+    console.log("¡Hola mundo! Funcionó por el puerto" ,HOST,PORT);
 });

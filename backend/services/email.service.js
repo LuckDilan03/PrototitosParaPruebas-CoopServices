@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: process.env.EMAIL_PORT,
+    port: 465,
     secure: true,
     auth: {
         user: process.env.EMAIL,
@@ -15,13 +15,21 @@ const transporter = nodemailer.createTransport({
 });
 
 async function enviarEmail(to, subject, titulo, mensaje) {
-    transporter.sendMail({
-        from: process.env.EMAIL,
-        to: to,
-        subject: subject,
-        html: crearEmailConfirmacionRegistro(mensaje, titulo)
-    });
+  try {
+      await transporter.sendMail({
+          from: process.env.EMAIL,
+          to: to,
+          subject: subject,
+          html: crearEmailConfirmacionRegistro(mensaje, titulo)
+      });
+      console.log('Correo electrónico enviado correctamente');
+  } catch (error) {
+      console.error('Error al enviar el correo electrónico:', error);
+      throw error; // Relanza el error para que se maneje en el controlador
+  }
 }
+
+
 
 function crearEmailConfirmacionRegistro(mensaje, titulo) {
     return `
@@ -107,7 +115,7 @@ function crearEmailConfirmacionRegistro(mensaje, titulo) {
     <body>
     <div class="container">
       <div class="logo-container">
-        <img class="logo" src="../../frontend/images/logo-green-200x34.png" alt="Logo de la empresa">
+      <a href="#"><img src="https://i.ibb.co/rybbQkc/logo-green-200x34.png" alt="Logo de la empresa" border="0"></a> 
       </div>
       <div class="header">
         <h1>${titulo}</h1>
@@ -115,7 +123,7 @@ function crearEmailConfirmacionRegistro(mensaje, titulo) {
       <p class="message">${mensaje}</p>
       <div class="footer">
         <p>Gracias por utilizar nuestros servicios.</p>
-        <a href="#" class="button">Visitar nuestro sitio web</a>
+        <a href="http://${process.env.HOST}:${process.env.PORT}" class="button">Visitar nuestro sitio web</a>
       </div>
     </div>
     </body>

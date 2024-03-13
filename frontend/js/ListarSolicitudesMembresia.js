@@ -256,9 +256,10 @@ async function solicitarInformacionAdicionalDenegado(idSolicitud) {
     return new Promise((resolve, reject) => {
         $('#btnGuardarModalDenegado').one('click', () => {
             const informacionAdicional = {
-                saldoInicial: document.getElementById('MotivoRechazo').value,
+                MotivoRechazo: document.getElementById('MotivoRechazo').value,
                 numeroResolucion: document.getElementById('numeroResolucionRechazada').value,
-                idSolicitud: idSolicitud
+                idSolicitud: idSolicitud,
+                
             };
 
             // Cierra el modal

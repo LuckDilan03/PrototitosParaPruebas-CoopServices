@@ -23,6 +23,7 @@ async function dataUserAprobado(dni) {
             fecha_solicitud: row.fecha_solicitud,
             usuario_deseado: row.usuario_deseado,
             respuesta_solicitud: row.respuesta_solicitud,
+            fecha_aprobacion:row.fecha_aprobacion,
             numero_cuenta: row.numero_cuenta,
             saldo_cuenta: row.saldo_cuenta,
             aporte_mensual: row.aporte_mensual,

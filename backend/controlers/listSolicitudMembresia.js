@@ -18,14 +18,20 @@ async function aprobarUsuario(req, res) {
     }
 
     const { idSolicitud, dniAprobado, informacionAdicional } = req.body;
-    const queryText = `SELECT * FROM aprobarAsociado($1, $2, $3,$4)`;
+    
+    
+    const queryText = `SELECT * FROM aprobarAsociado($1, $2, $3,$4,$5)`;
     const queryParams = [
         idSolicitud,
         informacionAdicional.saldoInicial,
         informacionAdicional.saldoAhorroVoluntario,
-        informacionAdicional.numeroResolucion
+        informacionAdicional.numeroResolucion,
+        informacionAdicional.esAdministrativo
+        
     ];
+    
 
+    
     try {
         await pool.query(queryText, queryParams);
 
@@ -48,7 +54,7 @@ async function aprobarUsuario(req, res) {
         
         const nombreCompleto = `${userData[0].nombre_persona} ${userData[0].segundo_nombre_persona} ${userData[0].apellido_persona} ${userData[0].segundo_apellido_persona}`;
         const destinatario=userData[0].correo_persona;
-        const mensajeCorreo = `
+        let mensajeCorreo = `
             Te damos la bienvenida como asociado oficial.<br>
             A continuación, te proporcionaremos los datos básicos <br>
             que debes tener en cuenta como asociado.<br><br><br>
@@ -69,6 +75,29 @@ async function aprobarUsuario(req, res) {
             
             Aporte Inicial: ${userData[0].monto_aporte}<br>
         `;
+        if (informacionAdicional.esAdministrativo) {
+         fecha_fin=new Date(userData[0].fecha_aprobacion)
+         fecha_fin.setFullYear(fecha_fin.getFullYear() + 1);
+         const FechaFinalizacion = fecha_fin.toISOString().slice(0, 10);
+         mensajeCorreo=`
+        Te damos la bienvenida como Administrador oficial.<br>
+        A continuación, te proporcionaremos los datos básicos <br>
+        que debes tener en cuenta como Administrador.<br><br><br>
+        
+        
+                    DATOS PERSONALES:<br>
+        Nombre Asociado Administrador: ${nombreCompleto}<br>
+        
+        Correo Registrado: ${userData[0].correo_persona}<br>
+        
+        Usuario De Acceso: ${userData[0].usuario_deseado}<br>
+        
+        Fecha De Aprobacion Administrativa: ${userData[0].fecha_aprobacion}<br>
+        
+        Fecha Fin Campaña Administrativa: ${FechaFinalizacion}<br>
+        
+
+        `;}
         
         // Enviar el correo con los datos del usuario aprobado
         enviarEmail(`${destinatario}`,`Aprobación de Solicitud Con Numero De Solicitud ${userData[0].id_solicitud}`, 

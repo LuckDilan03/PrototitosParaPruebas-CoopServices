@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const pool = require('../config/connection');
-const {enviarEmail}=require('../services/email.service')
+const {enviarEmail}=require('../services/email.service');
+const {dataUserAprobado}=require('../controlers/dataUser');
 
 const register = async (req, res) => {
     try {
@@ -54,6 +55,20 @@ const register = async (req, res) => {
         ];
 
         const result = await pool.query(queryText, queryParams);
+        const userData = await dataUserAprobado(Documento);
+        console.log(userData);
+        
+        if (userData.error) {
+            // Manejar el caso en el que no se encontraron datos para el usuario aprobado
+            console.error('Error al obtener los datos del usuario aprobado:', userData.error);
+            return res.status(404).send({ status: "error", message: "No se encontraron datos para el usuario aprobado" });
+        }
+        
+        if (!userData[0].correo_persona) {
+            // Manejar el caso en el que no se ha proporcionado una dirección de correo electrónico
+            console.error('No se ha proporcionado una dirección de correo electrónico para el usuario aprobado');
+            return res.status(400).send({ status: "error", message: "No se ha proporcionado una dirección de correo electrónico para el usuario aprobado" });
+        }
 
         let respuesta;
         let statusCode;
@@ -143,7 +158,7 @@ const register = async (req, res) => {
             statusms='error desconocido';
         }
         console.log('Respuesta enviada al cliente:', respuesta)
-        enviarEmail(Correo_Electronico,asunto,tituloMensaje,mensajeCorreo);
+        enviarEmail(userData[0].correo_persona,asunto,tituloMensaje,mensajeCorreo);
         return res.status(statusCode).send({ status: statusms, message: respuesta } )
         
     } catch (error) {
