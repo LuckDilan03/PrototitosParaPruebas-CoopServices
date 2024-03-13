@@ -209,6 +209,7 @@ CREATE TABLE tab_SolicitarMembresia
     Respuesta_Solicitud			VARCHAR   	    NOT NULL	 DEFAULT 'EN REVISION',
     Fecha_Aprobacion			DATE,                   	-- Fecha en la que se aprobo la solicitud
 	Numero_Resolucion			BIGINT,
+    Detalle_Solicitud           VARCHAR,
     Usuario_Inserta      		VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
     Fecha_Inserta      			TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     Usuario_Update      		VARCHAR, 
