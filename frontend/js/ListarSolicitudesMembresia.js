@@ -42,6 +42,7 @@ async function obtenerDatosSolicitud() {
                 }
             }
         });
+        
     } catch (error) {
         console.error('Error al obtener datos de usuarios: ', error);
     }
@@ -332,6 +333,20 @@ $(document).ready(function() {
     $('#searchInputDenegar').on('keyup', function() {
         applyFilter($('#filterCriteriaDenegar').val(), $(this).val(), '#denegarTable');
     });
+
+    $(document).ready(function() {
+        // Desplazar automáticamente al inicio del contenedor de la tabla al cambiar de página
+        $('#revisionTable, #aprobarTable, #denegarTable').on('page.dt', function () {
+            // Obtener el contenedor de la tabla
+            var container = $(this).closest('.container-fluid');
+            // Obtener la posición superior del contenedor de la tabla
+            var containerTop = container.offset().top;
+            // Animar el desplazamiento a la posición superior del contenedor de la tabla
+            $('html, body').animate({ scrollTop: containerTop }, 'slow');
+        });
+    });
+    
+    
 });
 
 // Función de filtrado
