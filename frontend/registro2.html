@@ -78,7 +78,7 @@
                         <li type="circle">Debe tener mínimo una letra mayúscula y una minúscula.</li>
                         <li type="circle">Debe tener mínimo un carácter especial (!@#$%^&*().,)</li>
                     </ul>
-                    <input type="password" name="RepetirContrasena" id="RepetirContrasena" placeholder="Repite Contraseña">
+                    <input type="password" name="RepetirContrasena" id="RepetirContrasena" placeholder="Repite la Contraseña">
 
                 </div>                
             </div>
@@ -88,8 +88,9 @@
             <div class="botones">
                 <div class="file-container">
                     <label for="Soporte_Documento" class="file-label"> Documento Identidad</label>
-                    <input type="file" name="Soporte_Documento" id="Soporte_Documento" onchange="updateFileInputUI()" accept=".pdf,.jpg, .pnj" style="display: none;">
+                    <input type="file" name="Soporte_Documento" id="Soporte_Documento" onchange="updateFileInputUI()" accept=".pdf,.jpg, .png"  max="800" data-max-size="800000" style="display: none;">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    <p class="error"></p>
                 </div>
             </div>
             <div class="botones">

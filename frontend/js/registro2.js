@@ -2,7 +2,18 @@
 const mensaje=document.getElementsByClassName('error')[0];
 
 const fileInput = document.getElementById('Soporte_Documento');
-fileInput.addEventListener('change', updateFileInputUI);
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (file.size > fileInput.dataset.maxSize) {
+    mensaje.textContent = 'El tamaño del archivo no debe exceder los 800kb.';
+    mensaje.style.display = 'block';
+    fileInput.value = '';
+    fileInput.dispatchEvent(new Event('change')); // reset the file input UI
+    return false;
+  } else {
+    mensaje.style.display = 'none';
+  }
+});
 
 //funcion para el cambio por el nombre del archivo
 function updateFileInputUI() {
@@ -12,9 +23,8 @@ function updateFileInputUI() {
 
     if (fileInput.files.length > 0) {
         // Si se selecciona un archivo, mostrar solo el nombre del archivo (sin la ruta completa)
-        const fileName = fileInput.files[0].name;
-        fileLabel.textContent = fileName;
-        
+        const fileName = fileInput.files[0].name.length > 40 ? fileInput.files[0].name.substring(0, 30) + '...' : fileInput.files[0].name;
+        fileLabel.textContent = fileName;    
     } else {
         // Si no se selecciona ningún archivo, mostrar el texto predeterminado y ocultar el nombre del archivo
         fileLabel.textContent = 'Documento de identidad';
@@ -84,7 +94,7 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
 
         // Define el orden deseado de los campos de entrada
-        var fieldOrder = ['Documento', 'Primer_Nombre', 'Segundo_Nombre', 'Primer_Apellido', 'Segundo_Apellido', 'Telefono', 'Direccion', 'Correo_Electronico', 'Contrasena'];
+        var fieldOrder = ['Documento', 'Primer_Nombre', 'Segundo_Nombre', 'Primer_Apellido', 'Segundo_Apellido', 'Telefono', 'Direccion', 'Correo_Electronico', 'Contrasena', 'RepetirContrasena'];
 
         // Encuentra el índice del campo de entrada actualmente enfocado en el orden deseado
         var currentIndex = fieldOrder.indexOf(document.activeElement.id);

@@ -16,6 +16,7 @@ CREATE OR REPLACE VIEW public.vistaaprobado
     b.fecha_solicitud,
     b.usuario_deseado,
     b.respuesta_solicitud,
+    b.fecha_aprobacion,
     d.numero_cuenta,
     d.saldo_cuenta,
     d.aporte_mensual,
