@@ -39,7 +39,7 @@ h2 {
   padding: 40px;
   background: #fff;
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(68,205,194, 0.404);
+  box-shadow: 0 15px 25px rgba(1, 255, 157, 0.404);
   border-radius: 10px;
 }
 
@@ -49,9 +49,9 @@ h2 {
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 40px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.99);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px  rgba(68,205,194, 0.404);
+  box-shadow: 0 15px 25px rgba(1, 255, 157, 0.336);
   border-radius: 10px;
 
 }
@@ -103,7 +103,7 @@ h2 {
   padding: 15px 20px;
   width: 220px;
   height: 50px;
-  background-color: #2b353f;
+  background-color: #192233;
   color: white;
   font-weight: bold;
   border: none;
@@ -117,10 +117,10 @@ h2 {
   width: 100%;
   padding: 15px 5px;
   font-size: 16px;
-  color: #2c343b;
+  color: #49c4b3;
   margin-bottom: 20px;
   border: none;
-  border-bottom: 1.5px solid #2c343b;
+  border-bottom: 1.8px solid #83ff78;
   outline: none;
   background: transparent;
 
@@ -128,23 +128,23 @@ h2 {
 
 
 .form-container input::placeholder {
-  color: #2c343b;
+  color: #425766;
 }
 
 
 
 .form-container input {
-  border-bottom: 1.5px solid #2c343b;
-  color: #2c343b;
+  border-bottom: 1.9px solid #3daf89;
+  color: #3daf89;
  ;
 }
 
 
 
 .form-container input:hover, .form-container input:focus {
-  border-bottom: 1.5px solid #2c343b;
-  color: #2c343b;
-  box-shadow: 0 0 20px 0 rgba(1, 68, 80, 0.5) inset;
+  border-bottom: 1.5px solid #5BD9AF;
+  color: #81dbff;
+  box-shadow: 0 0 20px 0 rgba(0, 116, 77, 0.5) inset;
 
 }
 
@@ -154,22 +154,22 @@ h2 {
 
 i.bx {
   font-size: 20px;
-  color: #2c343b;
+  color: #44cd9f;
 }
 
 p {
-  color: #2c343b;
+  color: #263842;
   font-size: 16px;
   text-align: center;
 }
 
 a {
-  color: #2c343b;
+  color: #5BD9AF;
   text-decoration: none;
 }
 
 a:hover {
-  color: #2c343b;
+  color: #00ffaa;
   text-decoration: underline;
 
 }
@@ -201,7 +201,7 @@ input, button {
 .form-container select:-webkit-autofill,
 .form-container select:-webkit-autofill:hover,
 .form-container select:-webkit-autofill:focus {
-    -webkit-text-fill-color: #2c343b !important; /* Color del texto */
+    -webkit-text-fill-color: #6cfacf !important; /* Color del texto */
     transition: background-color 5000s ease-in-out 0s; /* Transición de color de fondo */
 }
 
@@ -209,12 +209,12 @@ input, button {
 .form-container input:-moz-placeholder,
 .form-container textarea:-moz-placeholder,
 .form-container select:-moz-placeholder {
-    color: #2c343b !important; /* Color del texto */
+    color: #6cfacf !important; /* Color del texto */
     opacity: 1 !important; /* Opacidad del texto */
 }
 
 button {
-  background-color: #2b353f;
+  background-color: #425766;
   color: rgb(255, 255, 255);
   font-weight: bold;
   cursor: pointer;
@@ -222,8 +222,8 @@ button {
 }
 
 button:hover {
-  background-color: #2b353f;
-  color: #2b353f;
+  background-color: #5BD9AF;
+  color: #004455;
   animation: btn-start 1.5s;
   animation-iteration-count: infinite;
 }
@@ -254,12 +254,12 @@ button:hover {
 }
 
 button:active {
-  background-color: #023fc4;
-  color: #80f0ff;
+  background-color: #5BD9AF;
+  color: #063a20;
 }
 
 .error {
-  color: rgb(255, 81, 81);
+  color: rgb(255, 59, 59);
   text-align: center;
 }
 
@@ -278,8 +278,8 @@ button:active {
 
 
 .file-label {
-  background-color: #2c343b;
-  color: #2c343b;
+  background-color: #5BD9AF;
+  color: #004128;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
@@ -292,24 +292,24 @@ button:active {
 
 /* Efecto al pasar el cursor sobre el botón */
 .file-label:hover {
-  background-color: #2c343b; /* Cambiamos el color de fondo */
-  color: #2c343b;
+  background-color: #213746; /* Cambiamos el color de fondo */
+  color: #5BD9AF;
   transform: translateY(-3px); /* Movemos ligeramente hacia arriba */
 }
 
 .file-label:hover {
-  background-color: #2c343b;
-  color:#2c343b
+  background-color: #213746;
+  color:#5BD9AF
 }
 
 .file-label:active {
-  background-color: #2c343b;
-  color: #2c343b;
+  background-color: #5BD9AF;
+  color: #006b42;
 }
 
 .file-name {
   display: none;
-  color: #000741;
+  color: #213746;
   font-size: 16px;
 }
 
@@ -366,7 +366,7 @@ button:active {
   .formulario__validacion-estado {
     font-size: 14px;
     margin-bottom: 10px;
-    color: #00ff95;
+    color: #00ff4c;
 }
 
 .formulario__validacion-estado {
@@ -413,15 +413,16 @@ button:active {
 
  
 .requisitos-contrasena {
-  color: #ff5050;
+  color: #ce0000;
   font-size: 14px;
   margin-top: 5px;
 }
 
 /* Estilos para la validación en tiempo real */
 .formulario__grupo-incorrecto input {
-  border-bottom-color: #ff5050; /* Cambia el color del borde al fallar la validación */
-  background-color: rgba(255, 0, 0, 0.103);
+  border-bottom-color: #fa3b3b; /* Cambia el color del borde al fallar la validación */
+  background-color: rgba(202, 0, 0, 0.103);
+  color: #5e0202;
 }
 
 .formulario__grupo-incorrecto .formulario__validacion-estado.fa-times-circle {
