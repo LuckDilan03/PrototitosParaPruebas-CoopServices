@@ -6,7 +6,7 @@ const controlerListSolicitudPrestamo = require('../controlers/listSolicitudPrest
 const contolerListUsuarios = require('../controlers/listUsers');
 const controlerListAsociados = require('../controlers/listAsociados');
 const controlerListPersonas = require('../controlers/listPersonas');
-const userController = require('../controlers/usercontroller');
+const controlerDataUser=require('../controlers/vistaAsociadoCompleta');
 
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -21,6 +21,7 @@ const adminRoutes = (app) => {
   app.get('/micuenta.html', auth.verifyToken, (req, res) => {
     res.redirect('/dashboard');
   });
+  app.get('/datauser', auth.verifyToken, controlerDataUser.listUserAprobado);
 
   /*rutas del formulario de prestamos y su html*/
   app.get('/solicitarPrestamo', auth.verifyToken, (req, res) => {
@@ -116,8 +117,7 @@ const adminRoutes = (app) => {
   /*rutas para la aprobacion de usuarios*/
 
   // Ruta para obtener información del usuario
-  app.get('/obtenerNombrePersona', auth.verifyToken, userController.obtenerNombrePersona);
-  app.get('/obtenerNombrePersona/:id', auth.verifyToken, userController.obtenerNombrePersonaById);
+ 
 };
 
 module.exports = adminRoutes;
