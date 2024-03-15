@@ -7,7 +7,7 @@ const contolerListUsuarios = require('../controlers/listUsers');
 const controlerListAsociados = require('../controlers/listAsociados');
 const controlerListPersonas = require('../controlers/listPersonas');
 const controlerDataUser=require('../controlers/vistaAsociadoCompleta');
-
+const {validarRol}=require('../middlewares/validacionRol');
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
   app.get('/dashboard', auth.verifyToken, (req, res) => {

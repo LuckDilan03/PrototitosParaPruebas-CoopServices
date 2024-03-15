@@ -1,8 +1,21 @@
 const pool = require('../config/connection');
+const jwt = require('jsonwebtoken');
+const { KEY } = process.env;
+
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv/config');
+}
 
 async function listUserAprobado(req, res) {
     try {
-        const { dni } = req.params; // Si el DNI se pasa como parámetro en la URL
+
+        const token = req.cookies.authToken;
+        if (!token) {
+            throw new Error('No token provided');
+        }
+
+        const decodificado = jwt.decode(token, KEY);
+        const  dni  = decodificado.dni; // Si el DNI se pasa como parámetro en la URL
         const { rows } = await pool.query('SELECT * FROM vistaaprobado WHERE dni_persona = $1', [dni]);
         
         if (rows.length === 0) {
