@@ -443,8 +443,8 @@ body{
 
 .img-coop{
 
-    width: 45px; /* Ancho de la imagen */
-    height: 45px; /* Altura de la imagen */
+    width: 52px; /* Ancho de la imagen */
+    height: 50px; /* Altura de la imagen */
     background-image: url(../images/logo-dashboard.png); /* Ruta de la imagen */
     background-size: cover; /* Ajusta el tamaño de la imagen */
 

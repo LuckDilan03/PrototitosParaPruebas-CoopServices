@@ -972,7 +972,7 @@ html .group-sm > * {
 
 @media (min-width: 576px) {
 	html .group-sm {
-		margin-bottom: -10px;
+		margin-bottom: 10px;
 		margin-left: -10px;
 	}
 	html .group-sm:empty {
@@ -1551,7 +1551,7 @@ img {
 
 
 .text-verde {
-  color: #275b1c !important;
+  color: #1c1d5b !important; /*azul*/
 }
 
 .text-dark {
@@ -1593,7 +1593,7 @@ hr {
 	border: 1px solid;
 	font-family: "Poppins", sans-serif;
 	font-weight: 700;
-	letter-spacing: 0.23em;
+	letter-spacing: 0.002em;
 	text-transform: uppercase;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -1655,7 +1655,7 @@ hr {
 }
 
 .button-primary, .button-primary:focus {
-	color: #6adcff;
+	color: #c2f1ff;
 	background-color: #085683;
 	border-color: #037d8d;
 }
@@ -1884,6 +1884,7 @@ hr {
 
 .button-circle {
 	border-radius: 30px;
+	width: 200px;
 }
 
 .button-round-1 {
@@ -3941,7 +3942,7 @@ textarea.form-input {
 
 @media (min-width: 576px) {
 	.footer-classic-subscribe-form .form-button {
-		margin-top: 0;
+		margin-bottom: 10px;
 	}
 }
 
