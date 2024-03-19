@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #16eb92;
+    --primary: #037d8d;
     --secondary: #191C24;
     --light: #6C7293;
     --dark: #000000;
@@ -30,7 +30,7 @@ body{
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #164400; /* Color de texto */
+    color: #00aaaa; /* Color de texto */
     margin-right: 10px;
     margin-left: 10px;
 }
@@ -40,10 +40,10 @@ body{
     width: 25%;
     padding: 0.4%;
     margin-bottom: 10px;
-    border: 1px solid rgb(0, 252, 113);
+    border: 1px solid rgb(0, 244, 252);
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #007531; /* Color de fondo */
+    background-color: #00aaaa; /* Color de fondo */
     color: #ffffff; /* Color de texto */
 }
 
@@ -52,10 +52,10 @@ body{
     width: 30%;
     padding: 0.5%;
     margin-bottom: 10px;
-    border: 1px solid #0f3124;
+    border: 1px solid #0f1d31;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #14221c; /* Color de fondo */
+    background-color: #162b3b; /* Color de fondo */
     color: #bdffff; /* Color de texto */
 }
 
@@ -66,14 +66,14 @@ body{
 
 
 .btn-primary {
-    border: 3px solid #0aaa67;
-    background-color: #118856;
-    border-color: #16eb92;
+    border: 3px solid #0a92aa;
+    background-color: #118088;
+    border-color: #037d8d;
 }
 
 .btn-primary:hover {
     background-color: transparent;
-    border-color: #0aaa67;
+    border-color: #037d8d;
 }
 .btn-danger {
     border: 3px solid #eb1616;
@@ -97,16 +97,16 @@ body{
 }
 
 .table th:hover {
-    background-color: #1c3a30; /* Fondo de las celdas de encabezado */
+    background-color: #1c303a; /* Fondo de las celdas de encabezado */
 }
 
 
 
 /* Estilos para resaltar la tabla */
 .table-highlight {
-    border: 2px solid #005204; /* Borde resaltado */
+    border: 2px solid #002452; /* Borde resaltado */
     border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(6, 70, 0, 0.459); /* Sombra suave */
+    box-shadow: 0 0 10px rgba(0, 16, 70, 0.459); /* Sombra suave */
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
 }
 
@@ -130,21 +130,21 @@ body{
 }
 
 .table-highlight th:hover {
-    background-color: #1a352a; /* Fondo de las celdas de datos */
+    background-color: #1a2835; /* Fondo de las celdas de datos */
 }
 
 /* Estilos para el botón activo */
 .btn-navigation.active {
-    background-color: #003500; /* Color de fondo del botón activo */
-    color: #64ff5f; /* Color del texto del botón activo */
-    border: 1px solid #64ff5f; /* Borde del botón activo */
+    background-color: #000135; /* Color de fondo del botón activo */
+    color: #5fc4ff; /* Color del texto del botón activo */
+    border: 1px solid #5fc4ff; /* Borde del botón activo */
 }
 
 /* Estilos adicionales para los botones de navegación */
 .btn-navigation {
     background-color:transparent;
     margin-right: 0.001px; /* Espacio entre los botones de navegación */
-    border: 3px solid #03723b; /* Borde de los botones de navegación */
+    border: 3px solid #036172; /* Borde de los botones de navegación */
 }
 
 /*** Spinner ***/
@@ -225,47 +225,47 @@ body{
 
 /* Estilo para el título del modal */
 #modalInformacionAdicionalDenegado .modal-title {
-    color: #1ea063;
+    color: #037d8d;
 }
 
 /* Estilo para los botones dentro del modal */
 #modalInformacionAdicionalDenegado .btn-secondary,
 #modalInformacionAdicionalDenegado .btn-primary {
-    background-color: #1ea063;
-    border-color: #1ea063;
+    background-color: #037d8d;
+    border-color: #037d8d;
     color: #ffffff;
     transition: background-color 0.3s ease;
 }
 
 #modalInformacionAdicionalDenegado .btn-secondary:hover,
 #modalInformacionAdicionalDenegado .btn-primary:hover {
-    background-color: #22a816;
-    border-color: #00b309;
+    background-color: #037d8d;
+    border-color: #037d8d;
     color:#021b00;
 }
 
 /* Estilo para el texto dentro del formulario */
 #modalInformacionAdicionalDenegado .form-label {
-    color: #1ea063;
+    color: #037d8d;
 }
 
 /* Estilo para los inputs */
 #modalInformacionAdicionalDenegado .form-control {
     background-color: #191C24 ;
     color: #ffffff;
-    border-color: #1ea063;
+    border-color: #037d8d;
 }
 
 /* Estilo para los checkboxes */
 #modalInformacionAdicionalDenegado .form-check-input:checked {
-    background-color: #1ea063;
-    border-color: #1ea063;
+    background-color: #037d8d;
+    border-color: #037d8d;
 }
 
 /* Estilo para el botón de cerrar modal */
 #modalInformacionAdicionalDenegado .btn-close {
     color: #ffffff;
-    background-color: #25c47a;
+    background-color: #037d8d;
 }
 
 /* Estilo para el cuerpo del modal */
@@ -312,47 +312,47 @@ body{
 
 /* Estilo para el título del modal */
 #modalInformacionAdicional .modal-title {
-    color: #1ea063;
+    color: #037d8d;
 }
 
 /* Estilo para los botones dentro del modal */
 #modalInformacionAdicional .btn-secondary,
 #modalInformacionAdicional .btn-primary {
-    background-color: #1ea063;
-    border-color: #1ea063;
+    background-color: #037d8d;
+    border-color: #037d8d;
     color: #ffffff;
     transition: background-color 0.3s ease;
 }
 
 #modalInformacionAdicional .btn-secondary:hover,
 #modalInformacionAdicional .btn-primary:hover {
-    background-color: #22a816;
-    border-color: #00b309;
+    background-color: #00f7ff;
+    border-color: #00f7ff;
     color:#021b00;
 }
 
 /* Estilo para el texto dentro del formulario */
 #modalInformacionAdicional .form-label {
-    color: #1ea063;
+    color: #037d8d;
 }
 
 /* Estilo para los inputs */
 #modalInformacionAdicional .form-control {
     background-color: #191C24 ;
     color: #ffffff;
-    border-color: #1ea063;
+    border-color: #037d8d;
 }
 
 /* Estilo para los checkboxes */
 #modalInformacionAdicional .form-check-input:checked {
-    background-color: #1ea063;
-    border-color: #1ea063;
+    background-color: #037d8d;
+    border-color: #037d8d;
 }
 
 /* Estilo para el botón de cerrar modal */
 #modalInformacionAdicional .btn-close {
     color: #ffffff;
-    background-color: #25c47a;
+    background-color: #00f7ff;
 }
 
 /* Estilo para el cuerpo del modal */
@@ -630,9 +630,9 @@ body{
 }
 
 select{
-    background-color: #003f3a;
-    color: #00ff22;
-    border-color: rgb(0, 151, 81);
+    background-color: #00233f;
+    color: #00f7ff;
+    border-color: rgb(0, 70, 151);
 }
 
 .dataTables_wrapper .dataTables_paginate {
@@ -649,68 +649,68 @@ select{
     text-align: center;
     text-decoration: none !important;
     cursor: pointer;
-    color: #00dd55 !important;
+    color: #00f7ff !important;
     border: 1px solid transparent;
   }
   .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    color: #acffb5 !important ;
-    background-color: rgb(29, 143, 76);
+    color: #ace5ff !important ;
+    background-color: rgb(29, 69, 143);
     border-radius: 22px;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(29, 143, 76)), color-stop(100%, rgb(10, 94, 87)));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(29, 101, 143)), color-stop(100%, rgb(33, 109, 145)));
     /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgb(29, 143, 76) 0%, rgb(10, 94, 87) 100%);
+    background: -webkit-linear-gradient(top, rgb(29, 101, 143) 0%, rgb(33, 109, 145) 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -moz-linear-gradient(top, rgb(29, 143, 76) 0%, rgb(10, 94, 87) 100%);
+    background: -moz-linear-gradient(top, rgb(29, 101, 143) 0%, rgb(33, 109, 145) 100%);
     /* FF3.6+ */
-    background: -ms-linear-gradient(top, rgb(29, 143, 76) 0%, rgb(10, 94, 87) 100%);
+    background: -ms-linear-gradient(top, rgb(29, 101, 143) 0%, rgb(33, 109, 145) 100%);
     /* IE10+ */
-    background: -o-linear-gradient(top, rgb(29, 143, 76) 0%, rgb(10, 94, 87) 100%);
+    background: -o-linear-gradient(top, rgb(29, 101, 143) 0%, rgb(33, 109, 145) 100%);
     /* Opera 11.10+ */
-    background: linear-gradient(to bottom, rgb(29, 143, 76) 0%, rgb(10, 94, 87) 100%);
+    background: linear-gradient(to bottom, rgb(29, 101, 143) 0%, rgb(33, 109, 145) 100%);
     /* W3C */
   }
   .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
     cursor: default;
-    color: #1d8844 !important;
+    color: #44cdc2  !important;
     border: 1px solid transparent;
     background: transparent;
     box-shadow: none;
   }
 
   .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: rgb(0, 31, 2) !important;
-    border: 1px solid rgb(3, 122, 39);
-    background-color: rgb(157, 255, 206);
+    color: rgb(2, 0, 31) !important;
+    border: 1px solid rgb(3, 64, 122);
+    background-color: rgb(157, 219, 255);
     border-radius: 22px;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(0, 252, 113)), color-stop(100%, rgb(17, 102, 91)));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(0, 172, 252)), color-stop(100%, rgb(17, 102, 91)));
     /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgb(0, 252, 113) 0%, rgb(17, 102, 91) 100%);
+    background: -webkit-linear-gradient(top, rgb(0, 172, 252) 0%, rgb(17, 102, 91) 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -moz-linear-gradient(top, rgb(0, 252, 113) 0%, rgb(17, 102, 91) 100%);
+    background: -moz-linear-gradient(top, rgb(0, 172, 252) 0%, rgb(17, 102, 91) 100%);
     /* FF3.6+ */
-    background: -ms-linear-gradient(top, rgb(0, 252, 113) 0%, rgb(17, 102, 91) 100%);
+    background: -ms-linear-gradient(top, rgb(0, 172, 252) 0%, rgb(17, 102, 91) 100%);
     /* IE10+ */
-    background: -o-linear-gradient(top, rgb(0, 252, 113) 0%, rgb(17, 102, 91) 100%);
+    background: -o-linear-gradient(top, rgb(0, 172, 252) 0%, rgb(17, 102, 91) 100%);
     /* Opera 11.10+ */
-    background: linear-gradient(to bottom, rgb(0, 252, 113) 0%, rgb(17, 102, 91) 100%);
+    background: linear-gradient(to bottom, rgb(0, 172, 252) 0%, rgb(17, 102, 91) 100%);
     /* W3C */
   }
   .dataTables_wrapper .dataTables_paginate .paginate_button:active {
     outline: none;
-    color:#00ff22 !important;
+    color:#00a2ff !important;
     background-color: #004552;
     border-radius: 22px;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,  rgb(51, 204, 145)), color-stop(100%, rgb(16, 121, 89)));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,  rgb(51, 148, 204)), color-stop(100%, rgb(16, 65, 121)));
     /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgb(51, 204, 145) 0%, rgb(16, 121, 89) 100%);
+    background: -webkit-linear-gradient(top, rgb(51, 148, 204) 0%, rgb(16, 65, 121) 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -moz-linear-gradient(top, rgb(51, 204, 145) 0%, rgb(16, 121, 89) 100%);
+    background: -moz-linear-gradient(top, rgb(51, 148, 204) 0%, rgb(16, 65, 121) 100%);
     /* FF3.6+ */
-    background: -ms-linear-gradient(top, rgb(51, 204, 145) 0%, rgb(16, 121, 89) 100%);
+    background: -ms-linear-gradient(top, rgb(51, 148, 204) 0%, rgb(16, 65, 121) 100%);
     /* IE10+ */
-    background: -o-linear-gradient(top, rgb(51, 204, 145) 0%, rgb(16, 121, 89) 100%);
+    background: -o-linear-gradient(top, rgb(51, 148, 204) 0%, rgb(16, 65, 121) 100%);
     /* Opera 11.10+ */
-    background: linear-gradient(to bottom, rgb(51, 204, 145) 0%, rgb(16, 121, 89) 100%);
+    background: linear-gradient(to bottom, rgb(51, 148, 204) 0%, rgb(16, 65, 121) 100%);
     /* W3C */
     box-shadow: inset 0 0 3px #111;
   }

@@ -72,7 +72,7 @@
                 datasets: [{
                         label: "Miembros",
                         data: [150, 180, 200, 220, 240, 270, 300],
-                        backgroundColor: "rgba(15, 195, 92, .7)",
+                        backgroundColor: "#037d8d",
                         fill: true
                     }
                 ]
@@ -91,7 +91,7 @@
                 datasets: [{
                         label: "Prestamos",
                         data: [150, 180, 200, 220, 240, 270, 300, 350, 400, 450, 500, 550],
-                        backgroundColor: "rgba(15, 195, 92, .7)",
+                        backgroundColor: "#037d8d",
                         fill: true
                     }
                 ]
@@ -171,7 +171,7 @@
             datasets: [{
                     label: "Ahorros mensuales",
                     data: [100, 500, 900, 1205, 1800, 1901, 2100, 2005, 2040, 2120, 2150, 2250],
-                    backgroundColor: "rgba(15, 195, 92, .7)",
+                    backgroundColor: "#037d8d",
                     fill: true
                 }
             ]
@@ -190,12 +190,12 @@
             datasets: [{
                     label: "Abono Personal",
                     data: [2200, 1300, 2000, 1800, 1900, 1410, 1480, 1900, 1350, 1800, 1902, 1700],
-                    backgroundColor: "rgba(15, 195, 92, .7)"},
+                    backgroundColor: "#037d8d"},
                 
 
                     {label: "Promedio Abonos",
                     data: [2100, 1350, 2080, 1790, 1900, 1450, 1500, 1950, 1400, 1800, 1900, 1700],
-                    backgroundColor: "rgba(38, 224, 153, .5)",
+                    backgroundColor: "#00aaaa",
                     }
             ]
         },
@@ -218,7 +218,7 @@
                 {
                     label: "Cuentas de Ahorros",
                     data: [120, 140, 160, 180, 200, 220, 240],
-                    backgroundColor: "rgba(15, 195, 92, .7)"
+                    backgroundColor: "#037d8d"
                 },
                 {
                     label: "Depósitos a plazo",
@@ -241,7 +241,7 @@
             datasets: [{
                     label: "Ventas",
                     data: [15, 30, 55, 45, 70, 65, 85],
-                    backgroundColor: "rgba(15, 195, 92, .7)",
+                    backgroundColor: "#037d8d",
                     fill: true
                 },
                 {
