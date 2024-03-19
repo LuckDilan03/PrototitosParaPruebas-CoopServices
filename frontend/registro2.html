@@ -19,53 +19,53 @@
     <div class="form-container registro">
         <h2>Registro de Asociados</h2>
         <form class="formulario-registro" id="formulario-registro">
-            <div class="columna">
-                <div class="grupo">
+            <div class="columna" id="columna1">
+                <div class="grupo" data-orden="1">
                     <label for="Documento" class="sr-only">Documento</label>
                     <input type="text" name="Documento" id="Documento" placeholder="Numero Documento">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <div class="grupo">
+                <div class="grupo" data-orden="4">
                     <label for="Primer_Apellido" class="sr-only">Primer Apellido</label>
                     <input type="text" name="Primer_Apellido" id="Primer_Apellido" placeholder="Primer Apellido">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <div class="grupo">
+                <div class="grupo" data-orden="7">
                     <label for="Direccion" class="sr-only">Direccion</label>
                     <input type="text" name="Direccion" id="Direccion" placeholder="Direccion">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
             </div>
 
-            <div class="columna">
-                <div class="grupo">
+            <div class="columna" id="columna2">
+                <div class="grupo" data-orden="2">
                     <label for="Primer_Nombre" class="sr-only">Primer Nombre</label>
                     <input type="text" name="Primer_Nombre" id="Primer_Nombre" placeholder="Primer Nombre">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <div class="grupo">
+                <div class="grupo" data-orden="5" >
                     <label for="Segundo_Apellido" class="sr-only">Segundo Apellido</label>
                     <input type="text" name="Segundo_Apellido" id="Segundo_Apellido" placeholder="Segundo Apellido">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <div class="grupo">
+                <div class="grupo" data-orden="8">
                     <label for="Correo_Electronico" class="sr-only">Correo Electronico</label>
                     <input type="email" name="Correo_Electronico" id="Correo_Electronico" placeholder="Correo Electronico" autocomplete="current-email">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
             </div>
-            <div class="columna">
-                <div class="grupo">
+            <div class="columna" id="columna3">
+                <div class="grupo" data-orden="3">
                     <label for="Segundo_Nombre" class="sr-only">Segundo Nombre</label>
                     <input type="text" name="Segundo_Nombre" id="Segundo_Nombre" placeholder="Segundo Nombre">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <div class="grupo">
+                <div class="grupo" data-orden="6">
                     <label for="Telefono" class="sr-only">Telefono</label>
                     <input type="text" name="Telefono" id="Telefono" placeholder="Telefono">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <div class="grupo">
+                <div class="grupo" data-orden="9">
                     <label for="Contrasena" class="sr-only">Contraseña</label>
                     <div class="password-container">
                         <input type="password" name="Contrasena" id="Contrasena" placeholder="Contraseña" autocomplete="current-password">
@@ -94,12 +94,13 @@
                 </div>
             </div>
             <div class="botones">
-                <button type="submit">Registrarse</button>
+                <button type="submit" >Registrarse</button>
                 <button type="button" class="boton-volver" onclick="window.location.href = '/'">Volver al Inicio</button>
             </div>
         </form>
         <p>¿Ya eres Asociado? - <a href="/iniciarSesion">inicia sesion</a></p>
     </div>
     <script src="./js/formValidacion2.js"></script>
+    <script src="./js/orderform.js"></script>
 </body>
 </html>

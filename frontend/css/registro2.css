@@ -468,3 +468,31 @@ html {
       font-size: 14px; /* Reduce el tamaño de la fuente de los botones en pantallas muy pequeñas */
     }
   }
+
+/* Cambia el orden de los elementos en dispositivos móviles */
+/* Agrega este CSS al final de tu archivo registro2.css */
+
+@media screen and (max-width: 768px) {
+  .formulario-registro {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .columna {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .grupo {
+      margin-bottom: 20px;
+  }
+
+  .botones {
+    margin-top: 20px; /* Espacio entre los campos y los botones */
+}
+
+}
+
+
+
+
