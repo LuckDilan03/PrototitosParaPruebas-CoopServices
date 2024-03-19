@@ -714,3 +714,7 @@ select{
     /* W3C */
     box-shadow: inset 0 0 3px #111;
   }
+
+#boton-cerrarsesion{
+    cursor: pointer;
+}
