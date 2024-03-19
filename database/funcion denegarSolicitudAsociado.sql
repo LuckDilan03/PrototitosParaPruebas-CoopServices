@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION denegarSolicitud(Pid_solicitud NUMERIC, motivo VARCHA
 $$
 begin
     update tab_solicitarmembresia
-           set respuesta_solicitud='DENEGADA',fecha_aprobacion=CURRENT_TIMESTAMP,numero_resolucion=resolucion
+           set respuesta_solicitud='DENEGADA',fecha_aprobacion=CURRENT_TIMESTAMP,numero_resolucion=resolucion,detalle_solicitud=motivo
          where id_solicitud=Pid_solicitud;
 		
         RETURN TRUE;

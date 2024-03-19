@@ -1,6 +1,6 @@
 const pool = require('../config/connection');
 const {enviarEmail}=require('../services/email.service');
-const {dataUserAprobado}=require('../controlers/dataUser');
+const {dataUserAprobado,dataUserDenegado}=require('../controlers/dataUser');
 
 async function listSolicitudMembresia(req, res) {
   try {
@@ -123,50 +123,47 @@ async function DenegarSolicitud(req,res){
     return res.status(400).send({ status: "error", message: "El cuerpo de la solicitud no contiene los datos necesarios." } );
     }
 
-    const { idSolicitud, informacionAdicional } = req.body;
+    const { dniDenegado,idSolicitud, informacionAdicional } = req.body;
     const queryText = `SELECT * FROM denegarSolicitud($1, $2,$3)`;
     const queryParams = [
         idSolicitud,
-        informacionAdicional.motivo,
+        informacionAdicional.MotivoRechazo,
         informacionAdicional.numeroResolucion   
     ];
 
     try {
         await pool.query(queryText, queryParams);
 
-        const userData = await dataUserAprobado(dniAprobado);
+
+        const userData = await dataUserDenegado(dniDenegado);
         console.log(userData);
         
         if (userData.error) {
             // Manejar el caso en el que no se encontraron datos para el usuario aprobado
-            console.error('Error al obtener los datos del usuario aprobado:', userData.error);
+            console.error('Error al obtener los datos del usuario Denegado:', userData.error);
             return res.status(404).send({ status: "error", message: "No se encontraron datos para el usuario aprobado" });
         }
         
         if (!userData[0].correo_persona) {
             // Manejar el caso en el que no se ha proporcionado una dirección de correo electrónico
-            console.error('No se ha proporcionado una dirección de correo electrónico para el usuario aprobado');
+            console.error('No se ha proporcionado una dirección de correo electrónico para el usuario Denegado');
             return res.status(400).send({ status: "error", message: "No se ha proporcionado una dirección de correo electrónico para el usuario aprobado" });
         }
         
         const nombreCompleto = `${userData[0].nombre_persona} ${userData[0].segundo_nombre_persona} ${userData[0].apellido_persona} ${userData[0].segundo_apellido_persona}`;
         const destinatario=userData[0].correo_persona;
         const mensajeCorreo = `
-            Te damos la bienvenida como asociado oficial.
-            A continuación, te proporcionaremos los datos básicos que debes tener en cuenta como asociado:
-            DATOS PERSONALES:
-            Nombre Asociado Registrado: ${nombreCompleto}
-            Correo Registrado: ${userData[0].correo_persona}
-            Usuario De Acceso: ${userData[0].usuario_deseado}
-            Numero De Cuenta Asociada: ${userData[0].numero_cuenta}
-            Saldo Inicial: ${userData[0].saldo_cuenta}
-            Aporte Obligatorio: ${userData[0].aporte_mensual}
-            Aporte Inicial: ${userData[0].monto_aporte}
+            Lo sentimos pero no fue posible Aprobar tu Solicitud <br>
+            Los motivos de rechazo son los siguiente :<br>
+            ${informacionAdicional.MotivoRechazo}<br><br>
+            Soluciona estos inconvenientes antes de volverlo a intentar <br>
+            Agredecemos tu interes 
+
         `;
         
         // Enviar el correo con los datos del usuario aprobado
-        enviarEmail(`${destinatario}`,`Aprobación de Solicitud Con Numero De Solicitud ${userData[0].id_solicitud}`, 
-        `¡Felicidades Ahora Eres Parte De CoopServices!`, mensajeCorreo);
+        enviarEmail(`${destinatario}`,`Denegacion de Solicitud Con Numero De Solicitud ${userData[0].id_solicitud}`, 
+        `Vuelvelo A Intentar Apenas Soluciones Lo Siguiente: `, mensajeCorreo);
 
 
 
