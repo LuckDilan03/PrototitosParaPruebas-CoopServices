@@ -56,7 +56,7 @@ const register = async (req, res) => {
 
         const result = await pool.query(queryText, queryParams);
         const userData = await dataUserAprobado(Documento);
-        console.log(userData);
+        
         
         if (userData.error) {
             // Manejar el caso en el que no se encontraron datos para el usuario aprobado

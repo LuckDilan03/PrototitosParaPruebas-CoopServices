@@ -117,7 +117,7 @@ function agregarDatosArevision(solicitudes) {
                     <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
-                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id_solicitud})">
+                    <button class="btn btn-sm btn-light" onclick="window.location.href='/SolicitudPendiente/${solicitud.dni_persona}'">
                     <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>
@@ -154,7 +154,7 @@ function agregarDatosAdenegar(solicitudes) {
                     <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
                         <i class="bi bi-x"></i> Denegar
                     </button>
-                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.id_solicitud})">
+                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.dni_persona})">
                     <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>
@@ -162,6 +162,18 @@ function agregarDatosAdenegar(solicitudes) {
             tbody.appendChild(fila);
         }
     });
+}
+
+async function VerMas(dni_persona) {
+    try {
+        const response = await fetch(`/SolicitudPendiente/${dni_persona}`);
+        if (!response.ok) {
+            throw new Error('No se pudo obtener la solicitud');
+        }
+        window.location.href = `/SolicitudPendiente/${dni_persona}`;
+    } catch (error) {
+        console.error('Error al obtener la solicitud:', error);
+    }
 }
 
 

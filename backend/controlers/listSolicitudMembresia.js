@@ -161,9 +161,11 @@ async function DenegarSolicitud(req,res){
 
         `;
         
-        // Enviar el correo con los datos del usuario aprobado
+        // Enviar el correo con los datos del usuario denegado
         enviarEmail(`${destinatario}`,`Denegacion de Solicitud Con Numero De Solicitud ${userData[0].id_solicitud}`, 
         `Vuelvelo A Intentar Apenas Soluciones Lo Siguiente: `, mensajeCorreo);
+        // Responder con éxito al cliente de que se denego 
+        return res.status(200).send({ status: "ok", message: "Solicitud denegada correctamente" });
 
 
 

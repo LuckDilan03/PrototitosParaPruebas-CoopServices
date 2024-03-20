@@ -21,9 +21,8 @@ app.use(express.json());
 usersroutes(app);
 adminroutes(app);
 homeroutes(app);
-app.use(express.static(path.join(__dirname, '../frontend')));
 app.use('../frontend/uploads', express.static(path.join(__dirname, 'uploads')));
-
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 const { PORT,HOST } = process.env;
 

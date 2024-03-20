@@ -1,25 +1,25 @@
 const path = require('path');
 
 
-  const mostrarSolicitudPrestamo = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/solicitarPrestamo.html'));
-  };
-
-  const mostrarSolicitudRetiro = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/solicitarRetiro.html'));
-  };
 
   const mostrarOtraSolicitud = (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/'));
   };
 
+
   const mostrarSolictudesPendientesAsociados = (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/ListaSolicitudesMembresia.html'));
   };
 
+  const mostrarSolictudPendienteAsociado = (req, res) => {
+    
+    res.sendFile(path.join(__dirname,'../../frontend/solicitudRegistroAsociado.html'));
+  };
+
+  
   const mostrarListaAsociados = (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/ListaAsociados.html'));
-  };
+  }
 
   const mostrarListaUsuarios = (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/listaUsuario.html'));
@@ -42,14 +42,13 @@ const path = require('path');
   };
 
   module.exports = {
-    mostrarSolicitudPrestamo,
-    mostrarSolicitudRetiro,
     mostrarOtraSolicitud,
     mostrarSolictudesPendientesAsociados,
+    mostrarSolictudPendienteAsociado,
     mostrarListaAsociados,
     mostrarListaUsuarios,
     mostrarSolicitudesPedientesPrestamos,
     mostrarCrearRoles,
     mostrarListaCuentasAhorro,
-    mostrarListaPersonas};
+    mostrarListaPersonas}
 

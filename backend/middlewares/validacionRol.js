@@ -13,6 +13,7 @@ const validarRol = (req, res, next) => {
     if (!token) {
         console.log('No se ha enviado el token de autenticación');
         return res.redirect('/dashboard');
+        
     }
     
     try {
@@ -24,7 +25,8 @@ const validarRol = (req, res, next) => {
             return res.redirect('/dashboard');;
         }
     } catch (error) {
-        return res.status(401).json({ message: "Token de autenticación inválido" });
+        console.log('Token invalido');
+        return res.redirect('/');
     }
 };
 
