@@ -23,84 +23,143 @@ const correo=document.getElementById('CorreoElectronico');
 const actualizar=document.getElementById('Actualizar');
 const eliminar=document.getElementById('Eliminar');
 const volver=document.getElementById('Volver');
-/*evento que verifica el campo dni y activa el boton*/
-dni.addEventListener("change",function (){
+// Función para mostrar alerta de error
+const mostrarError = (mensaje) => {
+    alert(mensaje);
+};
 
-    if (!/^\d+$/.test(dni.value) ) {
-        alert("El DNI debe contener solo números.");
-        actualizar.disabled = true;
-        return;}
-    
+// Función para validar el campo DNI
+const validarDNI = () => {
+    const valorDNI = dni.value.trim();
+    if (valorDNI.length < 3 || !/^\d+$/.test(valorDNI)) {
+        mostrarError("El DNI debe tener mínimo 3 dígitos y contener solo números.");
+        return false;
+    }
+    return true;
+};
 
-    actualizar.disabled=false;
-    })
-/*evento que verifica el campo primer nombre y activa el boton*/
-primerNombre.addEventListener("change",function (){
-    
-    if(primerNombre.value===""){
-        alert("Debe ingresar un primer nombre");
-        actualizar.disabled = true;
-        return;}
+// Función para validar el campo de texto con letras y máximo 40 caracteres
+const validarCampoTexto = (campo, nombreCampo) => {
+    const valorCampo = campo.value.trim();
+    if (valorCampo === "") {
+        mostrarError(`Debe ingresar un ${nombreCampo}.`);
+        return false;
+    }
+    if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valorCampo)) {
+        mostrarError(`${nombreCampo} debe contener solo letras y tener máximo 40 caracteres.`);
+        return false;
+    }
+    return true;
+};
 
-    actualizar.disabled=false;})
+// Función para validar el campo de texto opcional con letras y máximo 40 caracteres
+const validarCampoTextoOpcional = (campo, nombreCampo) => {
+    const valorCampo = campo.value.trim();
+    if (valorCampo !== "" && !/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valorCampo)) {
+        mostrarError(`${nombreCampo} debe contener solo letras y tener máximo 40 caracteres.`);
+        return false;
+    }
+    return true;
+};
 
-/*evento que verifica el campo segundo nombre y activa el boton*/ 
-segundoNombre.addEventListener("change",function (){
-    
-    if(segundoNombre.value===""){
-        alert("Debe ingresar un segundo Nombre");
-        actualizar.disabled = true;
-        return;}
-    
-    actualizar.disabled=false;})
-/*evento que verifica el campo primer apellido y activa el boton*/ 
-primerApellido.addEventListener("change",function (){
-    
-    if(primerApellido.value===""){
-        alert("Debe ingresar un primer Apellido");
-        actualizar.disabled = true;
-        return;}
-    
-    
-    actualizar.disabled=false;})
-/*evento que verifica el campo segundo apellido y activa el boton*/ 
-segundoApellido.addEventListener("change",function (){
-    
-    if(segundoApellido.value===""){
-        alert("Debe ingresar un segundo Apellido");
-        actualizar.disabled = true;
-        return;}
+// Función para validar el campo de dirección
+const validarDireccion = () => {
+    const valorDireccion = direccion.value.trim();
+    if (valorDireccion === "") {
+        mostrarError("Debe ingresar una dirección.");
+        return false;
+    }
+    return true;
+};
 
-    
-    actualizar.disabled=false;})
-/*evento que verifica el direccion  y activa el boton*/ 
-direccion.addEventListener("change",function (){
-    
-    if(direccion.value===""){
-        alert("Debe ingresar una direccion");
+// Función para validar el campo de correo electrónico
+const validarCorreo = () => {
+    const valorCorreo = correo.value.trim();
+    if (valorCorreo === "") {
+        mostrarError("Debe ingresar un correo electrónico.");
+        return false;
+    }
+    if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valorCorreo)) {
+        mostrarError("El formato de correo electrónico es incorrecto.");
+        return false;
+    }
+    return true;
+};
+
+// Función para validar el campo de teléfono
+const validarTelefono = () => {
+    const valorTelefono = telefono.value.trim();
+    if (valorTelefono.length !== 10 || !/^\d+$/.test(valorTelefono)) {
+        mostrarError("El teléfono debe tener 10 dígitos y contener solo números.");
+        return false;
+    }
+    return true;
+};
+
+// Agrega eventos para la validación en vivo
+dni.addEventListener("change", () => {
+    if (validarDNI()) {
+        actualizar.disabled = false;
+    } else {
         actualizar.disabled = true;
-        return;}
-    
-    actualizar.disabled=false;})
-/*evento que verifica el campo telefono y activa el boton*/ 
-telefono.addEventListener("change",function (){
-    
-    
-    if (!/^\d+$/.test(telefono.value) ) {
-        alert("El telefono debe contener solo números.");
+    }
+});
+
+primerNombre.addEventListener("change", () => {
+    if (validarCampoTexto(primerNombre, "primer nombre")) {
+        actualizar.disabled = false;
+    } else {
         actualizar.disabled = true;
-        return;}
-    
-    actualizar.disabled=false;})
-/*evento que verifica el campo correo y activa el boton*/ 
-correo.addEventListener("change",function (){
-    
-    if(correo.value===""){
-        alert("Debe ingresar un correo");
+    }
+});
+
+segundoNombre.addEventListener("change", () => {
+    if (validarCampoTextoOpcional(segundoNombre, "segundo nombre")) {
+        actualizar.disabled = false;
+    } else {
         actualizar.disabled = true;
-        return;}
-    
-    actualizar.disabled=false;})
+    }
+});
+
+primerApellido.addEventListener("change", () => {
+    if (validarCampoTexto(primerApellido, "primer apellido")) {
+        actualizar.disabled = false;
+    } else {
+        actualizar.disabled = true;
+    }
+});
+
+segundoApellido.addEventListener("change", () => {
+    if (validarCampoTextoOpcional(segundoApellido, "segundo apellido")) {
+        actualizar.disabled = false;
+    } else {
+        actualizar.disabled = true;
+    }
+});
+
+direccion.addEventListener("change", () => {
+    if (validarDireccion()) {
+        actualizar.disabled = false;
+    } else {
+        actualizar.disabled = true;
+    }
+});
+
+correo.addEventListener("change", () => {
+    if (validarCorreo()) {
+        actualizar.disabled = false;
+    } else {
+        actualizar.disabled = true;
+    }
+});
+
+telefono.addEventListener("change", () => {
+    if (validarTelefono()) {
+        actualizar.disabled = false;
+    } else {
+        actualizar.disabled = true;
+    }
+});
 
 
 

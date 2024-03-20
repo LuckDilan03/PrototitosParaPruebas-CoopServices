@@ -70,6 +70,7 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
 });
 
 const pass = document.getElementById('Contrasena');
+const pass2 = document.getElementById('RepetirContrasena');
 const eyeIcon = document.getElementById('eye-icon');
 const eyeOffIcon = document.getElementById('eye-off-icon');
 
@@ -83,6 +84,16 @@ function togglePasswordVisibility() {
         eyeOffIcon.style.display = "block";
     } else {
         pass.type = "password";
+        eyeIcon.style.display = "block";
+        eyeOffIcon.style.display = "none";
+    }
+
+    if (pass2.type === "password") {
+        pass2.type = "text";
+        eyeIcon.style.display = "none";
+        eyeOffIcon.style.display = "block";
+    } else {
+        pass2.type = "password";
         eyeIcon.style.display = "block";
         eyeOffIcon.style.display = "none";
     }
