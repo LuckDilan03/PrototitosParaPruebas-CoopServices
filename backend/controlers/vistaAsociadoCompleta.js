@@ -41,7 +41,8 @@ async function listUserAprobado(req, res) {
             aporte_mensual: row.aporte_mensual,
             dni_asociado: row.dni_asociado,
             estado_cuenta: row.estado_cuenta,
-            monto_aporte: row.monto_aporte
+            monto_aporte: row.monto_aporte,
+            nombre_rol: row.nombre_rol
         }));
 
         res.json(userDataArray);
