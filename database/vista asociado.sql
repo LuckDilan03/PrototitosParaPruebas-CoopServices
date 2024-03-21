@@ -22,11 +22,14 @@ CREATE OR REPLACE VIEW public.vistaaprobado
     d.aporte_mensual,
     d.dni_asociado,
     d.estado_cuenta,
-    e.monto_aporte
+    e.monto_aporte,
+    r.nombre_rol
    FROM tab_persona a
      JOIN tab_solicitarmembresia b ON a.dni_persona = b.dni_persona
      LEFT JOIN tab_cuenta d ON a.dni_persona = d.dni_asociado
      LEFT JOIN tab_aportecuenta e ON d.numero_cuenta = e.numero_cuenta
+     LEFT JOIN tab_Roles r ON r.id_Rol = (SELECT Rol_Ingreso FROM tab_Usuarios u WHERE u.DNI_Usuario = a.DNI_Persona)
+
   WHERE b.respuesta_solicitud::text = ANY (ARRAY['APROBADA'::character varying, 'EN REVISION'::character varying]::text[]);
 
 ALTER TABLE public.vistaaprobado
