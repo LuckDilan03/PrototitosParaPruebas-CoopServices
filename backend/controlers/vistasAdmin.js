@@ -16,6 +16,10 @@ const path = require('path');
     res.sendFile(path.join(__dirname,'../../frontend/solicitudRegistroAsociado.html'));
   };
 
+  const mostrarSolictudAprobada = (req, res) => {
+    
+    res.sendFile(path.join(__dirname,'../../frontend/solicitudRegistroAprobada.html'));
+  };
   
   const mostrarListaAsociados = (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/ListaAsociados.html'));
@@ -50,5 +54,6 @@ const path = require('path');
     mostrarSolicitudesPedientesPrestamos,
     mostrarCrearRoles,
     mostrarListaCuentasAhorro,
-    mostrarListaPersonas}
+    mostrarListaPersonas,
+    mostrarSolictudAprobada}
 

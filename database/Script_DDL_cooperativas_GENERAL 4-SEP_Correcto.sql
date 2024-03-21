@@ -74,6 +74,7 @@ CREATE TABLE tab_Usuarios
     DNI_Usuario					BIGINT		    NOT NULL,
     Rol_Ingreso          		INTEGER 	    NOT NULL,--ROL QUE DESEMPEÑA CADA USUARIO AL INGRESAR AL SISTEMA
 	Estado_Usuario              BOOLEAN         NOT NULL DEFAULT FALSE,
+    Detalle_Estado              VARCHAR         ,
     Usuario_Inserta      		VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
     Fecha_Inserta      			TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     Usuario_Update      		VARCHAR, 

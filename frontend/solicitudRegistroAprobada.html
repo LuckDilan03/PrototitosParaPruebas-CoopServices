@@ -239,9 +239,28 @@
                                 placeholder="Correo registrado">
                             <label for="floatingInput">Correo registrado</label>
                         </div>
-    
-                        <button type="submit" class="btn btn-primary" id="Actualizar" disabled="true"> Actualizar Solicitud</button>
-                        <button type="submit" class="btn btn-primary" id="Eliminar"> Eliminar Solicitud</button><br> <br>  
+                        <div class=" form-floating mb-3">
+                            <input type="date" class="form-control" id="FechaAprobacion"
+                                placeholder="Fecha Aprobacion">
+                            <label for="floatingInput">Fecha de Aprobacion</label>
+                        </div>
+                        <div class=" form-floating mb-3">
+                            <input type="number" class="form-control" id="NumeroCuenta"
+                                placeholder="Numero De Cuenta">
+                            <label for="floatingInput">Numero De Cuenta</label>
+                        </div>
+                        <div class=" form-floating mb-3">
+                            <input type="number" class="form-control" id="SaldoCuenta"
+                                placeholder="Saldo De La Cuenta">
+                            <label for="floatingInput">Saldo De La Cuenta</label>
+                        </div>
+                        <div class=" form-floating mb-3">
+                            <input type="text" class="form-control" id="Estado"
+                                placeholder="Estado De La Cuenta">
+                            <label for="floatingInput">Estado De La Cuenta</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="Suspender"> Suspender</button>  
                         <button  type="submit" class="btn btn-primary" id="Volver" onclick="window.location.href = '/SolitudesPendientes'"> Volver atras</button>
                     </div>
                 </div>
@@ -288,7 +307,7 @@
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
-    <script src="/js/formRegistroAsociado.js"></script>
+    <script src="/js/formRegistroAprobado.js"></script>
 </body>
 
 </html>
