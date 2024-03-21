@@ -190,6 +190,7 @@ async function obtenerDatosSolicitud() {
             direccion.value = data.direccion_persona;
             telefono.value = data.telefono_persona;
             correo.value = data.correo_persona;
+            
         }
         
     } catch (error) {
