@@ -32,7 +32,7 @@ html {
     color: #44cdc2;
     font-size: 30px;
     margin-top: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   
   .form-container {
@@ -45,6 +45,7 @@ html {
     box-shadow: 0 15px 25px rgba(0, 217, 255, 0.404);
     border-radius: 10px;
   }
+  
   
   .registro {
     width: 450%; /* Cambiado para adaptarse a pantallas pequeñas */
@@ -74,7 +75,7 @@ html {
   
   /* Estilos para los botones */
   .botones {
-    grid-column: 3 span;
+    grid-column: 1 / span 3; /* Ocupa las tres columnas */
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
@@ -85,15 +86,7 @@ html {
     align-content: center;
     justify-items: center;
   }
-  
-  .botones .file-container {
-    grid-column: span 3; /* Ajusta el tamaño del contenedor del botón de documento */
-    display: flex;
-    justify-content: center; /* Centra horizontalmente el botón de documento */
-    align-items: center; /* Centra verticalmente el botón de documento */
-    margin-bottom: 10px; /* Añade un pequeño margen inferior */
-    padding: 15px 25px;
-  }
+d
   
   .botones .boton-volver {
     padding: 15px 20px;
@@ -263,7 +256,9 @@ html {
   
   .error {
     color: rgb(255, 81, 81);
-    text-align: center;
+    grid-column: span 3; /* Ocupa todas las columnas */
+    text-align: center; /* Centra horizontalmente el contenido */
+    margin-top: 10px; /* Añade un margen superior */
   }
   
   .escondido {
@@ -280,6 +275,20 @@ html {
   }
   
   
+  .file-container {
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 15px 25px;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  
+  }
+  
+  /* Estilos para el botón de documento */
   .file-label {
     background-color: #00a2ff;
     color: #001741;
@@ -290,6 +299,7 @@ html {
     padding: 15px 30px;
     width: 350px;
     height: auto;
+    margin-bottom: 15px;
     transition: background-color 0.3s ease, transform 0.2s ease; /* Agregamos transiciones */
   }
   
@@ -315,6 +325,8 @@ html {
     color: #000741;
     font-size: 16px;
   }
+  
+
   
   .password-container {
     position: relative;
@@ -487,12 +499,13 @@ html {
       margin-bottom: 20px;
   }
 
+  .grupo2 {
+      margin-bottom: -20px;
+  }
+
   .botones {
     margin-top: 20px; /* Espacio entre los campos y los botones */
 }
-
 }
-
-
 
 
