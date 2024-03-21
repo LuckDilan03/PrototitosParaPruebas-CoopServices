@@ -80,6 +80,8 @@ const adminRoutes = (app) => {
     return controlerListSolicitudMembresia.DenegarSolicitud(req, res);
   });
 
+  app.put('/actualizarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.actualizarSolicitud )
+
   app.delete('/eliminarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.eliminarSolicitud )
 
   /*rutas del listado de asociados en el sistema */

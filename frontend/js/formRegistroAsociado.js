@@ -199,7 +199,46 @@ async function obtenerDatosSolicitud() {
 
 
 actualizar.addEventListener("click",async function(){
-    console.log('vamos bien');
+
+    try {
+        const idSolictud= parseInt(id.value);
+        formdata=new(Object);
+        formData={
+            Documento:dni.value,
+            Primer_Nombre:primerNombre.value,
+            Segundo_Nombre:segundoNombre.value,
+            Primer_Apellido:primerApellido.value,
+            Segundo_Apellido:segundoApellido.value,
+            Direccion:direccion.value,
+            Telefono:telefono.value,
+            Correo_Electronico:correo.value
+        }
+        console.log(formData)
+        const response = await fetch(`/actualizarSolicitud/${idSolictud}`,{
+
+            method:"PUT",
+            headers: {
+                "Content-Type": "application/json" // Indicar que el cuerpo de la solicitud es JSON
+            },
+            body: JSON.stringify(formData) // Convertir formData a JSON antes de enviar
+        });
+        
+        if (response.ok) {
+            const responseData = await response.json();
+            alert(responseData.message); // Mostrar mensaje de éxito
+            // Redirigir a la página de solicitudes pendientes u otra página deseada
+            window.location.href = "/SolitudesPendientes";
+        } else {
+            // Si la actualizacion no fue exitosa, mostrar un mensaje de error
+            const errorData = await response.json();
+            alert(errorData.message);
+        }
+    } 
+    catch (error) {
+        console.error('Error al eliminar la solicitud: ', error);
+        
+    }
+    
 })
 
 eliminar.addEventListener("click",async function(){
