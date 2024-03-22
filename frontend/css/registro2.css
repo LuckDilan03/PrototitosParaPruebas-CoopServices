@@ -116,7 +116,7 @@ d
     color: #49c4b3;
     margin-bottom: 20px;
     border: none;
-    border-bottom: 1.5px solid #83ff78;
+    border-bottom: 1.5px solid #7886ff;
     outline: none;
     background: transparent;
   
@@ -124,7 +124,9 @@ d
   
   
   .form-container input::placeholder {
-    color: #f8fcff;
+    color: #befbffc9;
+    font-style: oblique;
+
   }
   
   
