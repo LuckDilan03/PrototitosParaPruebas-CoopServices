@@ -11,6 +11,7 @@ const controlervalidacion=require('../middlewares/validacionRol');
 const controlerUpdates=require('../controlers/dataSolicitud');
 const controlersolicitudRegistro=require('../controlers/solicitudEliminacion');
 const controlerSuspencionAsociado=require('../controlers/suspencionManualAsociado');
+const controlerHabilitacionAsociado=require('../controlers/habilitarManualAsociado');
 
 
 const adminRoutes = (app) => {
@@ -85,6 +86,8 @@ const adminRoutes = (app) => {
 
   app.put('/actualizarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.actualizarSolicitud )
   app.put('/suspenderAsociadoManualmente/:idSolicitud',controlervalidacion, auth.verifyToken,controlerSuspencionAsociado.suspenderAsociadoManualmente)
+  app.put('/habilitarAsociadoManualmente/:idSolicitud',controlervalidacion, auth.verifyToken,controlerHabilitacionAsociado.habiliarAsociadoManualmente)
+
   app.delete('/eliminarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.eliminarSolicitud )
 
 

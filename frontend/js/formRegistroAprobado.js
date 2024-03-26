@@ -38,6 +38,7 @@ SaldoCuenta.disabled=true;
 const Estado=document.getElementById('Estado');
 Estado.disabled=true;
 
+const Habilitar=document.getElementById('Habilitar');
 const Suspender=document.getElementById('Suspender');
 const volver=document.getElementById('Volver');
 // Función para mostrar alerta de error
@@ -105,6 +106,36 @@ Suspender.addEventListener("click",async function(){
     try {
         const idSolictud= parseInt(id.value);
         const response = await fetch(`/suspenderAsociadoManualmente/${idSolictud}`,{
+
+            method:'PUT'
+        });
+        
+        if (response.ok) {
+            const responseData = await response.json();
+            alert(responseData.message); // Mostrar mensaje de éxito
+            // Redirigir a la página de solicitudes pendientes u otra página deseada
+            window.location.href = "/SolitudesPendientes";
+        } else {
+            // Si la eliminación no fue exitosa, mostrar un mensaje de error
+            const errorData = await response.json();
+            alert(errorData.message);
+        }
+    } 
+    
+    catch (error) {
+        console.error('Error al eliminar la solicitud: ', error);
+        
+    }
+    
+
+
+})
+
+Habilitar.addEventListener("click",async function(){
+    
+    try {
+        const idSolictud= parseInt(id.value);
+        const response = await fetch(`/habilitarAsociadoManualmente/${idSolictud}`,{
 
             method:'PUT'
         });

@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION suspenderManualmente(idSolicitud bigint) RETURNS bool
 $$
 DECLARE DocumentoSolicitud bigint;
 begin
-  select dni_persona into DocumentoSolicitud from tab_solicitarmembresia where id_solicitud=idSolicitud AND respuesta_solicitud='APROBADO';
+  select dni_persona into DocumentoSolicitud from tab_solicitarmembresia where id_solicitud=idSolicitud ;
   IF FOUND THEN
         update tab_cuenta
            set estado_cuenta=false,detalles_estado_cuenta='Cuenta Suspendida Manual Mente'
