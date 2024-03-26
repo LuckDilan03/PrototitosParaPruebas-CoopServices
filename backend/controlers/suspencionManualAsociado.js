@@ -5,7 +5,7 @@ async function suspenderAsociadoManualmente(req, res) {
         const idSolicitud = parseInt(req.params.idSolicitud);
         const queryText = 'SELECT suspenderManualmente($1) ;';
         const result = await pool.query(queryText, [idSolicitud]);
-        console.log(result);
+        
         
         // Verificar el resultado del procedimiento almacenado
         if (result.rows.length > 0) {

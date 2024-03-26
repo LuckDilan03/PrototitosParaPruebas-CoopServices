@@ -3,13 +3,13 @@ const pool = require("../config/connection");
 async function habiliarAsociadoManualmente(req, res) {
     try {
         const idSolicitud = parseInt(req.params.idSolicitud);
-        const queryText = 'SELECT habilitarManualmente($1) ;';
+        const queryText = 'SELECT habilitarmanualmente($1) ;';
         const result = await pool.query(queryText, [idSolicitud]);
-        console.log(result);
+        
         
         // Verificar el resultado del procedimiento almacenado
         if (result.rows.length > 0) {
-            const respuesta = result.rows[0].aprobarmanualmente;
+            const respuesta = result.rows[0].habilitarmanualmente;
             console.log(respuesta)
             
             if (respuesta) {
