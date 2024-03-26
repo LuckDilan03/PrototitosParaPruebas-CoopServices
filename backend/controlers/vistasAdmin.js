@@ -26,7 +26,7 @@ const path = require('path');
   }
 
   const mostrarListaUsuarios = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/listaUsuario.html'));
+    res.sendFile(path.join(__dirname, '../../frontend/listaUsuarioTarjetas.html'));
   };
 
   const mostrarSolicitudesPedientesPrestamos = (req, res) => {
