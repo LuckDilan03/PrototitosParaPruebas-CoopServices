@@ -49,8 +49,9 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0" id="userName1"> </h6>
+                        <span id="userRol"> </span>
+                        <span id="userName2"> </span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -107,7 +108,7 @@
                 </form> -->
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Mensaje</span>
                         </a>
@@ -143,7 +144,7 @@
                             </a>
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item text-center">Ver todos los mensajes</a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -172,7 +173,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span id="userName" class="d-none d-lg-inline-flex"> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">Mi Perfil</a>
@@ -197,17 +198,17 @@
                     <button class="btn btn-primary btn-navigation" data-target="#denegar">Denegadas</button>
                 </div>
                 <div>
-                    <label for="filterCriteria">Seleccione un criterio de filtrado:</label>
-                    <select id="filterCriteriaRevision">
-                        <option value="id">ID de Solicitud</option>
-                        <option value="dni">DNI del Asociado</option>
-                        <option value="usuario">Usuario deseado</option>
-                        <option value="fecha">Fecha de solicitud</option>
-                        <!-- Agrega más opciones según tus necesidades -->
+                    <label for="searchColumnRevision">Buscar en:</label>
+                    <select id="searchColumnRevision">
+                        <option value="0">ID Solicitud</option>
+                        <option value="1">DNI del Asociado</option>
+                        <option value="2">Usuario deseado</option>
+                        <option value="3">Fecha de solicitud</option>
+                        <!-- <option value="4">Documento</option> -->
+                        <option value="5">Respuesta de Solicitud</option>
                     </select>
-                    <input type="text" id="searchInputRevision" placeholder="Ingrese el término de búsqueda">
+                    <input type="text" id="searchInputRevision" placeholder="Buscar...">
                 </div>
-
                 <div class="table-responsive">
                     <table id="revisionTable" class="table table-bordered">
                         <thead>
@@ -241,16 +242,18 @@
                     <button class="btn btn-primary btn-navigation" data-target="#denegar">Denegadas</button>
                 </div>
                 <div>
-                    <label for="filterCriteria">Seleccione un criterio de filtrado:</label>
-                    <select id="filterCriteriaAprobacion">
-                        <option value="id">ID de Solicitud</option>
-                        <option value="dni">DNI del Asociado</option>
-                        <option value="usuario">Usuario deseado</option>
-                        <option value="fecha">Fecha de solicitud</option>
-                        <option value="fechaAprobacion">Fecha de Aprobacion</option>
-                        <option value="numeroResolucion">Numero de Resolucion</option>
+                    <label for="searchColumnAprobacion">Buscar en:</label>
+                    <select id="searchColumnAprobacion">
+                        <option value="0">ID Solicitud</option>
+                        <option value="1">DNI del Asociado</option>
+                        <option value="2">Usuario deseado</option>
+                        <option value="3">Fecha de solicitud</option>
+                        <!-- <option value="4">Documento</option> -->
+                        <option value="5">Respuesta de Solicitud</option>
+                        <option value="6">Fecha de Aprobacion</option>
+                        <option value="7">Numero de Resolucion</option>
                     </select>
-                    <input type="text" id="searchInputAprobacion" placeholder="Ingrese el término de búsqueda">
+                    <input type="text" id="searchInputAprobacion" placeholder="Buscar...">
                 </div>
                 <div class="table-responsive">
                     <table id="aprobarTable" class="table table-bordered">
@@ -287,16 +290,18 @@
                     <button class="btn btn-primary btn-navigation active" data-target="#denegar">Denegadas</button>
                 </div>
                 <div>
-                    <label for="filterCriteria">Seleccione un criterio de filtrado:</label>
-                    <select id="filterCriteriaDenegar">
-                        <option value="id">ID de Solicitud</option>
-                        <option value="dni">DNI del Asociado</option>
-                        <option value="usuario">Usuario deseado</option>
-                        <option value="fecha">Fecha de solicitud</option>
-                        <option value="fechaAprobacion">Fecha de Aprobacion</option>
-                        <option value="numeroResolucion">Numero de Resolucion</option>
+                    <label for="searchColumnDenegar">Buscar en:</label>
+                    <select id="searchColumnDenegar">
+                        <option value="0">ID Solicitud</option>
+                        <option value="1">DNI del Asociado</option>
+                        <option value="2">Usuario deseado</option>
+                        <option value="3">Fecha de solicitud</option>
+                        <!-- <option value="4">Documento</option> -->
+                        <option value="5">Respuesta de Solicitud</option>
+                        <option value="6">Fecha de Aprobacion</option>
+                        <option value="7">Numero de Resolucion</option>
                     </select>
-                    <input type="text" id="searchInputDenegar" placeholder="Ingrese el término de búsqueda">
+                    <input type="text" id="searchInputDenegar" placeholder="Buscar...">
                 </div>
                 <div class="table-responsive">
                     <table id="denegarTable" class="table table-bordered">
@@ -397,6 +402,8 @@
 
     <!-- Enlace a la biblioteca DataTables -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/chart/chart.min.js"></script>
@@ -410,5 +417,7 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/ListarSolicitudesMembresia.js"></script>
+    <script src="js/MicuentaAdmin.js"></script>
+
 </body>
 </html>

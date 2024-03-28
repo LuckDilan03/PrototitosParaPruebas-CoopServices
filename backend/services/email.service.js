@@ -11,7 +11,9 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD
-    }
+    },
+    connectionTimeout: 10000, // 10 segundos de tiempo de espera para la conexión
+    socketTimeout: 10000, // 10 segundos de tiempo de espera para el socket
 });
 
 async function enviarEmail(to, subject, titulo, mensaje) {

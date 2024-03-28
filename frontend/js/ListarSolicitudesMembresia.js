@@ -1,17 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     obtenerDatosSolicitud();
-
-
-  // Agregar eventos para el filtro
-  $('#filterCriteria').on('change', function() {
-    applyFilter($(this).val(), $('#searchInput').val());
 });
-
-$('#searchInput').on('keyup', function() {
-    applyFilter($('#filterCriteria').val(), $(this).val());
-});
-});
-
 
 async function obtenerDatosSolicitud() {
     try {
@@ -23,28 +12,80 @@ async function obtenerDatosSolicitud() {
         agregarDatosAdenegar(solicitudes);
 
         // Inicializar las tablas con DataTables y habilitar la ordenación
-        $('#aprobarTable, #revisionTable, #denegarTable').DataTable({
-            // Deshabilitar la paginación
-            "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
-            "pageLength": 5,
-            "searching": false, // Deshabilitar la búsqueda
-            "info": true, // Habilitar la información de la tabla
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ Registros Por Página",
-                "zeroRecords": "No Se Encontraron Registros",
-                "info": "Solicitudes Totales: _TOTAL_",
-                "infoEmpty": "No Hay Registros Disponibles",
-                "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
-                "search": "Buscar:",
-                "paginate": {
-                    "previous": "Anterior",
-                    "next": "Siguiente"
+        const tables = {
+            revision: $('#revisionTable').DataTable({
+                "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
+                "pageLength": 5,
+                "searching": true,
+                "info": true,
+                "select": true,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ Registros Por Página",
+                    "zeroRecords": "No Se Encontraron Registros",
+                    "info": "Solicitudes Totales: _TOTAL_",
+                    "infoEmpty": "No Hay Registros Disponibles",
+                    "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente"
+                    }
                 }
-            }
+            }),
+            aprobacion: $('#aprobarTable').DataTable({
+                "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
+                "pageLength": 5,
+                "searching": true,
+                "info": true,
+                "select": true,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ Registros Por Página",
+                    "zeroRecords": "No Se Encontraron Registros",
+                    "info": "Solicitudes Totales: _TOTAL_",
+                    "infoEmpty": "No Hay Registros Disponibles",
+                    "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente"
+                    }
+                }
+            }),
+            denegar: $('#denegarTable').DataTable({
+                "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
+                "pageLength": 5,
+                "searching": true,
+                "info": true,
+                "select": true,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ Registros Por Página",
+                    "zeroRecords": "No Se Encontraron Registros",
+                    "info": "Solicitudes Totales: _TOTAL_",
+                    "infoEmpty": "No Hay Registros Disponibles",
+                    "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente"
+                    }
+                }
+            })
+        };
+
+        // Agregar la función de búsqueda a los tres campos de búsqueda
+        $('#searchInputRevision').on('keyup', function () {
+            tables.revision.column($('#searchColumnRevision').val()).search(this.value).draw();
         });
-        
+
+        $('#searchInputAprobacion').on('keyup', function () {
+            tables.aprobacion.column($('#searchColumnAprobacion').val()).search(this.value).draw();
+        });
+
+        $('#searchInputDenegar').on('keyup', function () {
+            tables.denegar.column($('#searchColumnDenegar').val()).search(this.value).draw();
+        });
     } catch (error) {
-        console.error('Error al obtener datos de usuarios: ', error);
+        console.error('Error al obtener las solicitudes:', error);
     }
 }
 
@@ -229,8 +270,6 @@ async function aprobarSolicitud(idSolicitud,dniAprobado) {
             body: JSON.stringify(bodyData),
         });
 
-
-
         const resJson= await response.json();
         if (!response.ok) {
             alert(resJson.message);
@@ -239,14 +278,11 @@ async function aprobarSolicitud(idSolicitud,dniAprobado) {
             alert(resJson.message);
             window.location.href = "/SolitudesPendientes"
         }
-
-        
     } catch (error) {
         console.error('Error en la solicitud de aprobación:', error);
     }
 }
 
-// Función para limpiar el contenido del modal
 async function limpiarModal() {
     document.getElementById('saldoInicial').value = '';
     document.getElementById('saldoAhorroVoluntario').value = '';
@@ -280,8 +316,6 @@ async function solicitarInformacionAdicionalDenegado(idSolicitud) {
     });
 }
 
-
-// Esta función maneja la solicitud de información adicional y muestra el modal
 async function solicitarInformacionAdicional(idSolicitud) {
     // Abre el modal
     $('#modalInformacionAdicional').modal('show');
@@ -309,86 +343,3 @@ async function solicitarInformacionAdicional(idSolicitud) {
     });
 }
 
-// Función de filtrado
-$(document).ready(function() {
-    // Evento de cambio en el selector de criterios de filtrado para la tabla de revisión
-    $('#filterCriteriaRevision').on('change', function() {
-        applyFilter($(this).val(), $('#searchInputRevision').val(), '#revisionTable');
-    });
-
-    // Evento de entrada de texto en el campo de búsqueda para la tabla de revisión
-    $('#searchInputRevision').on('keyup', function() {
-        applyFilter($('#filterCriteriaRevision').val(), $(this).val(), '#revisionTable');
-    });
-
-    // Evento de cambio en el selector de criterios de filtrado para la tabla de aprobación
-    $('#filterCriteriaAprobacion').on('change', function() {
-        applyFilter($(this).val(), $('#searchInputAprobacion').val(), '#aprobarTable');
-    });
-
-    // Evento de entrada de texto en el campo de búsqueda para la tabla de aprobación
-    $('#searchInputAprobacion').on('keyup', function() {
-        applyFilter($('#filterCriteriaAprobacion').val(), $(this).val(), '#aprobarTable');
-    });
-
-    // Evento de cambio en el selector de criterios de filtrado para la tabla de denegación
-    $('#filterCriteriaDenegar').on('change', function() {
-        applyFilter($(this).val(), $('#searchInputDenegar').val(), '#denegarTable');
-    });
-
-    // Evento de entrada de texto en el campo de búsqueda para la tabla de denegación
-    $('#searchInputDenegar').on('keyup', function() {
-        applyFilter($('#filterCriteriaDenegar').val(), $(this).val(), '#denegarTable');
-    });
-
-    $(document).ready(function() {
-        // Desplazar automáticamente al inicio del contenedor de la tabla al cambiar de página
-        $('#revisionTable, #aprobarTable, #denegarTable').on('page.dt', function () {
-            // Obtener el contenedor de la tabla
-            var container = $(this).closest('.container-fluid');
-            // Obtener la posición superior del contenedor de la tabla
-            var containerTop = container.offset().top;
-            // Animar el desplazamiento a la posición superior del contenedor de la tabla
-            $('html, body').animate({ scrollTop: containerTop }, 'slow');
-        });
-    });
-    
-    
-});
-
-// Función de filtrado
-function applyFilter(criteria, searchTerm, tableId) {
-    // Convertir el término de búsqueda a minúsculas para hacer la comparación de manera insensible a mayúsculas
-    searchTerm = searchTerm.toLowerCase();
-
-    // Filtrar la tabla en función del criterio seleccionado
-    $(`${tableId} tbody tr`).each(function() {
-        var rowData = $(this).find('td:nth-child(' + (getColumnIndex(criteria) + 1) + ')').text().toLowerCase();
-        if (rowData.indexOf(searchTerm) === -1) {
-            $(this).hide();
-        } else {
-            $(this).show();
-        }
-    });
-}
-
-// Función para obtener el índice de columna según el criterio de filtrado
-function getColumnIndex(criteria) {
-    // Devuelve el índice de columna basado en el criterio seleccionado
-    switch (criteria) {
-        case 'id':
-            return 0; // #ID Solicitud
-        case 'dni':
-            return 1; // DNI del Asociado
-        case 'usuario':
-            return 2; // Usuario deseado
-        case 'fecha':
-            return 3; // Fecha de solicitud
-        case 'fechaAprobacion':
-            return 6; // Fecha de aprobación
-        case 'numeroResolucion':
-            return 7; // Número de resolución
-        default:
-            return 0; // Valor predeterminado: no se aplica ningún filtro
-    }
-}

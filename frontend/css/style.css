@@ -585,17 +585,20 @@ a[href*='tel'], a[href*='mailto'] {
 }
 
 .main-decorated-box .decorated-subtitle {
-	font-family: "Playfair Display", serif;
+	font-family: "Montserrat", serif;
 	line-height: 1.5;
-	font-size: 20px;
+	font-size: 15px;
 	position: relative;
 	padding: 8px 0px 10px 0px;
 	letter-spacing: .03em;
+	color:#8ef4ff;
+	-webkit-text-stroke-width: medium;
+
 }
 
 @media (min-width: 1200px) {
 	.main-decorated-box .decorated-subtitle {
-		font-size: 30px;
+		font-size: 24px;
 		padding: 8px 10px 10px 38px;
 	}
 	.main-decorated-box .decorated-subtitle:before {
@@ -611,8 +614,21 @@ a[href*='tel'], a[href*='mailto'] {
 	}
 }
 
+::selection {
+	background-color: rgb(0, 126, 175);
+	color: rgb(121, 217, 255);
+}
+
+::selection {
+	background-color: rgb(247, 0, 255);
+	color: rgb(87, 0, 72);
+}
+
+
 .main-decorated-box > * {
 	position: relative;
+	margin-top: -30px;
+    margin-bottom: 30px;
 }
 
 .main-decorated-box:before {
