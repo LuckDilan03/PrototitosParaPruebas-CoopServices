@@ -759,3 +759,8 @@ select{
     border-radius: 5px;
     
 }
+
+.dataTables_filter{
+    visibility: hidden;
+}
+
