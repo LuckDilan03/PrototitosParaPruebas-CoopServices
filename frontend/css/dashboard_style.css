@@ -57,6 +57,7 @@ body{
     box-sizing: border-box;
     background-color: #162b3b; /* Color de fondo */
     color: #bdffff; /* Color de texto */
+    margin-left: 6px ;
 }
 
 /* Estilos para el placeholder del campo de búsqueda */
@@ -635,6 +636,16 @@ select{
     border-color: rgb(0, 70, 151);
 }
 
+#searchColumnRevision, #searchColumnAprobacion, #searchColumnDenegar, #searchColumnPersona {
+    width: 25%;
+    padding: 0.4%;
+    margin-bottom: 10px;
+    border: 1px solid rgb(0, 244, 252);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #00aaaa;
+    color: #ffffff;
+}
 .dataTables_wrapper .dataTables_paginate {
     float: right;
     text-align: right;
