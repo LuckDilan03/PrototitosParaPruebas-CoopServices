@@ -208,7 +208,15 @@
 
 
 /* Estilos para las tarjetas de usuario */
-#Tarjetas {
+#Tarjetas-admin  {
+    margin-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Para distribuir el espacio entre las tarjetas */
+}
+
+#Tarjetas-asociado  {
+    margin-top: 200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Para distribuir el espacio entre las tarjetas */
