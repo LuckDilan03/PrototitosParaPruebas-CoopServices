@@ -21,7 +21,7 @@ const mostrarcontac =(req,res)=>{
 
 const recuperarcontra =(req,res)=>{
 
-    res.sendFile(path.join(__dirname,'../../frontend/recuperarContra.html'))
+    res.sendFile(path.join(__dirname,'../../frontend/recuperarContra1.html'))
 }
 
 

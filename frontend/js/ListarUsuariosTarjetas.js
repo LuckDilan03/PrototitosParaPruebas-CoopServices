@@ -17,7 +17,7 @@
     });
 
     const resJson = await response.json();
-    console.log(resJson.status)
+    
     if (resJson.status==='error') {
       alert(resJson.message);
       window.location.href = "/dashboard";

@@ -19,6 +19,6 @@ const homeroutes =(app)=>{
     app.get('/contacts.html', (req, res) => {res.redirect('/contacto');});
     
     app.get('/recuperarContra',controlador.recuperarcontra);
-    app.get('/recuperarContra.html', (req, res) => {res.redirect('/recuperarContra');});
+    app.get('/recuperarContra1.html', (req, res) => {res.redirect('/recuperarContra');});
 }
 module.exports = homeroutes;
