@@ -10,84 +10,35 @@ async function obtenerDatosSolicitud() {
         agregarDatosAaprobar(solicitudes);
         agregarDatosArevision(solicitudes);
         agregarDatosAdenegar(solicitudes);
+        const tables = inicializarTablas();
 
-        // Inicializar las tablas con DataTables y habilitar la ordenación
-        const tables = {
-            revision: $('#revisionTable').DataTable({
-                "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
-                "pageLength": 5,
-                "searching": true,
-                "info": true,
-                "select": true,
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ Registros Por Página",
-                    "zeroRecords": "No Se Encontraron Registros",
-                    "info": "Solicitudes Totales: _TOTAL_",
-                    "infoEmpty": "No Hay Registros Disponibles",
-                    "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
-                    "search": "Buscar:",
-                    "paginate": {
-                        "previous": "Anterior",
-                        "next": "Siguiente"
-                    }
-                }
-            }),
-            aprobacion: $('#aprobarTable').DataTable({
-                "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
-                "pageLength": 5,
-                "searching": true,
-                "info": true,
-                "select": true,
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ Registros Por Página",
-                    "zeroRecords": "No Se Encontraron Registros",
-                    "info": "Solicitudes Totales: _TOTAL_",
-                    "infoEmpty": "No Hay Registros Disponibles",
-                    "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
-                    "search": "Buscar:",
-                    "paginate": {
-                        "previous": "Anterior",
-                        "next": "Siguiente"
-                    }
-                }
-            }),
-            denegar: $('#denegarTable').DataTable({
-                "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
-                "pageLength": 5,
-                "searching": true,
-                "info": true,
-                "select": true,
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ Registros Por Página",
-                    "zeroRecords": "No Se Encontraron Registros",
-                    "info": "Solicitudes Totales: _TOTAL_",
-                    "infoEmpty": "No Hay Registros Disponibles",
-                    "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
-                    "search": "Buscar:",
-                    "paginate": {
-                        "previous": "Anterior",
-                        "next": "Siguiente"
-                    }
-                }
-            })
-        };
-
-        // Agregar la función de búsqueda a los tres campos de búsqueda
-        $('#searchInputRevision').on('keyup', function () {
-            tables.revision.column($('#searchColumnRevision').val()).search(this.value).draw();
+        // Agregar el evento change al selector de columna de búsqueda
+        $('#searchColumnRevision, #searchColumnAprobacion, #searchColumnDenegar').on('change', function () {
+            // Restablecer el valor del campo de búsqueda
+            $('#searchInputRevision, #searchInputAprobacion, #searchInputDenegar').val('').keyup();
+    
+            // Restablecer el filtro de búsqueda en la tabla correspondiente
+            tables[this.dataset.table].search('').draw();
         });
 
-        $('#searchInputAprobacion').on('keyup', function () {
-            tables.aprobacion.column($('#searchColumnAprobacion').val()).search(this.value).draw();
-        });
+        // Agregar evento change al selector de columna de búsqueda global
+        $('#searchColumnGlobal').on('change', function () {
+            // Restablecer el valor del campo de búsqueda global
+            $('#searchInputGlobal').val('').keyup();
 
-        $('#searchInputDenegar').on('keyup', function () {
-            tables.denegar.column($('#searchColumnDenegar').val()).search(this.value).draw();
+            // Restablecer el filtro de búsqueda en todas las tablas
+            Object.values(tables).forEach(table => {
+                table.search('').draw();
+            });
         });
     } catch (error) {
         console.error('Error al obtener las solicitudes:', error);
     }
 }
+
+
+
+
 
 function limpiarTablas() {
     const tablas = document.querySelectorAll('table tbody');
@@ -95,6 +46,7 @@ function limpiarTablas() {
         tabla.innerHTML = ''; // Elimina todo el contenido de la tabla
     });
 }
+
 
 function agregarDatosAaprobar(solicitudes) {
     const tbody = document.querySelector('#aprobarTable tbody');
@@ -348,4 +300,48 @@ async function solicitarInformacionAdicional(idSolicitud) {
         });
     });
 }
+function inicializarTablas() {
+    const tables = {
+        revision: $('#revisionTable').DataTable(configurarTabla()),
+        aprobacion: $('#aprobarTable').DataTable(configurarTabla()),
+        denegar: $('#denegarTable').DataTable(configurarTabla())
+    };
 
+
+    // Agregar la función de búsqueda a los tres campos de búsqueda
+    $('#searchInputRevision').on('keyup', function () {
+        tables.revision.column($('#searchColumnRevision').val()).search(this.value).draw();
+    });
+
+    $('#searchInputAprobacion').on('keyup', function () {
+        tables.aprobacion.column($('#searchColumnAprobacion').val()).search(this.value).draw();
+    });
+
+    $('#searchInputDenegar').on('keyup', function () {
+        tables.denegar.column($('#searchColumnDenegar').val()).search(this.value).draw();
+    });
+    
+    return tables;
+}
+
+function configurarTabla() {
+    return {
+        "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
+        "pageLength": 5,
+        "searching": true,
+        "info": true,
+        "select": true,
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ Registros Por Página",
+            "zeroRecords": "No Se Encontraron Registros",
+            "info": "Solicitudes Totales: _TOTAL_",
+            "infoEmpty": "No Hay Registros Disponibles",
+            "infoFiltered": "(Filtrado De _MAX_ Registros En Total)",
+            "search": "Buscar:",
+            "paginate": {
+                "previous": "Anterior",
+                "next": "Siguiente"
+            }
+        }
+    };
+}

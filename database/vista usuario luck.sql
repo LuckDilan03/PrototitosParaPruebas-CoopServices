@@ -14,22 +14,23 @@ FROM
 JOIN
     tab_Usuarios u ON p.DNI_Persona = u.DNI_Usuario;
 
+
 CREATE OR REPLACE VIEW vista_personas AS
 SELECT
-    p.DNI_Persona,                  -- Cédula de la Persona(Llave Primaria) 
-    p.Nombre_Persona,	            -- Nombre de la Persona
-    p.Segundo_Nombre_Persona, 	    -- Segundo Nombre de la Persona          
-    p.Apellido_Persona, 	        -- Apellido de la Persona 
-    p.Segundo_Apellido_Persona, 	-- Segundo Apellido de la Persona 
-    p.Direccion_Persona, 	        -- Dirección de la Persona 
-    p.Telefono_Persona, 	        -- Teléfono de la Persona
-    p.Correo_Persona,	            -- Correo Electronico de la Persona
-	p.Documento_Persona,             -- Documento de la Persona
-    r.Nombre_Rol	                -- Nombre del Rol
-
+    p.DNI_Persona,                  -- Cédula de la Persona (Llave Primaria) 
+    p.Nombre_Persona,               -- Nombre de la Persona
+    p.Segundo_Nombre_Persona,       -- Segundo Nombre de la Persona          
+    p.Apellido_Persona,             -- Apellido de la Persona 
+    p.Segundo_Apellido_Persona,     -- Segundo Apellido de la Persona 
+    p.Direccion_Persona,            -- Dirección de la Persona 
+    p.Telefono_Persona,             -- Teléfono de la Persona
+    p.Correo_Persona,               -- Correo Electrónico de la Persona
+	p.Documento_Persona,            -- Documento de la Persona
+    (
+        SELECT STRING_AGG(r.Nombre_Rol, ', ')::character varying
+        FROM tab_Usuarios u
+        JOIN tab_Roles r ON u.Rol_Ingreso = r.id_Rol
+        WHERE u.DNI_Usuario = p.DNI_Persona
+    ) AS nombre_rol               -- Nombres de los Roles (concatenados)
 FROM
-    tab_Persona p
-LEFT JOIN
-    tab_Usuarios u ON p.DNI_Persona = u.DNI_Usuario
-LEFT JOIN
-    tab_Roles r ON u.Rol_Ingreso = r.id_Rol;
+    tab_Persona p;
