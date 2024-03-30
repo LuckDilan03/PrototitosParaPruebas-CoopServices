@@ -38,7 +38,7 @@ async function aprobarUsuario(req, res) {
         // Obtener los datos del usuario aprobado
         
         const userData = await dataUserAprobado(dniAprobado);
-        console.log(userData);
+        
         
         if (userData.error) {
             // Manejar el caso en el que no se encontraron datos para el usuario aprobado
@@ -136,7 +136,7 @@ async function DenegarSolicitud(req,res){
 
 
         const userData = await dataUserDenegado(dniDenegado);
-        console.log(userData);
+        
         
         if (userData.error) {
             // Manejar el caso en el que no se encontraron datos para el usuario aprobado

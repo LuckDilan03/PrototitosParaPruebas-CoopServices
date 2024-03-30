@@ -9,7 +9,9 @@ const controlerListPersonas = require('../controlers/listPersonas');
 const controlerDataUser=require('../controlers/vistaAsociadoCompleta');
 const controlervalidacion=require('../middlewares/validacionRol');
 const controlerUpdates=require('../controlers/dataSolicitud');
-const controlersolicitudRegistro=require('../controlers/solicitudEliminacion')
+const controlersolicitudRegistro=require('../controlers/solicitudEliminacion');
+const controlerSuspencionAsociado=require('../controlers/suspencionManualAsociado');
+const controlerHabilitacionAsociado=require('../controlers/habilitarManualAsociado');
 
 
 const adminRoutes = (app) => {
@@ -66,7 +68,9 @@ const adminRoutes = (app) => {
   /*rutas del listado de solicitudes de membresia */
   app.get('/SolitudesPendientes',controlervalidacion, auth.verifyToken, VistasAdmin.mostrarSolictudesPendientesAsociados);
   app.get('/SolicitudPendiente/:dni',controlervalidacion,auth.verifyToken,VistasAdmin.mostrarSolictudPendienteAsociado)
-  app.get('/SolicitudPendiente:dni',controlervalidacion,auth.verifyToken,controlerUpdates.solicitudRegistro)
+  app.get('/SolicitudPendiente:dni',controlervalidacion,auth.verifyToken,controlerUpdates.solicitudRegistro);
+  app.get('/SolicitudAprobada/:dni',controlervalidacion,auth.verifyToken,VistasAdmin.mostrarSolictudAprobada);
+  app.get('/SolicitudAprobada:dni',controlervalidacion,auth.verifyToken,controlerUpdates.solicitudRegistroAprobada);
   
   app.get('/ListaSolicitudesMembresia.html', controlervalidacion,auth.verifyToken, (req, res) => {
     res.redirect('/SolitudesPendientes');
@@ -80,7 +84,12 @@ const adminRoutes = (app) => {
     return controlerListSolicitudMembresia.DenegarSolicitud(req, res);
   });
 
+  app.put('/actualizarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.actualizarSolicitud )
+  app.put('/suspenderAsociadoManualmente/:idSolicitud',controlervalidacion, auth.verifyToken,controlerSuspencionAsociado.suspenderAsociadoManualmente)
+  app.put('/habilitarAsociadoManualmente/:idSolicitud',controlervalidacion, auth.verifyToken,controlerHabilitacionAsociado.habiliarAsociadoManualmente)
+
   app.delete('/eliminarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.eliminarSolicitud )
+
 
   /*rutas del listado de asociados en el sistema */
   app.get('/asociadosAprobados', auth.verifyToken, VistasAdmin.mostrarListaAsociados);

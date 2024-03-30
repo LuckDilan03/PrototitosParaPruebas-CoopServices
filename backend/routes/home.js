@@ -1,4 +1,5 @@
 const controlador = require ('../controlers/home');
+const auth = require('../middlewares/authCambioContra');
 
 // rutas publicas del inicio 
 const homeroutes =(app)=>{
@@ -19,6 +20,9 @@ const homeroutes =(app)=>{
     app.get('/contacts.html', (req, res) => {res.redirect('/contacto');});
     
     app.get('/recuperarContra',controlador.recuperarcontra);
-    app.get('/recuperarContra.html', (req, res) => {res.redirect('/recuperarContra');});
+    app.get('/recuperarContra1.html', (req, res) => {res.redirect('/recuperarContra');});
+
+    app.get('/recuperarContra2/:token',auth.verifyToken,controlador.formcontra);
+    app.get('/recuperarContra2.html', (req, res) => {res.redirect('/recuperarContra2');});
 }
 module.exports = homeroutes;

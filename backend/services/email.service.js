@@ -127,7 +127,7 @@ function crearEmailConfirmacionRegistro(mensaje, titulo) {
         <p>Gracias por utilizar nuestros servicios.</p>
 
         <a href="" class="button">Visitar nuestro sitio web</a>
-        <a href="http://${process.env.HOST}:${process.env.PORT}" class="button">Visitar nuestro sitio web</a>
+        <a href="${process.env.HOST}" class="button">Visitar nuestro sitio web</a>
 
       </div>
     </div>

@@ -26,6 +26,8 @@ SELECT
     p.Telefono_Persona,             -- Teléfono de la Persona
     p.Correo_Persona,               -- Correo Electrónico de la Persona
 	p.Documento_Persona,            -- Documento de la Persona
+        p.foto_persona,                  -- foto personas
+
     (
         SELECT STRING_AGG(r.Nombre_Rol, ', ')::character varying
         FROM tab_Usuarios u

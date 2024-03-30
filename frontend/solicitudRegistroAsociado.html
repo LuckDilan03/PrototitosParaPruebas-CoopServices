@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="images/favicon.ico" rel="icon">
+    <link href="/images/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,13 +40,11 @@
             </div>
         </div>
         <!-- Spinner End -->
-
-
-        <!-- Componente para Sidebar -->
+        
          <!-- Componente para Sidebar -->
          <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="dashboard.html" class="navbar-brand mx-4 mb-3">
+                <a href="/dashboard.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa img-coop me-2"></i>Cooperativa</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -60,21 +58,38 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-tie me-2"></i>Usuario</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="MiCuenta.html" class="dropdown-item">Mi Cuenta</a>
-                        </div>
-                    </div>
+                    <a href="/dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-laptop me-2"></i>Transacciones</a>
-                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-pooper="none">
+                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
                             <a href="/solicitarPrestamo" class="dropdown-item active">Solicitar un Prestamo</a>
                             <a href="/solicitarRetiro" class="dropdown-item">Solicitar un Retiro</a>
                             <a href="/otroTipoSolicitud" class="dropdown-item">Otro Tipo de Transacción</a>
                         </div>
                     </div>
+                    <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Tablas</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/SolitudesPendientes" class="dropdown-item">Solicitudes de Membresia</a>
+                            <a href="/asociadosAprobados" class="dropdown-item">Lista de Asociados</a>
+                            <a href="/usuarioSistema" class="dropdown-item">Lista de Usuarios</a>
+                            <a href="/solicitudesPrestamo" class="dropdown-item">Solicitudes de Prestamo</a>
+                            <a href="/crearRoles" class="dropdown-item">Crear Roles</a>
+                            <a href="/cuentasAhorro" class="dropdown-item">Lista de Cuentas de Ahorro</a>
+                        </div>
+                    </div>
+                     <a href="/graficos" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
+                 <!--   <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="signin.html" class="dropdown-item">Sign In</a>
+                            <a href="signup.html" class="dropdown-item">Sign Up</a>
+                            <a href="404.html" class="dropdown-item">404 Error</a>
+                            <a href="blank.html" class="dropdown-item">Blank Page</a>
+                        </div>
+                    </div> -->
                 </div>
             </nav>
         </div>
@@ -84,7 +99,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="dashboard.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="/dashboard.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -173,64 +188,65 @@
             <!-- Navbar End -->
 
             <!-- Formulario Para Solicitar Prestamo-->
-        <div class="container-fluid p-4 px-4">     
-            <div class="col-sm-15 col-xl-15">
-                <div class="bg-secondary rounded h-100 p-4">
-                    <h6 class="mb-4"> Datos De Solicitud De Registro Asociado</h6>
-                    
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="idSolicitud"
-                            placeholder="DNI del Asociado">
-                        <label for="floatingInput">Id Solicitud</label>
+            <div class="container-fluid p-4 px-4">     
+                <div class="col-sm-15 col-xl-15">
+                    <div class="bg-secondary rounded h-100 p-4">
+                        <h6 class="mb-4"> Datos De Solicitud De Registro Asociado</h6>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="idSolicitud"
+                                placeholder="DNI del Asociado">
+                            <label for="floatingInput">Id Solicitud</label>
+                        </div>
+    
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="DniAsociado"
+                                placeholder="DNI del Asociado">
+                            <label for="floatingInput">DNI del Asociado</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="PrimerNombre"
+                                placeholder="Primer Nombre">
+                            <label for="floatingInput">Primer Nombre</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="SegundoNombre"
+                                placeholder="Segundo Nombre">
+                            <label for="floatingInput">Segundo Nombre</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="PrimerApellido"
+                                placeholder="Primer Apellido">
+                            <label for="floatingInput">Primer Apellido</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="SegundoApellido"
+                                placeholder="Segundo Apellido">
+                            <label for="floatingInput">Segundo Apellido</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Direccion"
+                                placeholder="Direccion">
+                            <label for="floatingInput">Direccion</label>
+                        </div>
+                        <div class=" form-floating mb-3">
+                            <input type="number" class="form-control" id="Telefono"
+                                placeholder="Telefono">
+                            <label for="floatingInput">Telefono</label>
+                        </div>
+                        <div class=" form-floating mb-3">
+                            <input type="email" class="form-control" id="CorreoElectronico"
+                                placeholder="Correo registrado">
+                            <label for="floatingInput">Correo registrado</label>
+                        </div>
+    
+                        <button type="submit" class="btn btn-primary" id="Actualizar" disabled="true"> Actualizar Solicitud</button>
+                        <button type="submit" class="btn btn-primary" id="Eliminar"> Eliminar Solicitud</button><br> <br>  
+                        <button  type="submit" class="btn btn-primary" id="Volver" onclick="window.location.href = '/SolitudesPendientes'"> Volver atras</button>
                     </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="DniAsociado"
-                            placeholder="DNI del Asociado">
-                        <label for="floatingInput">DNI del Asociado</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="PrimerNombre"
-                            placeholder="Primer Nombre">
-                        <label for="floatingInput">Primer Nombre</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="SegundoNombre"
-                            placeholder="Segundo Nombre">
-                        <label for="floatingInput">Segundo Nombre</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="PrimerApellido"
-                            placeholder="Primer Apellido">
-                        <label for="floatingInput">Primer Apellido</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="SegundoApellido"
-                            placeholder="Segundo Apellido">
-                        <label for="floatingInput">Segundo Apellido</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="Direccion"
-                            placeholder="Direccion">
-                        <label for="floatingInput">Direccion</label>
-                    </div>
-                    <div class=" form-floating mb-3">
-                        <input type="number" class="form-control" id="Telefono"
-                            placeholder="Telefono">
-                        <label for="floatingInput">Telefono</label>
-                    </div>
-                    <div class=" form-floating mb-3">
-                        <input type="email" class="form-control" id="CorreoElectronico"
-                            placeholder="Correo registrado">
-                        <label for="floatingInput">Correo registrado</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" id="Actualizar" disabled="true"> Actualizar Solicitud</button>
-                    <button type="submit" class="btn btn-primary" id="Eliminar"> Eliminar Solicitud</button><br> <br>  
-                    <button  type="submit" class="btn btn-primary" id="Volver" onclick="window.location.href = '/SolitudesPendientes'"> Volver atras</button>
                 </div>
             </div>
-        </div>
+    
 
 
 
