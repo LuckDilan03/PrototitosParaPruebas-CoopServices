@@ -29,6 +29,8 @@
 }
 
 const inputBusqueda = document.getElementById('inputBusqueda');
+const seleccionAdmin = document.getElementById('selectorAdmin');
+const seleccionUsuario = document.getElementById('selectorUsuario');
 
 const filtrarUsuarios = (valorBusqueda) => {
   const tarjetas = document.querySelectorAll('.tarjeta');
@@ -49,6 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
   inputBusqueda.addEventListener('input', () => {
     filtrarUsuarios(inputBusqueda.value.toLowerCase());
   });
+
+
+  
+
+
 });
 
 function calcularRol(id_rol) {
@@ -79,9 +86,19 @@ function agregarDatosATabla(usuarios) {
   const asociadoSection = document.getElementById('Tarjetas-asociado');
   adminSection.innerHTML = '';
   asociadoSection.innerHTML = '';
+  const tituloTarjeta=document.createElement('h2');
+  tituloTarjeta.classList.add('titulo-admin')
+  tituloTarjeta.innerHTML='Administradores'
+  const tituloTarjetaAsociados=document.createElement('h2');
+  tituloTarjetaAsociados.classList.add('titulo-asociado')
+  tituloTarjetaAsociados.innerHTML='Asociados'
+  adminSection.appendChild(tituloTarjeta)
+  asociadoSection.appendChild(tituloTarjetaAsociados)
 
   usuarios.forEach(usuario => {
       const tarjetaDiv = document.createElement('div');
+      
+      
       tarjetaDiv.classList.add('tarjeta');
 
       const rol = calcularRol(usuario.rol_ingreso);
@@ -109,22 +126,22 @@ function agregarDatosATabla(usuarios) {
 
       if(usuario.estado_usuario){
         imagenEstado.src='/images/aprobado.png'
-        botonSuspender.disabled = false;
-        botonHabilitar.disabled = true;
+        
         botonHabilitar.style.display="none";
         
       }
       else{
         imagenEstado.src='/images/denegado.png'
         botonSuspender.style.display="none";
-        botonSuspender.disabled = true;
-        botonHabilitar.disabled = false;
+        
       }
 
       if (rol === 'ADMIN') {
+        
         adminSection.appendChild(tarjetaDiv);
       }
       else {
+        
         asociadoSection.appendChild(tarjetaDiv);
       }
       
@@ -132,8 +149,32 @@ function agregarDatosATabla(usuarios) {
       cambiarContraButton.addEventListener('click', () => { cambiarContra(usuario.usuario_ingreso,usuario.dni_persona)
       
       
+      
     });
+
   });
+
+  seleccionAdmin.addEventListener('click', () => {
+    if (seleccionAdmin.classList.contains('seleccionado')) {
+        seleccionAdmin.classList.remove('seleccionado');
+        adminSection.style.display = 'none';
+    } else {
+        seleccionAdmin.classList.add('seleccionado');
+        adminSection.style.display = '';
+    }
+    });
+
+  seleccionUsuario.addEventListener('click', () => {
+    if (seleccionUsuario.classList.contains('seleccionado')) {
+        seleccionUsuario.classList.remove('seleccionado');
+        asociadoSection.style.display = 'none';
+    } else {
+        seleccionUsuario.classList.add('seleccionado');
+        asociadoSection.style.display = '';
+    }
+});
+
+  
 }
 
 function crearBotonEditar(usuario, rol) {
