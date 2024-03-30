@@ -21,11 +21,11 @@ async function confirmarUsuario(use, dni) {
     return { status: 'ok', data: respuesta };
 }
 
-generarTokenCambioContra=(user,dni)=>{
-    return token =jwt.sign({user,dni},KEY,{expiresIn: 600 })
+generarTokenCambioContra=(user,dni,correo)=>{
+    return token =jwt.sign({user,dni,correo},KEY,{expiresIn: 600 })
 }
 
-correoCambioContra=(token,email)=>{
+const correoCambioContra=(token,email,usuario)=>{
     const fechaActual = new Date();
     const dia = fechaActual.getDate();
     const mes = fechaActual.getMonth() + 1; // Los meses comienzan desde 0
@@ -35,14 +35,13 @@ correoCambioContra=(token,email)=>{
     const segundos = fechaActual.getSeconds();
 
     const fechaFormateada = `${año}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
-    console.log(fechaFormateada);
 
 
-    let enlace=`http://${HOST}:${PORT}/cambiarContra2/${token}`;
+    let enlace=`http://${HOST}:${PORT}/recuperarContra2/${token}`;
     let asunto=`Solicitud de cambio de contraseña con fecha : ${fechaFormateada}`;
     let tituloMensaje=`¿ Estas intentando cambiar tu contraseña ?` ;
     let mensajeCorreo = `
-    Se registró una nueva solicitud de cambio de contraseña.
+    Se registró una nueva solicitud de cambio de contraseña para el usuario ${usuario}.
     Si fuiste tú, ingresa al siguiente enlace para proceder con el cambio de contraseña: ${enlace}.
     De lo contrario puedes omitir este correo o comunicarte con tu administrador
     Es posible ingresaran tu usuario por error `;
@@ -63,8 +62,10 @@ async function recuperarContra(req,res){
     let datos = partes[1].trim(); // trim() elimina los espacios en blanco al principio y al final del string
     
     if (datos.length>4){
-        const token= generarTokenCambioContra(usuarioParam,dni)
-        correoCambioContra(token,datos);
+        const token= generarTokenCambioContra(usuarioParam,dni,datos)
+        const correo=datos
+        console.log(correo)
+        correoCambioContra(token,correo,usuarioParam);
         return res.status(200).json({ status: 'ok', message: respuestaUser.data });
 
     }
