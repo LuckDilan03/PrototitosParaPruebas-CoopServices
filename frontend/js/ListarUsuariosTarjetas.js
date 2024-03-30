@@ -33,9 +33,9 @@ const inputBusqueda = document.getElementById('inputBusqueda');
 const filtrarUsuarios = (valorBusqueda) => {
   const tarjetas = document.querySelectorAll('.tarjeta');
   tarjetas.forEach(tarjeta => {
-      const nombre = tarjeta.querySelector('p:nth-child(2)').textContent.toLowerCase();
-      const apellido = tarjeta.querySelector('p:nth-child(3)').textContent.toLowerCase();
-      const dni = tarjeta.querySelector('p:first-child').textContent.toLowerCase();
+      const nombre = tarjeta.querySelector('p:nth-child(3)').textContent.toLowerCase();
+      const apellido = tarjeta.querySelector('p:nth-child(4)').textContent.toLowerCase();
+      const dni = tarjeta.querySelector('p:nth-child(2)').textContent.toLowerCase();
       if (nombre.includes(valorBusqueda) || dni.includes(valorBusqueda)||apellido.includes(valorBusqueda)) {
           tarjeta.style.display = 'block';
       } else {
@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function calcularRol(id_rol) {
   return id_rol === 1 ? "ADMIN" : "ASOCIADO";
+}
+
+function calcularEstado(estado){
+  return estado ? "ACTIVO":"SUSPENDIDO";
 }
 
 async function obtenerDatosUsuarios() {
@@ -81,9 +85,10 @@ function agregarDatosATabla(usuarios) {
       tarjetaDiv.classList.add('tarjeta');
 
       const rol = calcularRol(usuario.rol_ingreso);
+      
 
       tarjetaDiv.innerHTML = `
-          <img class="rounded-circle me-lg-2" src="images/user.jpg" alt="" style="width: 100px; height: 100px;">
+          <img class="rounded-circle me-lg-2" src="/uploads/fotoPerfil/${usuario.foto_persona}" alt="" style="width: 100px; height: 100px;">
           <p>DNI: ${usuario.dni_persona}</p>
           <p>Nombre: ${usuario.nombre_persona}</p>
           <p>Apellido: ${usuario.apellido_persona}</p>
@@ -92,10 +97,29 @@ function agregarDatosATabla(usuarios) {
           <p>Correo: ${usuario.correo_persona}</p>
           <p>Usuario: ${usuario.usuario_ingreso}</p>
           <p>Rol: ${rol}</p>
+          <img id="imagen" class="rounded-circle me-lg-2 imagen-estado" src="/images/aprobado.jpg" alt="" style="width: 70px; height: 70px;">
+          <textContent> ultimos detalles: ${usuario.detalle_estado} </textContent>
       `;
 
       const buttonsDiv = crearBotonEditar(usuario, rol);
       tarjetaDiv.appendChild(buttonsDiv);
+      const imagenEstado=tarjetaDiv.querySelector('.imagen-estado');
+      const botonSuspender = tarjetaDiv.querySelector('.btn.btn-sm.btn-danger');
+      const botonHabilitar = tarjetaDiv.querySelector('.Habilitar');
+
+      if(usuario.estado_usuario){
+        imagenEstado.src='/images/aprobado.png'
+        botonSuspender.disabled = false;
+        botonHabilitar.disabled = true;
+        botonHabilitar.style.display="none";
+        
+      }
+      else{
+        imagenEstado.src='/images/denegado.png'
+        botonSuspender.style.display="none";
+        botonSuspender.disabled = true;
+        botonHabilitar.disabled = false;
+      }
 
       if (rol === 'ADMIN') {
         adminSection.appendChild(tarjetaDiv);
@@ -103,6 +127,7 @@ function agregarDatosATabla(usuarios) {
       else {
         asociadoSection.appendChild(tarjetaDiv);
       }
+      
       const cambiarContraButton = document.getElementById(`cambiar-contra-${usuario.dni_persona}-${rol}`);
       cambiarContraButton.addEventListener('click', () => { cambiarContra(usuario.usuario_ingreso,usuario.dni_persona)
       
@@ -117,13 +142,13 @@ function crearBotonEditar(usuario, rol) {
       <i class="bi bi-pencil"></i> Cambiar contraseña
     </button>
 
-    <button class="btn btn-sm btn-primary" id="habilitar-usuario-${usuario.dni_persona}  onclick="editarUsuario(${usuario.dni_persona})">
+    <button class="btn btn-sm btn-primary Habilitar" id="habilitar-usuario-${usuario.dni_persona}  onclick="editarUsuario(${usuario.dni_persona})">
       <i class="bi bi-pencil"></i> Habilitar
     </button>
   `;
   
   if (rol === 'ADMIN') {
-    buttonsHTML += `<button class="btn btn-sm btn-primary" id="boton-admin"  >
+    buttonsHTML += `<button class="btn btn-sm btn-primary" id="boton-Asociado"  >
                       <i class="bi bi-pencil"></i> Crear Asociado
                     </button>`;
   }
@@ -133,9 +158,9 @@ function crearBotonEditar(usuario, rol) {
                     </button>`;
   }
 
-  buttonsHTML += `<button class="btn btn-sm btn-danger" onclick="suspenderUsuario(${usuario.dni_persona})">
+  buttonsHTML += `<button class="btn btn-sm btn-danger" id="boton-suspender" onclick="suspenderUsuario(${usuario.dni_persona})">
                       <i class="bi bi-x"></i> Suspender
-                    </button>`;
+                  </button>`;
 
   const buttonsDiv = document.createElement('div');
   buttonsDiv.classList.add('buttons-container');

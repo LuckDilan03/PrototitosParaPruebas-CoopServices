@@ -6,9 +6,11 @@ SELECT
     p.Direccion_Persona,
     p.Telefono_Persona,
     p.Correo_Persona,
+    p.foto_persona,
     u.Usuario_ingreso,
-    u.Contrasena_Ingreso,
-    u.Rol_Ingreso
+    u.Rol_Ingreso,
+    u.estado_usuario,
+    u.detalle_estado
 FROM
     tab_Persona p
 JOIN
@@ -24,7 +26,8 @@ SELECT
     p.Direccion_Persona, 	        -- Dirección de la Persona 
     p.Telefono_Persona, 	        -- Teléfono de la Persona
     p.Correo_Persona,	            -- Correo Electronico de la Persona
-	p.Documento_Persona,             -- Documento de la Persona
+	p.Documento_Persona,            -- Documento de la Persona    
+    p.foto_persona,                  -- foto personas
     r.Nombre_Rol	                -- Nombre del Rol
 
 FROM
