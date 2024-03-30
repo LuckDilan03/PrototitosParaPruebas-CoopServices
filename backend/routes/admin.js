@@ -12,7 +12,8 @@ const controlerUpdates=require('../controlers/dataSolicitud');
 const controlersolicitudRegistro=require('../controlers/solicitudEliminacion');
 const controlerSuspencionAsociado=require('../controlers/suspencionManualAsociado');
 const controlerHabilitacionAsociado=require('../controlers/habilitarManualAsociado');
-
+const controlerSuspencionUsuario=require('../controlers/suspenderUsuarioManual')
+const controlerActivacionUsuario=require('../controlers/activarUsuarioManual')
 
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -85,10 +86,12 @@ const adminRoutes = (app) => {
   });
 
   app.put('/actualizarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.actualizarSolicitud )
+  app.delete('/eliminarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.eliminarSolicitud )
+
+  
   app.put('/suspenderAsociadoManualmente/:idSolicitud',controlervalidacion, auth.verifyToken,controlerSuspencionAsociado.suspenderAsociadoManualmente)
   app.put('/habilitarAsociadoManualmente/:idSolicitud',controlervalidacion, auth.verifyToken,controlerHabilitacionAsociado.habiliarAsociadoManualmente)
 
-  app.delete('/eliminarSolicitud/:idSolicitud',controlervalidacion, auth.verifyToken,controlersolicitudRegistro.eliminarSolicitud )
 
 
   /*rutas del listado de asociados en el sistema */
@@ -104,6 +107,8 @@ const adminRoutes = (app) => {
     res.redirect('/usuarioSistema');
   });
   app.get('/listarUsuarioSistema',controlervalidacion, auth.verifyToken, contolerListUsuarios.listUsers);
+  app.put('/suspederUsuario/:usuario',controlervalidacion,auth.verifyToken,controlerSuspencionUsuario.suspenderUsuario)
+  app.put('/activarUsuario/:usuario',controlervalidacion,auth.verifyToken,controlerActivacionUsuario.activarUsuario)
 
   /*rutas del listado de solicitudes de prestamos */
   app.get('/solicitudesPrestamo', auth.verifyToken, VistasAdmin.mostrarSolicitudesPedientesPrestamos);
