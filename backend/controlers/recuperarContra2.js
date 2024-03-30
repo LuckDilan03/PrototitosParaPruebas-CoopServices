@@ -88,7 +88,7 @@ const correoConfirmCambioContra=(email,usuario)=>{
     
 
 
-    let enlace=`http://${HOST}:${PORT}/recuperarContra`;
+    let enlace=`http://${HOST}/recuperarContra`;
     let asunto=`Se actualiza exitosamente la contraseña con fecha  : ${fechaFormateada}`;
     let tituloMensaje=`Actualizacion correcta de contraseña ` ;
     let mensajeCorreo = `

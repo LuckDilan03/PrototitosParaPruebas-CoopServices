@@ -83,6 +83,7 @@ function agregarDatosATabla(usuarios) {
       const rol = calcularRol(usuario.rol_ingreso);
 
       tarjetaDiv.innerHTML = `
+          <img class="rounded-circle me-lg-2" src="images/user.jpg" alt="" style="width: 100px; height: 100px;">
           <p>DNI: ${usuario.dni_persona}</p>
           <p>Nombre: ${usuario.nombre_persona}</p>
           <p>Apellido: ${usuario.apellido_persona}</p>

@@ -112,7 +112,7 @@ function agregarDatosAaprobar(solicitudes) {
                 <td>${solicitud.dni_persona}</td>
                 <td>${solicitud.usuario_deseado}</td>
                 <td>${fechasolicitudform}</td>
-                <td><a href="/uploads/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
+                <td><a href="/uploads/documentos/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
                 <td>${solicitud.respuesta_solicitud}</td>
                 <td class="fecha-aprobacion">${fechaaprobacionform}</td>
                 <td class="numero-resolucion">${solicitud.numero_resolucion}</td>
@@ -143,7 +143,7 @@ function agregarDatosArevision(solicitudes) {
                 <td>${solicitud.dni_persona}</td>
                 <td>${solicitud.usuario_deseado}</td>
                 <td>${fechasolicitudform}</td>
-                <td><a href="/uploads/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
+                <td><a href="/uploads/documentos/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
                 <td>${solicitud.respuesta_solicitud}</td>
                 <td class="text-left">
                     <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
@@ -178,7 +178,7 @@ function agregarDatosAdenegar(solicitudes) {
                 <td>${solicitud.dni_persona}</td>
                 <td>${solicitud.usuario_deseado}</td>
                 <td>${fechasolicitudform}</td>
-                <td><a href="/uploads/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
+                <td><a href="/uploads/documentos/${solicitud.documento_solicitud}" target="_blank">Enlace al documento</a></td>
                 <td>${solicitud.respuesta_solicitud}</td>
                 <td class="fecha-aprobacion">${fechaaprobacionform}</td>
                 <td class="numero-resolucion">${solicitud.numero_resolucion}</td>

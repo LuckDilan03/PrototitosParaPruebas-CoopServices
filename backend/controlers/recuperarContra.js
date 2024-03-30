@@ -37,7 +37,7 @@ const correoCambioContra=(token,email,usuario)=>{
     const fechaFormateada = `${año}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
 
 
-    let enlace=`http://${HOST}:${PORT}/recuperarContra2/${token}`;
+    let enlace=`${HOST}/recuperarContra2/${token}`;
     let asunto=`Solicitud de cambio de contraseña con fecha : ${fechaFormateada}`;
     let tituloMensaje=`¿ Estas intentando cambiar tu contraseña ?` ;
     let mensajeCorreo = `

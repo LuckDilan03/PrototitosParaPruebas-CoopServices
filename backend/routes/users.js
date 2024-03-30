@@ -3,7 +3,7 @@ const controlerRegister = require("../controlers/register2");
 const controlerLogin=require('../controlers/login');
 const controlerPassword=require('../controlers/actualizarContra')
 const {cerrarSesion}=require('../controlers/cerrarSesion');
-const upload =require('../controlers/multerConfig');
+const {upload} =require('../controlers/multerConfig');
 const {recuperarContra}=require('../controlers/recuperarContra')
 const {recuperarContra2}=require('../controlers/recuperarContra2')
 
