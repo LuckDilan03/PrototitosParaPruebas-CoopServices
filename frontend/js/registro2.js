@@ -5,7 +5,7 @@ const fileInput = document.getElementById('Soporte_Documento');
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
   if (file.size > fileInput.dataset.maxSize) {
-    mensaje.textContent = 'El tamaño del archivo no debe exceder los 800kb.';
+    mensaje.textContent = 'El tamaño del archivo no debe exceder los 1.5 MB';
     mensaje.style.display = 'block';
     fileInput.value = '';
     fileInput.dispatchEvent(new Event('change')); // reset the file input UI
