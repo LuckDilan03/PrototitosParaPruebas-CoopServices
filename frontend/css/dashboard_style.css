@@ -775,3 +775,11 @@ select{
     visibility: hidden;
 }
 
+.form-control:disabled{
+    background-color: #242833;
+    color: #8ec2cf;
+}
+
+.form-floating>.form-control:disabled ~ label {
+    color: #c3f3ff;
+}
