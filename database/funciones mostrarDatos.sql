@@ -5,7 +5,10 @@ RETURNS TABLE(
     segundo_nombre_persona VARCHAR(100),
     apellido_persona VARCHAR(100),
     segundo_apellido_persona VARCHAR(100),
-    correo_persona VARCHAR(100)
+    direccion_persona VARCHAR(100),
+    telefono_persona bigint,
+    correo_persona VARCHAR(100),
+    foto_persona VARCHAR(100)
 )
 AS
 $$
@@ -15,7 +18,10 @@ begin
             segundo_nombre_persona,
             apellido_persona,
             segundo_apellido_persona,
-            correo_persona 
+            direccion_persona,
+            telefono_persona,
+            correo_persona,
+            foto_persona
             FROM tab_persona
             WHERE dni_persona=$1'
             USING dni;
@@ -39,7 +45,7 @@ DECLARE
     total_cuentas bigint;
 BEGIN
     IF rol = 1 THEN
-        SELECT COUNT(*) INTO total_cuentas FROM tab_cuenta;
+        SELECT COUNT(*) INTO total_cuentas FROM tab_cuenta WHERE tab_cuenta.estado_cuenta=true;
         SELECT 
             total_cuentas AS numero_cuenta,
             SUM(tab_cuenta.saldo_cuenta) AS saldo_cuenta,
@@ -68,11 +74,41 @@ BEGIN
 
     
 END;
-$$ LANGUAGE plpgsql;
+$$ 
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION obtenerdatosaportescuenta (dni bigint ,rol integer)
+RETURNS TABLE (id_aporte bigint, monto_aporte numeric, fecha_aporte date,detalles_aporte varchar) AS
+$$
+BEGIN
+	if rol=2 then
+		RETURN QUERY SELECT
+			a.id_aporte,
+			a.monto_aporte,
+			a.fecha_aporte::date as fecha_aporte,
+			a.detalles_aporte
+		FROM
+			tab_cuenta c
+			JOIN tab_aportecuenta a ON c.numero_cuenta = a.numero_cuenta AND c.dni_asociado = dni
+		WHERE
+			a.estado_aporte = true;
+	else
+		
+		RETURN QUERY SELECT
+			a.id_aporte,
+			a.monto_aporte,
+			a.fecha_aporte::date as fecha_aporte,
+			a.detalles_aporte
+		FROM tab_aportecuenta a
+		WHERE
+			a.estado_aporte = true;
 
 
-
-
-
---select obtenerdatosusuario(1234567890)
+		end if;
+    
+END;
+$$
+LANGUAGE plpgsql;
+--select obtenerdatospersona(1234567890)
 --select obtenerdatoscuenta(1234567890,1)
+--select obtenerdatosaportescuenta(1234567890,1)

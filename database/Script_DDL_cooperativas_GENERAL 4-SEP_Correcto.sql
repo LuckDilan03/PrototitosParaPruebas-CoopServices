@@ -152,6 +152,8 @@ CREATE TABLE tab_AporteCuenta (
     Numero_Cuenta                   BIGINT          NOT NULL, 
     Monto_Aporte                    DECIMAL         NOT NULL,
     Fecha_Aporte                    TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    estado_aporte                   boolean         NOT NULL DEFAULT true,
+    detalles_aporte                 VARCHAR         ,
     Usuario_Inserta      		    VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
     Fecha_Inserta      			    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     Usuario_Update      		    VARCHAR, 

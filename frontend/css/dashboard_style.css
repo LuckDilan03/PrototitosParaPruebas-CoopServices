@@ -783,3 +783,12 @@ select{
 .form-floating>.form-control:disabled ~ label {
     color: #c3f3ff;
 }
+
+#imagenDashboardSuperior {
+    transition: transform 0.3s ease; /* Agregar una transición suave para el cambio de tamaño */
+}
+
+#fotoDashboardHamburguesa
+{
+    transition: transform 0.3s ease; /* Agregar una transición suave para el cambio de tamaño */
+}

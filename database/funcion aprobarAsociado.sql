@@ -61,8 +61,8 @@ begin
                 incrementableAbono=incrementableAbono+1;
             END IF;
         
-        insert into tab_aportecuenta (id_aporte,numero_cuenta,monto_aporte,fecha_aporte)
-        values (incrementableAbono,nuevoNumeroCuenta,PsaldoInicial,CURRENT_TIMESTAMP);
+        insert into tab_aportecuenta (id_aporte,numero_cuenta,monto_aporte,fecha_aporte,detalles_aporte)
+        values (incrementableAbono,nuevoNumeroCuenta,PsaldoInicial,CURRENT_TIMESTAMP,'Aporte de apertura');
         
         
         update tab_solicitarmembresia
