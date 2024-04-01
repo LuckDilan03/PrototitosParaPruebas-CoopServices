@@ -1095,3 +1095,32 @@
 		}
 	});
 }());
+function centrarMensaje() {
+	var mensaje = document.getElementById("mensaje-advertencia");
+	var windowHeight = window.innerHeight;
+	var windowWidth = window.innerWidth;
+	var mensajeHeight = mensaje.offsetHeight;
+	var mensajeWidth = mensaje.offsetWidth;
+	
+	mensaje.style.top = (windowHeight - mensajeHeight) / 2 + "px";
+	mensaje.style.left = (windowWidth - mensajeWidth) / 2 + "px";
+  }
+  
+  // Ejecutar la función de centrar al cargar y redimensionar la ventana
+  window.addEventListener("load", centrarMensaje);
+  window.addEventListener("resize", centrarMensaje);
+  
+  // Función para cerrar el mensaje de advertencia
+  function habilitarBoton() {
+	var botonContinuar = document.getElementById("boton-continuar");
+	var agreeCheckbox = document.getElementById("agree-checkbox");
+	botonContinuar.disabled = !agreeCheckbox.checked;
+  }
+  
+  function cerrarMensaje() {
+	var mensaje = document.getElementById("mensaje-advertencia");
+	var fondoSemiTransparente = document.querySelector(".fondo-semi-transparente");
+	mensaje.style.display = "none";
+	fondoSemiTransparente.style.display = "none";
+  }
+
