@@ -17,12 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     eventos()
 
 
-  // Agregar eventos para el filtro
-    $('#filterCriteria').on('change', function() {
-    applyFilter($(this).val(), $('#searchInput').val());});
-
-    $('#searchInput').on('keyup', function() {
-    applyFilter($('#filterCriteria').val(), $(this).val());});
+  
 
     
 
