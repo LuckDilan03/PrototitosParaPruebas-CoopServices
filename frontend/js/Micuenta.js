@@ -17,13 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     eventos()
 
 
-  // Agregar eventos para el filtro
-    $('#filterCriteria').on('change', function() {
-    applyFilter($(this).val(), $('#searchInput').val());});
-
-    $('#searchInput').on('keyup', function() {
-    applyFilter($('#filterCriteria').val(), $(this).val());});
-
     
 
 
@@ -41,6 +34,32 @@ function sumatoriaAportes(aportes){
 }
 
 function eventos(){
+
+    fotoDashboardHamburguesa.addEventListener('click', () => {
+        fileInput.click(); // Al hacer clic en la imagen, activa el clic en el input de archivo
+    });
+
+    // Evento change para el input de archivo
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Mostrar la imagen temporal en el centro de la pantalla
+                imagenTemporalSrc.src = e.target.result;
+                imagenTemporal.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+        // Evento de clic en el botón "Aceptar" para confirmar la selección
+    btnAceptar.addEventListener('click', () => {
+        // Ocultar la imagen temporal
+        imagenTemporal.style.display = 'none';
+        // Copiar la imagen seleccionada a la imagen principal
+        fotoDashboardHamburguesa.src = imagenTemporalSrc.src;
+    });
 
     imagenDashboardSuperior.addEventListener('mouseover', function() {
         // Aumentar el tamaño de la imagen cuando se coloque el cursor sobre ella
@@ -61,7 +80,9 @@ function eventos(){
         // Restaurar el tamaño original de la imagen cuando se quite el cursor
         this.style.transform = 'scale(1) translateY(0) '; // Restablece el tamaño original
     });
-}
+
+   
+}   
 
 
 async function actulalizarDatos (){

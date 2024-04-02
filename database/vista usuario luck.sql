@@ -1,18 +1,22 @@
-CREATE OR REPLACE VIEW vista_usuarios AS
-SELECT
-    p.DNI_Persona,
-    p.Nombre_Persona,
-    p.Apellido_Persona,
-    p.Direccion_Persona,
-    p.Telefono_Persona,
-    p.Correo_Persona,
-    u.Usuario_ingreso,
-    u.Contrasena_Ingreso,
-    u.Rol_Ingreso
-FROM
-    tab_Persona p
-JOIN
-    tab_Usuarios u ON p.DNI_Persona = u.DNI_Usuario;
+CREATE OR REPLACE VIEW public.vista_usuarios
+ AS
+ SELECT p.dni_persona,
+    p.nombre_persona,
+    p.apellido_persona,
+    p.direccion_persona,
+    p.telefono_persona,
+    p.correo_persona,
+    p.foto_persona,
+    u.usuario_ingreso,
+    u.rol_ingreso,
+    u.estado_usuario,
+    u.detalle_estado
+   FROM tab_persona p
+     JOIN tab_usuarios u ON p.dni_persona = u.dni_usuario;
+
+ALTER TABLE public.vista_usuarios
+    OWNER TO postgres;
+
 
 
 CREATE OR REPLACE VIEW vista_personas AS

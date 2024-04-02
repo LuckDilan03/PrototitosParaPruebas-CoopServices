@@ -8,7 +8,11 @@ const cantidadCuentas=document.getElementById('cantidad-cuentas');
 const totalSaldos=document.getElementById('total-saldos');
 const promedioRecaudo=document.getElementById('promedio-recaudo');
 const totalAportes=document.getElementById('total-aportes');
-
+const fileInput = document.getElementById('fileInput');
+const imagenTemporal = document.getElementById('imagenTemporal');
+const imagenTemporalSrc = document.getElementById('imagenTemporalSrc');
+const btnAceptar = document.getElementById('btnAceptar');
+const btnCancelar = document.getElementById('btnCancelar');
 
 
 
@@ -37,6 +41,39 @@ function sumatoriaAportes(aportes){
 
 function eventos(){
 
+    fotoDashboardHamburguesa.addEventListener('click', () => {
+        fileInput.click(); // Al hacer clic en la imagen, activa el clic en el input de archivo
+    });
+
+    // Evento change para el input de archivo
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Mostrar la imagen temporal en el centro de la pantalla
+                imagenTemporalSrc.src = e.target.result;
+                imagenTemporal.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+        // Evento de clic en el botón "Aceptar" para confirmar la selección
+    btnAceptar.addEventListener('click', () => {
+        // Ocultar la imagen temporal
+        imagenTemporal.style.display = 'none';
+        // Copiar la imagen seleccionada a la imagen principal
+        fotoDashboardHamburguesa.src = imagenTemporalSrc.src;
+    });
+
+    //Evento de clic en el boton "Cancelar" para cancerlar la accion de subida de archivos
+
+    btnCancelar.addEventListener('click', () => {
+        // Ocultar la imagen temporal
+        imagenTemporal.style.display = 'none';
+    });
+
     imagenDashboardSuperior.addEventListener('mouseover', function() {
         // Aumentar el tamaño de la imagen cuando se coloque el cursor sobre ella
         this.style.transform = 'scale(2) translateY(10px)'; // Escala al 110% del tamaño original
@@ -50,11 +87,13 @@ function eventos(){
     fotoDashboardHamburguesa.addEventListener('mouseover', function() {
         // Aumentar el tamaño de la imagen cuando se coloque el cursor sobre ella
         this.style.transform = 'scale(2) translateX(10px)'; // Escala al 110% del tamaño original
+        this.style.cursor='pointer'
     });
     
     fotoDashboardHamburguesa.addEventListener('mouseout', function() {
         // Restaurar el tamaño original de la imagen cuando se quite el cursor
-        this.style.transform = 'scale(1) translateY(0) '; // Restablece el tamaño original
+        this.style.transform = 'scale(1) translateY(0) ';
+         // Restablece el tamaño original
     });
 }
 
