@@ -48,7 +48,20 @@
                 <a href="dashboard.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa img-coop me-2"></i>Cooperativa</h3>
                 </a>
-
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" id="fotoDashboardHamburguesa" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0" id="userName1"> </h6>
+                        <div>
+                            <span id="userRol"> </span>
+                        </div>
+                        <div>
+                            <span id="userName2"> </span>
+                        </div>
+                    </div>
+                </div>
                 <div class="navbar-nav w-100">
 
                     <div class="nav-item dropdown">
@@ -150,7 +163,7 @@
                     </div> -->
                     <div class="nav-item dropdown" id="userDropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img id="userAvatar" class="rounded-circle me-lg-2" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img id="imagenDashboardSuperior" class="rounded-circle me-lg-2" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
                             <span id="userName" class="d-none d-lg-inline-flex"> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
@@ -244,6 +257,7 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/registrarAporteCuenta.js"></script>
+    <script src="js/Micuenta.js"></script>
 </body>
 
 </html>
