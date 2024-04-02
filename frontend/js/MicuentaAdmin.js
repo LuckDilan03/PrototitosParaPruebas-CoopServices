@@ -24,13 +24,7 @@ const btnCancelar = document.getElementById('btnCancelar');
 
 document.addEventListener('DOMContentLoaded', () => {
     actulalizarDatos();
-    eventos()
-
-
-  
-
-    
-
+    eventos();
 
 });
 
@@ -134,8 +128,9 @@ async function actulalizarDatos (){
                 return 'ASOCIADO';
             }
         };
-        const sumaAportes=sumatoriaAportes(data.datosaportes);
         const rolMostrar=calcularRol();
+        const sumaAportes=sumatoriaAportes(data.datosaportes);
+        
         
              // Actualizar los valores en el HTML
 

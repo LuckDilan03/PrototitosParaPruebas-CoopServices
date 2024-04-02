@@ -35,6 +35,12 @@ const adminRoutes = (app) => {
   app.get('/datadashboard',auth.verifyToken,controlerDataDashboard.datadashboard);
   app.get('/dataperfil',auth.verifyToken,contolerDataPerfil.dataperfil)
 
+  app.get('/perfil', auth.verifyToken, (req, res) => {
+    const rutaAdmin = "solicitarPrestamoAdmin.html";
+    const rutaUser = "perfil.html";
+    controlerValidacion.mostrarVista(req, res, rutaAdmin, rutaUser);
+  });
+
   /*rutas del formulario de prestamos y su html*/
   app.get('/solicitarPrestamo', auth.verifyToken, (req, res) => {
     const rutaAdmin = "solicitarPrestamoAdmin.html";
