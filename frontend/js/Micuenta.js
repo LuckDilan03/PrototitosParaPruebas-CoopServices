@@ -1,13 +1,18 @@
-const userName=document.getElementById('userName');
+const userName=document.getElementById('userName') || { textContent: 'Valor predeterminado' };
 const userName1=document.getElementById('userName1');
 const userName2=document.getElementById('userName2');
 const userRol=document.getElementById('userRol');
 const fotoDashboardHamburguesa=document.getElementById('fotoDashboardHamburguesa');
 const imagenDashboardSuperior=document.getElementById('imagenDashboardSuperior');
-const cantidadCuentas=document.getElementById('cantidad-cuentas');
-const totalSaldos=document.getElementById('total-saldos');
-const promedioRecaudo=document.getElementById('promedio-recaudo');
-const totalAportes=document.getElementById('total-aportes');
+const cantidadCuentas = document.getElementById('cantidad-cuentas') || { textContent: 'Valor predeterminado' };
+const totalSaldos = document.getElementById('total-saldos') || { textContent: 'Valor predeterminado' };
+const promedioRecaudo = document.getElementById('promedio-recaudo') || { textContent: 'Valor predeterminado' };
+const totalAportes = document.getElementById('total-aportes') || { textContent: 'Valor predeterminado' };
+const fileInput = document.getElementById('fileInput');
+const imagenTemporal = document.getElementById('imagenTemporal');
+const imagenTemporalSrc = document.getElementById('imagenTemporalSrc');
+const btnAceptar = document.getElementById('btnAceptar');
+const btnCancelar = document.getElementById('btnCancelar');
 
 
 

@@ -1,4 +1,4 @@
-const userName=document.getElementById('userName');
+const userName=document.getElementById('userName') || { textContent: 'Valor predeterminado' };
 const userName1=document.getElementById('userName1');
 const userName2=document.getElementById('userName2');
 const userRol=document.getElementById('userRol');
@@ -41,7 +41,7 @@ function sumatoriaAportes(aportes){
         
         sumaAportes+=valorAporte;
     }
-    console.log(sumaAportes)
+    
     return sumaAportes;
 }
 
@@ -150,7 +150,7 @@ async function actulalizarDatos (){
              cantidadCuentas.textContent=data.datosCuenta.numero_cuenta;
              totalSaldos.textContent=data.datosCuenta.saldo_cuenta;
              promedioRecaudo.textContent=parseInt(data.datosCuenta.aporte_mensual)
-             console.log(sumaAportes)
+             
              totalAportes.textContent=sumaAportes
              
 
