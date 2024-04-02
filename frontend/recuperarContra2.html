@@ -26,11 +26,17 @@
             <label for="VerificarContrasena" class="sr-only">VERIFICAR CONTRASEÑA</label>
             <input type="password" name="VerificarContrasena" id="VerificarContrasena" placeholder="VERIFICAR CONTRASEÑA" autocomplete="new-password">
             <i class="formulario__validacion-estado fas fa-times-circle"></i>
-            
+                       
+            <!--Mostrar Contraseña-->
+            <i class='bx bx-low-vision' id="eye-icon"> Mostrar Contraseñas</i>
+            <i class='bx bx-show' id="eye-off-icon" style="display: none;"> Ocultar Contraseñas</i>
+            <p id="error" class="formulario__input-error" style="color: #ff5050">Las contraseñas no coinciden</p>
+
             <button type="button" id="enviar">CAMBIAR CONTRASEÑA</button>
             <button type="button" class="boton-volver" onclick="window.location.href = '/'">VOLVER AL INICIO</button>
+
         </form>
-        <p>MENSAJE ¿CUAL? NO SE - <a href="/iniciarSesion">INICIA SESIÓN</a></p>
+        <p>MENSAJE ¿CUÁL? NO SÉ - <a href="/iniciarSesion">INICIA SESIÓN</a></p>
 
     </div>
     <script src="/js/recuperarContra2.js"></script>
