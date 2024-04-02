@@ -40,7 +40,7 @@ async function datadashboard(req, res) {
 
 
         };
-        console.log(datosaportes)
+        
         res.json(datosDashboard);
     } catch (error) {
         console.error('Error al obtener datos de usuarios desde la base de datos: ', error);
