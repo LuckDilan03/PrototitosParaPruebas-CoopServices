@@ -15,7 +15,7 @@ const controlerHabilitacionAsociado=require('../controlers/habilitarManualAsocia
 const controlerSuspencionUsuario=require('../controlers/suspenderUsuarioManual')
 const controlerActivacionUsuario=require('../controlers/activarUsuarioManual')
 const controlerDataDashboard=require('../controlers/mostrarDataDashboard')
-
+const contolerDataPerfil=require('../controlers/mostrarDataPerfil')
 
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -32,7 +32,8 @@ const adminRoutes = (app) => {
   });
   app.get('/datauser', auth.verifyToken, controlerDataUser.listUserAprobado);
   app.get('/userDenegado', auth.verifyToken, controlerDataUser.listUserAprobado);
-  app.get('/datadashboard',auth.verifyToken,controlerDataDashboard.datadashboard)
+  app.get('/datadashboard',auth.verifyToken,controlerDataDashboard.datadashboard);
+  app.get('/dataperfil',auth.verifyToken,contolerDataPerfil.dataperfil)
 
   /*rutas del formulario de prestamos y su html*/
   app.get('/solicitarPrestamo', auth.verifyToken, (req, res) => {
