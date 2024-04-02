@@ -30,18 +30,22 @@
 .tarjeta {
     flex-basis: calc(33.33% - 20px);
     margin-bottom: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #101b2b;
+    border: 1px solid #7cf6ff;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 31, 39, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
+.tarjeta p{
+    color: #ffffff;
+
+}
 .imagen-detalle {
     display: flex;
     flex-direction: column;
@@ -67,24 +71,30 @@
 .tarjeta button i {
     margin-right: 5px;
 }
+.imagen-estado {
+    border: none;
+
+}
 
 .tarjeta img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     margin-bottom: 15px;
+    border: 2px solid #7cf6ff;
+
 }
 
 .tarjeta .usuario-info h6 {
     margin: 0;
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
 }
 
 .tarjeta .usuario-info span {
     font-size: 16px;
-    color: #666;
+    color: #ffffff;
 }
 
 .tarjeta .btn {
@@ -95,16 +105,35 @@
 
 .tarjeta .btn-primary {
     background-color: #007bff;
-    border-color: #007bff;
+    border: 3px solid #006cdf;
     color: #fff;
 }
 
 .tarjeta .btn-danger {
     background-color: #dc3545;
-    border-color: #dc3545;
+    border: 3px solid #d12a3b;
     color: #fff;
 }
 
-.tarjeta .btn:hover {
-    opacity: 0.8;
+.tarjeta .btn-primary:hover {
+    background-color: #007bff27;
+    border-color: #007bff;
+    border: 3px solid #007bff;
+    color: #fff;
+}
+
+.tarjeta .btn-danger:hover {
+    background-color: #dc35462a;
+    border-color: #dc3545;
+    border: 3px solid #dc3545;
+    color: #fff;
+}
+
+#imagen.imagen-estado {
+    border: none;
+
+}
+
+textcontent{
+    color: #adfcfc;
 }
