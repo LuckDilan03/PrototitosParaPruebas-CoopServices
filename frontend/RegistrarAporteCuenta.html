@@ -184,23 +184,32 @@
                 <h6 class="mb-4"> Formulario para registrar un abono</h6>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput"
-                        placeholder="DNI del Asociado">
+                        placeholder="DNI del Asociado" disabled>
                     <label for="floatingInput">DNI del Asociado</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput"
-                        placeholder="Numero De Cuenta">
-                    <label for="floatingInput">Numero De Cuenta</label>
-                </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput"
                         placeholder="Monto Aporte">
                     <label for="floatingInput">Monto Aporte</label>
                 </div>
+                <!--Tipo de Pago-->
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput"
-                        placeholder="Estado del Rol">
-                    <label for="floatingInput">Tipo de Prestamo</label>
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" onchange="showInputField()">
+                        <option selected>Seleccione el tipo de pago</option>
+                        <option value="1">Nequi</option>
+                        <option value="2">Bancolombia</option>
+                        <option value="3">Daviplata</option>
+                        <option value="4">Efecty</option>
+                        <option value="5">Efectivo</option>
+                    </select>
+                    <label for="floatingSelect">Tipo de Pago</label>
+                </div>
+            
+                <!-- si es Efectivo (value=5) aparecera el siguiente input-->
+                <div class="form-floating mb-3" id="pagadoAField" style="display: none;">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Pagado A">
+                    <label for="floatingInput">Pagado A:</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput"

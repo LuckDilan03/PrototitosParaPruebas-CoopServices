@@ -202,11 +202,7 @@
                         placeholder="DNI del Asociado">
                     <label for="floatingInput">DNI del Asociado</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput"
-                        placeholder="Numero De Cuenta">
-                    <label for="floatingInput">Numero De Cuenta</label>
-                </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput"
                         placeholder="Monto Aporte">
@@ -217,19 +213,40 @@
                         placeholder="Estado del Rol">
                     <label for="floatingInput">Tipo de Prestamo</label>
                 </div> -->
+                <!--tipo de pago-->
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput"
-                        placeholder="Fecha de Abono">
-                    <label for="floatingInput">Fecha de Abono</label>
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" onchange="showInputField()">
+                        <option selected>Seleccione el tipo de pago</option>
+                        <option value="1">Nequi</option>
+                        <option value="2">Bancolombia</option>
+                        <option value="3">Daviplata</option>
+                        <option value="4">Efecty</option>
+                        <option value="5">Efectivo</option>
+                    </select>
+                    <label for="floatingSelect">Tipo de Pago</label>
                 </div>
+            
+                <!-- si es Efectivo (value=5) aparecera el siguiente input-->
+                <div class="form-floating mb-3" id="pagadoAField" style="display: none;">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Pagado A">
+                    <label for="floatingInput">Pagado A:</label>
+                </div>
+
                 <div class="mb-3">
                     <div class="file-container" id="formFileContainer">
                         <label for="fileInput" id="formFile" class="btn">Adjuntar archivo</label>
                         <input type="file" name="fileInput" id="fileInput" style="display: none;">
                     </div>                    
                 </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput"
+                        placeholder="Observaciones">
+                    <label for="floatingInput">Observaciones</label>
+                </div>
 
-                <button type="submit" class="btn btn-primary"> Enviar Solicitud</button>
+                <div>
+                <button type="submit" class="btn btn-primary" > Enviar Solicitud</button>
+                </div>
             </div>
         </div>
     </div>
