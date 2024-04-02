@@ -54,11 +54,37 @@ function eventos(){
     });
 
         // Evento de clic en el botón "Aceptar" para confirmar la selección
-    btnAceptar.addEventListener('click', () => {
+    btnAceptar.addEventListener('click', async () => {
         // Ocultar la imagen temporal
         imagenTemporal.style.display = 'none';
         // Copiar la imagen seleccionada a la imagen principal
-        fotoDashboardHamburguesa.src = imagenTemporalSrc.src;
+        const formData = new FormData();
+            if (fileInput.files.length > 0) {
+                // Obtener solo el nombre del archivo sin la ruta completa
+                const fileName = fileInput.files[0].name;
+                formData.append('fotoLateral', fileInput.files[0], fileName);
+            }
+
+            const response = await fetch("/cambiarFotoLateral", {
+                method: "PUT",
+                body: formData
+            });
+            const resJson= await response.json();
+            if (!response.ok) {
+                alert(resJson.message);
+                window.location.href = "/dashboard"
+            } else{
+                alert(resJson.message);
+                window.location.href = "/dashboard"
+                
+            }
+                });
+
+    //Evento de clic en el boton "Cancelar" para cancerlar la accion de subida de archivos
+
+    btnCancelar.addEventListener('click', () => {
+        // Ocultar la imagen temporal
+        imagenTemporal.style.display = 'none';
     });
 
     imagenDashboardSuperior.addEventListener('mouseover', function() {
