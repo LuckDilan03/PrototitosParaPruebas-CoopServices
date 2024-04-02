@@ -17,13 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     eventos()
 
 
-  // Agregar eventos para el filtro
-    $('#filterCriteria').on('change', function() {
-    applyFilter($(this).val(), $('#searchInput').val());});
-
-    $('#searchInput').on('keyup', function() {
-    applyFilter($('#filterCriteria').val(), $(this).val());});
-
     
 
 
@@ -41,6 +34,58 @@ function sumatoriaAportes(aportes){
 }
 
 function eventos(){
+
+    fotoDashboardHamburguesa.addEventListener('click', () => {
+        fileInput.click(); // Al hacer clic en la imagen, activa el clic en el input de archivo
+    });
+
+    // Evento change para el input de archivo
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Mostrar la imagen temporal en el centro de la pantalla
+                imagenTemporalSrc.src = e.target.result;
+                imagenTemporal.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+        // Evento de clic en el botón "Aceptar" para confirmar la selección
+    btnAceptar.addEventListener('click', async () => {
+        // Ocultar la imagen temporal
+        imagenTemporal.style.display = 'none';
+        // Copiar la imagen seleccionada a la imagen principal
+        const formData = new FormData();
+            if (fileInput.files.length > 0) {
+                // Obtener solo el nombre del archivo sin la ruta completa
+                const fileName = fileInput.files[0].name;
+                formData.append('fotoLateral', fileInput.files[0], fileName);
+            }
+
+            const response = await fetch("/cambiarFotoLateral", {
+                method: "PUT",
+                body: formData
+            });
+            const resJson= await response.json();
+            if (!response.ok) {
+                alert(resJson.message);
+                window.location.href = "/dashboard"
+            } else{
+                alert(resJson.message);
+                window.location.href = "/dashboard"
+                
+            }
+                });
+
+    //Evento de clic en el boton "Cancelar" para cancerlar la accion de subida de archivos
+
+    btnCancelar.addEventListener('click', () => {
+        // Ocultar la imagen temporal
+        imagenTemporal.style.display = 'none';
+    });
 
     imagenDashboardSuperior.addEventListener('mouseover', function() {
         // Aumentar el tamaño de la imagen cuando se coloque el cursor sobre ella
@@ -61,7 +106,9 @@ function eventos(){
         // Restaurar el tamaño original de la imagen cuando se quite el cursor
         this.style.transform = 'scale(1) translateY(0) '; // Restablece el tamaño original
     });
-}
+
+   
+}   
 
 
 async function actulalizarDatos (){
