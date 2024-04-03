@@ -18,7 +18,7 @@ try {
         const decodificado = jwt.decode(token, KEY);
         const dni = decodificado.dni;
         const {direccion,telefono}=req.body
-        console.log(req.body)
+        
         const queryString='SELECT * FROM actualizaDataPersona($1,$2,$3)'
         const {rows : result}= await pool.query(queryString,[dni,direccion,telefono])
         
