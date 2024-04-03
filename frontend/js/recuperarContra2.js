@@ -10,6 +10,7 @@ addEventListener('DOMContentLoaded', () => {
     const pathname = url.pathname;
     const token = pathname.split('/')[2];
 
+    
     // Función para mostrar contraseñas
     mostrarContrasenas.addEventListener('click', () => {
         nuevaContra.type = 'text';
@@ -63,7 +64,29 @@ addEventListener('DOMContentLoaded', () => {
     enviar.disabled = true;
 
     // Event listener para enviar el formulario
-    enviar.addEventListener('click', async () => {
-        // Resto del código para enviar el formulario
-    });
+    enviar.addEventListener('click',async ()=>{
+
+        const valorConfirmacionContra=confirmacionContra.value;
+        const response =  await fetch(`/recuperarContra2`,{
+
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    token:token,
+                    valorConfirmacionContra:valorConfirmacionContra
+                })
+            })
+            const resJson=await response.json();
+            console.log(resJson.status)
+            if (resJson.status==='error') {
+                alert(resJson.message);
+                window.location.href = "/recuperarContra";
+            } else {
+                alert(resJson.message);
+                window.location.href = "/iniciarSesion";
+            }
+        });
+        
 });

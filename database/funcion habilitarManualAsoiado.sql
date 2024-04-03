@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION habilitarManualmente(idSolicitud bigint) RETURNS bool
 $$
 DECLARE DocumentoSolicitud bigint;
 begin
-  select dni_persona into DocumentoSolicitud from tab_solicitarmembresia where id_solicitud=idSolicitud 
+  select dni_persona into DocumentoSolicitud from tab_solicitarmembresia where id_solicitud=idSolicitud;
   IF FOUND THEN
         update tab_cuenta
            set estado_cuenta=true,detalles_estado_cuenta='Cuenta Aprobado Manual Mente'
