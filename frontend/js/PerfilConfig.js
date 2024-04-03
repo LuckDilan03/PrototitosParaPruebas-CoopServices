@@ -105,6 +105,10 @@ function eventosPerfil (){
         const direccion=formDireccionPersona.value;
         
         const telefono=formTelefonoPersona.value;
+
+        if (fileInputPerfil.files.length > 0) {
+            btnCambiarFoto.click()
+        }
        
         const response = await fetch("/actualizarDatosPerfil", {
             method: "PUT",
