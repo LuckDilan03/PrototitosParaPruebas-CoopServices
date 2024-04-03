@@ -825,3 +825,29 @@ select{
 .mt-3{
     margin-bottom: 1rem !important;
 }
+.foto-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden; /* Clippear el mensaje que sobresale */
+}
+
+#fotoConfiguracion {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-style: outset;
+    border-color: #00fbff;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+
+#fotoConfiguracion:hover {
+    filter: brightness(80%); /* Reducir el brillo para oscurecer la imagen */
+
+
+}
+
+
