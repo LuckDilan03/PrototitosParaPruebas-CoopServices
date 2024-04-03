@@ -1,4 +1,4 @@
-const userName=document.getElementById('userName');
+const userName=document.getElementById('userName') || { textContent: 'Valor predeterminado' };
 const userName1=document.getElementById('userName1');
 const userName2=document.getElementById('userName2');
 const userRol=document.getElementById('userRol');
@@ -24,13 +24,7 @@ const btnCancelar = document.getElementById('btnCancelar');
 
 document.addEventListener('DOMContentLoaded', () => {
     actulalizarDatos();
-    eventos()
-
-
-  
-
-    
-
+    eventos();
 
 });
 
@@ -41,7 +35,7 @@ function sumatoriaAportes(aportes){
         
         sumaAportes+=valorAporte;
     }
-    console.log(sumaAportes)
+    
     return sumaAportes;
 }
 
@@ -134,8 +128,9 @@ async function actulalizarDatos (){
                 return 'ASOCIADO';
             }
         };
-        const sumaAportes=sumatoriaAportes(data.datosaportes);
         const rolMostrar=calcularRol();
+        const sumaAportes=sumatoriaAportes(data.datosaportes);
+        
         
              // Actualizar los valores en el HTML
 
@@ -150,7 +145,7 @@ async function actulalizarDatos (){
              cantidadCuentas.textContent=data.datosCuenta.numero_cuenta;
              totalSaldos.textContent=data.datosCuenta.saldo_cuenta;
              promedioRecaudo.textContent=parseInt(data.datosCuenta.aporte_mensual)
-             console.log(sumaAportes)
+             
              totalAportes.textContent=sumaAportes
              
 

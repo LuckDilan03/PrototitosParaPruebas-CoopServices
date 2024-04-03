@@ -49,7 +49,18 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
+                        <div id="imagenTemporal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; text-align: center;">
+                            <img id="imagenTemporalSrc" style="max-width: 50%; max-height: 50%;">
+                            <div style="margin-top: 20px;"> <!-- Agregamos un contenedor para los botones y aplicamos un margen superior -->
+                                <button id="btnAceptar" class="btn-Aceptar">Aceptar</button>
+                                <button id="btnCancelar" class="btn-Cancelar" >Cancelar</button>
+                            </div>
+                        </div>
+
+                        <!-- Input de archivo oculto -->
+                        <input type="file" id="fileInput" style="display: none;" accept="image/*">
                         <img class="rounded-circle" id="fotoDashboardHamburguesa" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0" id="userName1"> </h6>
@@ -62,11 +73,11 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="/solicitarPrestamo" class="dropdown-item">Solicitar un Prestamo</a>
+                        <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-laptop me-2"></i>Transacciones</a>
+                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
+                            <a href="/solicitarPrestamo" class="dropdown-item active">Solicitar un Prestamo</a>
                             <a href="/solicitarRetiro" class="dropdown-item">Solicitar un Retiro</a>
                             <a href="/otroTipoSolicitud" class="dropdown-item">Otro Tipo de Transacción</a>
                         </div>
@@ -74,19 +85,18 @@
                     <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-table me-2"></i>Tablas</a>
-                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
-                            <a href="/SolitudesPendientes" class="dropdown-item active">Solicitudes de Membresia</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Tablas</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/SolitudesPendientes" class="dropdown-item">Solicitudes de Membresia</a>
                             <a href="/asociadosAprobados" class="dropdown-item">Lista de Asociados</a>
                             <a href="/usuarioSistema" class="dropdown-item">Lista de Usuarios</a>
                             <a href="/solicitudesPrestamo" class="dropdown-item">Solicitudes de Prestamo</a>
                             <a href="/crearRoles" class="dropdown-item">Crear Roles</a>
                             <a href="/cuentasAhorro" class="dropdown-item">Lista de Cuentas de Ahorro</a>
-                            <a href="/listaPersona" class="dropdown-item">Lista de Personas</a>
                         </div>
                     </div>
                      <a href="/graficos" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
-                <!--   <div class="nav-item dropdown">
+                 <!--   <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -179,8 +189,8 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" id="imagenDashboardSuperior" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span id="userName" class="d-none d-lg-inline-flex"> </span>
+                            <img class="rounded-circle me-lg-2" src="/images/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">Mi Perfil</a>

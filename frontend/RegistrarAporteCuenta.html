@@ -50,7 +50,19 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
+                        <!-- Div para la imagen temporal en el centro de la pantalla -->
+                        <div id="imagenTemporal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; text-align: center;">
+                            <img id="imagenTemporalSrc" style="max-width: 50%; max-height: 50%;">
+                            <div style="margin-top: 20px;"> <!-- Agregamos un contenedor para los botones y aplicamos un margen superior -->
+                                <button id="btnAceptar" class="btn-Aceptar">Aceptar</button>
+                                <button id="btnCancelar" class="btn-Cancelar" >Cancelar</button>
+                            </div>
+                        </div>
+
+                        <!-- Input de archivo oculto -->
+                        <input type="file" id="fileInput" style="display: none;" accept="image/*">
                         <img class="rounded-circle" id="fotoDashboardHamburguesa" src="images/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0" id="userName1"> </h6>
