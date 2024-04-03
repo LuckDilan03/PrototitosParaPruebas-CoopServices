@@ -54,6 +54,8 @@ function eventos(){
                 // Mostrar la imagen temporal en el centro de la pantalla
                 imagenTemporalSrc.src = e.target.result;
                 imagenTemporal.style.display = 'block';
+                document.body.classList.add('modal-open'); // Agrega la clase para el fondo semitransparente
+
             };
             reader.readAsDataURL(file);
         }
@@ -63,6 +65,8 @@ function eventos(){
     btnAceptar.addEventListener('click', async () => {
         // Ocultar la imagen temporal
         imagenTemporal.style.display = 'none';
+        document.body.classList.remove('modal-open'); // Remueve la clase para el fondo semitransparente
+
         // Copiar la imagen seleccionada a la imagen principal
         const formData = new FormData();
             if (fileInput.files.length > 0) {
@@ -91,6 +95,8 @@ function eventos(){
     btnCancelar.addEventListener('click', () => {
         // Ocultar la imagen temporal
         imagenTemporal.style.display = 'none';
+        document.body.classList.remove('modal-open'); // Remueve la clase para el fondo semitransparente
+
     });
 
     imagenDashboardSuperior.addEventListener('mouseover', function() {

@@ -793,23 +793,43 @@ select{
     transition: transform 0.3s ease; /* Agregar una transición suave para el cambio de tamaño */
 }
 
+body.modal-open {
+    overflow: hidden; /* Evita que la página se desplace cuando está abierta la modal */
+}
+
+body.modal-open::before {
+    content: ''; /* Crea un pseudo-elemento para el fondo semitransparente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.623); /* Fondo semitransparente */
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+}
+
 #imagenTemporal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center; /* Centrar contenido */
+    z-index: 1000; /* Asegura que esté por encima del fondo semitransparente */
+    padding: 20px; /* Espacio alrededor del contenido */
 }
 
 #imagenTemporalSrc {
-    max-width: 50%;
-    max-height: 50%;
+    width: 800px; /* Ancho fijo */
+    height: auto; /* Altura automática para mantener la proporción */
+    aspect-ratio: 1 / 1; /* Relación de aspecto 1:1 para hacer un círculo */
     border-radius: 50%; /* Para que la imagen sea un círculo */
-    border: 2px solid #3498db; /* Borde azul */
+    border: 2px solid #3482db; /* Borde azul */
+    object-fit: cover; /* Ajusta la imagen para llenar el contenedor */
 }
 
+
 #btnAceptar, #btnCancelar {
-    background-color: #3498db;
+    background-color: #3482db;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -819,35 +839,7 @@ select{
 }
 
 #btnAceptar:hover, #btnCancelar:hover {
-    background-color: #2980b9;
-}
-
-.mt-3{
-    margin-bottom: 1rem !important;
-}
-.foto-container {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden; /* Clippear el mensaje que sobresale */
-}
-
-#fotoConfiguracion {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border-style: outset;
-    border-color: #00fbff;
-    cursor: pointer;
-    transition: filter 0.3s ease;
-}
-
-
-#fotoConfiguracion:hover {
-    filter: brightness(80%); /* Reducir el brillo para oscurecer la imagen */
-
-
+    background-color: #135457;
 }
 
 
