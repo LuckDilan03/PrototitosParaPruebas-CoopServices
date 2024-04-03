@@ -14,6 +14,7 @@ addEventListener('DOMContentLoaded',()=>{
     optenerDataPerfil()
     eventosPerfil ()
     
+    
 })
 
 async function optenerDataPerfil(){
@@ -96,6 +97,36 @@ function eventosPerfil (){
             // Mostrar un mensaje indicando que no se ha seleccionado ninguna foto
             alert("Por favor, selecciona una foto antes de intentar cambiarla.");
         }
+    });
+
+    btnActualizarDatos.addEventListener('click',async()=>{
+        
+            
+        const direccion=formDireccionPersona.value;
+        
+        const telefono=formTelefonoPersona.value;
+       
+        const response = await fetch("/actualizarDatosPerfil", {
+            method: "PUT",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                direccion: direccion,
+                telefono: telefono,
+              }),
+        });
+
+        const resJson = await response.json();
+        if (!response.ok) {
+            alert(resJson.message);
+            window.location.href = "/dashboard"
+        } else {
+            alert(resJson.message);
+            window.location.href = "/perfil"
+        }
+
+
     });
 
 

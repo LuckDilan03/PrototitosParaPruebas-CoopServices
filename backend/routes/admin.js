@@ -12,10 +12,11 @@ const controlerUpdates=require('../controlers/dataSolicitud');
 const controlersolicitudRegistro=require('../controlers/solicitudEliminacion');
 const controlerSuspencionAsociado=require('../controlers/suspencionManualAsociado');
 const controlerHabilitacionAsociado=require('../controlers/habilitarManualAsociado');
-const controlerSuspencionUsuario=require('../controlers/suspenderUsuarioManual')
-const controlerActivacionUsuario=require('../controlers/activarUsuarioManual')
-const controlerDataDashboard=require('../controlers/mostrarDataDashboard')
-const contolerDataPerfil=require('../controlers/mostrarDataPerfil')
+const controlerSuspencionUsuario=require('../controlers/suspenderUsuarioManual');
+const controlerActivacionUsuario=require('../controlers/activarUsuarioManual');
+const controlerDataDashboard=require('../controlers/mostrarDataDashboard');
+const contolerDataPerfil=require('../controlers/mostrarDataPerfil');
+const {actualizarDataPerfil}=require('../controlers/actualizarDataPerfil');
 
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -34,6 +35,7 @@ const adminRoutes = (app) => {
   app.get('/userDenegado', auth.verifyToken, controlerDataUser.listUserAprobado);
   app.get('/datadashboard',auth.verifyToken,controlerDataDashboard.datadashboard);
   app.get('/dataperfil',auth.verifyToken,contolerDataPerfil.dataperfil)
+  app.put('/actualizarDatosPerfil',auth.verifyToken,actualizarDataPerfil)
 
   app.get('/perfil', auth.verifyToken, (req, res) => {
     const rutaAdmin = "perfilAdmin.html";
