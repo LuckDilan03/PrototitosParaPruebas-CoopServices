@@ -793,6 +793,31 @@ select{
     transition: transform 0.3s ease; /* Agregar una transición suave para el cambio de tamaño */
 }
 
+.foto-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden; /* Clippear el mensaje que sobresale */
+}
+
+#fotoConfiguracion {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-style: outset;
+    border-color: #00fbff;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+
+#fotoConfiguracion:hover {
+    filter: brightness(40%); /* Reducir el brillo para oscurecer la imagen */
+    content: 'Selecciona Imagen';
+
+}
+
 body.modal-open {
     overflow: hidden; /* Evita que la página se desplace cuando está abierta la modal */
 }
@@ -843,3 +868,18 @@ body.modal-open::before {
 }
 
 
+@media (min-width: 992px)
+{
+.d-lg-inline-flex#userName{
+    display: inline-flex !important;
+}
+}
+
+@media (max-width: 991.98px)
+{
+.d-lg-inline-flex#userName{
+    display: inline-flex !important;
+    font-size: 0.8em;
+
+}
+}
