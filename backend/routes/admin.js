@@ -17,6 +17,7 @@ const controlerActivacionUsuario=require('../controlers/activarUsuarioManual');
 const controlerDataDashboard=require('../controlers/mostrarDataDashboard');
 const contolerDataPerfil=require('../controlers/mostrarDataPerfil');
 const {actualizarDataPerfil}=require('../controlers/actualizarDataPerfil');
+const {registarAporte}=require('../controlers/registrarAporteGeneral')
 
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -49,6 +50,22 @@ const adminRoutes = (app) => {
   app.get('/perfil.html', auth.verifyToken, (req, res) => {
     res.redirect('/perfil');
   });
+
+  /*rutas del formulario de aportes y su html*/
+  app.get('/registrarAporte', auth.verifyToken, (req, res) => {
+    const rutaAdmin = "RegistrarAporteAdmin.html";
+    const rutaUser = "RegistrarAporteCuenta.html";
+    controlerValidacion.mostrarVista(req, res, rutaAdmin, rutaUser);
+  });
+
+  app.get('/solicitarPrestamoAdmin.html', auth.verifyToken, (req, res) => {
+    res.redirect('/solicitarPrestamo');
+  });
+  app.get('/solicitarPrestamoCuenta.html', auth.verifyToken, (req, res) => {
+    res.redirect('/solicitarPrestamo');
+  });
+
+  app.post('/registrarAporte',auth.verifyToken,upload.single('Soporte_Documento'),registarAporte)
 
   /*rutas del formulario de prestamos y su html*/
   app.get('/solicitarPrestamo', auth.verifyToken, (req, res) => {
