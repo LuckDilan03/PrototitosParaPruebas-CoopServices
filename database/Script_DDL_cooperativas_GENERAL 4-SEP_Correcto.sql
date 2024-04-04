@@ -152,17 +152,24 @@ CREATE TABLE tab_AporteCuenta (
     Numero_Cuenta                   BIGINT          NOT NULL, 
     Monto_Aporte                    DECIMAL         NOT NULL,
     Fecha_Aporte                    TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    estado_aporte                   boolean         NOT NULL DEFAULT true,
+    estado_aporte                   VARCHAR         NOT NULL DEFAULT 'EN REVISION',
     detalles_aporte                 VARCHAR         ,
+    Medio_pago                      VARCHAR,
+    Comprobante_pago                VARCHAR,
     Usuario_Inserta      		    VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
     Fecha_Inserta      			    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     Usuario_Update      		    VARCHAR, 
     Fecha_Update      			    TIMESTAMP WITHOUT TIME ZONE, 
 
-PRIMARY KEY (Numero_Cuenta,Id_Aporte),
+PRIMARY KEY (Id_Aporte),
 FOREIGN KEY (Numero_Cuenta) REFERENCES tab_Cuenta(Numero_Cuenta)
 );
 
+CREATE TABLE tab_AporteXCuenta (
+    
+
+
+)
 CREATE TABLE tab_RetiroCuenta (
     Id_Retiro                       BIGINT          NOT NULL, 
     Numero_Cuenta                   BIGINT          NOT NULL, 

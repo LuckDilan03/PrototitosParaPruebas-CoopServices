@@ -194,7 +194,7 @@
                             <span id="userName" class="d-none d-lg-inline-flex"> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">Mi Perfil</a>
+                            <a href="/perfil" class="dropdown-item">Mi Perfil</a>
                             <a href="#" class="dropdown-item">Configuración</a>
                             <a id="boton-cerrarsesion" class="dropdown-item">Cerrar Sesión</a>
                         </div>
@@ -207,7 +207,7 @@
     <div class="container-fluid p-4 px-4">     
         <div class="col-sm-15 col-xl-15">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4"> Formulario para registrar un abono</h6>
+                <h6 class="mb-4"> Formulario para registrar un aporte</h6>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput"
                         placeholder="DNI del Asociado">
@@ -215,9 +215,9 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput"
+                    <input type="text" class="form-control" id="monto_aporte"
                         placeholder="Monto Aporte">
-                    <label for="floatingInput">Monto Aporte</label>
+                    <label for="monto_aporte">Monto Aporte</label>
                 </div>
                 <!-- <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput"
@@ -226,7 +226,7 @@
                 </div> -->
                 <!--tipo de pago-->
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" onchange="showInputField()">
+                    <select class="form-select" id="Tipo_Pago" aria-label="Floating label select example" onchange="showInputField()">
                         <option selected>Seleccione el tipo de pago</option>
                         <option value="1">Nequi</option>
                         <option value="2">Bancolombia</option>
@@ -234,15 +234,20 @@
                         <option value="4">Efecty</option>
                         <option value="5">Efectivo</option>
                     </select>
-                    <label for="floatingSelect">Tipo de Pago</label>
+                    <label for="Tipo_Pago">Tipo de Pago</label>
                 </div>
             
                 <!-- si es Efectivo (value=5) aparecera el siguiente input-->
                 <div class="form-floating mb-3" id="pagadoAField" style="display: none;">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Pagado A">
-                    <label for="floatingInput">Pagado A:</label>
+                    <input type="text" class="form-control" id="PagadoA" placeholder="Pagado A">
+                    <label for="PagadoA">Pagado A:</label>
                 </div>
-
+                <!-- poner dos opciones, uno que diga si o otro no, y que cuando diga si, se guarde la fecha actual, y cuando diga no, aparezca pa poner la fecha -->
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="fecha_aporte"
+                        placeholder="Fecha de Aporte">
+                    <label for="fecha_aporte">Fecha de Aporte</label>
+                </div>
                 <div class="mb-3">
                     <div class="file-container" id="formFileContainer">
                         <label for="fileInput" id="formFile" class="btn">Adjuntar archivo</label>
@@ -250,9 +255,9 @@
                     </div>                    
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput"
+                    <input type="text" class="form-control" id="Observaciones"
                         placeholder="Observaciones">
-                    <label for="floatingInput">Observaciones</label>
+                    <label for="Observaciones">Observaciones</label>
                 </div>
 
                 <div>

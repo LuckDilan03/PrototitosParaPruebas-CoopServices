@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function showInputField() {
-    var selectElement = document.getElementById("floatingSelect");
+    var selectElement = document.getElementById("Tipo_Pago");
     var selectedValue = selectElement.options[selectElement.selectedIndex].value;
     var pagadoAField = document.getElementById("pagadoAField");
     
