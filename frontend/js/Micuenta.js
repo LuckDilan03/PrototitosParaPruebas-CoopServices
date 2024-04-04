@@ -34,7 +34,7 @@ function sumatoriaAportes(aportes){
         
         sumaAportes+=valorAporte;
     }
-    console.log(sumaAportes)
+    
     return sumaAportes;
 }
 
@@ -143,7 +143,7 @@ async function actulalizarDatos (){
              cantidadCuentas.textContent=data.datosCuenta.numero_cuenta;
              totalSaldos.textContent=data.datosCuenta.saldo_cuenta;
              promedioRecaudo.textContent=parseInt(data.datosCuenta.aporte_mensual)
-             console.log(sumaAportes)
+            
              totalAportes.textContent=sumaAportes
              
 
