@@ -27,22 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
     cuentas.forEach(cuenta => {
         const fila = document.createElement('tr');
         fila.innerHTML = `
-            <td>${cuenta.numero_cuenta}</td>
-            <td>$ ${cuenta.saldo_cuenta}</td>
-            <td>${cuenta.tasa_interes_cuenta} %</td>
-            <td>${cuenta.aporte_mensual}</td>
-            <td>${cuenta.dni_asociado}</td>
-            <td>${cuenta.estado_cuenta}</td>
-            <td>${cuenta.detalles_estado_cuenta}</td>
+          <td>${cuenta.numero_cuenta}</td>
+          <td>$ ${cuenta.saldo_cuenta}</td>
+          <td>${cuenta.tasa_interes_cuenta} %</td>
+          <td>${cuenta.aporte_mensual}</td>
+          <td>${cuenta.dni_asociado}</td>
+          <td>${cuenta.estado_cuenta ? 'Habilitada' : 'Deshabilitada'}</td>
+          <td>${cuenta.detalles_estado_cuenta}</td>
 
 
-            <td>
-            <button class="btn btn-sm btn-primary" onclick="aceptarcuenta(${cuenta.id})">
-              <i class="bi bi-check"></i> Aceptar
-            </button>
-            <button class="btn btn-sm btn-danger" onclick="denegarcuenta(${cuenta.id})">
-              <i class="bi bi-x"></i> Denegar
-            </button>
+          <td>
+          <button class="btn btn-sm btn-primary" onclick="agregarAporte(${cuenta.agregarAporte})">
+            <i class="bi bi-check"></i> Agregar Aporte
+          </button>
+          <button class="btn btn-sm btn-secondary" onclick="verAportes${cuenta.verAporte})">
+            <i class="bi bi-eye"></i> Ver Aportes
+          </button>
           </td>
         `;
         tbody.appendChild(fila);
