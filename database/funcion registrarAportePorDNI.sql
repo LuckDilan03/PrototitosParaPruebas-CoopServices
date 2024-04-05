@@ -5,6 +5,7 @@ CREATE OR REPLACE FUNCTION registraraporte(
     pagadoA VARCHAR,
     fechaAporte TIMESTAMP,
     archivo VARCHAR,
+    detalles_aporte VARCHAR,
     usuario VARCHAR
 ) 
 RETURNS TABLE (codigo_estado integer, mensaje varchar) AS
@@ -30,10 +31,10 @@ BEGIN
             -- Insert the contribution record
             IF tipoPago = 'Efectivo' THEN
                 INSERT INTO tab_aportecuenta (id_aporte,numero_cuenta, monto_aporte, fecha_aporte, usuario_inserta, detalles_aporte, modo_aporte, pagado_a, comprobante_aporte)
-                VALUES (idAporte,numeroCuenta, montoAporte, fechaAporte, usuario, 'EN REVISION', tipoPago, pagadoA, archivo);
+                VALUES (idAporte,numeroCuenta, montoAporte, fechaAporte, usuario, detalles_aporte, tipoPago, pagadoA, archivo);
             ELSE
                 INSERT INTO tab_aportecuenta (id_aporte,numero_cuenta, monto_aporte, fecha_aporte, usuario_inserta, detalles_aporte, modo_aporte, pagado_a, comprobante_aporte)
-                VALUES (idAporte,numeroCuenta, montoAporte, fechaAporte, usuario, 'EN REVISION', tipoPago, tipoPago, archivo);
+                VALUES (idAporte,numeroCuenta, montoAporte, fechaAporte, usuario, detalles_aporte, tipoPago, tipoPago, archivo);
             END IF;
 
             mensajeEstado := 'Se registra correctamente el abono';

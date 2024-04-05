@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const pagadoAField = document.getElementById("PagadoA").value;
         const fechaAporte = document.getElementById('fecha_aporte').value;
         const fileInput = document.getElementById('fileInputComprobante').files[0]; // Obtener el archivo adjunto
+        const detallesAporte=document.getElementById('detallesAporte').value;
+    
         
-
         
-        console.log(formdniAsociado)
-        console.log(typeof(formdniAsociado))
+        
         // Crear un objeto FormData
         const formData = new FormData();
         formData.append('dni', formdniAsociado);
@@ -67,8 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('pagadoA', pagadoAField);
         formData.append('fechaAporte', fechaAporte);
         formData.append('fileInputComprobante', fileInput); // Adjuntar el archivo
-        
+        formData.append('detalles',detallesAporte)
         // Enviar los datos mediante fetch
+
+        
         try {
             const response = await fetch('/registrarAporte', {
                 method: 'POST',

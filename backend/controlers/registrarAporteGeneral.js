@@ -20,13 +20,15 @@ try {
         }
         const decodificado = jwt.decode(token, KEY);
         const rol = decodificado.rol
-        const usuario = decodificado.rol;
+        const usuario = decodificado.usuario;
         const {dni,montoAporte,tipoPago,pagadoA,fechaAporte}=req.body;
-        console.log(dni)
-        console.log(typeof(dni))
+        let {detalles}=req.body;
+        detalles=`Aporte ingresado desde perfil admin con usuario ${usuario} con detalles:${detalles}`;
+        
+       
          
-        const queryString='SELECT * FROM registrarAporte($1,$2,$3,$4,$5,$6,$7)'
-        const {rows : result}= await pool.query(queryString,[dni,montoAporte,tipoPago,pagadoA,fechaAporte,archivo,usuario])
+        const queryString='SELECT * FROM registrarAporte($1,$2,$3,$4,$5,$6,$7,$8)'
+        const {rows : result}= await pool.query(queryString,[dni,montoAporte,tipoPago,pagadoA,fechaAporte,archivo,detalles,usuario])
         
         if (result.length > 0) {
             const respuesta=result[0];
