@@ -166,10 +166,20 @@ FOREIGN KEY (Numero_Cuenta) REFERENCES tab_Cuenta(Numero_Cuenta)
 );
 
 CREATE TABLE tab_AporteXCuenta (
-    
+    id_Aportexcuenta                BIGINT          NOT NULL,
+    Numero_Cuenta                   BIGINT          NOT NULL,
+    Numero_Aporte                   BIGINT          NOT NULL,
+    Usuario_Inserta      		    VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
+    Fecha_Inserta      			    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    Usuario_Update      		    VARCHAR, 
+    Fecha_Update      			    TIMESTAMP WITHOUT TIME ZONE,
 
+PRIMARY KEY (id_Aportexcuenta, Numero_Cuenta, Numero_Aporte),
+FOREIGN KEY (Numero_Cuenta) REFERENCES tab_Cuenta(Numero_Cuenta),
+FOREIGN KEY (Numero_Aporte) REFERENCES tab_AporteCuenta(Id_Aporte)
 
 )
+
 CREATE TABLE tab_RetiroCuenta (
     Id_Retiro                       BIGINT          NOT NULL, 
     Numero_Cuenta                   BIGINT          NOT NULL, 
