@@ -778,6 +778,8 @@ select{
 .form-control:disabled{
     background-color: #242833;
     color: #8ec2cf;
+    cursor: not-allowed;
+
 }
 
 .form-floating>.form-control:disabled ~ label {
@@ -883,3 +885,16 @@ body.modal-open::before {
 
 }
 }
+
+.btn-secondary {
+    color: #57b5ec;
+    background-color: #252a3b;
+    border: 3px solid #037d8d;
+    margin-top: 4px;
+}
+
+.btn-secondary:hover {
+    background-color: #037d8d;
+    border-color: #09454d;
+}
+
