@@ -8,16 +8,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Calcular la fecha del último mes
+    const lasttoday = new Date();
+    const lastMonth = new Date(lasttoday.getFullYear(), lasttoday.getMonth() - 1, lasttoday.getDate());
+
+    // Obtener la fecha y hora actual
     const today = new Date();
-    const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth();
+    const currentDay = today.getDate();
+    const currentHour = today.getHours();
+    const currentMinute = today.getMinutes();
 
 
     // Inicializar Flatpickr
     flatpickr('#fecha_aporte', {
         enableTime: true, // Habilitar selección de tiempo
-        dateFormat: 'Y-m-d H:i:S.u', // Formato de fecha y hora
+        dateFormat: 'Y-m-d H:i', // Formato de fecha y hora
         time_24hr: true, // Usar formato de 24 horas
         minDate: lastMonth, // Fecha mínima permitida (el ultimo mes)
+        maxDate: new Date(currentYear, currentMonth, currentDay, currentHour, currentMinute), // Fecha y hora máximas (actual)
         locale: {
             firstDayOfWeek: 1, // Lunes como primer día de la semana
         }
