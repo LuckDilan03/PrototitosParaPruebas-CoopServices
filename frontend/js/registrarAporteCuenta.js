@@ -38,29 +38,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function registrarAporte() {
-        const formdniAsociado = document.getElementById('floatingInput').value;
+        const formdniAsociado = parseInt(document.getElementById('floatingInput').value);;
         const formmontoAporte = document.getElementById('monto_aporte').value;
         const selectTipoPago = document.getElementById("Tipo_Pago");
-        const selectedValue = selectTipoPago.options[selectTipoPago.selectedIndex].value;
-        const pagadoAField = document.getElementById("pagadoAField").value;
-
-        // Obtener valores de fecha y hora
+        const selectedValue = selectTipoPago.options[selectTipoPago.selectedIndex].innerText;
+        const pagadoAField = document.getElementById("PagadoA").value;
         const fechaAporte = document.getElementById('fecha_aporte').value;
-        const horaAporte = document.getElementById('hora_aporte').value;
+        const fileInput = document.getElementById('fileInputComprobante').files[0]; // Obtener el archivo adjunto
+        
 
-        // Obtener fecha y hora actuales
-        const fechaActual = new Date();
-        const fechaHoraActual = fechaActual.toISOString().slice(0, 19);
-
-        // Construir objeto con datos a enviar
-        const data = {
-            dniAsociado: formdniAsociado,
-            montoAporte: formmontoAporte,
-            tipoPago: selectedValue,
-            pagadoA: pagadoAField,
-            fechaHoraAporte: fechaAporte + ' ' + horaAporte || fechaHoraActual
-        };
-
-        // Enviar datos por POST (aquí deberías agregar tu lógica para enviar los datos al servidor)
-        console.log(data);
+        
+        console.log(formdniAsociado)
+        console.log(typeof(formdniAsociado))
+        // Crear un objeto FormData
+        const formData = new FormData();
+        formData.append('dni', formdniAsociado);
+        formData.append('montoAporte', formmontoAporte);
+        formData.append('tipoPago', selectedValue);
+        formData.append('pagadoA', pagadoAField);
+        formData.append('fechaAporte', fechaAporte);
+        formData.append('fileInputComprobante', fileInput); // Adjuntar el archivo
+        
+        // Enviar los datos mediante fetch
+        try {
+            const response = await fetch('/registrarAporte', {
+                method: 'POST',
+                body: formData
+            });
+            const resJson= await response.json();
+            if (!response.ok) {
+                alert(resJson.message);
+                window.location.href = "/registrarAporte"
+            } else{
+                alert(resJson.message);
+                window.location.href = "/registrarAporte"    
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+        }
     }

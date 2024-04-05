@@ -21,8 +21,19 @@ const storage2 = multer.diskStorage({
     }
 });
 
+const storage3 = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, '../../frontend/uploads/comprobantesAportes')); // Ruta absoluta a la carpeta 'uploads' dentro del frontend
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9); // Genera un sufijo único
+        cb(null,  file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
 
 const upload = multer({ storage: storage });
 const uploadfotoPerfil=multer({storage:storage2});
+const uploadComprobanteAporte = multer({ storage: storage3 });
 
-module.exports = {upload,uploadfotoPerfil};
+module.exports = {upload,uploadfotoPerfil,uploadComprobanteAporte};

@@ -18,7 +18,7 @@ const controlerDataDashboard=require('../controlers/mostrarDataDashboard');
 const contolerDataPerfil=require('../controlers/mostrarDataPerfil');
 const {actualizarDataPerfil}=require('../controlers/actualizarDataPerfil');
 const {registrarAporteGeneral}=require('../controlers/registrarAporteGeneral')
-const {upload}=require('../controlers/multerConfig')
+const {uploadComprobanteAporte}=require('../controlers/multerConfig')
 
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -65,7 +65,7 @@ const adminRoutes = (app) => {
   app.get('/RegistrarAporteCuenta.html', auth.verifyToken, (req, res) => {
     res.redirect('/registrarAporte')});
 
-  app.post('/registrarAporte',controlervalidacion,auth.verifyToken,upload.single('Soporte_Documento'),registrarAporteGeneral)
+  app.post('/registrarAporte',controlervalidacion,auth.verifyToken,uploadComprobanteAporte.single('fileInputComprobante'),registrarAporteGeneral)
 
 
   /*rutas del formulario de prestamos y su html*/

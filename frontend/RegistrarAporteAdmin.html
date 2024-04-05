@@ -209,14 +209,14 @@
             <div class="bg-secondary rounded h-100 p-4">
                 <h6 class="mb-4"> Formulario para registrar un aporte</h6>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput"
+                    <input type="number" class="form-control" id="floatingInput"
                         placeholder="DNI del Asociado">
                     <label for="floatingInput">DNI del Asociado</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="monto_aporte"
-                        placeholder="Monto Aporte">
+                    <input type="number" class="form-control" id="monto_aporte"
+                        placeholder="Monto Aporte" step="0.01" min="0">
                     <label for="monto_aporte">Monto Aporte</label>
                 </div>
                 <!-- <div class="form-floating mb-3">
@@ -256,14 +256,10 @@
                         <input type="file" name="fileInputComprobante" id="fileInputComprobante" style="display: none;">
                     </div>                    
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="Observaciones"
-                        placeholder="Observaciones">
-                    <label for="Observaciones">Observaciones</label>
-                </div>
+                
 
                 <div>
-                <button type="submit" class="btn btn-primary" > Enviar Solicitud</button>
+                <button type="submit" class="btn btn-primary" onclick="registrarAporte()" > Enviar Solicitud</button>
                 </div>
             </div>
         </div>
