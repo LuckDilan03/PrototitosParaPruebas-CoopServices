@@ -244,14 +244,16 @@
                 </div>
                 <!-- poner dos opciones, uno que diga si o otro no, y que cuando diga si, se guarde la fecha actual, y cuando diga no, aparezca pa poner la fecha -->
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="fecha_aporte"
-                        placeholder="Fecha de Aporte">
+                    <input type="text" class="form-control" id="fecha_aporte" placeholder="Fecha de Aporte">
                     <label for="fecha_aporte">Fecha de Aporte</label>
+
+                    
                 </div>
+
                 <div class="mb-3">
                     <div class="file-container" id="formFileContainer">
-                        <label for="fileInput" id="formFile" class="btn">Adjuntar archivo</label>
-                        <input type="file" name="fileInput" id="fileInput" style="display: none;">
+                        <label for="fileInputComprobante" id="formFile" class="btn">Adjuntar archivo</label>
+                        <input type="file" name="fileInputComprobante" id="fileInputComprobante" style="display: none;">
                     </div>                    
                 </div>
                 <div class="form-floating mb-3">
@@ -293,7 +295,14 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/chart/chart.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>

@@ -17,7 +17,8 @@ const controlerActivacionUsuario=require('../controlers/activarUsuarioManual');
 const controlerDataDashboard=require('../controlers/mostrarDataDashboard');
 const contolerDataPerfil=require('../controlers/mostrarDataPerfil');
 const {actualizarDataPerfil}=require('../controlers/actualizarDataPerfil');
-const {registarAporte}=require('../controlers/registrarAporteGeneral')
+const {registrarAporteGeneral}=require('../controlers/registrarAporteGeneral')
+const {upload}=require('../controlers/multerConfig')
 
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -58,6 +59,16 @@ const adminRoutes = (app) => {
     controlerValidacion.mostrarVista(req, res, rutaAdmin, rutaUser);
   });
 
+  app.get('/RegistrarAporteAdmin.html', auth.verifyToken, (req, res) => {
+    res.redirect('/registrarAporte');
+  });
+  app.get('/RegistrarAporteCuenta.html', auth.verifyToken, (req, res) => {
+    res.redirect('/registrarAporte')});
+
+  app.post('/registrarAporte',controlervalidacion,auth.verifyToken,upload.single('Soporte_Documento'),registrarAporteGeneral)
+
+
+  /*rutas del formulario de prestamos y su html*/
   app.get('/solicitarPrestamoAdmin.html', auth.verifyToken, (req, res) => {
     res.redirect('/solicitarPrestamo');
   });
@@ -65,9 +76,9 @@ const adminRoutes = (app) => {
     res.redirect('/solicitarPrestamo');
   });
 
-  app.post('/registrarAporte',auth.verifyToken,upload.single('Soporte_Documento'),registarAporte)
+  
 
-  /*rutas del formulario de prestamos y su html*/
+  
   app.get('/solicitarPrestamo', auth.verifyToken, (req, res) => {
     const rutaAdmin = "solicitarPrestamoAdmin.html";
     const rutaUser = "solicitarPrestamoCuenta.html";
