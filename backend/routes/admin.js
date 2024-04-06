@@ -21,6 +21,7 @@ const {actualizarDataPerfil}=require('../controlers/actualizarDataPerfil');
 const {registrarAporteGeneral}=require('../controlers/registrarAporteGeneral')
 const {uploadComprobanteAporte}=require('../controlers/multerConfig')
 const {registrarAporteAsociado}=require('../controlers/registrarAporteAsociado')
+const controlerListAbonos=require('../controlers/listSolicitudAbono')
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
   app.get('/dashboard', auth.verifyToken, (req, res) => {
@@ -69,6 +70,7 @@ const adminRoutes = (app) => {
   app.post('/registrarAporte',controlervalidacion,auth.verifyToken,uploadComprobanteAporte.single('fileInputComprobante'),registrarAporteGeneral)
   app.post('/registrarAporteAsociado',auth.verifyToken,uploadComprobanteAporte.single('fileInputComprobante'),registrarAporteAsociado)
 
+  
 
   /*rutas del formulario de prestamos y su html*/
   app.get('/solicitarPrestamoAdmin.html', auth.verifyToken, (req, res) => {
@@ -77,9 +79,6 @@ const adminRoutes = (app) => {
   app.get('/solicitarPrestamoCuenta.html', auth.verifyToken, (req, res) => {
     res.redirect('/solicitarPrestamo');
   });
-
-  
-
   
   app.get('/solicitarPrestamo', auth.verifyToken, (req, res) => {
     const rutaAdmin = "solicitarPrestamoAdmin.html";
@@ -151,13 +150,26 @@ const adminRoutes = (app) => {
   app.get('/listarAsociados', controlervalidacion,auth.verifyToken, controlerListAsociados.listAsociados);
 
   /*rutas del listado de usuarios del sistema */
-  app.get('/usuarioSistema', auth.verifyToken, VistasAdmin.mostrarListaUsuarios);
-  app.get('/listaUsuario.html', auth.verifyToken, (req, res) => {
+  app.get('/usuarioSistema', controlervalidacion,auth.verifyToken, VistasAdmin.mostrarListaUsuarios);
+  app.get('/listaUsuario.html', controlervalidacion,auth.verifyToken, (req, res) => {
     res.redirect('/usuarioSistema');
   });
   app.get('/listarUsuarioSistema',controlervalidacion, auth.verifyToken, contolerListUsuarios.listUsers);
   app.put('/suspederUsuario/:usuario',controlervalidacion,auth.verifyToken,controlerSuspencionUsuario.suspenderUsuario)
   app.put('/activarUsuario/:usuario',controlervalidacion,auth.verifyToken,controlerActivacionUsuario.activarUsuario)
+
+  /*rutas del listado de aportes del sistema */
+  app.get('/aportesRegistrados',controlervalidacion, auth.verifyToken, VistasAdmin.mostrarAportesRegistrados);
+  app.get('/listaAportes.html', controlervalidacion,auth.verifyToken, (req, res) => {
+    res.redirect('/aportesRegistrados');
+  });
+  app.get('/listarAportesRegistrados',controlervalidacion, auth.verifyToken, controlerListAbonos.listSolicitudAbono);
+  /*
+  app.put('/suspederUsuario/:usuario',controlervalidacion,auth.verifyToken,controlerSuspencionUsuario.suspenderUsuario)
+  app.put('/activarUsuario/:usuario',controlervalidacion,auth.verifyToken,controlerActivacionUsuario.activarUsuario)
+  */
+
+
 
   /*rutas del listado de solicitudes de prestamos */
   app.get('/solicitudesPrestamo', auth.verifyToken, VistasAdmin.mostrarSolicitudesPedientesPrestamos);

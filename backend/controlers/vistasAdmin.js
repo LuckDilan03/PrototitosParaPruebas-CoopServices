@@ -29,6 +29,10 @@ const path = require('path');
     res.sendFile(path.join(__dirname, '../../frontend/listaUsuarioTarjetas.html'));
   };
 
+  const mostrarAportesRegistrados = (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/listaAportes.html'));
+  };
+
   const mostrarSolicitudesPedientesPrestamos = (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/ListaSolicitudesPrestamo.html'));
   };
@@ -51,6 +55,7 @@ const path = require('path');
     mostrarSolictudPendienteAsociado,
     mostrarListaAsociados,
     mostrarListaUsuarios,
+    mostrarAportesRegistrados,
     mostrarSolicitudesPedientesPrestamos,
     mostrarCrearRoles,
     mostrarListaCuentasAhorro,
