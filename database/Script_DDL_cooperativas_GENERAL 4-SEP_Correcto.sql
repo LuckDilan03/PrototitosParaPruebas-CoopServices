@@ -152,10 +152,12 @@ CREATE TABLE tab_AporteCuenta (
     Numero_Cuenta                   BIGINT          NOT NULL, 
     Monto_Aporte                    DECIMAL         NOT NULL,
     Fecha_Aporte                    TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    estado_aporte                   VARCHAR         NOT NULL DEFAULT 'EN REVISION',
-    detalles_aporte                 VARCHAR         ,
-    Medio_pago                      VARCHAR,
-    Comprobante_pago                VARCHAR,
+    estado_aporte                   boolean         NOT NULL DEFAULT false,
+    etapa_aporte                    VARCHAR         NOT NULL DEFAULT 'EN REVISION',
+    detalles_aporte                 VARCHAR,
+    modo_aporte                      VARCHAR        NOT NULL,
+    pagado_a                        VARCHAR         NOT NULL,
+    comprobante_aporte                VARCHAR       NOT NULL,
     Usuario_Inserta      		    VARCHAR     	NOT NULL   DEFAULT CURRENT_USER, 
     Fecha_Inserta      			    TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     Usuario_Update      		    VARCHAR, 
@@ -622,4 +624,3 @@ CREATE OR REPLACE TRIGGER tri_Usuarios AFTER DELETE ON tab_Usuarios
 FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla(); 
 CREATE TRIGGER tri_ins_Usuarios BEFORE INSERT OR UPDATE ON tab_Usuarios 
 FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
