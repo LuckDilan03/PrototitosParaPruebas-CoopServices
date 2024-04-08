@@ -149,10 +149,10 @@ async function actulalizarDatos (){
              userRol.textContent = rolMostrar;
 
              cantidadCuentas.textContent=data.datosCuenta.numero_cuenta;
-             totalSaldos.textContent=data.datosCuenta.saldo_cuenta;
-             promedioRecaudo.textContent=parseInt(data.datosCuenta.aporte_mensual)
+             totalSaldos.textContent=('$ ') + data.datosCuenta.saldo_cuenta;
+             promedioRecaudo.textContent=('$ ') + parseInt(data.datosCuenta.aporte_mensual)
              
-             totalAportes.textContent=sumaAportes
+             totalAportes.textContent= ('$ ') + sumaAportes
              
 
     } catch (error) {
