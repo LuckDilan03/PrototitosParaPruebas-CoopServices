@@ -898,3 +898,21 @@ body.modal-open::before {
     border-color: #09454d;
 }
 
+#fecha_aporte{
+    background-color: #252a3b;
+    color: #57b5ec;
+    border: 3px solid #037d8d;
+}
+
+
+.flatpickr-calendar.open .flatpickr-day.today {
+    background-color: #0080ff;
+    color: #ffffff;
+    border: 1px solid transparent;
+}
+
+.flatpickr-calendar.open .flatpickr-day.today:hover {
+    background-color: #005cbf;
+    color: #ffffff;
+    border: 1px solid transparent;
+}
