@@ -25,12 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function agregarDatosATabla(aportes) {
 
     aportes.forEach(aporte => {
+      const fecha_aporte = new Date(aporte.fecha_aporte);
+      const fecha_aporte_formato = `${fecha_aporte.getDate()}/${fecha_aporte.getMonth() + 1}/${fecha_aporte.getFullYear()}`;
         const fila = document.createElement('tr');
         fila.innerHTML = `
             <td>${aporte.id_aporte}</td>
             <td>${aporte.numero_cuenta}</td>
             <td>${aporte.monto_aporte}</td>
-            <td>${aporte.fecha_aporte}</td>
+            <td>${fecha_aporte_formato}</td>
             <td>${aporte.tipo_aporte}</td>
             <td>${aporte.comprobante_aporte}</td>
             <td>${aporte.estado_aporte}</td>

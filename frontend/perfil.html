@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>CoopSerives - Inicio</title>
+    <title>CoopSerives - Mi Perfil</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -84,9 +84,9 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
                         <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/registrarAporte" class="dropdown-item">Registrar un Aporte</a>
                             <a href="/solicitarPrestamo" class="dropdown-item">Solicitar un Prestamo</a>
                             <a href="/solicitarRetiro" class="dropdown-item">Solicitar un Retiro</a>
-                            <a href="/registrarAporte" class="dropdown-item">Registrar un Aporte</a>
                             <a href="/otroTipoSolicitud" class="dropdown-item">Otro Tipo de Transacción</a>
                         </div>
                     </div>
@@ -186,64 +186,87 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-            <!-- Navbar End -->
-
             <!-- Content Start -->
-                <div class="container-fluid p-4 px-4">     
-                    <div class="col-sm-15 col-xl-15">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h4 class="mb-4">Configuración</h4>
-                            <!--Foto de Perfil-->
-                            <div class="d-flex justify-content-center mb-3">
-                                <h6 class="text-center">Foto de Perfil</h6>
-                            </div> 
-                            <div class="d-flex justify-content-center">
-                                <!-- Input de archivo oculto -->
-                                <input type="file" id="fileInputPerfil" style="display: none;" accept="image/*">
-                                <img id="fotoConfiguracion" class="rounded-circle" src="images/user.jpg" alt="" style="width: 150px; height: 150px;">
-                                
-                            </div>
-                            <div class="d-flex justify-content-center mt-3">
-                                <button type="button" class="btn btn-primary" id="CambiarFoto">Cambiar Foto</button>
-                            </div>
-                                <!-- Formulario no editable -->
-                            <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="DniAsociado" placeholder="DNI del Asociado" disabled>
-                                <label for="DniAsociado">DNI del Asociado</label>
-                            </div>
-                            
-                            <form>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="PrimerNombre" placeholder="Primer Nombre" disabled>
-                                    <label for="PrimerNombre">Primer Nombre</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="SegundoNombre" placeholder="Segundo Nombre" disabled>
-                                    <label for="SegundoNombre">Segundo Nombre</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="PrimerApellido" placeholder="Primer Apellido" disabled>
-                                    <label for="PrimerApellido">Primer Apellido</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="SegundoApellido" placeholder="Segundo Apellido" disabled>
-                                    <label for="SegundoApellido">Segundo Apellido</label>
-                                </div>
-                                
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="Direccion" placeholder="Dirección">
-                                    <label for="Direccion">Dirección</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="number" class="form-control" id="Telefono" placeholder="Teléfono">
-                                    <label for="Telefono">Teléfono</label>
-                                </div>
-                                
-                                
-                            </form>
-                            <!-- Fin del formulario editable -->
-                            <button type="button" class="btn btn-primary" id="Actualizar" disabled="true"> Actualizar datos</button>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-4">
+                            <div class="bg-secondary rounded p-4">
+                                <h4 class="mb-4">Configuración Foto de Perfil</h4>
+                                <!--Foto de Perfil-->
+    
+                                <div class="d-grid justify-content-center">
+                                    <!-- Input de archivo oculto -->
+                                    <input type="file" id="fileInputPerfil" style="display: none;" accept="image/*">
+                                    <img id="fotoConfiguracion" class="rounded-circle" src="images/user.jpg" alt="" style="width: 150px; height: 150px;">
 
+                                </div>
+                                <div class="d-grid justify-content-center mt-3">
+                                    <p class="d-grid justify-content-center"> Dale clic a la imagen para subir la foto</p>
+                                </div>
+
+                                <div class="d-grid justify-content-center mt-3">
+                                    <button type="button" class="btn btn-primary" id="CambiarFoto">Cambiar Foto</button>
+                                </div>
+
+                                <div class="d-grid text-center mt-3">
+                                    <div>
+                                    <a href="/perfil" class="dropdown-item active" style="background-color: #242833">Mi Perfil</a>
+                                    </div>
+                                    <div>
+                                    <a href="#" >Configuración</a>
+                                    </div>
+                                    <div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-8">
+                            <div class="bg-secondary rounded h-100 p-3">
+                                    <!-- Formulario no editable -->
+                                <!--Datos Personales-->
+
+                                <h4 class="mb-4">Configuración datos personales</h4>
+
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="DniAsociado" placeholder="DNI del Asociado" disabled>
+                                    <label for="DniAsociado">DNI del Asociado</label>
+                                </div>
+                                
+                                <form>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="PrimerNombre" placeholder="Primer Nombre" disabled>
+                                        <label for="PrimerNombre">Primer Nombre</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="SegundoNombre" placeholder="Segundo Nombre" disabled>
+                                        <label for="SegundoNombre">Segundo Nombre</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="PrimerApellido" placeholder="Primer Apellido" disabled>
+                                        <label for="PrimerApellido">Primer Apellido</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="SegundoApellido" placeholder="Segundo Apellido" disabled>
+                                        <label for="SegundoApellido">Segundo Apellido</label>
+                                    </div>
+                                    
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="Direccion" placeholder="Dirección">
+                                        <label for="Direccion">Dirección</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="number" class="form-control" id="Telefono" placeholder="Teléfono">
+                                        <label for="Telefono">Teléfono</label>
+                                    </div>
+                                    
+                                    
+                                </form>
+                                <!-- Fin del formulario editable -->
+                                <div class="d-grid mt-3">
+                                    <button type="button" class="btn btn-primary" id="Actualizar" disabled="true"> Actualizar datos</button>
+                                </div>
                             
                             <!-- Botón para volver atrás -->
                             <div class="mt-3">
