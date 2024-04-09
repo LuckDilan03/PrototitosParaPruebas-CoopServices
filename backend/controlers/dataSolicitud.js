@@ -64,7 +64,7 @@ async function solicitudRegistroDenegada(req , res){
         if (!dataSolicitud ) {
             return res.status(404).json({ error: 'No se encontraron datos para el numero de solicitud y el DNI proporcionado' });
         }
-        res.json(datosDashboard);
+        res.json(dataSolicitud);
     } catch (error) {
 
         console.error('Error al obtener datos de la solicitud:', error);
