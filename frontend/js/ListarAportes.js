@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   async function obtenerDatosaporte() {
     try{
-      const response = await fetch('/listarAportes');
+      const response = await fetch('/listarAportesRegistrados');
       const aportes = await response.json();
       agregarDatosATabla(aportes);
 
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const fila = document.createElement('tr');
         fila.innerHTML = `
             <td>${aporte.id_aporte}</td>
-            <td>${aporte.numero_aporte}</td>
             <td>${aporte.numero_cuenta}</td>
             <td>${aporte.monto_aporte}</td>
             <td>${aporte.fecha_aporte}</td>
@@ -36,15 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${aporte.comprobante_aporte}</td>
             <td>${aporte.estado_aporte}</td>
             <td>${aporte.detalles_estado_aporte}</td>
-
-        //     <td>
-        //     <button class="btn btn-sm btn-primary" onclick="aceptaraporte(${aporte.id})">
-        //       <i class="bi bi-check"></i> Aceptar
-        //     </button>
-        //     <button class="btn btn-sm btn-danger" onclick="denegaraporte(${aporte.id})">
-        //       <i class="bi bi-x"></i> Denegar
-        //     </button>
-        //   </td>
+<!--
+            <td>
+             <button class="btn btn-sm btn-primary" onclick="aceptaraporte(${aporte.id})">
+               <i class="bi bi-check"></i> Aceptar
+            </button>
+           <button class="btn btn-sm btn-danger" onclick="denegaraporte(${aporte.id})">
+               <i class="bi bi-x"></i> Denegar
+             </button>
+           </td> -->
         `;
         tbody.appendChild(fila);
     });
