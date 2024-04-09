@@ -26,6 +26,11 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 const { PORT,HOST } = process.env;
 
+app.use((req, res, next) => {
+    const ruta404 = path.join(__dirname, '..', 'frontend', '404.html');
+    res.status(404).sendFile(ruta404);
+  });
+
 
 // Manejador de errores global
 app.use((err, req, res, next) => {
