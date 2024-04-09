@@ -121,6 +121,10 @@ const adminRoutes = (app) => {
   app.get('/SolicitudAprobada/:dni',controlervalidacion,auth.verifyToken,VistasAdmin.mostrarSolictudAprobada);
   app.get('/SolicitudAprobada:dni',controlervalidacion,auth.verifyToken,controlerUpdates.solicitudRegistroAprobada);
   
+  app.get('/SolicitudDenegada/:documento/:solicitud',controlervalidacion,auth.verifyToken,VistasAdmin.mostrarSolictudDenegadaAsociado);
+  app.get('/DataSolicitudDenegada/:documento/:solicitud',controlervalidacion,auth.verifyToken,controlerUpdates.solicitudRegistroDenegada);
+  
+
   app.get('/ListaSolicitudesMembresia.html', controlervalidacion,auth.verifyToken, (req, res) => {
     res.redirect('/SolitudesPendientes');
   });

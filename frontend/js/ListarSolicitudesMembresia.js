@@ -135,13 +135,9 @@ function agregarDatosAdenegar(solicitudes) {
                 <td class="fecha-aprobacion">${fechaaprobacionform}</td>
                 <td class="numero-resolucion">${solicitud.numero_resolucion}</td>
                 <td class="text-left">
-                    <button class="btn btn-sm btn-primary" onclick="aprobarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
-                        <i class="bi bi-pen"></i> Aprobar
+                    
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="denegarSolicitud(${solicitud.id_solicitud},${solicitud.dni_persona})">
-                        <i class="bi bi-x"></i> Denegar
-                    </button>
-                    <button class="btn btn-sm btn-light" onclick="VerMas(${solicitud.dni_persona})">
+                    <button class="btn btn-sm btn-light" onclick="window.location.href='/SolicitudDenegada/${solicitud.dni_persona}/${solicitud.id_solicitud}'">
                     <i class="bi bi-user"></i> Ver Más
                     </button>
                 </td>

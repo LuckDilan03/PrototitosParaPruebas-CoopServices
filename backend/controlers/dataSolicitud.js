@@ -1,6 +1,7 @@
+const { query } = require('express');
 const pool = require('../config/connection');
 const { enviarEmail } = require('../services/email.service');
-const { dataUserAprobado, dataUserDenegado } = require('./dataUser');
+const { dataUserAprobado } = require('./dataUser');
 
 async function solicitudRegistro(req, res) {
     try {
@@ -27,6 +28,7 @@ async function solicitudRegistro(req, res) {
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 }
+
 async function solicitudRegistroAprobada(req, res) {
     try {
         const result = await dataUserAprobado(req.params.dni);
@@ -53,4 +55,24 @@ async function solicitudRegistroAprobada(req, res) {
     }
 }
 
-module.exports = { solicitudRegistro,solicitudRegistroAprobada };
+async function solicitudRegistroDenegada(req , res){
+    try {
+        const numeroSolicitud = req.params.solicitud
+        const documento=req.params.documento
+        const {rows: solicitud}= await pool.query('SELECT * FROM solicitudDenegada ($1,$2)',[numeroSolicitud,documento]);
+        const dataSolicitud=solicitud[0];
+        if (!dataSolicitud ) {
+            return res.status(404).json({ error: 'No se encontraron datos para el numero de solicitud y el DNI proporcionado' });
+        }
+        res.json(datosDashboard);
+    } catch (error) {
+
+        console.error('Error al obtener datos de la solicitud:', error);
+        // Si ocurre un error interno del servidor, devolver un error 500
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+
+
+
+}
+module.exports = { solicitudRegistro,solicitudRegistroAprobada,solicitudRegistroDenegada };
