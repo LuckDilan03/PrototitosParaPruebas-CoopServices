@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>CoopSerives - Inicio</title>
+    <title>CoopSerives - Datos Denegados</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -49,6 +49,7 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
+                        <!-- Div para la imagen temporal en el centro de la pantalla -->
                         <div id="imagenTemporal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; text-align: center;">
                             <img id="imagenTemporalSrc" style="max-width: 50%; max-height: 50%;">
                             <div style="margin-top: 20px;"> <!-- Agregamos un contenedor para los botones y aplicamos un margen superior -->
@@ -73,31 +74,34 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="dashboard.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-laptop me-2"></i>Transacciones</a>
-                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
-                            <a href="/solicitarPrestamo" class="dropdown-item active">Solicitar un Prestamo</a>
-                            <a href="/solicitarRetiro" class="dropdown-item">Solicitar un Retiro</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Transacciones</a>
+                        <div class="dropdown-menu bg-transparent border-0">
                             <a href="/registrarAporte" class="dropdown-item">Registrar un Aporte</a>
+                            <a href="/solicitarPrestamo" class="dropdown-item">Solicitar un Prestamo</a>
+                            <a href="/solicitarRetiro" class="dropdown-item">Solicitar un Retiro</a>
                             <a href="/otroTipoSolicitud" class="dropdown-item">Otro Tipo de Transacción</a>
                         </div>
                     </div>
                     <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Tablas</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="/SolitudesPendientes" class="dropdown-item">Solicitudes de Membresia</a>
+                        <a href="#" class="nav-link dropdown-toggle active show" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-table me-2"></i>Tablas</a>
+                        <div class="dropdown-menu bg-transparent border-0 show" data-bs-popper="none">
+                            <a href="/SolitudesPendientes" class="dropdown-item active">Solicitudes de Membresia</a>
                             <a href="/asociadosAprobados" class="dropdown-item">Lista de Asociados</a>
                             <a href="/usuarioSistema" class="dropdown-item">Lista de Usuarios</a>
-                            <a href="/solicitudesPrestamo" class="dropdown-item">Solicitudes de Prestamo</a>
-                            <a href="/crearRoles" class="dropdown-item">Crear Roles</a>
                             <a href="/cuentasAhorro" class="dropdown-item">Lista de Cuentas de Ahorro</a>
+                            <a href="/aportesRegistrados" class="dropdown-item">Lista de Aportes</a>
+                            <a href="/listaRetiros" class="dropdown-item">Lista de Retiros</a>
+                            <a href="/solicitudesPrestamo" class="dropdown-item">Solicitudes de Prestamo</a>
+                            <a href="/CrearTipoPrestamo"  class="dropdown-item">Crear Tipos de Prestamo</a>
+                            <!-- <a href="/crearRoles" class="dropdown-item">Crear Roles</a> -->
+                            <a href="/listaPersona" class="dropdown-item">Lista de Personas</a>
                         </div>
-                    </div>
-                     <a href="/graficos" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
-                 <!--   <div class="nav-item dropdown">
+                    </div> 
+                    <!--   <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -110,6 +114,7 @@
             </nav>
         </div>
         <!-- Cierre del componente del Sidebar -->
+
 
         <!-- Content Start -->
         <div class="content">
@@ -261,7 +266,7 @@
                             <label for="floatingInput">Fecha de la solicitud</label>
                         </div>
                         <div class=" form-floating mb-3">
-                            <input type="text" class="form-control" id="DocumentoPresentado"
+                            <input type="url" target="_blank"class="form-control" id="DocumentoPresentado"
                                 placeholder="Documento Presentado">
                             <label for="floatingInput">Documento Presentado</label>
                         </div>
@@ -276,7 +281,7 @@
                             <label for="floatingInput">fecha de respuesta </label>
                         </div>
                         <div class=" form-floating mb-3">
-                            <input type="number" class="form-control" id="numberoResolucion"
+                            <input type="number" class="form-control" id="numeroResolucion"
                                 placeholder="Numero de resolucion de respuesta">
                             <label for="floatingInput">Numero de resolucion de respuesta </label>
                         </div>
@@ -286,9 +291,9 @@
                             <label for="floatingInput">Detalle respuesta </label>
                         </div>
 
-    
+<!--     
                         <button type="submit" class="btn btn-primary" id="Actualizar" disabled="true"> Actualizar Solicitud</button>
-                        <button type="submit" class="btn btn-primary" id="Eliminar"> Eliminar Solicitud</button><br> <br>  
+                        <button type="submit" class="btn btn-primary" id="Eliminar"> Eliminar Solicitud</button><br> <br>   -->
                         <button  type="submit" class="btn btn-primary" id="Volver" onclick="window.location.href = '/SolitudesPendientes'"> Volver atras</button>
                     </div>
                 </div>
@@ -336,6 +341,7 @@
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
     <script src="/js/MicuentaAdmin.js"></script>
+    <script src="/js/formSolicitudDenegada.js"></script>
 
 </body>
 
