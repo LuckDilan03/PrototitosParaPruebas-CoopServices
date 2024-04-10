@@ -11,6 +11,28 @@ async function obtenerDatosSolicitud() {
         agregarDatosArevision(solicitudes);
         agregarDatosAdenegar(solicitudes);
         const tables = inicializarTablas();
+
+        const botonPDF = document.getElementById('descargarPDF');
+        botonPDF.addEventListener('click', async () => {
+        const response = await fetch('/generate-pdf', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: solicitudes })
+        });
+
+        const pdfBuffer = await response.arrayBuffer();
+        const blob = new Blob([pdfBuffer], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'output.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+        });
         
 
         // Agregar el evento change al selector de columna de búsqueda
