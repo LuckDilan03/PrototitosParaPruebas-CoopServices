@@ -23,6 +23,7 @@ async function generatePDF(data) {
 
         // Define el estilo para el texto normal
         const textStyle = { align: 'left', fontSize: 12, font: 'Helvetica' };
+        console.log(data)
 
         data.forEach(item => {
             // Título de la sección
@@ -31,21 +32,14 @@ async function generatePDF(data) {
 
             // Datos de la solicitud
             doc.text(`DNI: ${item.dni_persona}`, textStyle);
-            doc.text(`Nombre: ${item.nombre_persona} ${item.segundo_nombre_persona}`, textStyle);
-            doc.text(`Apellido: ${item.apellido_persona} ${item.segundo_apellido_persona}`, textStyle);
-            doc.text(`Dirección: ${item.direccion_persona}`, textStyle);
-            doc.text(`Teléfono: ${item.telefono_persona}`, textStyle);
-            doc.text(`Correo: ${item.correo_persona}`, textStyle);
             doc.text(`Id Solicitud: ${item.id_solicitud}`, textStyle);
             doc.text(`Fecha Solicitud: ${item.fecha_solicitud}`, textStyle);
             doc.text(`Usuario Deseado: ${item.usuario_deseado}`, textStyle);
             doc.text(`Respuesta Solicitud: ${item.respuesta_solicitud}`, textStyle);
             doc.text(`Fecha respuesta: ${item.fecha_aprobacion}`, textStyle);
-            doc.text(`Numero Cuenta: ${item.numero_cuenta}`, textStyle);
-            doc.text(`Saldo Cuenta: ${item.saldo_cuenta}`, textStyle);
-            doc.text(`Aporte Mensual: ${item.aporte_mensual}`, textStyle);
-            doc.text(`Estado Cuenta: ${data.estado_cuenta}`, textStyle);
-            doc.text(`Monto Aporte: ${item.monto_aporte}`, textStyle);
+            doc.text(`Numero resolucion: ${item.numero_resolucion}`, textStyle);
+            doc.text(`Detalles Solicitud: ${item.detalle_solicitud}`, textStyle);
+            
 
             // Agregar línea separadora
             doc.moveDown();
