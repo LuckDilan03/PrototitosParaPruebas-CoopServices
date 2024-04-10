@@ -85,11 +85,11 @@ const register = async (req, res) => {
         case '1':
             let numero_solicitud = await buscarNumeroSolicitud(Documento)
             respuesta = `
-            Se Ah Creado Una Nueva Solicitud 
-            Numero De Solicitud: ${numero_solicitud}`;
+            Se Ha Creado Una Nueva Solicitud 
+            Número De Solicitud: ${numero_solicitud}`;
             tituloMensaje='Registro Exitoso';
             asunto='Registro Exitoso De Solicitud Asociacion CoopServices'
-            mensajeCorreo=`Felicidades su solicitud de registro ah sido recibida con exito y se encuentra registrada con el numero: ${numero_solicitud}`
+            mensajeCorreo=`Felicidades su solicitud de registro ha sido recibida con exito y se encuentra registrada con el numero: ${numero_solicitud}`
             statusCode = 201;
             statusms='ok';
             break;
@@ -117,13 +117,13 @@ const register = async (req, res) => {
             respuesta = `
             Ya Cuenta Con Una Solicitud En Revisión  
             Numero De Solicitud :${numero_solicitudRevision} 
-            Porfavor Espere Respuesta Al Correo Registrado.`;
+            Por favor Espere Respuesta Al Correo Registrado.`;
             statusCode = 400;
             tituloMensaje='Paciencia Por Favor Pronto Recibiras Una Respuesta ';
             asunto='Pronto recibiras una respuesta Espera De Respuesta No Mayor A 15 Dias';
             mensajeCorreo=`
              No Es Posible Registrarse Nuevamente 
-             Porfavor Espere Una Respuesta De La Solicitud Con Numero ${numero_solicitudRevision}`
+             Por favor Espere Una Respuesta De La Solicitud Con Numero ${numero_solicitudRevision}`
             statusms='error';
             break;
         case '4':
@@ -131,7 +131,7 @@ const register = async (req, res) => {
             respuesta =`
             Se Registro Una Nueva Solicitud De Registro 
             Numero Nueva Solicitud De Registro: ${numero_solicitud_denegada}
-            Porfavor Solicionar Los Motivos De Rechazo De la Solicitud Anterior 
+            Por favor Solucionar Los Motivos De Rechazo De la Solicitud Anterior 
             Numero Solicitud Denegada :  `;
             tituloMensaje='Nuevo Registro Asociado coopservices ';
             asunto='Nueva Solicitud De Registro Despues De Ser Rechazado Previamente ';
