@@ -23,7 +23,7 @@ async function generatePDF(data) {
 
         // Define el estilo para el texto normal
         const textStyle = { align: 'left', fontSize: 12, font: 'Helvetica' };
-        console.log(data)
+        
 
         data.forEach(item => {
             // Título de la sección
