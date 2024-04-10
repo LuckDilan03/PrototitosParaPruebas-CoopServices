@@ -11,11 +11,39 @@ document.addEventListener('DOMContentLoaded', () => {
       agregarDatosATabla(cuentas);
 
         // Inicializar las tablas con DataTables y habilitar la ordenación
-        $('#cuentaTable').DataTable({
-          "paging": false, // Deshabilitar la paginación
-          "searching": false, // Deshabilitar la búsqueda
-          "info": false // Deshabilitar la información de la tabla
-        });      
+        const table = $('#cuentaTable').DataTable({
+          "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
+          "pageLength": 5,
+          "searching": true,
+          "info": true,
+          "select": true,
+          "language": {
+              "lengthMenu": "Mostrar _MENU_ Asociados Por Página",
+              "zeroRecords": "No Se Encontraron Asociados",
+              "info": "Asociados Totales: _TOTAL_",
+              "infoEmpty": "No Hay Asociados Disponibles",
+              "infoFiltered": "(Filtrado De _MAX_ Asociados En Total)",
+              "search": "Buscar:",
+              "paginate": {
+                  "previous": "Anterior",
+                  "next": "Siguiente"
+              }
+          }
+      });
+
+      // Agregar evento de cambio al elemento select
+      $('#searchColumnCuenta').on('change', function() {
+          const columnIndex = $(this).val(); // Obtener el índice de la columna seleccionada
+          const searchTerm = $('#searchInputCuenta').val(); // Obtener el término de búsqueda
+          table.column(columnIndex).search(searchTerm).draw(); // Aplicar el filtro en la columna seleccionada y redibujar la tabla
+      });
+
+      // Agregar evento de entrada al campo de búsqueda
+      $('#searchInputCuenta').on('input', function() {
+          const columnIndex = $('#searchColumnCuenta').val(); // Obtener el índice de la columna seleccionada
+          const searchTerm = $(this).val(); // Obtener el término de búsqueda
+          table.column(columnIndex).search(searchTerm).draw(); // Aplicar el filtro en la columna seleccionada y redibujar la tabla
+      });
     } catch(error){
       console.error('Error al obtener datos de usuarios: ', error);
     }
