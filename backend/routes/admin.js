@@ -22,6 +22,7 @@ const {registrarAporteGeneral}=require('../controlers/registrarAporteGeneral')
 const {uploadComprobanteAporte}=require('../controlers/multerConfig');
 const {registrarAporteAsociado}=require('../controlers/registrarAporteAsociado');
 const controlerListAbonos=require('../controlers/listSolicitudAbono');
+const { generatePDF } = require('../controlers/ControlerPDF');
 const pdfkit = require('pdfkit');
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
@@ -132,13 +133,9 @@ const adminRoutes = (app) => {
   });
   app.get('/listSolicitudMembresia',controlervalidacion, auth.verifyToken,controlerListSolicitudMembresia.listSolicitudMembresia);
 
-  app.get('/generate-pdf', async (req, res) => {
-    const data = 
-      req.body.data
-    ;
-  
+  app.post('/generate-pdf', async (req, res) => {
+    const data = req.body.data;
     const pdfBuffer = await generatePDF(data);
-  
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename=output.pdf');
     res.send(pdfBuffer);
