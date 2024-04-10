@@ -203,7 +203,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="/perfil" class="dropdown-item active">Mi Perfil</a>
-                            <a href="#" class="dropdown-item">Configuración</a>
+                            <!-- <a href="#" class="dropdown-item">Configuración</a> -->
                             <a id="boton-cerrarsesion" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </div>
@@ -233,7 +233,7 @@
                                     <button type="button" class="btn btn-primary" id="CambiarFoto">Cambiar Foto</button>
                                 </div>
 
-                                <div class="d-grid text-center mt-3">
+                                <!-- <div class="d-grid text-center mt-3">
                                     <div>
                                     <a href="/perfil" class="dropdown-item active" style="background-color: #242833">Mi Perfil</a>
                                     </div>
@@ -243,16 +243,39 @@
                                     <div>
                                     
                                     </div>
+                                </div> -->
+                            </div>
+                        
+                            <div class="bg-secondary rounded p-4" style="margin-top: calc(var(--bs-gutter-y)/1);">
+                                <h4 class="mb-4">Modificar nuevo correo y Contraseña </h4>
+                                <!--Contraseña-->
+                                <form>
+ 
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="nuevoCorreo" placeholder="Nuevo Correo">
+                                        <label for="nuevoCorreo">Nuevo Correo</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="NuevaContraseña" placeholder="Nueva Contraseña">
+                                        <label for="NuevaContraseña">Nueva Contraseña</label>
+                                    </div>
+
+
+                                </form>
+                                <div class="d-grid mt-3">
+                                    <button type="button" class="btn btn-primary" id="cambiarDatos">Cambiar Datos</button>
                                 </div>
                             </div>
                         </div>
+
 
                         <div class="col-sm-12 col-xl-8">
                             <div class="bg-secondary rounded h-100 p-3">
                                     <!-- Formulario no editable -->
                                 <!--Datos Personales-->
 
-                                <h4 class="mb-4">Configuración datos personales</h4>
+                                <h4 class="mb-4">Configuración Datos Personales</h4>
 
                                 <div class="form-floating mb-3">
                                     <input type="number" class="form-control" id="DniAsociado" placeholder="DNI del Asociado" disabled>
@@ -333,8 +356,8 @@
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
-    <script src="js/MicuentaAdmin.js"></script>
-    <script src="js/PerfilConfig.js"></script>
+    <script src="/js/MicuentaAdmin.js"></script>
+    <script src="/js/PerfilConfig.js"></script>
 
 
 </body>

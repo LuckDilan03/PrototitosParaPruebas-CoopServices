@@ -90,7 +90,7 @@
                 labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                 datasets: [{
                         label: "Prestamos",
-                        data: [150, 180, 200, 220, 240, 270, 300, 350, 400, 450, 500, 550],
+                        data: [218, 210, 200, 220, 280, 270, 251, 265, 250, 245, 220, 240],
                         backgroundColor: "#037d8d",
                         fill: true
                     }
