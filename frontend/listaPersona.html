@@ -202,22 +202,22 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="bg-secondary rounded h-100 p-4">
                         <h6 class="mb-4">Lista de Personas</h6>
-                        <div id="filterContainer">
-                            <label for="filterCriteria">Seleccione un criterio de filtrado:</label>
-                            <select id="filterCriteria">
-                                <option value="dni">DNI de la Persona</option>
-                                <option value="primerNombre">Primer Nombre</option>
-                                <option value="segundoNombre">Segundo Nombre</option>
-                                <option value="primerApellido">Primer Apellido</option>
-                                <option value="segundoApellido">Segundo Apellido</option>
-                                <option value="direccion">Direccion</option>
-                                <option value="telefono">Telefono</option>
-                                <option value="correo">Correo</option>
-                                <option value="rol">Rol</option>
-                                <option value="documento">Documento</option>
-                            </select>
-                            <input type="text" id="searchInputPersona" placeholder="Ingrese el término de búsqueda">
-                        </div>
+                    <div>
+                        <label for="searchColumnPersonas">Buscar en:</label>
+                        <select id="searchColumnPersonas">
+                            <option value="0">DNI</option>
+                            <option value="1">Primer Nombre</option>
+                            <option value="2">Segundo Nombre</option>
+                            <option value="3">Primer Apellido</option>
+                            <option value="4">Segundo Apellido</option>
+                            <option value="5">Direccion</option>
+                            <option value="6">Telefono</option>
+                            <option value="7">Correo</option>
+                            <option value="8">Rol</option>
+                            <!-- <option value="9">Documento</option> -->
+                        </select>
+                        <input type="text" id="searchInputPersonas" placeholder="Buscar...">
+                    </div>
                         <div class="table-responsive">
                             <table id="personasTable" class="table table-bordered">
                                 <thead>
@@ -266,15 +266,11 @@
         </div>
         <!-- Content End -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <!-- Enlace a la biblioteca jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Enlace a la biblioteca DataTables -->
+    <!-- Enlaces a las bibliotecas jQuery y DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
+    
+    <!-- Otras bibliotecas y scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/chart/chart.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
@@ -283,7 +279,6 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
     <!-- Custom Scripts -->
     <script src="js/main.js"></script>
     <script src="js/ListarPersonas.js"></script>

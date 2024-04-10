@@ -1,14 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   obtenerDatosPersonas();
 
-  // Agregar eventos para el filtro
-  $('#filterCriteria').on('change', function() {
-      applyFilter($(this).val(), $('#searchInputPersona').val(), '#personasTable');
-  });
-
-  $('#searchInputPersona').on('keyup', function() {
-      applyFilter($('#filterCriteria').val(), $(this).val(), '#personasTable');
-  });
 });
 
 async function obtenerDatosPersonas() {
@@ -18,24 +10,39 @@ async function obtenerDatosPersonas() {
       agregarDatosATabla(personas);
 
         // Inicializar las tablas con DataTables y habilitar la ordenación
-        $('#personasTable').DataTable({
-          "lengthMenu": [[5, 10, 15, 20, 30], [5, 10, 15, 20, 30]],
-          "pageLength": 5,
-          "searching": false, // Deshabilitar la búsqueda
-          "info": true, // Habilitar la información de la tabla
-          "language": {
-              "lengthMenu": "Mostrar _MENU_ Registros Por Página",
-              "zeroRecords": "No Se Encontraron Personas",
-              "info": "Personas Totales: _TOTAL_",
-              "infoEmpty": "No Hay Registros Disponibles",
-              "infoFiltered": "(Filtrado De _MAX_ Personas En Total)",
-              "search": "Buscar:",
-              "paginate": {
-                  "previous": "Anterior",
-                  "next": "Siguiente"
-              }
-          }
-      });
+        const table = $('#personasTable').DataTable({
+            "lengthMenu": [[15, 20, 35, 40, 50], [15, 20, 35, 40, 50]],
+            "pageLength": 15,
+            "searching": true,
+            "info": true,
+            "select": true,
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ Personas Por Página",
+                "zeroRecords": "No Se Encontraron Personas",
+                "info": "Personas Totales: _TOTAL_",
+                "infoEmpty": "No Hay Personas Disponibles",
+                "infoFiltered": "(Filtrado De _MAX_ Personas En Total)",
+                "search": "Buscar:",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Siguiente"
+                }
+            }
+        });
+  
+        // Agregar evento de cambio al elemento select
+        $('#searchColumnPersonas').on('change', function() {
+            const columnIndex = $(this).val(); // Obtener el índice de la columna seleccionada
+            const searchTerm = $('#searchInputPersonas').val(); // Obtener el término de búsqueda
+            table.column(columnIndex).search(searchTerm).draw(); // Aplicar el filtro en la columna seleccionada y redibujar la tabla
+        });
+  
+        // Agregar evento de entrada al campo de búsqueda
+        $('#searchInputPersonas').on('input', function() {
+            const columnIndex = $('#searchColumnPersonas').val(); // Obtener el índice de la columna seleccionada
+            const searchTerm = $(this).val(); // Obtener el término de búsqueda
+            table.column(columnIndex).search(searchTerm).draw(); // Aplicar el filtro en la columna seleccionada y redibujar la tabla
+        });
     } catch (error){
       console.error('Error al obtener datos del asociado: ', error);
     }

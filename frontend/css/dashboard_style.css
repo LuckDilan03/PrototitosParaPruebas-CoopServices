@@ -48,7 +48,7 @@ body{
 }
 
 /* Estilos para los campos de búsqueda */
-#searchInputRevision, #searchInputAprobacion, #searchInputDenegar, #searchInputPersona, #searchInputAsociados ,#searchInput {
+#searchInputRevision, #searchInputAprobacion, #searchInputDenegar, #searchInputPersona, #searchInputAsociados , #searchInputPersonas, #searchInput, #searchInputAportes, #searchInputCuenta, #searchInputSolicitudPrestamo {
     width: 30%;
     padding: 0.5%;
     margin-bottom: 10px;
@@ -61,10 +61,22 @@ body{
 }
 
 /* Estilos para el placeholder del campo de búsqueda */
-#searchInputRevision::placeholder, #searchInputAprobacion::placeholder,#searchInputAsociados::placeholder, #searchInputDenegar::placeholder, #searchInputPersona::placeholder ,#searchInput::placeholder{
-    color: #999; /* Color del placeholder */
+#searchInputRevision::placeholder, #searchInputAprobacion::placeholder,#searchInputAsociados::placeholder, #searchInputDenegar::placeholder, #searchInputPersona::placeholder ,#searchInputPersonas::placeholder,
+#searchInputAportes::placeholder, #searchInputCuenta::placeholder, #searchInputSolicitudPrestamo::placeholder {
+    color: #b9b9b9; /* Color del placeholder */
 }
 
+
+#searchColumnRevision, #searchColumnAprobacion, #searchColumnDenegar, #searchColumnPersona, #searchColumnAsociados, #searchColumnAportes, #searchColumnCuenta, #searchColumnPersonas, #searchColumnSolicitudPrestamo {
+    width: 25%;
+    padding: 0.4%;
+    margin-bottom: 10px;
+    border: 1px solid rgb(0, 244, 252);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #00aaaa;
+    color: #ffffff;
+}
 
 .btn-primary {
     border: 3px solid #0a92aa;
@@ -636,16 +648,7 @@ select{
     border-color: rgb(0, 70, 151);
 }
 
-#searchColumnRevision, #searchColumnAprobacion, #searchColumnDenegar, #searchColumnPersona, #searchColumnAsociados {
-    width: 25%;
-    padding: 0.4%;
-    margin-bottom: 10px;
-    border: 1px solid rgb(0, 244, 252);
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #00aaaa;
-    color: #ffffff;
-}
+
 .dataTables_wrapper .dataTables_paginate {
     float: right;
     text-align: right;
