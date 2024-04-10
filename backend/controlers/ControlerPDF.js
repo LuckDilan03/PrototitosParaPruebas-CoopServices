@@ -54,7 +54,7 @@ async function generatePDF(data) {
                 .lineTo(550, doc.y)
                 .stroke();
 
-            doc.addPage();
+            
         });
 
         doc.end();
