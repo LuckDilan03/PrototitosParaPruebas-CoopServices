@@ -19,9 +19,10 @@ const controlerDataDashboard=require('../controlers/mostrarDataDashboard');
 const contolerDataPerfil=require('../controlers/mostrarDataPerfil');
 const {actualizarDataPerfil}=require('../controlers/actualizarDataPerfil');
 const {registrarAporteGeneral}=require('../controlers/registrarAporteGeneral')
-const {uploadComprobanteAporte}=require('../controlers/multerConfig')
-const {registrarAporteAsociado}=require('../controlers/registrarAporteAsociado')
-const controlerListAbonos=require('../controlers/listSolicitudAbono')
+const {uploadComprobanteAporte}=require('../controlers/multerConfig');
+const {registrarAporteAsociado}=require('../controlers/registrarAporteAsociado');
+const controlerListAbonos=require('../controlers/listSolicitudAbono');
+const pdfkit = require('pdfkit');
 const adminRoutes = (app) => {
   /*rutas del admin y de dasboard.html*/
   app.get('/dashboard', auth.verifyToken, (req, res) => {
@@ -38,8 +39,9 @@ const adminRoutes = (app) => {
   app.get('/datauser', auth.verifyToken, controlerDataUser.listUserAprobado);
   app.get('/userDenegado', auth.verifyToken, controlerDataUser.listUserAprobado);
   app.get('/datadashboard',auth.verifyToken,controlerDataDashboard.datadashboard);
-  app.get('/dataperfil',auth.verifyToken,contolerDataPerfil.dataperfil)
-  app.put('/actualizarDatosPerfil',auth.verifyToken,actualizarDataPerfil)
+  app.get('/dataperfil',auth.verifyToken,contolerDataPerfil.dataperfil);
+  app.put('/actualizarDatosPerfil',auth.verifyToken,actualizarDataPerfil);
+  
 
   app.get('/perfil', auth.verifyToken, (req, res) => {
     const rutaAdmin = "perfilAdmin.html";
@@ -129,6 +131,18 @@ const adminRoutes = (app) => {
     res.redirect('/SolitudesPendientes');
   });
   app.get('/listSolicitudMembresia',controlervalidacion, auth.verifyToken,controlerListSolicitudMembresia.listSolicitudMembresia);
+
+  app.get('/generate-pdf', async (req, res) => {
+    const data = 
+      req.body.data
+    ;
+  
+    const pdfBuffer = await generatePDF(data);
+  
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=output.pdf');
+    res.send(pdfBuffer);
+  });
 
   app.post('/aprobarSolicitud', (req, res) => {
     return controlerListSolicitudMembresia.aprobarUsuario(req, res);

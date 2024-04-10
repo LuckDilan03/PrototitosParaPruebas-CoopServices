@@ -11,6 +11,7 @@ async function obtenerDatosSolicitud() {
         agregarDatosArevision(solicitudes);
         agregarDatosAdenegar(solicitudes);
         const tables = inicializarTablas();
+        
 
         // Agregar el evento change al selector de columna de búsqueda
         $('#searchColumnRevision, #searchColumnAprobacion, #searchColumnDenegar').on('change', function () {
